@@ -115,7 +115,7 @@ export class DexService {
     _highFee: number,
     amountInEth: number,
   ) {
-    const [lowFee, highFee] = await Promise.all([
+    const [lowFeeQuote, highFeeQuote] = await Promise.all([
       this.getQuote(
         TOKENS.WETH,
         STABLE_COIN.USDT,
@@ -130,23 +130,42 @@ export class DexService {
       ),
     ]);
 
-    const priceLow = parseFloat(lowFee);
-    const priceHigh = parseFloat(highFee);
+    const priceLow = parseFloat(lowFeeQuote); // Quoting from _lowFee pool
+    const priceHigh = parseFloat(highFeeQuote); // Quoting from _highFee pool
     const spread = priceLow - priceHigh;
     const spreadPct = (spread / priceHigh) * 100;
 
-    console.log(`🧾 ${amountInEth} WETH → USDT`);
-    console.log(`${_lowFee} Pool: ${priceLow} USDT`);
-    console.log(`${_highFee} Pool:  ${priceHigh} USDT`);
-    console.log(
-      `Spread:   ${spread.toFixed(4)} USDT (${spreadPct.toFixed(4)}%)`,
+    // Correct Uniswap V2-style round trip fee
+    const flashSwapFee = this.getFlashSwapUniswapV3Fee(
+      TOKENS.WETH,
+      STABLE_COIN.USDT,
     );
 
-    const totalFeePct = (_lowFee + _highFee) / 10000;
+    const totalFeePct = flashSwapFee * 2 * 100; // Round trip fee in %
+
+    // 🧾 Log Report
+    console.log(`🧾 ${amountInEth} WETH → USDT`);
+    console.log(`${_lowFee / 10000}% Pool: ${priceLow} USDT`);
+    console.log(`${_highFee / 10000}% Pool: ${priceHigh} USDT`);
+    console.log(`Spread: ${spread.toFixed(4)} USDT (${spreadPct.toFixed(4)}%)`);
+    console.log(`Fees:   ${totalFeePct.toFixed(2)}%`);
+
     if (spreadPct > totalFeePct) {
       console.log('✅ Arbitrage possible!');
     } else {
       console.log('❌ No arbitrage (fees eat profit)');
     }
+  }
+
+  getFlashSwapUniswapV3Fee(tokenIn: string, tokenOut: string): number {
+    const isTokenInWETH = tokenIn.toLowerCase() === TOKENS.WETH.toLowerCase();
+    const isTokenOutWETH = tokenOut.toLowerCase() === TOKENS.WETH.toLowerCase();
+
+    if (isTokenInWETH || isTokenOutWETH) {
+      return 0.003; // 0.3% fee
+    }
+
+    // Neither is WETH → 2-hop through WETH
+    return 0.006; // 0.6% fee
   }
 }
