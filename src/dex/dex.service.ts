@@ -1,8 +1,8 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
+import { FeeAmount } from '@uniswap/v3-sdk';
 import { ethers, toBigInt } from 'ethers';
 import { provider } from './config';
 import { DEX } from './config/token';
-import { FeeAmount } from '@uniswap/v3-sdk';
 
 @Injectable()
 export class DexService {
@@ -75,13 +75,14 @@ export class DexService {
    * @param tokenOut The address of the output token.
    * @param amountIn The amount of the input token.
    * @param fee The fee tier of the Uniswap pool (e.g., 500, 3000, 10000).
+   * @param decimalOut The number of decimals for the output token (default is 18).
    * @returns The quoted amount of the output token.
    */
   async getQuote(
     tokenIn: string,
     tokenOut: string,
     amountIn: string,
-    sdkVersion = 3,
+    decimalOut = 18,
   ) {
     try {
       const quoterABI = [
@@ -104,7 +105,7 @@ export class DexService {
         sqrtPriceLimitX96,
       );
 
-      return quotedAmount;
+      return ethers.formatUnits(quotedAmount, decimalOut);
     } catch (error) {
       console.error('Error getting quote:', error);
       throw new BadRequestException(`Error getting quote: ${error.message}`);

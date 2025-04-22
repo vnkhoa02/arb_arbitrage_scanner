@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ethers } from 'ethers';
-import { DEX, TOKENS } from 'src/dex/config/token';
+import { DEX, STABLE_COIN, TOKENS } from 'src/dex/config/token';
 import { DexService } from '../dex/dex.service';
 
 @Injectable()
@@ -28,7 +28,7 @@ export class ScannerService {
     const amountIn = ethers.parseUnits('1', DECIMALS); // Flashloan 1 token
 
     // 1. Token → USDT
-    const toUSDTPath = [tokenAddress, TOKENS.USDT];
+    const toUSDTPath = [tokenAddress, STABLE_COIN.USDT];
     const usdtOut = await this.dexService.getOutputAmount(
       amountIn.toString(),
       toUSDTPath,
@@ -37,7 +37,7 @@ export class ScannerService {
 
     // 2. USDT → DAI (only swap 100k USDT)
     const amountUsdtToDai = ethers.parseUnits('100000', 6);
-    const usdtToDaiPath = [TOKENS.USDT, TOKENS.DAI];
+    const usdtToDaiPath = [STABLE_COIN.USDT, STABLE_COIN.DAI];
     const daiOut = await this.dexService.getOutputAmount(
       amountUsdtToDai.toString(),
       usdtToDaiPath,
@@ -45,7 +45,7 @@ export class ScannerService {
     if (!daiOut) return { profitInUSDT: 0n, isProfitable: false };
 
     // 3. DAI → Token
-    const daiToTokenPath = [TOKENS.DAI, tokenAddress];
+    const daiToTokenPath = [STABLE_COIN.DAI, tokenAddress];
     const tokenOut = await this.dexService.getOutputAmount(
       daiOut.toString(),
       daiToTokenPath,
@@ -61,7 +61,7 @@ export class ScannerService {
 
       const profitInUSDT = await this.dexService.getOutputAmount(
         profitToken.toString(),
-        [tokenAddress, TOKENS.USDT],
+        [tokenAddress, STABLE_COIN.USDT],
       );
 
       return { profitInUSDT: profitInUSDT ?? 0n, isProfitable: true };
