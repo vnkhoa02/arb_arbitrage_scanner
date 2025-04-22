@@ -13,20 +13,25 @@ export class DexController {
 
   @Get('quotes')
   async getQuote(@Query() query: any) {
+    const tokenInfo = await this.dexService.getTokenBasicInfo(TOKENS.WBTC);
+    const key = tokenInfo.symbol.toLowerCase();
     const results = await Promise.all(
       Object.entries(STABLE_COIN).map(async ([symbol, address]) => {
         try {
           const decimals = ['USDC', 'USDT'].includes(symbol) ? 6 : 18;
           const value = await this.dexService.getQuote(
-            TOKENS.WETH,
+            TOKENS.WBTC,
             address,
             query.amountIn,
             decimals,
           );
-          return { symbol: `weth${symbol.toLowerCase()}`, value };
+          return {
+            symbol: `${key}-${symbol.toLowerCase()}`,
+            value,
+          };
         } catch (error) {
           return {
-            symbol: `weth??${symbol.toLowerCase()}`,
+            symbol: `${key}??${symbol.toLowerCase()}`,
             error: error.message || 'Unknown error',
           };
         }
