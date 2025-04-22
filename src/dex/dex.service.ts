@@ -1,8 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { FeeAmount } from '@uniswap/v3-sdk';
 import { ethers, toBigInt } from 'ethers';
 import { provider } from './config';
-import { DEX } from './config/token';
+import { DEX, STABLE_COIN, TOKENS } from './config/token';
 
 @Injectable()
 export class DexService {
@@ -75,14 +74,15 @@ export class DexService {
    * @param tokenOut The address of the output token.
    * @param amountIn The amount of the input token.
    * @param fee The fee tier of the Uniswap pool (e.g., 500, 3000, 10000).
-   * @param decimalOut The number of decimals for the output token (default is 18).
+   * @param decimalOut The number of decimals for the output token (default is 6).
    * @returns The quoted amount of the output token.
    */
   async getQuote(
     tokenIn: string,
     tokenOut: string,
     amountIn: string,
-    decimalOut = 18,
+    feeAmount: string | number,
+    decimalOut = 6,
   ) {
     try {
       const quoterABI = [
@@ -94,7 +94,6 @@ export class DexService {
         provider,
       );
       const amountInBigInt = ethers.parseUnits(amountIn, 18);
-      const feeAmount = FeeAmount.MEDIUM; // 0.3% fee tier
       const sqrtPriceLimitX96 = 0;
 
       const quotedAmount = await quoter.quoteExactInputSingle(
@@ -104,11 +103,50 @@ export class DexService {
         amountInBigInt,
         sqrtPriceLimitX96,
       );
-
       return ethers.formatUnits(quotedAmount, decimalOut);
     } catch (error) {
       console.error('Error getting quote:', error);
       throw new BadRequestException(`Error getting quote: ${error.message}`);
+    }
+  }
+
+  async simpleArbitrage(
+    _lowFee: number,
+    _highFee: number,
+    amountInEth: number,
+  ) {
+    const [lowFee, highFee] = await Promise.all([
+      this.getQuote(
+        TOKENS.WETH,
+        STABLE_COIN.USDT,
+        String(amountInEth),
+        _lowFee,
+      ),
+      this.getQuote(
+        TOKENS.WETH,
+        STABLE_COIN.USDT,
+        String(amountInEth),
+        _highFee,
+      ),
+    ]);
+
+    const priceLow = parseFloat(lowFee);
+    const priceHigh = parseFloat(highFee);
+    const spread = priceLow - priceHigh;
+    const spreadPct = (spread / priceHigh) * 100;
+
+    console.log(`🧾 ${amountInEth} WETH → USDT`);
+    console.log(`${_lowFee} Pool: ${priceLow} USDT`);
+    console.log(`${_highFee} Pool:  ${priceHigh} USDT`);
+    console.log(
+      `Spread:   ${spread.toFixed(4)} USDT (${spreadPct.toFixed(4)}%)`,
+    );
+
+    const totalFeePct = (_lowFee + _highFee) / 10000;
+    if (spreadPct > totalFeePct) {
+      console.log('✅ Arbitrage possible!');
+    } else {
+      console.log('❌ No arbitrage (fees eat profit)');
     }
   }
 }

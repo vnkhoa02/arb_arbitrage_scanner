@@ -1,6 +1,5 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { DexService } from './dex.service';
-import { STABLE_COIN, TOKENS } from './config/token';
 
 @Controller('dex')
 export class DexController {
@@ -13,34 +12,16 @@ export class DexController {
 
   @Get('quotes')
   async getQuote(@Query() query: any) {
-    const tokenInfo = await this.dexService.getTokenBasicInfo(TOKENS.WBTC);
-    const key = tokenInfo.symbol.toLowerCase();
-    const results = await Promise.all(
-      Object.entries(STABLE_COIN).map(async ([symbol, address]) => {
-        try {
-          const decimals = ['USDC', 'USDT'].includes(symbol) ? 6 : 18;
-          const value = await this.dexService.getQuote(
-            TOKENS.WBTC,
-            address,
-            query.amountIn,
-            decimals,
-          );
-          return {
-            symbol: `${key}-${symbol.toLowerCase()}`,
-            value,
-          };
-        } catch (error) {
-          return {
-            symbol: `${key}??${symbol.toLowerCase()}`,
-            error: error.message || 'Unknown error',
-          };
-        }
-      }),
+    return await this.dexService.getQuote(
+      query.tokenIn,
+      query.tokenOut,
+      query.amountIn,
+      query?.fee || 3000,
     );
+  }
 
-    return results.reduce((acc, { symbol, value, error }) => {
-      acc[symbol] = error ? { error } : value;
-      return acc;
-    }, {});
+  @Get('arbitrage')
+  async getArbitrage() {
+    return await this.dexService.simpleArbitrage(500, 3000, 10);
   }
 }
