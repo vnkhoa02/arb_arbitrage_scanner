@@ -109,9 +109,8 @@ export class DexService {
       throw new BadRequestException(`Error getting quote: ${error.message}`);
     }
   }
-
   async simpleArbitrage(
-    _lowFee: number,
+    _lowFee: number, // Fee in basis points (e.g., 3000 = 0.3%)
     _highFee: number,
     amountInEth: number,
   ) {
@@ -130,25 +129,24 @@ export class DexService {
       ),
     ]);
 
-    const priceLow = parseFloat(lowFeeQuote); // Quoting from _lowFee pool
-    const priceHigh = parseFloat(highFeeQuote); // Quoting from _highFee pool
+    const priceLow = parseFloat(lowFeeQuote); // WETH → USDT in low-fee pool
+    const priceHigh = parseFloat(highFeeQuote); // WETH → USDT in high-fee pool
+
     const spread = priceLow - priceHigh;
     const spreadPct = (spread / priceHigh) * 100;
 
-    // Correct Uniswap V2-style round trip fee
-    const flashSwapFee = this.getFlashSwapUniswapV3Fee(
-      TOKENS.WETH,
-      STABLE_COIN.USDT,
-    );
-
-    const totalFeePct = flashSwapFee * 2 * 100; // Round trip fee in %
+    const flashLoanFee = this.getFlashLoanAaveFee(); // 0.0009 (0.09%)
+    const swapFees = (_lowFee + _highFee) / 10000; // Convert basis points to %
+    const totalFeePct = (swapFees + flashLoanFee) * 100;
 
     // 🧾 Log Report
-    console.log(`🧾 ${amountInEth} WETH → USDT`);
-    console.log(`${_lowFee / 10000}% Pool: ${priceLow} USDT`);
-    console.log(`${_highFee / 10000}% Pool: ${priceHigh} USDT`);
-    console.log(`Spread: ${spread.toFixed(4)} USDT (${spreadPct.toFixed(4)}%)`);
-    console.log(`Fees:   ${totalFeePct.toFixed(2)}%`);
+    console.log(`🧾 Arbitrage Check: ${amountInEth} WETH`);
+    console.log(`  ${_lowFee / 10000}% Pool → ${priceLow.toFixed(6)} USDT`);
+    console.log(`  ${_highFee / 10000}% Pool → ${priceHigh.toFixed(6)} USDT`);
+    console.log(
+      `  Spread: ${spread.toFixed(4)} USDT (${spreadPct.toFixed(4)}%)`,
+    );
+    console.log(`  Total Fees: ${totalFeePct.toFixed(4)}% (swap + flash loan)`);
 
     if (spreadPct > totalFeePct) {
       console.log('✅ Arbitrage possible!');
@@ -157,15 +155,7 @@ export class DexService {
     }
   }
 
-  getFlashSwapUniswapV3Fee(tokenIn: string, tokenOut: string): number {
-    const isTokenInWETH = tokenIn.toLowerCase() === TOKENS.WETH.toLowerCase();
-    const isTokenOutWETH = tokenOut.toLowerCase() === TOKENS.WETH.toLowerCase();
-
-    if (isTokenInWETH || isTokenOutWETH) {
-      return 0.003; // 0.3% fee
-    }
-
-    // Neither is WETH → 2-hop through WETH
-    return 0.006; // 0.6% fee
+  getFlashLoanAaveFee(): number {
+    return 0.0009; // 0.09% Aave flash loan fee
   }
 }
