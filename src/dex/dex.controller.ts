@@ -10,9 +10,12 @@ export class DexController {
     return this.dexService.getTokenBasicInfo(tokenAddress);
   }
 
-  @Get('output-amount')
-  async getOutputAmount(@Query() query: any) {
-    const { routerAddr, amountIn, path } = query;
-    return this.dexService.getOutputAmount(routerAddr, amountIn, path);
+  @Get('quote')
+  async getQuote(@Query() query: any) {
+    return this.dexService.getQuote(
+      query.tokenIn,
+      query.tokenOut,
+      query.amountIn,
+    );
   }
 }

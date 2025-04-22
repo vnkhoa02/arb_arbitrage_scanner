@@ -1,10 +1,8 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { ethers, toBigInt } from 'ethers';
 import { provider } from './config';
-
-const routerABI = [
-  'function getAmountsOut(uint amountIn, address[] memory path) view returns (uint[] memory amounts)',
-];
+import { DEX } from './config/token';
+import { FeeAmount } from '@uniswap/v3-sdk';
 
 @Injectable()
 export class DexService {
@@ -58,19 +56,58 @@ export class DexService {
   }
 
   /**
-   * Get the output amount of a token swap using the Uniswap router.
-   * @param routerAddr The address of the Uniswap router contract.
-   * @param amountIn The input amount of the token to swap.
-   * @param path The path of token addresses for the swap.
-   * @returns The output amount of the token after the swap.
+   * Get the output amount for a given input amount and path using the Uniswap router.
+   * @param amountIn The input amount.
+   *  @param path The path of token addresses for the swap.
    */
-  async getOutputAmount(
-    routerAddr: string,
+  async getOutputAmount(amountIn: string, path: string[]) {
+    const routerABI = [
+      'function getAmountsOut(uint amountIn, address[] memory path) view returns (uint[] memory amounts)',
+    ];
+    const router = new ethers.Contract(DEX.uniswap.router, routerABI, provider);
+    const amountsOut = await router.getAmountsOut(amountIn, path);
+    return amountsOut[1];
+  }
+
+  /**
+   * Get a quote for a token swap using the Uniswap Quoter contract.
+   * @param tokenIn The address of the input token.
+   * @param tokenOut The address of the output token.
+   * @param amountIn The amount of the input token.
+   * @param fee The fee tier of the Uniswap pool (e.g., 500, 3000, 10000).
+   * @returns The quoted amount of the output token.
+   */
+  async getQuote(
+    tokenIn: string,
+    tokenOut: string,
     amountIn: string,
-    path: string[],
-  ): Promise<bigint> {
-    const router = new ethers.Contract(routerAddr, routerABI, provider);
-    const amounts = await router.getAmountsOut(amountIn, path);
-    return amounts[amounts.length - 1].toString();
+    sdkVersion = 3,
+  ) {
+    try {
+      const quoterABI = [
+        'function quoteExactInputSingle(address,address,uint24,uint256,uint160) view returns (uint256)',
+      ];
+      const quoter = new ethers.Contract(
+        DEX.uniswap.quoter,
+        quoterABI,
+        provider,
+      );
+      const amountInBigInt = ethers.parseUnits(amountIn, 18);
+      const feeAmount = FeeAmount.MEDIUM; // 0.3% fee tier
+      const sqrtPriceLimitX96 = 0;
+
+      const quotedAmount = await quoter.quoteExactInputSingle(
+        tokenIn,
+        tokenOut,
+        toBigInt(feeAmount),
+        amountInBigInt,
+        sqrtPriceLimitX96,
+      );
+
+      return quotedAmount;
+    } catch (error) {
+      console.error('Error getting quote:', error);
+      throw new BadRequestException(`Error getting quote: ${error.message}`);
+    }
   }
 }

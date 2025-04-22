@@ -30,7 +30,6 @@ export class ScannerService {
     // 1. Token → USDT
     const toUSDTPath = [tokenAddress, TOKENS.USDT];
     const usdtOut = await this.dexService.getOutputAmount(
-      DEX.uniswap.router,
       amountIn.toString(),
       toUSDTPath,
     );
@@ -40,7 +39,6 @@ export class ScannerService {
     const amountUsdtToDai = ethers.parseUnits('100000', 6);
     const usdtToDaiPath = [TOKENS.USDT, TOKENS.DAI];
     const daiOut = await this.dexService.getOutputAmount(
-      DEX.uniswap.router,
       amountUsdtToDai.toString(),
       usdtToDaiPath,
     );
@@ -49,7 +47,6 @@ export class ScannerService {
     // 3. DAI → Token
     const daiToTokenPath = [TOKENS.DAI, tokenAddress];
     const tokenOut = await this.dexService.getOutputAmount(
-      DEX.uniswap.router,
       daiOut.toString(),
       daiToTokenPath,
     );
@@ -63,7 +60,6 @@ export class ScannerService {
       const profitToken = tokenOut - totalToRepay;
 
       const profitInUSDT = await this.dexService.getOutputAmount(
-        DEX.uniswap.router,
         profitToken.toString(),
         [tokenAddress, TOKENS.USDT],
       );
