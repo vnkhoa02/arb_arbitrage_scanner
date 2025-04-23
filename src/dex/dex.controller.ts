@@ -1,10 +1,14 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { STABLE_COIN, TOKENS } from './config/token';
 import { DexService } from './dex.service';
+import { SushiSwapDexService } from './sushiswap.dex.service';
 
 @Controller('dex')
 export class DexController {
-  constructor(private readonly dexService: DexService) {}
+  constructor(
+    private readonly dexService: DexService,
+    private readonly sushiSwapDexService: SushiSwapDexService,
+  ) {}
 
   @Get('token-info/:tokenAddress')
   async getTokenBasicInfo(@Param('tokenAddress') tokenAddress: string) {
@@ -18,6 +22,15 @@ export class DexController {
       query.tokenOut,
       query.amountIn,
       query?.fee || 3000,
+    );
+  }
+
+  @Get('quotes/sushiswap')
+  async getSushiSwapQuote(@Query() query: any) {
+    return await this.sushiSwapDexService.getQuote(
+      query.tokenIn,
+      query.tokenOut,
+      query.amountIn,
     );
   }
 

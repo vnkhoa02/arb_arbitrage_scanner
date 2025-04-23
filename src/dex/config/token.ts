@@ -15,4 +15,9 @@ export const DEX = {
     quoter: '0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6',
     name: 'Uniswap',
   },
+  sushiswap: {
+    router: '0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F',
+    quoter: '', // not needed
+    name: 'SushiSwap',
+  },
 };

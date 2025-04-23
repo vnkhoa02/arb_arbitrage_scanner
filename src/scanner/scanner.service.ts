@@ -8,7 +8,7 @@ import { TOKENS, STABLE_COIN } from 'src/dex/config/token';
 export class ScannerService {
   constructor(private readonly dexService: DexService) {}
 
-  async scanBackwards(forward: ArbPathResult): Promise<ArbPathResult> {
+  private async scanBackwards(forward: ArbPathResult): Promise<ArbPathResult> {
     // Now we have the tokenOut and amountOut, we need to find the tokenIn
     // that can be swapped to get the amountOut & has total value > forwadValue
 
@@ -26,6 +26,36 @@ export class ScannerService {
       amountOut,
     );
     return backward;
+  }
+
+  /** Perform both forward and backward legs and return full ArbPath */
+  async arbitrage(
+    tokenIn: string,
+    tokenOut: string,
+    amountIn: number,
+  ): Promise<ArbPath> {
+    // Forward leg
+    const forward: ArbPathResult = await this.dexService.evaluateArbitrage(
+      tokenIn,
+      tokenOut,
+      amountIn,
+    );
+    // Backward leg: swapping amountOut of tokenOut back to tokenIn
+    const backward: ArbPathResult = await this.scanBackwards(forward);
+
+    // Round-trip profit in original tokenIn
+    const profit = Number(backward.value) - Number(forward.value);
+
+    const roundTrip: ArbRoundTrip = {
+      profit: profit.toString(),
+      isProfitable: profit > 0,
+    };
+
+    return {
+      forward,
+      backward,
+      roundTrip,
+    };
   }
 
   /** Perform both forward and backward legs and return full ArbPath */
@@ -62,11 +92,12 @@ export class ScannerService {
   }
 
   // @Cron(CronExpression.EVERY_5_SECONDS)
-  // async checkSimpleArbitrage() {
-  //   console.log('Checking for simple arbitrage...');
-  //   const result = await this.simpleArbitrage(TOKENS.WETH, STABLE_COIN.USDT, 1);
-  //   if (result.roundTrip.isProfitable) {
-  //     console.log('Arbitrage found:', result);
-  //   }
-  // }
+  private async checkSimpleArbitrage() {
+    console.log('Checking for simple arbitrage...');
+    const result = await this.simpleArbitrage(TOKENS.WETH, STABLE_COIN.USDT, 1);
+    if (result.roundTrip.isProfitable) {
+      console.log('Arbitrage found:', result);
+    }
+    return result;
+  }
 }

@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { FeeAmount } from '@uniswap/v3-sdk';
 import { ethers } from 'ethers';
 import chunk from 'lodash/chunk';
@@ -9,6 +9,7 @@ import { ArbPathResult } from './types';
 
 @Injectable()
 export class DexService {
+  private readonly logger = new Logger(DexService.name);
   /**
    * Get the current gas price in Gwei.
    * @returns The current gas price in Gwei.
@@ -49,7 +50,7 @@ export class DexService {
         totalSupply: ethers.formatUnits(totalSupply, decimals),
       };
     } catch (error) {
-      console.error('Error getting token info:', error);
+      this.logger.error('Error getting token info:', error);
       throw new BadRequestException(
         `Error getting token info: ${error.message}`,
       );
@@ -100,7 +101,7 @@ export class DexService {
       );
       return ethers.formatUnits(quotedAmount, decOut);
     } catch (error) {
-      console.error('Error getting quote:', error);
+      this.logger.error('Error getting quote:', error);
       throw new BadRequestException(`Error getting quote: ${error.message}`);
     }
   }
@@ -146,44 +147,7 @@ export class DexService {
     const addresses = tokens.map((token) => token.address);
     const chunks = chunk(addresses, limit);
     const feeTiers = [FeeAmount.LOW, FeeAmount.MEDIUM, FeeAmount.HIGH];
-    const results = await Promise.allSettled(
-      chunks.map(async (chunk) => {
-        const chunkResults = await Promise.allSettled(
-          chunk.map(async (tokenOut) => {
-            const pools = await Promise.allSettled(
-              feeTiers.map(async (fee) => {
-                try {
-                  const price = await this.getQuote(
-                    tokenIn,
-                    tokenOut,
-                    '1',
-                    fee,
-                  );
-                  return { fee, price };
-                } catch (error) {
-                  return null; // Handle errors gracefully
-                }
-              }),
-            );
 
-            const validPools = pools
-              .filter((p) => p.status === 'fulfilled' && p.value)
-              .map((p: any) => p.value);
-
-            return { tokenOut, pools: validPools };
-          }),
-        );
-
-        return chunkResults
-          .filter((r) => r.status === 'fulfilled' && r.value)
-          .map((r: any) => r.value);
-      }),
-    );
-
-    const validResults = results
-      .filter((r) => r.status === 'fulfilled' && r.value)
-      .flatMap((r: any) => r.value);
-
-    return validResults;
+    return null;
   }
 }
