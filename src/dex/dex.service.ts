@@ -85,28 +85,25 @@ export class DexService {
     tokenOut: string,
     amountIn: string,
     feeAmount: string | number,
-    decimalOut = 6,
   ) {
+    const quoterABI = [
+      'function quoteExactInputSingle(address,address,uint24,uint256,uint160) view returns (uint256)',
+    ];
+    const quoter = new ethers.Contract(DEX.uniswap.quoter, quoterABI, provider);
     try {
-      const quoterABI = [
-        'function quoteExactInputSingle(address,address,uint24,uint256,uint160) view returns (uint256)',
-      ];
-      const quoter = new ethers.Contract(
-        DEX.uniswap.quoter,
-        quoterABI,
-        provider,
-      );
-      const amountInBigInt = ethers.parseUnits(amountIn, 18);
+      const decIn = tokenIn === STABLE_COIN.USDT ? 6 : 18;
+      const decOut = tokenOut === STABLE_COIN.USDT ? 6 : 18;
       const sqrtPriceLimitX96 = 0;
+      const amountInUnits = ethers.parseUnits(amountIn, decIn);
 
       const quotedAmount = await quoter.quoteExactInputSingle(
         tokenIn,
         tokenOut,
         toBigInt(feeAmount),
-        amountInBigInt,
+        amountInUnits,
         sqrtPriceLimitX96,
       );
-      return ethers.formatUnits(quotedAmount, decimalOut);
+      return ethers.formatUnits(quotedAmount, decOut);
     } catch (error) {
       console.error('Error getting quote:', error);
       throw new BadRequestException(`Error getting quote: ${error.message}`);
@@ -118,6 +115,7 @@ export class DexService {
     _highFee: number,
     tokenIn: string,
     amountIn: number,
+    tokenOut: string,
   ): Promise<ArbPathResult> {
     // 1) Fetch all three quotes in parallel
     const feePools = [
@@ -127,26 +125,25 @@ export class DexService {
     ];
     const quotes = await Promise.all(
       feePools.map((p) =>
-        this.getQuote(tokenIn, STABLE_COIN.USDT, String(amountIn), p.fee),
+        this.getQuote(tokenIn, tokenOut, String(amountIn), p.fee),
       ),
     );
     quotes.forEach((q, i) => (feePools[i].price = parseFloat(q)));
+    const validPools = feePools.filter((p) => !Number.isNaN(p.price));
+    if (validPools.length < 2) return defaultArbPathResult;
 
     // 2) Identify best buy (min price) & best sell (max price)
-    const buyPool = feePools.reduce((a, b) => (a.price < b.price ? a : b));
-    const sellPool = feePools.reduce((a, b) => (a.price > b.price ? a : b));
+    const buyPool = validPools.reduce((a, b) => (a.price < b.price ? a : b));
+    const sellPool = validPools.reduce((a, b) => (a.price > b.price ? a : b));
 
     // 3) Quick check—if no upside, abort early
     if (sellPool.price <= buyPool.price) return defaultArbPathResult;
 
     // 4) Compute fees & profit
-    const swapFees = (buyPool.fee + sellPool.fee) / 1000000; // e.g. (3000+10000)/1000000 = 0.013
-    console.log(`Swap Fees`, swapFees);
+    const swapFees = (buyPool.fee + sellPool.fee) / 1_000_000; // e.g. (3000+10000)/1000000 = 0.013
     const totalFeePct = swapFees + FLASH_LOAN_FEE;
     const gross = (sellPool.price - buyPool.price) * amountIn; // how much USDT you’d make before fees
-    console.log(`Gross`, gross);
     const feeCost = totalFeePct * buyPool.price * amountIn; // USDT you pay in fees
-    console.log(`Fee Cost`, feeCost);
     const profit = gross - feeCost;
     const profitPct = (profit / (buyPool.price * amountIn)) * 100;
 
@@ -199,6 +196,7 @@ export class DexService {
     midFee: number,
     highFee: number,
     tokenIn: string,
+    tokenOut: string,
     amountIn: number,
   ) {
     // 1) Evaluate
@@ -208,6 +206,7 @@ export class DexService {
       highFee,
       tokenIn,
       amountIn,
+      tokenOut,
     );
 
     // Here I’ll just reconstruct:
