@@ -110,7 +110,6 @@ export class DexService {
 
   /** Evaluate a single-direction arbitrage leg and return fee & price. */
   private async evaluateArbitrage(
-    isForward: boolean,
     tokenIn: string,
     tokenOut: string,
     amountIn: number | string,
@@ -132,11 +131,7 @@ export class DexService {
       throw new BadRequestException('No valid pools found for arbitrage');
     }
     // pick the pool that gives the max output price
-    let best = valid.reduce((a, b) => (a.price > b.price ? a : b));
-    if (!isForward) {
-      // pick the pool that gives the min output price
-      best = valid.reduce((a, b) => (a.price < b.price ? a : b));
-    }
+    const best = valid.reduce((a, b) => (a.price > b.price ? a : b));
     const price = Number(best.price);
     const amountOut = price * Number(amountIn);
     return {
@@ -157,14 +152,12 @@ export class DexService {
   ): Promise<ArbPath> {
     // Forward leg
     const forward: ArbPathResult = await this.evaluateArbitrage(
-      true,
       tokenIn,
       tokenOut,
       amountIn,
     );
     // Backward leg: swapping amountOut of tokenOut back to tokenIn
     const backward: ArbPathResult = await this.evaluateArbitrage(
-      false,
       tokenOut,
       tokenIn,
       forward.amountOut,
