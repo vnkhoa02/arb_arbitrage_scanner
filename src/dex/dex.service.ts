@@ -2,14 +2,16 @@ import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { FeeAmount } from '@uniswap/v3-sdk';
 import { ethers } from 'ethers';
 import chunk from 'lodash/chunk';
-import { provider } from './config/provider';
-import { DEX, STABLE_COIN } from './config/token';
+import { defaultProvider, provider } from './config/provider';
+import { DEX } from './config/token';
 import { tokens } from './constants/tokens';
-import { ArbPathResult } from './types';
+import { ArbPathResult, ITokenInfo } from './types';
 
 @Injectable()
 export class DexService {
   private readonly logger = new Logger(DexService.name);
+  private readonly tokenInfoMap = new Map<string, ITokenInfo>();
+
   /**
    * Get the current gas price in Gwei.
    * @returns The current gas price in Gwei.
@@ -24,7 +26,9 @@ export class DexService {
    * @param tokenAddress The address of the token contract.
    * @returns An object containing the token's name, symbol, decimals, and total supply.
    */
-  async getTokenBasicInfo(tokenAddress: string) {
+  async getTokenBasicInfo(tokenAddress: string): Promise<ITokenInfo> {
+    const check = this.tokenInfoMap.get(tokenAddress);
+    if (check) return check;
     try {
       const ERC20_ABI = [
         'function name() view returns (string)',
@@ -34,7 +38,11 @@ export class DexService {
       ];
       if (!ethers.isAddress(tokenAddress))
         throw new BadRequestException('Invalid token address');
-      const contract = new ethers.Contract(tokenAddress, ERC20_ABI, provider);
+      const contract = new ethers.Contract(
+        tokenAddress,
+        ERC20_ABI,
+        defaultProvider,
+      );
 
       const [name, symbol, decimals, totalSupply] = await Promise.all([
         contract.name(),
@@ -43,12 +51,14 @@ export class DexService {
         contract.totalSupply(),
       ]);
 
-      return {
+      const token = {
         name,
         symbol,
         decimals: BigInt(decimals).toString(),
         totalSupply: ethers.formatUnits(totalSupply, decimals),
       };
+      this.tokenInfoMap.set(tokenAddress, token);
+      return token;
     } catch (error) {
       this.logger.error('Error getting token info:', error);
       throw new BadRequestException(
@@ -63,9 +73,9 @@ export class DexService {
    * @returns The number of decimals for the token.
    */
 
-  async getTokenDecimals(tokenAddress: string) {
+  async getTokenDecimals(tokenAddress: string): Promise<number> {
     const tokenInfo = await this.getTokenBasicInfo(tokenAddress);
-    return tokenInfo.decimals;
+    return Number(tokenInfo.decimals);
   }
 
   /**
@@ -92,8 +102,10 @@ export class DexService {
       provider,
     );
     try {
-      const decIn = tokenIn === STABLE_COIN.USDT ? 6 : 18;
-      const decOut = tokenOut === STABLE_COIN.USDT ? 6 : 18;
+      const [decIn, decOut] = await Promise.all([
+        this.getTokenDecimals(tokenIn),
+        this.getTokenDecimals(tokenOut),
+      ]);
       const amountInUnits = ethers.parseUnits(amountIn, decIn);
 
       const quotedAmount = await quoter.quoteExactInputSingle(
@@ -128,9 +140,10 @@ export class DexService {
       const uniswapV2RouterABI = [
         'function getAmountsOut(uint256 amountIn, address[] memory path) external view returns (uint256[] memory)',
       ];
-
-      const decIn = tokenIn === STABLE_COIN.USDT ? 6 : 18;
-      const decOut = tokenOut === STABLE_COIN.USDT ? 6 : 18;
+      const [decIn, decOut] = await Promise.all([
+        this.getTokenDecimals(tokenIn),
+        this.getTokenDecimals(tokenOut),
+      ]);
       const amountInUnits = ethers.parseUnits(amountIn, decIn);
 
       const uniswapV2Router = new ethers.Contract(

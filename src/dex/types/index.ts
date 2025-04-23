@@ -26,3 +26,10 @@ export interface IToken {
   decimals: number;
   logoURI?: string;
 }
+
+export interface ITokenInfo {
+  name: string;
+  symbol: string;
+  decimals: string;
+  totalSupply: string;
+}

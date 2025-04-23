@@ -30,6 +30,7 @@ export class ScannerService {
         tokenIn,
         forward.amountOut,
       );
+
     return backward;
   }
 
@@ -40,15 +41,28 @@ export class ScannerService {
     amountIn: number,
   ): Promise<ArbPath> {
     // Forward leg
-    const forward: ArbPathResult = await this.dexService.evaluateArbitrageV3(
+    const promise1 = this.dexService.evaluateArbitrageV2(
       tokenIn,
       tokenOut,
       amountIn,
     );
-    // Backward leg: swapping amountOut of tokenOut back to tokenIn
-    const backward: ArbPathResult = await this.scanBackwards(forward);
+    const promise2 = this.dexService.evaluateArbitrageV3(
+      tokenIn,
+      tokenOut,
+      amountIn,
+    );
+    const [forwardV2Result, forwardResult] = await Promise.all([
+      promise1,
+      promise2,
+    ]);
+    // Compare the two forward results and take the one with the higher value
+    let forward: ArbPathResult = forwardResult;
+    if (forwardV2Result.value > forwardResult.value) {
+      forward = forwardV2Result;
+      this.logger.log('Using V2 forward result');
+    }
 
-    // Round-trip profit in original tokenIn
+    const backward: ArbPathResult = await this.scanBackwards(forward);
     const profit = Number(backward.value) - Number(forward.value);
 
     const roundTrip: ArbRoundTrip = {

@@ -1,12 +1,14 @@
 import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { ethers } from 'ethers';
 import { provider } from './config/provider';
-import { DEX, STABLE_COIN } from './config/token';
+import { DEX, STABLE_COIN, TOKENS } from './config/token';
 import { ArbPathResult } from './types';
+import { DexService } from './dex.service';
 
 @Injectable()
-export class SushiSwapDexService {
-  private readonly logger = new Logger(SushiSwapDexService.name);
+export class SushiSwapDexService extends DexService {
+  private readonly sushiLogger = new Logger(SushiSwapDexService.name);
+
   /**
    * Get a quote for a token swap using the Uniswap Quoter contract.
    * @param tokenIn The address of the input token.
@@ -25,8 +27,10 @@ export class SushiSwapDexService {
       'function getAmountsOut(uint amountIn, address[] memory path) external view returns (uint[] memory)',
     ];
     try {
-      const decIn = tokenIn === STABLE_COIN.USDT ? 6 : 18;
-      const decOut = tokenOut === STABLE_COIN.USDT ? 6 : 18;
+      const [decIn, decOut] = await Promise.all([
+        this.getTokenDecimals(tokenIn),
+        this.getTokenDecimals(tokenOut),
+      ]);
       const amountInUnits = ethers.parseUnits(amountIn, decIn);
 
       const sushiRouter = new ethers.Contract(
@@ -44,7 +48,7 @@ export class SushiSwapDexService {
       const amountOutUnits = ethers.formatUnits(amountOut, decOut);
       return amountOutUnits;
     } catch (error) {
-      this.logger.error('Error getting quote:', error);
+      this.sushiLogger.error('Error getting quote:', error);
       throw new BadRequestException(`Error getting quote: ${error.message}`);
     }
   }
