@@ -1,3 +1,4 @@
+import { TOKENS } from './config/token';
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { DexService } from './dex.service';
 
@@ -21,7 +22,13 @@ export class DexController {
   }
 
   @Get('arbitrage')
-  async getArbitrage() {
-    return await this.dexService.simpleArbitrage(500, 3000, 10);
+  async simpleArbitrage() {
+    return await this.dexService.simpleArbitrage(
+      500,
+      3000,
+      10000,
+      TOKENS.WETH,
+      1,
+    );
   }
 }

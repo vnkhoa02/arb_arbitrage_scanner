@@ -1,7 +1,10 @@
+import { FLASH_LOAN_FEE } from './config';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { ethers, toBigInt } from 'ethers';
-import { provider } from './config';
-import { DEX, STABLE_COIN, TOKENS } from './config/token';
+import { provider } from './config/provider';
+import { DEX, STABLE_COIN } from './config/token';
+import { ArbPathResult } from './types';
+import { defaultArbPathResult } from './constants';
 
 @Injectable()
 export class DexService {
@@ -109,53 +112,139 @@ export class DexService {
       throw new BadRequestException(`Error getting quote: ${error.message}`);
     }
   }
-  async simpleArbitrage(
-    _lowFee: number, // Fee in basis points (e.g., 3000 = 0.3%)
+  private async evaluateArbitrage(
+    _lowFee: number,
+    _midFee: number,
     _highFee: number,
-    amountInEth: number,
-  ) {
-    const [lowFeeQuote, highFeeQuote] = await Promise.all([
-      this.getQuote(
-        TOKENS.WETH,
-        STABLE_COIN.USDT,
-        String(amountInEth),
-        _lowFee,
+    tokenIn: string,
+    amountIn: number,
+  ): Promise<ArbPathResult> {
+    // 1) Fetch all three quotes in parallel
+    const feePools = [
+      { label: 'Low', fee: _lowFee, price: 0 },
+      { label: 'Mid', fee: _midFee, price: 0 },
+      { label: 'High', fee: _highFee, price: 0 },
+    ];
+    const quotes = await Promise.all(
+      feePools.map((p) =>
+        this.getQuote(tokenIn, STABLE_COIN.USDT, String(amountIn), p.fee),
       ),
-      this.getQuote(
-        TOKENS.WETH,
-        STABLE_COIN.USDT,
-        String(amountInEth),
-        _highFee,
-      ),
-    ]);
-
-    const priceLow = parseFloat(lowFeeQuote); // WETH → USDT in low-fee pool
-    const priceHigh = parseFloat(highFeeQuote); // WETH → USDT in high-fee pool
-
-    const spread = priceLow - priceHigh;
-    const spreadPct = (spread / priceHigh) * 100;
-
-    const flashLoanFee = this.getFlashLoanAaveFee(); // 0.0009 (0.09%)
-    const swapFees = (_lowFee + _highFee) / 10000; // Convert basis points to %
-    const totalFeePct = (swapFees + flashLoanFee) * 100;
-
-    // 🧾 Log Report
-    console.log(`🧾 Arbitrage Check: ${amountInEth} WETH`);
-    console.log(`  ${_lowFee / 10000}% Pool → ${priceLow.toFixed(6)} USDT`);
-    console.log(`  ${_highFee / 10000}% Pool → ${priceHigh.toFixed(6)} USDT`);
-    console.log(
-      `  Spread: ${spread.toFixed(4)} USDT (${spreadPct.toFixed(4)}%)`,
     );
-    console.log(`  Total Fees: ${totalFeePct.toFixed(4)}% (swap + flash loan)`);
+    quotes.forEach((q, i) => (feePools[i].price = parseFloat(q)));
 
-    if (spreadPct > totalFeePct) {
-      console.log('✅ Arbitrage possible!');
+    // 2) Identify best buy (min price) & best sell (max price)
+    const buyPool = feePools.reduce((a, b) => (a.price < b.price ? a : b));
+    const sellPool = feePools.reduce((a, b) => (a.price > b.price ? a : b));
+
+    // 3) Quick check—if no upside, abort early
+    if (sellPool.price <= buyPool.price) return defaultArbPathResult;
+
+    // 4) Compute fees & profit
+    const swapFees = (buyPool.fee + sellPool.fee) / 1000000; // e.g. (3000+10000)/1000000 = 0.013
+    console.log(`Swap Fees`, swapFees);
+    const totalFeePct = swapFees + FLASH_LOAN_FEE;
+    const gross = (sellPool.price - buyPool.price) * amountIn; // how much USDT you’d make before fees
+    console.log(`Gross`, gross);
+    const feeCost = totalFeePct * buyPool.price * amountIn; // USDT you pay in fees
+    console.log(`Fee Cost`, feeCost);
+    const profit = gross - feeCost;
+    const profitPct = (profit / (buyPool.price * amountIn)) * 100;
+
+    return {
+      profit,
+      profitPct,
+      buyLabel: buyPool.label,
+      sellLabel: sellPool.label,
+      buyFee: buyPool.fee,
+      sellFee: sellPool.fee,
+      buyPrice: buyPool.price,
+      sellPrice: sellPool.price,
+      totalFeePct,
+    };
+  }
+
+  private logArbitrage(
+    tokenIn: string,
+    amountIn: number,
+    pools: { label: string; fee: number; price: number }[],
+    result: ArbPathResult,
+  ) {
+    console.log(`\n🧾 Arbitrage Check (${amountIn} Amount) of ${tokenIn}:`);
+    for (const p of pools) {
+      console.log(
+        `  • ${p.label}-Fee Pool (${(p.fee / 10000).toFixed(
+          4,
+        )}%): ${p.price.toFixed(6)} USDT`,
+      );
+    }
+    if (result.profit > 0) {
+      console.log(`\n✅ Best Path: ${result.buyLabel} → ${result.sellLabel}`);
+      console.log(`   Buy Price:  ${result.buyPrice.toFixed(6)} USDT`);
+      console.log(`   Sell Price: ${result.sellPrice.toFixed(6)} USDT`);
+      console.log(`   Total Fees: ${(result.totalFeePct * 100).toFixed(4)}%`);
+      console.log(
+        `   Profit: ${result.profit.toFixed(
+          6,
+        )} USDT (${result.profitPct.toFixed(4)}%)`,
+      );
     } else {
-      console.log('❌ No arbitrage (fees eat profit)');
+      console.log(
+        '\n❌ No arbitrage opportunity (all pairs unprofitable after fees).',
+      );
     }
   }
 
-  getFlashLoanAaveFee(): number {
-    return 0.0009; // 0.09% Aave flash loan fee
+  async simpleArbitrage(
+    lowFee: number,
+    midFee: number,
+    highFee: number,
+    tokenIn: string,
+    amountIn: number,
+  ) {
+    // 1) Evaluate
+    const result = await this.evaluateArbitrage(
+      lowFee,
+      midFee,
+      highFee,
+      tokenIn,
+      amountIn,
+    );
+
+    // Here I’ll just reconstruct:
+    const originalPools = [
+      {
+        label: 'Low',
+        fee: lowFee,
+        price:
+          result.buyLabel === 'Low'
+            ? result.buyPrice
+            : result.sellLabel === 'Low'
+            ? result.sellPrice
+            : NaN,
+      },
+      {
+        label: 'Mid',
+        fee: midFee,
+        price:
+          result.buyLabel === 'Mid'
+            ? result.buyPrice
+            : result.sellLabel === 'Mid'
+            ? result.sellPrice
+            : NaN,
+      },
+      {
+        label: 'High',
+        fee: highFee,
+        price:
+          result.buyLabel === 'High'
+            ? result.buyPrice
+            : result.sellLabel === 'High'
+            ? result.sellPrice
+            : NaN,
+      },
+    ];
+    this.logArbitrage(tokenIn, amountIn, originalPools, result);
+
+    return result;
   }
 }
