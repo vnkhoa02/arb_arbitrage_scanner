@@ -2,13 +2,22 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { FeeAmount } from '@uniswap/v3-sdk';
 import { ethers } from 'ethers';
 import chunk from 'lodash/chunk';
-import { defaultProvider } from './config/provider';
+import { provider } from './config/provider';
 import { DEX, STABLE_COIN } from './config/token';
 import { tokens } from './constants/tokens';
 import { ArbPathResult } from './types';
 
 @Injectable()
 export class DexService {
+  /**
+   * Get the current gas price in Gwei.
+   * @returns The current gas price in Gwei.
+   */
+  async getGasPrice() {
+    const feeData = await provider.getFeeData();
+    return ethers.formatUnits(feeData.gasPrice, 'gwei');
+  }
+
   /**
    * Get basic information about a token using its address.
    * @param tokenAddress The address of the token contract.
@@ -24,11 +33,7 @@ export class DexService {
       ];
       if (!ethers.isAddress(tokenAddress))
         throw new BadRequestException('Invalid token address');
-      const contract = new ethers.Contract(
-        tokenAddress,
-        ERC20_ABI,
-        defaultProvider,
-      );
+      const contract = new ethers.Contract(tokenAddress, ERC20_ABI, provider);
 
       const [name, symbol, decimals, totalSupply] = await Promise.all([
         contract.name(),
@@ -80,11 +85,7 @@ export class DexService {
     const quoterABI = [
       'function quoteExactInputSingle(address,address,uint24,uint256,uint160) view returns (uint256)',
     ];
-    const quoter = new ethers.Contract(
-      DEX.uniswap.quoter,
-      quoterABI,
-      defaultProvider,
-    );
+    const quoter = new ethers.Contract(DEX.uniswap.quoter, quoterABI, provider);
     try {
       const decIn = tokenIn === STABLE_COIN.USDT ? 6 : 18;
       const decOut = tokenOut === STABLE_COIN.USDT ? 6 : 18;
@@ -113,26 +114,26 @@ export class DexService {
     const feeTiers = [FeeAmount.LOW, FeeAmount.MEDIUM, FeeAmount.HIGH];
     const pools = await Promise.all(
       feeTiers.map(async (fee) => {
-        const price = await this.getQuote(
+        const amountOut = await this.getQuote(
           tokenIn,
           tokenOut,
           String(amountIn),
           fee,
         );
-        return { fee, price };
+        return { fee, amountOut };
       }),
     );
-    const valid = pools.filter((p) => !Number.isNaN(p.price));
+    const valid = pools.filter((p) => !Number.isNaN(p.amountOut));
     if (valid.length === 0) {
       throw new BadRequestException('No valid pools found for arbitrage');
     }
-    // pick the pool that gives the max output price
-    const best = valid.reduce((a, b) => (a.price > b.price ? a : b));
-    const price = Number(best.price);
-    const amountOut = price * Number(amountIn);
+    // pick the pool that gives the max output amountOut
+    const best = valid.reduce((a, b) => (a.amountOut > b.amountOut ? a : b));
+    const amountOut = Number(best.amountOut);
+    const value = amountOut * Number(amountIn);
     return {
       fee: best.fee,
-      price: price.toString(),
+      value: value.toString(),
       amountOut: amountOut.toString(),
       amountIn,
       tokenIn,

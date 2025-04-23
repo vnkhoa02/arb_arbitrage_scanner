@@ -6,7 +6,7 @@ export interface ArbPath {
 
 export interface ArbPathResult {
   fee: number;
-  price: number | string;
+  value: number | string;
   tokenIn: string;
   amountIn: number | string;
   tokenOut: string;
