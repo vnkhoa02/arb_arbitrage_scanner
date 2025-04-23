@@ -1,10 +1,9 @@
-import { FLASH_LOAN_FEE } from './config';
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { ethers, toBigInt } from 'ethers';
+import { ethers } from 'ethers';
 import { provider } from './config/provider';
 import { DEX, STABLE_COIN } from './config/token';
-import { ArbPathResult } from './types';
-import { defaultArbPathResult } from './constants';
+import { ArbPathResult, ArbPath, ArbRoundTrip } from './types';
+import { FeeAmount } from '@uniswap/v3-sdk';
 
 @Injectable()
 export class DexService {
@@ -35,7 +34,7 @@ export class DexService {
       return {
         name,
         symbol,
-        decimals: toBigInt(decimals).toString(),
+        decimals: BigInt(decimals).toString(),
         totalSupply: ethers.formatUnits(totalSupply, decimals),
       };
     } catch (error) {
@@ -85,7 +84,7 @@ export class DexService {
     tokenOut: string,
     amountIn: string,
     feeAmount: string | number,
-  ) {
+  ): Promise<string> {
     const quoterABI = [
       'function quoteExactInputSingle(address,address,uint24,uint256,uint160) view returns (uint256)',
     ];
@@ -93,15 +92,14 @@ export class DexService {
     try {
       const decIn = tokenIn === STABLE_COIN.USDT ? 6 : 18;
       const decOut = tokenOut === STABLE_COIN.USDT ? 6 : 18;
-      const sqrtPriceLimitX96 = 0;
       const amountInUnits = ethers.parseUnits(amountIn, decIn);
 
       const quotedAmount = await quoter.quoteExactInputSingle(
         tokenIn,
         tokenOut,
-        toBigInt(feeAmount),
+        BigInt(feeAmount),
         amountInUnits,
-        sqrtPriceLimitX96,
+        0,
       );
       return ethers.formatUnits(quotedAmount, decOut);
     } catch (error) {
@@ -109,141 +107,83 @@ export class DexService {
       throw new BadRequestException(`Error getting quote: ${error.message}`);
     }
   }
+
+  /** Evaluate a single-direction arbitrage leg and return fee & price. */
   private async evaluateArbitrage(
-    _lowFee: number,
-    _midFee: number,
-    _highFee: number,
+    isForward: boolean,
     tokenIn: string,
-    amountIn: number,
     tokenOut: string,
+    amountIn: number | string,
   ): Promise<ArbPathResult> {
-    // 1) Fetch all three quotes in parallel
-    const feePools = [
-      { label: 'Low', fee: _lowFee, price: 0 },
-      { label: 'Mid', fee: _midFee, price: 0 },
-      { label: 'High', fee: _highFee, price: 0 },
-    ];
-    const quotes = await Promise.all(
-      feePools.map((p) =>
-        this.getQuote(tokenIn, tokenOut, String(amountIn), p.fee),
-      ),
+    const feeTiers = [FeeAmount.LOW, FeeAmount.MEDIUM, FeeAmount.HIGH];
+    const pools = await Promise.all(
+      feeTiers.map(async (fee) => {
+        const price = await this.getQuote(
+          tokenIn,
+          tokenOut,
+          String(amountIn),
+          fee,
+        );
+        return { fee, price };
+      }),
     );
-    quotes.forEach((q, i) => (feePools[i].price = parseFloat(q)));
-    const validPools = feePools.filter((p) => !Number.isNaN(p.price));
-    if (validPools.length < 2) return defaultArbPathResult;
-
-    // 2) Identify best buy (min price) & best sell (max price)
-    const buyPool = validPools.reduce((a, b) => (a.price < b.price ? a : b));
-    const sellPool = validPools.reduce((a, b) => (a.price > b.price ? a : b));
-
-    // 3) Quick check—if no upside, abort early
-    if (sellPool.price <= buyPool.price) return defaultArbPathResult;
-
-    // 4) Compute fees & profit
-    const swapFees = (buyPool.fee + sellPool.fee) / 1_000_000; // e.g. (3000+10000)/1000000 = 0.013
-    const totalFeePct = swapFees + FLASH_LOAN_FEE;
-    const gross = (sellPool.price - buyPool.price) * amountIn; // how much USDT you’d make before fees
-    const feeCost = totalFeePct * buyPool.price * amountIn; // USDT you pay in fees
-    const profit = gross - feeCost;
-    const profitPct = (profit / (buyPool.price * amountIn)) * 100;
-
+    const valid = pools.filter((p) => !Number.isNaN(p.price));
+    if (valid.length === 0) {
+      throw new BadRequestException('No valid pools found for arbitrage');
+    }
+    // pick the pool that gives the max output price
+    let best = valid.reduce((a, b) => (a.price > b.price ? a : b));
+    if (!isForward) {
+      // pick the pool that gives the min output price
+      best = valid.reduce((a, b) => (a.price < b.price ? a : b));
+    }
+    const price = Number(best.price);
+    const amountOut = price * Number(amountIn);
     return {
-      profit,
-      profitPct,
-      buyLabel: buyPool.label,
-      sellLabel: sellPool.label,
-      buyFee: buyPool.fee,
-      sellFee: sellPool.fee,
-      buyPrice: buyPool.price,
-      sellPrice: sellPool.price,
-      totalFeePct,
+      fee: best.fee,
+      price: price.toString(),
+      amountOut: amountOut.toString(),
+      amountIn,
+      tokenIn,
+      tokenOut,
     };
   }
 
-  private logArbitrage(
-    tokenIn: string,
-    amountIn: number,
-    pools: { label: string; fee: number; price: number }[],
-    result: ArbPathResult,
-  ) {
-    console.log(`\n🧾 Arbitrage Check (${amountIn} Amount) of ${tokenIn}:`);
-    for (const p of pools) {
-      console.log(
-        `  • ${p.label}-Fee Pool (${(p.fee / 10000).toFixed(
-          4,
-        )}%): ${p.price.toFixed(6)} USDT`,
-      );
-    }
-    if (result.profit > 0) {
-      console.log(`\n✅ Best Path: ${result.buyLabel} → ${result.sellLabel}`);
-      console.log(`   Buy Price:  ${result.buyPrice.toFixed(6)} USDT`);
-      console.log(`   Sell Price: ${result.sellPrice.toFixed(6)} USDT`);
-      console.log(`   Total Fees: ${(result.totalFeePct * 100).toFixed(4)}%`);
-      console.log(
-        `   Profit: ${result.profit.toFixed(
-          6,
-        )} USDT (${result.profitPct.toFixed(4)}%)`,
-      );
-    } else {
-      console.log(
-        '\n❌ No arbitrage opportunity (all pairs unprofitable after fees).',
-      );
-    }
-  }
-
+  /** Perform both forward and backward legs and return full ArbPath */
   async simpleArbitrage(
-    lowFee: number,
-    midFee: number,
-    highFee: number,
     tokenIn: string,
     tokenOut: string,
     amountIn: number,
-  ) {
-    // 1) Evaluate
-    const result = await this.evaluateArbitrage(
-      lowFee,
-      midFee,
-      highFee,
+  ): Promise<ArbPath> {
+    // Forward leg
+    const forward: ArbPathResult = await this.evaluateArbitrage(
+      true,
       tokenIn,
-      amountIn,
       tokenOut,
+      amountIn,
+    );
+    // Backward leg: swapping amountOut of tokenOut back to tokenIn
+    const backward: ArbPathResult = await this.evaluateArbitrage(
+      false,
+      tokenOut,
+      tokenIn,
+      forward.amountOut,
     );
 
-    // Here I’ll just reconstruct:
-    const originalPools = [
-      {
-        label: 'Low',
-        fee: lowFee,
-        price:
-          result.buyLabel === 'Low'
-            ? result.buyPrice
-            : result.sellLabel === 'Low'
-            ? result.sellPrice
-            : NaN,
-      },
-      {
-        label: 'Mid',
-        fee: midFee,
-        price:
-          result.buyLabel === 'Mid'
-            ? result.buyPrice
-            : result.sellLabel === 'Mid'
-            ? result.sellPrice
-            : NaN,
-      },
-      {
-        label: 'High',
-        fee: highFee,
-        price:
-          result.buyLabel === 'High'
-            ? result.buyPrice
-            : result.sellLabel === 'High'
-            ? result.sellPrice
-            : NaN,
-      },
-    ];
-    this.logArbitrage(tokenIn, amountIn, originalPools, result);
+    // Round-trip profit in original tokenIn
+    const forwardTotal = Number(forward.amountIn) * Number(forward.price);
+    const backwardTotal = Number(backward.amountIn) * Number(backward.price);
+    const profit = backwardTotal - forwardTotal;
 
-    return result;
+    const roundTrip: ArbRoundTrip = {
+      profit: profit.toString(),
+      isProfitable: profit > 0,
+    };
+
+    return {
+      forward,
+      backward,
+      roundTrip,
+    };
   }
 }

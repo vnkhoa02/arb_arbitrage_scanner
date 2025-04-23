@@ -27,6 +27,7 @@
     "@uniswap/sdk": "^3.0.3",
     "@uniswap/sdk-core": "^3.1.0",
     "@uniswap/v3-sdk": "^3.9.0",
+    "async-await-retry": "^2.1.0",
     "dotenv": "^16.5.0",
     "ethers": "^6.13.5",
     "reflect-metadata": "^0.1.13",
