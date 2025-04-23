@@ -1,9 +1,11 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { ethers } from 'ethers';
-import { provider } from './config/provider';
-import { DEX, STABLE_COIN } from './config/token';
-import { ArbPathResult, ArbPath, ArbRoundTrip } from './types';
 import { FeeAmount } from '@uniswap/v3-sdk';
+import { ethers } from 'ethers';
+import chunk from 'lodash/chunk';
+import { defaultProvider } from './config/provider';
+import { DEX, STABLE_COIN } from './config/token';
+import { tokens } from './constants/tokens';
+import { ArbPathResult } from './types';
 
 @Injectable()
 export class DexService {
@@ -22,7 +24,11 @@ export class DexService {
       ];
       if (!ethers.isAddress(tokenAddress))
         throw new BadRequestException('Invalid token address');
-      const contract = new ethers.Contract(tokenAddress, ERC20_ABI, provider);
+      const contract = new ethers.Contract(
+        tokenAddress,
+        ERC20_ABI,
+        defaultProvider,
+      );
 
       const [name, symbol, decimals, totalSupply] = await Promise.all([
         contract.name(),
@@ -57,20 +63,6 @@ export class DexService {
   }
 
   /**
-   * Get the output amount for a given input amount and path using the Uniswap router.
-   * @param amountIn The input amount.
-   *  @param path The path of token addresses for the swap.
-   */
-  async getOutputAmount(amountIn: string, path: string[]) {
-    const routerABI = [
-      'function getAmountsOut(uint amountIn, address[] memory path) view returns (uint[] memory amounts)',
-    ];
-    const router = new ethers.Contract(DEX.uniswap.router, routerABI, provider);
-    const amountsOut = await router.getAmountsOut(amountIn, path);
-    return amountsOut[1];
-  }
-
-  /**
    * Get a quote for a token swap using the Uniswap Quoter contract.
    * @param tokenIn The address of the input token.
    * @param tokenOut The address of the output token.
@@ -88,7 +80,11 @@ export class DexService {
     const quoterABI = [
       'function quoteExactInputSingle(address,address,uint24,uint256,uint160) view returns (uint256)',
     ];
-    const quoter = new ethers.Contract(DEX.uniswap.quoter, quoterABI, provider);
+    const quoter = new ethers.Contract(
+      DEX.uniswap.quoter,
+      quoterABI,
+      defaultProvider,
+    );
     try {
       const decIn = tokenIn === STABLE_COIN.USDT ? 6 : 18;
       const decOut = tokenOut === STABLE_COIN.USDT ? 6 : 18;
@@ -109,7 +105,7 @@ export class DexService {
   }
 
   /** Evaluate a single-direction arbitrage leg and return fee & price. */
-  private async evaluateArbitrage(
+  async evaluateArbitrage(
     tokenIn: string,
     tokenOut: string,
     amountIn: number | string,
@@ -144,39 +140,49 @@ export class DexService {
     };
   }
 
-  /** Perform both forward and backward legs and return full ArbPath */
-  async simpleArbitrage(
-    tokenIn: string,
-    tokenOut: string,
-    amountIn: number,
-  ): Promise<ArbPath> {
-    // Forward leg
-    const forward: ArbPathResult = await this.evaluateArbitrage(
-      tokenIn,
-      tokenOut,
-      amountIn,
+  async getPairsByToken(tokenIn: string) {
+    const limit = 50;
+    const addresses = tokens.map((token) => token.address);
+    const chunks = chunk(addresses, limit);
+    const feeTiers = [FeeAmount.LOW, FeeAmount.MEDIUM, FeeAmount.HIGH];
+    const results = await Promise.allSettled(
+      chunks.map(async (chunk) => {
+        const chunkResults = await Promise.allSettled(
+          chunk.map(async (tokenOut) => {
+            const pools = await Promise.allSettled(
+              feeTiers.map(async (fee) => {
+                try {
+                  const price = await this.getQuote(
+                    tokenIn,
+                    tokenOut,
+                    '1',
+                    fee,
+                  );
+                  return { fee, price };
+                } catch (error) {
+                  return null; // Handle errors gracefully
+                }
+              }),
+            );
+
+            const validPools = pools
+              .filter((p) => p.status === 'fulfilled' && p.value)
+              .map((p: any) => p.value);
+
+            return { tokenOut, pools: validPools };
+          }),
+        );
+
+        return chunkResults
+          .filter((r) => r.status === 'fulfilled' && r.value)
+          .map((r: any) => r.value);
+      }),
     );
-    // Backward leg: swapping amountOut of tokenOut back to tokenIn
-    const backward: ArbPathResult = await this.evaluateArbitrage(
-      tokenOut,
-      tokenIn,
-      forward.amountOut,
-    );
 
-    // Round-trip profit in original tokenIn
-    const forwardTotal = Number(forward.amountIn) * Number(forward.price);
-    const backwardTotal = Number(backward.amountIn) * Number(backward.price);
-    const profit = backwardTotal - forwardTotal;
+    const validResults = results
+      .filter((r) => r.status === 'fulfilled' && r.value)
+      .flatMap((r: any) => r.value);
 
-    const roundTrip: ArbRoundTrip = {
-      profit: profit.toString(),
-      isProfitable: profit > 0,
-    };
-
-    return {
-      forward,
-      backward,
-      roundTrip,
-    };
+    return validResults;
   }
 }

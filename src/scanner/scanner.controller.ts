@@ -1,15 +1,21 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { ScannerService } from './scanner.service';
+import { TOKENS, STABLE_COIN } from 'src/dex/config/token';
 
 @Controller('scanner')
 export class ScannerController {
   constructor(private readonly scannerService: ScannerService) {}
 
-  @Get('check-arbitrage/:tokenAddress')
-  async checkArbitrage(tokenAddress: string): Promise<{
-    profitInUSDT: bigint;
-    isProfitable: boolean;
-  }> {
-    return this.scannerService.checkArbitrage(tokenAddress);
+  @Get('arbitrage')
+  async simpleArbitrage(@Query() query: any) {
+    const amountIn = query?.amountIn ?? 10;
+    const tokenIn = query?.tokenIn ?? TOKENS.WETH;
+    const tokenOut = query?.tokenOut ?? STABLE_COIN.USDT;
+
+    return await this.scannerService.simpleArbitrage(
+      tokenIn,
+      tokenOut,
+      amountIn,
+    );
   }
 }

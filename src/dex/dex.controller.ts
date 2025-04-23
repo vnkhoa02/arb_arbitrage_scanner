@@ -21,12 +21,8 @@ export class DexController {
     );
   }
 
-  @Get('arbitrage')
-  async simpleArbitrage(@Query() query: any) {
-    const amountIn = query?.amountIn ?? 10;
-    const tokenIn = query?.tokenIn ?? TOKENS.WETH;
-    const tokenOut = query?.tokenOut ?? STABLE_COIN.USDT;
-
-    return await this.dexService.simpleArbitrage(tokenIn, tokenOut, amountIn);
+  @Get('pairs')
+  async getPairsByToken(@Query('tokenIn') tokenIn: string) {
+    return await this.dexService.getPairsByToken(tokenIn);
   }
 }

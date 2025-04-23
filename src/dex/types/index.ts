@@ -17,3 +17,12 @@ export interface ArbRoundTrip {
   profit: number | string;
   isProfitable: boolean;
 }
+
+export interface IToken {
+  chainId: number;
+  address: string;
+  name: string;
+  symbol: string;
+  decimals: number;
+  logoURI?: string;
+}
