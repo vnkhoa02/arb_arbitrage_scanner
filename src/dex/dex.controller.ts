@@ -1,5 +1,5 @@
-import { TOKENS } from './config/token';
 import { Controller, Get, Param, Query } from '@nestjs/common';
+import { TOKENS } from './config/token';
 import { DexService } from './dex.service';
 
 @Controller('dex')
@@ -22,13 +22,14 @@ export class DexController {
   }
 
   @Get('arbitrage')
-  async simpleArbitrage() {
+  async simpleArbitrage(@Query() query: any) {
+    const amountIn = query?.amountIn || 1;
     return await this.dexService.simpleArbitrage(
       500,
       3000,
       10000,
       TOKENS.WETH,
-      1,
+      amountIn,
     );
   }
 }
