@@ -77,7 +77,7 @@ export class DexService {
    * @param decimalOut The number of decimals for the output token (default is 6).
    * @returns The quoted amount of the output token.
    */
-  async getQuote(
+  async getQuoteV3(
     tokenIn: string,
     tokenOut: string,
     amountIn: string,
@@ -86,7 +86,11 @@ export class DexService {
     const quoterABI = [
       'function quoteExactInputSingle(address,address,uint24,uint256,uint160) view returns (uint256)',
     ];
-    const quoter = new ethers.Contract(DEX.uniswap.quoter, quoterABI, provider);
+    const quoter = new ethers.Contract(
+      DEX.uniswapV3.quoter,
+      quoterABI,
+      provider,
+    );
     try {
       const decIn = tokenIn === STABLE_COIN.USDT ? 6 : 18;
       const decOut = tokenOut === STABLE_COIN.USDT ? 6 : 18;
@@ -106,8 +110,74 @@ export class DexService {
     }
   }
 
+  /**
+   * Get a quote for a token swap using the Uniswap Quoter contract.
+   * @param tokenIn The address of the input token.
+   * @param tokenOut The address of the output token.
+   * @param amountIn The amount of the input token.
+   * @param fee The fee tier of the Uniswap pool (e.g., 500, 3000, 10000).
+   * @param decimalOut The number of decimals for the output token (default is 6).
+   * @returns The quoted amount of the output token.
+   */
+  async getQuoteV2(
+    tokenIn: string,
+    tokenOut: string,
+    amountIn: string,
+  ): Promise<string> {
+    try {
+      const uniswapV2RouterABI = [
+        'function getAmountsOut(uint256 amountIn, address[] memory path) external view returns (uint256[] memory)',
+      ];
+
+      const decIn = tokenIn === STABLE_COIN.USDT ? 6 : 18;
+      const decOut = tokenOut === STABLE_COIN.USDT ? 6 : 18;
+      const amountInUnits = ethers.parseUnits(amountIn, decIn);
+
+      const uniswapV2Router = new ethers.Contract(
+        DEX.uniswapV2.router,
+        uniswapV2RouterABI,
+        provider,
+      );
+
+      const path = [tokenIn, tokenOut];
+      const amountsOut = await uniswapV2Router.getAmountsOut(
+        amountInUnits,
+        path,
+      );
+
+      return ethers.formatUnits(amountsOut[1], decOut);
+    } catch (error) {
+      console.error('Error getting Uniswap V2 quote:', error);
+      throw new BadRequestException(
+        `Uniswap V2 quote failed: ${error.message}`,
+      );
+    }
+  }
+
   /** Evaluate a single-direction arbitrage leg and return fee & price. */
-  async evaluateArbitrage(
+  async evaluateArbitrageV2(
+    tokenIn: string,
+    tokenOut: string,
+    amountIn: number | string,
+  ): Promise<ArbPathResult> {
+    const amountOut = await this.getQuoteV2(
+      tokenIn,
+      tokenOut,
+      String(amountIn),
+    );
+    const value = Number(amountOut) * Number(amountIn);
+    return {
+      fee: -1,
+      value: value.toString(),
+      amountOut: amountOut.toString(),
+      amountIn,
+      tokenIn,
+      tokenOut,
+    };
+  }
+
+  /** Evaluate a single-direction arbitrage leg and return fee & price. */
+  async evaluateArbitrageV3(
     tokenIn: string,
     tokenOut: string,
     amountIn: number | string,
@@ -115,7 +185,7 @@ export class DexService {
     const feeTiers = [FeeAmount.LOW, FeeAmount.MEDIUM, FeeAmount.HIGH];
     const pools = await Promise.all(
       feeTiers.map(async (fee) => {
-        const amountOut = await this.getQuote(
+        const amountOut = await this.getQuoteV3(
           tokenIn,
           tokenOut,
           String(amountIn),

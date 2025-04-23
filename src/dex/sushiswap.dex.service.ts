@@ -2,6 +2,7 @@ import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { ethers } from 'ethers';
 import { provider } from './config/provider';
 import { DEX, STABLE_COIN } from './config/token';
+import { ArbPathResult } from './types';
 
 @Injectable()
 export class SushiSwapDexService {
@@ -46,5 +47,27 @@ export class SushiSwapDexService {
       this.logger.error('Error getting quote:', error);
       throw new BadRequestException(`Error getting quote: ${error.message}`);
     }
+  }
+
+  /** Evaluate a single-direction arbitrage leg and return fee & price. */
+  async evaluateArbitrage(
+    tokenIn: string,
+    tokenOut: string,
+    amountIn: number | string,
+  ): Promise<ArbPathResult> {
+    const amountOut = await this.getQuote(
+      tokenIn,
+      tokenOut,
+      amountIn.toString(),
+    );
+    const value = Number(amountOut) * Number(amountIn);
+    return {
+      fee: -1,
+      value: value.toString(),
+      amountOut: amountOut.toString(),
+      amountIn,
+      tokenIn,
+      tokenOut,
+    };
   }
 }

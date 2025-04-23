@@ -10,14 +10,17 @@ export const STABLE_COIN = {
 };
 
 export const DEX = {
-  uniswap: {
+  uniswapV2: {
+    router: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d',
+    name: 'Uniswap V2',
+  },
+  uniswapV3: {
     router: '0xE592427A0AEce92De3Edee1F18E0157C05861564',
     quoter: '0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6',
-    name: 'Uniswap',
+    name: 'Uniswap V3',
   },
   sushiswap: {
     router: '0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F',
-    quoter: '', // not needed
     name: 'SushiSwap',
   },
 };

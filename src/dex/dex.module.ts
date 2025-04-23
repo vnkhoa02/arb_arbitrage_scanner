@@ -7,6 +7,6 @@ import { SushiSwapDexService } from './sushiswap.dex.service';
 @Module({
   controllers: [DexController],
   providers: [DexService, SushiSwapDexService],
-  exports: [DexService],
+  exports: [DexService, SushiSwapDexService],
 })
 export class DexModule {}
