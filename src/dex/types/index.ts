@@ -31,5 +31,4 @@ export interface ITokenInfo {
   name: string;
   symbol: string;
   decimals: string;
-  totalSupply: string;
 }

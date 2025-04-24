@@ -1,20 +1,18 @@
 import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { FeeAmount } from '@uniswap/v3-sdk';
+import axios, { isAxiosError } from 'axios';
 import { ethers } from 'ethers';
 import { defaultProvider, provider } from './config/provider';
 import { DEX } from './config/token';
-import { usdt_x, x_weth } from './constants/simplePool';
-import { ArbPathResult, ITokenInfo } from './types';
-import { findCommonXTokens } from './utils';
-import { getQuoteHeader, getQuotePayload } from './utils/getQuote';
-import axios, { isAxiosError } from 'axios';
 import { UNISWAP_QUOTE_API } from './constants';
+import { ArbPathResult, ITokenInfo } from './types';
 import { IUniQuoteResponse } from './types/quote';
+import { getTokenLocalInfo } from './utils';
+import { getQuoteHeader, getQuotePayload } from './utils/getQuote';
 
 @Injectable()
 export class DexService {
   private readonly logger = new Logger(DexService.name);
-  private readonly tokenInfoMap = new Map<string, ITokenInfo>();
 
   /**
    * Get the current gas price in Gwei.
@@ -31,14 +29,13 @@ export class DexService {
    * @returns An object containing the token's name, symbol, decimals, and total supply.
    */
   async getTokenBasicInfo(tokenAddress: string): Promise<ITokenInfo> {
-    const check = this.tokenInfoMap.get(tokenAddress);
-    if (check) return check;
+    const check = getTokenLocalInfo(tokenAddress);
+    if (check) return check as unknown as ITokenInfo;
     try {
       const ERC20_ABI = [
         'function name() view returns (string)',
         'function symbol() view returns (string)',
         'function decimals() view returns (uint8)',
-        'function totalSupply() view returns (uint256)',
       ];
       if (!ethers.isAddress(tokenAddress))
         throw new BadRequestException('Invalid token address');
@@ -48,20 +45,17 @@ export class DexService {
         defaultProvider,
       );
 
-      const [name, symbol, decimals, totalSupply] = await Promise.all([
+      const [name, symbol, decimals] = await Promise.all([
         contract.name(),
         contract.symbol(),
         contract.decimals(),
-        contract.totalSupply(),
       ]);
 
       const token = {
         name,
         symbol,
         decimals: BigInt(decimals).toString(),
-        totalSupply: ethers.formatUnits(totalSupply, decimals),
       };
-      this.tokenInfoMap.set(tokenAddress, token);
       return token;
     } catch (error) {
       this.logger.error('Error getting token info:', error);
@@ -206,12 +200,5 @@ export class DexService {
    * Find all pools that can be traded with tokenIn
    * @param tokenIn
    */
-  async findPoolsToken(tokenIn: string, tokenOut: string) {
-    // let pools = [];
-    // if (tokenIn === STABLE_COIN.USDT && tokenOut == TOKENS.WETH) {
-    //   console.log('vaooo');
-    //   pools = joinCommonPools(usdt_x, x_weth);
-    // }
-    return findCommonXTokens(usdt_x, x_weth);
-  }
+  async findPoolsToken(tokenIn: string, tokenOut: string) {}
 }
