@@ -4,9 +4,10 @@ import { AppService } from './app.service';
 import { DexModule } from './dex/dex.module';
 import { ScannerModule } from './scanner/scanner.module';
 import { ScheduleModule } from '@nestjs/schedule';
+import { OnchainModule } from './onchain/onchain.module';
 
 @Module({
-  imports: [ScheduleModule.forRoot(), DexModule, ScannerModule],
+  imports: [ScheduleModule.forRoot(), DexModule, ScannerModule, OnchainModule],
   controllers: [AppController],
   providers: [AppService],
 })

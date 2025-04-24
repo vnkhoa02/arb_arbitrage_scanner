@@ -167,9 +167,7 @@ export class DexService {
       const message =
         error?.response?.data ?? error?.message ?? JSON.stringify(error);
       this.logger.error('Error getting quoteV2:', message);
-      throw new BadRequestException(
-        `Error getting quoteV2: ${JSON.stringify(error)}`,
-      );
+      throw new BadRequestException(`Error getting quoteV2`);
     }
   }
 

@@ -1,0 +1,1 @@
+export const ARBITRAGE_V1 = '0x5d17b574eaa9e5861e08052b4a288f33ca487593';
