@@ -66,7 +66,6 @@ export class SushiSwapDexService extends DexService {
     );
     const value = Number(amountOut) * Number(amountIn);
     return {
-      fee: -1,
       value: value.toString(),
       amountOut: amountOut.toString(),
       amountIn,

@@ -1,11 +1,12 @@
 import { BadRequestException, Injectable, Logger } from '@nestjs/common';
-import { FeeAmount } from '@uniswap/v3-sdk';
-import axios, { isAxiosError } from 'axios';
+import axios from 'axios';
+import 'dotenv/config';
 import { ethers } from 'ethers';
 import { defaultProvider, provider } from './config/provider';
-import { DEX } from './config/token';
-import { UNISWAP_QUOTE_API } from './constants';
+import { DEX, STABLE_COIN_SET } from './config/token';
+import { MORALIS_PIRCE_API, UNISWAP_QUOTE_API } from './constants';
 import { ArbPathResult, ITokenInfo } from './types';
+import { IMoralisPrice } from './types/price';
 import { IUniQuoteResponse } from './types/quote';
 import { getTokenLocalInfo } from './utils';
 import { getQuoteHeader, getQuotePayload } from './utils/getQuote';
@@ -13,7 +14,6 @@ import { getQuoteHeader, getQuotePayload } from './utils/getQuote';
 @Injectable()
 export class DexService {
   private readonly logger = new Logger(DexService.name);
-
   /**
    * Get the current gas price in Gwei.
    * @returns The current gas price in Gwei.
@@ -120,55 +120,63 @@ export class DexService {
     }
   }
 
-  async getQuoteV2(
-    tokenIn: string,
-    tokenOut: string,
-    amountIn: string,
-  ): Promise<string> {
+  async getQuoteV2(tokenIn: string, tokenOut: string, amountIn: number) {
     try {
-      const decIn = await this.getTokenDecimals(tokenIn);
-      const amount = Number(amountIn) * Math.pow(10, decIn);
-      const payload = getQuotePayload(tokenIn, tokenOut, amount.toString());
-      const response = await axios.post<IUniQuoteResponse>(
+      // Fetch decimals in parallel
+      const [decIn, decOut] = await Promise.all([
+        this.getTokenDecimals(tokenIn),
+        this.getTokenDecimals(tokenOut),
+      ]);
+
+      // Convert input amount to correct units using BigInt
+      const amountInUnits = (
+        BigInt(Math.floor(amountIn * 1e6)) *
+        BigInt(10) ** BigInt(decIn - 6)
+      ).toString();
+
+      const payload = getQuotePayload(tokenIn, tokenOut, amountInUnits);
+
+      const { data } = await axios.post<IUniQuoteResponse>(
         UNISWAP_QUOTE_API,
         payload,
-        {
-          headers: getQuoteHeader(),
-        },
+        { headers: getQuoteHeader() },
       );
-      const quote = response.data.quote;
-      const { aggregatedOutputs } = quote;
-      const best = aggregatedOutputs
-        .filter((a) => (a.token = tokenIn))
-        .reduce((a, b) => (a.amount < b.amount ? a : b));
-      return best.amount;
+
+      const { route, aggregatedOutputs } = data.quote;
+
+      const bestOutput = aggregatedOutputs
+        .filter(
+          (output) => output.token.toLowerCase() === tokenOut.toLowerCase(),
+        )
+        .reduce((max, curr) =>
+          BigInt(curr.amount) > BigInt(max.amount) ? curr : max,
+        );
+
+      // Convert back to human-readable float
+      const amountOut = (Number(bestOutput.amount) / 10 ** decOut).toString();
+
+      return { route, amountOut, decOut };
     } catch (error) {
-      if (isAxiosError(error)) {
-        this.logger.error('Error getting quoteV2:', error.response.data);
-      } else {
-        this.logger.error('Error getting quoteV2:', error);
-      }
-      throw new BadRequestException(`Error getting quoteV2: ${error.message}`);
+      const message =
+        error?.response?.data ?? error?.message ?? JSON.stringify(error);
+      this.logger.error('Error getting quoteV2:', message);
+      throw new BadRequestException(`Error getting quoteV2: ${message}`);
     }
   }
 
-  private async getPools(
-    tokenIn: string,
-    tokenOut: string,
-    amountIn: number | string,
-  ) {
-    const feeTiers = [FeeAmount.LOW, FeeAmount.MEDIUM, FeeAmount.HIGH];
-    return await Promise.all(
-      feeTiers.map(async (fee) => {
-        const amountOut = await this.getQuote(
-          tokenIn,
-          tokenOut,
-          String(amountIn),
-          fee,
-        );
-        return { fee, amountOut };
-      }),
-    );
+  /**
+   * Get price in usd per token
+   * @param token_address
+   * @returns price in usd / 1 token
+   */
+  async getTokenPriceInUsd(token_address: string): Promise<number> {
+    const url = MORALIS_PIRCE_API.replace('token_address', token_address);
+    const { data } = await axios.get<IMoralisPrice>(url, {
+      headers: {
+        'X-API-Key': process.env.MORALIS_API_KEY,
+      },
+    });
+    return data.usdPrice;
   }
 
   /** Evaluate a single-direction arbitrage leg and return fee & price. */
@@ -177,17 +185,18 @@ export class DexService {
     tokenOut: string,
     amountIn: number | string,
   ): Promise<ArbPathResult> {
-    const pools = await this.getPools(tokenIn, tokenOut, amountIn);
-    const valid = pools.filter((p) => !Number.isNaN(p.amountOut));
-    if (valid.length === 0) {
-      throw new BadRequestException('No valid pools found for arbitrage');
-    }
-    // pick the pool that gives the max output amountOut
-    const best = valid.reduce((a, b) => (a.amountOut > b.amountOut ? a : b));
-    const amountOut = Number(best.amountOut);
-    const value = amountOut * Number(amountIn);
+    const { amountOut, route } = await this.getQuoteV2(
+      tokenIn,
+      tokenOut,
+      Number(amountIn),
+    );
+    const isStable = STABLE_COIN_SET.has(tokenOut.toLowerCase());
+    const tokenOutPrice = isStable
+      ? 1
+      : await this.getTokenPriceInUsd(tokenOut);
+    const value = Number(amountOut) * tokenOutPrice;
     return {
-      fee: best.fee,
+      route,
       value: value.toString(),
       amountOut: amountOut.toString(),
       amountIn,
@@ -195,10 +204,4 @@ export class DexService {
       tokenOut,
     };
   }
-
-  /**
-   * Find all pools that can be traded with tokenIn
-   * @param tokenIn
-   */
-  async findPoolsToken(tokenIn: string, tokenOut: string) {}
 }

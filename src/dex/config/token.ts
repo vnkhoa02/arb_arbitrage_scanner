@@ -9,6 +9,10 @@ export const STABLE_COIN = {
   USDT: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
 };
 
+export const STABLE_COIN_SET = new Set(
+  Object.values(STABLE_COIN).map((addr) => addr.toLowerCase()),
+);
+
 export const DEX = {
   uniswapV2: {
     router: '0x7a250d5630b4cf539739df2c5dacb4c659f2488d',
