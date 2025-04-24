@@ -39,63 +39,30 @@ export class ScannerService {
     tokenOut: string,
     amountIn: number,
   ): Promise<ArbPath> {
-    // Forward leg
-    const forward: ArbPathResult = await this.dexService.evaluateArbitrageV3(
-      tokenIn,
-      tokenOut,
-      amountIn,
-    );
+    const [forward, backward] = await Promise.all([
+      this.dexService.evaluateArbitrageV3(tokenIn, tokenOut, amountIn),
+      this.dexService
+        .evaluateArbitrageV3(tokenIn, tokenOut, amountIn)
+        .then((f) => this.scanBackwards(f)),
+    ]);
 
-    const backward: ArbPathResult = await this.scanBackwards(forward);
     const profit = Number(backward.value) - Number(forward.value);
-
-    const roundTrip: ArbRoundTrip = {
-      profit: profit.toString(),
-      isProfitable: profit > 0,
-    };
 
     return {
       forward,
       backward,
-      roundTrip,
-    };
-  }
-
-  /** Perform both forward and backward legs and return full ArbPath */
-  async simpleArbitrage(
-    tokenIn: string,
-    tokenOut: string,
-    amountIn: number,
-  ): Promise<ArbPath> {
-    const forward: ArbPathResult = await this.dexService.evaluateArbitrageV3(
-      tokenIn,
-      tokenOut,
-      amountIn,
-    );
-    const backward: ArbPathResult = await this.dexService.evaluateArbitrageV3(
-      tokenOut,
-      tokenIn,
-      forward.amountOut,
-    );
-    // Round-trip profit in original tokenIn
-    const profit = Number(backward.value) - Number(forward.value);
-
-    const roundTrip: ArbRoundTrip = {
-      profit: profit.toString(),
-      isProfitable: profit > 0,
-    };
-
-    return {
-      forward,
-      backward,
-      roundTrip,
+      roundTrip: {
+        profit: profit.toString(),
+        isProfitable: profit > 0,
+        route: [...forward.route, ...backward.route],
+      },
     };
   }
 
   // @Cron(CronExpression.EVERY_5_SECONDS)
   private async checkSimpleArbitrage() {
     this.logger.log('Checking for simple arbitrage...');
-    const result = await this.simpleArbitrage(TOKENS.WETH, STABLE_COIN.USDT, 1);
+    const result = await this.arbitrage(TOKENS.WETH, STABLE_COIN.USDT, 1);
     if (result.roundTrip.isProfitable) {
       this.logger.log('Arbitrage found:', result);
     }

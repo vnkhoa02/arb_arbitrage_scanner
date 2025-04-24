@@ -6,19 +6,6 @@ import { TOKENS, STABLE_COIN } from 'src/dex/config/token';
 export class ScannerController {
   constructor(private readonly scannerService: ScannerService) {}
 
-  @Get('arbitrage/simple')
-  async simpleArbitrage(@Query() query: any) {
-    const amountIn = query?.amountIn ?? 10;
-    const tokenIn = query?.tokenIn ?? TOKENS.WETH;
-    const tokenOut = query?.tokenOut ?? STABLE_COIN.USDT;
-
-    return await this.scannerService.simpleArbitrage(
-      tokenIn,
-      tokenOut,
-      amountIn,
-    );
-  }
-
   @Get('arbitrage')
   async arbitrage(@Query() query: any) {
     const amountIn = query?.amountIn ?? 10;

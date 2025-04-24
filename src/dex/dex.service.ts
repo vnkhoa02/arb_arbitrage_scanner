@@ -7,9 +7,10 @@ import { DEX, STABLE_COIN_SET } from './config/token';
 import { MORALIS_PIRCE_API, UNISWAP_QUOTE_API } from './constants';
 import { ArbPathResult, ITokenInfo } from './types';
 import { IMoralisPrice } from './types/price';
-import { IUniQuoteResponse } from './types/quote';
+import { IUniQuoteResponse, Route } from './types/quote';
 import { getTokenLocalInfo } from './utils';
 import { getQuoteHeader, getQuotePayload } from './utils/getQuote';
+import { ChainId } from '@uniswap/sdk';
 
 @Injectable()
 export class DexService {
@@ -120,6 +121,36 @@ export class DexService {
     }
   }
 
+  private generateDirectRoutes(
+    tokenIn: string,
+    tokenOut: string,
+    decIn: string | number,
+    amountIn: string | number,
+    decOut: string | number,
+    amountOut: string | number,
+  ): Route[][] {
+    const defaultRoute = [
+      {
+        type: 'v3-pool',
+        address: tokenIn,
+        tokenIn: {
+          chainId: ChainId.MAINNET,
+          decimals: decIn.toString(),
+          address: tokenOut,
+        },
+        tokenOut: {
+          chainId: ChainId.MAINNET,
+          decimals: decOut.toString(),
+          address: tokenOut,
+        },
+        fee: '500',
+        amountIn: amountIn.toString(),
+        amountOut: amountOut.toString(),
+      },
+    ];
+    return [defaultRoute];
+  }
+
   async getQuoteV2(tokenIn: string, tokenOut: string, amountIn: number) {
     try {
       // Fetch decimals in parallel
@@ -141,10 +172,8 @@ export class DexService {
         payload,
         { headers: getQuoteHeader() },
       );
-
-      const { route, aggregatedOutputs } = data.quote;
-
-      const bestOutput = aggregatedOutputs
+      const quoteData = data.quote;
+      const bestOutput = quoteData.aggregatedOutputs
         .filter(
           (output) => output.token.toLowerCase() === tokenOut.toLowerCase(),
         )
@@ -154,7 +183,16 @@ export class DexService {
 
       // Convert back to human-readable float
       const amountOut = (Number(bestOutput.amount) / 10 ** decOut).toString();
-
+      const route =
+        quoteData?.route ??
+        this.generateDirectRoutes(
+          tokenIn,
+          tokenOut,
+          decIn,
+          amountIn,
+          decOut,
+          amountOut,
+        );
       return { route, amountOut, decOut };
     } catch (error) {
       const message =

@@ -48,9 +48,9 @@ export interface Route {
   tokenIn: TokenIn;
   tokenOut: TokenOut;
   fee: string;
-  liquidity: string;
-  sqrtRatioX96: string;
-  tickCurrent: string;
+  liquidity?: string;
+  sqrtRatioX96?: string;
+  tickCurrent?: string;
   amountIn?: string;
   amountOut?: string;
 }
@@ -59,14 +59,14 @@ export interface TokenIn {
   chainId: number;
   decimals: string;
   address: string;
-  symbol: string;
+  symbol?: string;
 }
 
 export interface TokenOut {
   chainId: number;
   decimals: string;
   address: string;
-  symbol: string;
+  symbol?: string;
 }
 
 export interface GasEstimate {

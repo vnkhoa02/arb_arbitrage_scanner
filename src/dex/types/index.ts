@@ -12,12 +12,13 @@ export interface ArbPathResult {
   amountIn: number | string;
   tokenOut: string;
   amountOut: number | string;
-  route?: Route[][];
+  route: Route[][];
 }
 
 export interface ArbRoundTrip {
   profit: number | string;
   isProfitable: boolean;
+  route: Route[][];
 }
 
 export interface IToken {

@@ -71,6 +71,7 @@ export class SushiSwapDexService extends DexService {
       amountIn,
       tokenIn,
       tokenOut,
+      route: [],
     };
   }
 }
