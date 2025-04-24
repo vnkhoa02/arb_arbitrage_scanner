@@ -17,7 +17,15 @@ export class DexController {
 
   @Get('quotes')
   async getQuote(@Query() query: any) {
-    return await this.dexService.getQuoteV3(
+    const version = query?.version;
+    if (version === 'v2') {
+      return await this.dexService.getQuoteV2(
+        query.tokenIn,
+        query.tokenOut,
+        query.amountIn,
+      );
+    }
+    return await this.dexService.getQuote(
       query.tokenIn,
       query.tokenOut,
       query.amountIn,

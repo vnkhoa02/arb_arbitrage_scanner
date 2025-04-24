@@ -6,6 +6,10 @@ import { DEX } from './config/token';
 import { usdt_x, x_weth } from './constants/simplePool';
 import { ArbPathResult, ITokenInfo } from './types';
 import { findCommonXTokens } from './utils';
+import { getQuoteHeader, getQuotePayload } from './utils/getQuote';
+import axios, { isAxiosError } from 'axios';
+import { UNISWAP_QUOTE_API } from './constants';
+import { IUniQuoteResponse } from './types/quote';
 
 @Injectable()
 export class DexService {
@@ -87,7 +91,7 @@ export class DexService {
    * @param decimalOut The number of decimals for the output token (default is 6).
    * @returns The quoted amount of the output token.
    */
-  async getQuoteV3(
+  async getQuote(
     tokenIn: string,
     tokenOut: string,
     amountIn: string,
@@ -122,6 +126,38 @@ export class DexService {
     }
   }
 
+  async getQuoteV2(
+    tokenIn: string,
+    tokenOut: string,
+    amountIn: string,
+  ): Promise<string> {
+    try {
+      const decIn = await this.getTokenDecimals(tokenIn);
+      const amount = Number(amountIn) * Math.pow(10, decIn);
+      const payload = getQuotePayload(tokenIn, tokenOut, amount.toString());
+      const response = await axios.post<IUniQuoteResponse>(
+        UNISWAP_QUOTE_API,
+        payload,
+        {
+          headers: getQuoteHeader(),
+        },
+      );
+      const quote = response.data.quote;
+      const { aggregatedOutputs } = quote;
+      const best = aggregatedOutputs
+        .filter((a) => (a.token = tokenIn))
+        .reduce((a, b) => (a.amount < b.amount ? a : b));
+      return best.amount;
+    } catch (error) {
+      if (isAxiosError(error)) {
+        this.logger.error('Error getting quoteV2:', error.response.data);
+      } else {
+        this.logger.error('Error getting quoteV2:', error);
+      }
+      throw new BadRequestException(`Error getting quoteV2: ${error.message}`);
+    }
+  }
+
   private async getPools(
     tokenIn: string,
     tokenOut: string,
@@ -130,7 +166,7 @@ export class DexService {
     const feeTiers = [FeeAmount.LOW, FeeAmount.MEDIUM, FeeAmount.HIGH];
     return await Promise.all(
       feeTiers.map(async (fee) => {
-        const amountOut = await this.getQuoteV3(
+        const amountOut = await this.getQuote(
           tokenIn,
           tokenOut,
           String(amountIn),
