@@ -1,9 +1,9 @@
 import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { ethers } from 'ethers';
 import { provider } from './config/provider';
-import { DEX, STABLE_COIN, TOKENS } from './config/token';
-import { ArbPathResult } from './types';
+import { DEX } from './config/token';
 import { DexService } from './dex.service';
+import { ArbPathResult } from './types';
 
 @Injectable()
 export class SushiSwapDexService extends DexService {

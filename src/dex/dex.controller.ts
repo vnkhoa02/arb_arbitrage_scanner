@@ -17,14 +17,6 @@ export class DexController {
 
   @Get('quotes')
   async getQuote(@Query() query: any) {
-    const version = query?.version ?? 'v3';
-    if (version === 'v2') {
-      return await this.dexService.getQuoteV2(
-        query.tokenIn,
-        query.tokenOut,
-        query.amountIn,
-      );
-    }
     return await this.dexService.getQuoteV3(
       query.tokenIn,
       query.tokenOut,
@@ -42,8 +34,11 @@ export class DexController {
     );
   }
 
-  @Get('pairs')
-  async getPairsByToken(@Query('tokenIn') tokenIn: string) {
-    return await this.dexService.getPairsByToken(tokenIn);
+  @Get('/pools')
+  async getPools() {
+    return await this.sushiSwapDexService.findPoolsToken(
+      STABLE_COIN.USDT,
+      TOKENS.WETH,
+    );
   }
 }

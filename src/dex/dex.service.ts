@@ -1,11 +1,11 @@
 import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { FeeAmount } from '@uniswap/v3-sdk';
 import { ethers } from 'ethers';
-import chunk from 'lodash/chunk';
 import { defaultProvider, provider } from './config/provider';
 import { DEX } from './config/token';
-import { tokens } from './constants/tokens';
+import { usdt_x, x_weth } from './constants/simplePool';
 import { ArbPathResult, ITokenInfo } from './types';
+import { findCommonXTokens } from './utils';
 
 @Injectable()
 export class DexService {
@@ -122,81 +122,13 @@ export class DexService {
     }
   }
 
-  /**
-   * Get a quote for a token swap using the Uniswap Quoter contract.
-   * @param tokenIn The address of the input token.
-   * @param tokenOut The address of the output token.
-   * @param amountIn The amount of the input token.
-   * @param fee The fee tier of the Uniswap pool (e.g., 500, 3000, 10000).
-   * @param decimalOut The number of decimals for the output token (default is 6).
-   * @returns The quoted amount of the output token.
-   */
-  async getQuoteV2(
-    tokenIn: string,
-    tokenOut: string,
-    amountIn: string,
-  ): Promise<string> {
-    try {
-      const uniswapV2RouterABI = [
-        'function getAmountsOut(uint256 amountIn, address[] memory path) external view returns (uint256[] memory)',
-      ];
-      const [decIn, decOut] = await Promise.all([
-        this.getTokenDecimals(tokenIn),
-        this.getTokenDecimals(tokenOut),
-      ]);
-      const amountInUnits = ethers.parseUnits(amountIn, decIn);
-
-      const uniswapV2Router = new ethers.Contract(
-        DEX.uniswapV2.router,
-        uniswapV2RouterABI,
-        provider,
-      );
-
-      const path = [tokenIn, tokenOut];
-      const amountsOut = await uniswapV2Router.getAmountsOut(
-        amountInUnits,
-        path,
-      );
-
-      return ethers.formatUnits(amountsOut[1], decOut);
-    } catch (error) {
-      console.error('Error getting Uniswap V2 quote:', error);
-      throw new BadRequestException(
-        `Uniswap V2 quote failed: ${error.message}`,
-      );
-    }
-  }
-
-  /** Evaluate a single-direction arbitrage leg and return fee & price. */
-  async evaluateArbitrageV2(
+  private async getPools(
     tokenIn: string,
     tokenOut: string,
     amountIn: number | string,
-  ): Promise<ArbPathResult> {
-    const amountOut = await this.getQuoteV2(
-      tokenIn,
-      tokenOut,
-      String(amountIn),
-    );
-    const value = Number(amountOut) * Number(amountIn);
-    return {
-      fee: -1,
-      value: value.toString(),
-      amountOut: amountOut.toString(),
-      amountIn,
-      tokenIn,
-      tokenOut,
-    };
-  }
-
-  /** Evaluate a single-direction arbitrage leg and return fee & price. */
-  async evaluateArbitrageV3(
-    tokenIn: string,
-    tokenOut: string,
-    amountIn: number | string,
-  ): Promise<ArbPathResult> {
+  ) {
     const feeTiers = [FeeAmount.LOW, FeeAmount.MEDIUM, FeeAmount.HIGH];
-    const pools = await Promise.all(
+    return await Promise.all(
       feeTiers.map(async (fee) => {
         const amountOut = await this.getQuoteV3(
           tokenIn,
@@ -207,6 +139,15 @@ export class DexService {
         return { fee, amountOut };
       }),
     );
+  }
+
+  /** Evaluate a single-direction arbitrage leg and return fee & price. */
+  async evaluateArbitrageV3(
+    tokenIn: string,
+    tokenOut: string,
+    amountIn: number | string,
+  ): Promise<ArbPathResult> {
+    const pools = await this.getPools(tokenIn, tokenOut, amountIn);
     const valid = pools.filter((p) => !Number.isNaN(p.amountOut));
     if (valid.length === 0) {
       throw new BadRequestException('No valid pools found for arbitrage');
@@ -225,12 +166,16 @@ export class DexService {
     };
   }
 
-  async getPairsByToken(tokenIn: string) {
-    const limit = 50;
-    const addresses = tokens.map((token) => token.address);
-    const chunks = chunk(addresses, limit);
-    const feeTiers = [FeeAmount.LOW, FeeAmount.MEDIUM, FeeAmount.HIGH];
-
-    return null;
+  /**
+   * Find all pools that can be traded with tokenIn
+   * @param tokenIn
+   */
+  async findPoolsToken(tokenIn: string, tokenOut: string) {
+    // let pools = [];
+    // if (tokenIn === STABLE_COIN.USDT && tokenOut == TOKENS.WETH) {
+    //   console.log('vaooo');
+    //   pools = joinCommonPools(usdt_x, x_weth);
+    // }
+    return findCommonXTokens(usdt_x, x_weth);
   }
 }
