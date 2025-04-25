@@ -1,5 +1,5 @@
 import { ChainId } from '@uniswap/sdk';
-import { tokens } from '../constants/tokens';
+import { tokens } from '../data/tokens';
 import { Route } from '../types/quote';
 
 export function getTokenLocalInfo(address: string) {

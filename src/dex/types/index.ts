@@ -7,12 +7,12 @@ export interface ArbPath {
 }
 
 export interface ArbPathResult {
-  value: number | string; // Value in USD not USDT or stable coin
   tokenIn: string;
   amountIn: number | string;
   tokenOut: string;
   amountOut: number | string;
   route: Route[][];
+  value?: number | string; // Value in USD not USDT or stable coin
 }
 
 export interface ArbRoundTrip {

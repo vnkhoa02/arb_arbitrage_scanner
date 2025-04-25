@@ -35,7 +35,7 @@ export class ScannerService {
         .then((f) => this.scanBackwards(f)),
     ]);
 
-    const profit = Number(backward.value) - Number(forward.value);
+    const profit = Number(backward.amountOut) - Number(forward.amountIn);
 
     return {
       forward,

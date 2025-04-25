@@ -3,7 +3,7 @@ import axios from 'axios';
 import 'dotenv/config';
 import { ethers } from 'ethers';
 import { defaultProvider, provider } from './config/provider';
-import { DEX, STABLE_COIN_SET } from './config/token';
+import { DEX } from './config/token';
 import { MORALIS_PIRCE_API, UNISWAP_QUOTE_API } from './constants';
 import { ArbPathResult, ITokenInfo } from './types';
 import { IMoralisPrice } from './types/price';
@@ -197,14 +197,8 @@ export class DexService {
       tokenOut,
       Number(amountIn),
     );
-    const isStable = STABLE_COIN_SET.has(tokenOut.toLowerCase());
-    const tokenOutPrice = isStable
-      ? 1
-      : await this.getTokenPriceInUsd(tokenOut);
-    const value = Number(amountOut) * tokenOutPrice;
     return {
       route,
-      value: value.toString(),
       amountOut: amountOut.toString(),
       amountIn,
       tokenIn,
