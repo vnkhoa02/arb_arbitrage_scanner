@@ -1,5 +1,4 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { STABLE_COIN, TOKENS } from 'src/dex/config/token';
 import { ArbPath, ArbPathResult } from 'src/dex/types';
 import { DexService } from '../dex/dex.service';
 
@@ -46,15 +45,5 @@ export class ScannerService {
         route: [...forward.route, ...backward.route],
       },
     };
-  }
-
-  // @Cron(CronExpression.EVERY_5_SECONDS)
-  private async checkSimpleArbitrage() {
-    this.logger.log('Checking for simple arbitrage...');
-    const result = await this.arbitrage(TOKENS.WETH, STABLE_COIN.USDT, 1);
-    if (result.roundTrip.isProfitable) {
-      this.logger.log('Arbitrage found:', result);
-    }
-    return result;
   }
 }

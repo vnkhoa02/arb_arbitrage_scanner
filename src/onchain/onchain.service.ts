@@ -6,11 +6,14 @@ import {
 } from '@nestjs/common';
 import 'dotenv/config';
 import { ethers, parseUnits } from 'ethers';
+import chunk from 'lodash/chunk';
 import { provider } from 'src/dex/config/provider';
+import { TOKENS } from 'src/dex/config/token';
+import { x_weth } from 'src/dex/constants/simplePool';
 import { ScannerService } from 'src/scanner/scanner.service';
 import * as arbitrageAbi from './abis/Arbitrage.abi.json';
 import { ARBITRAGE_V1 } from './constants';
-import { ISearchSimpleArbitrageTrade, ISimpleArbitrageParams } from './types';
+import { ISimpleArbitrageParams, ISimpleArbitrageTrade } from './types';
 import { pickBestRoute } from './utils';
 
 const walletPrivateKey = process.env.TESTER_PROD_PRIVATE_KEY;
@@ -60,9 +63,7 @@ export class OnchainService implements OnModuleInit {
     }
   }
 
-  async searchSimpleArbitrageTrade(
-    params: ISearchSimpleArbitrageTrade,
-  ): Promise<string> {
+  async simpleArbitrageTrade(params: ISimpleArbitrageTrade): Promise<string> {
     const { tokenIn, tokenOut, amountIn } = params;
     const path = await this.scannerService.arbitrage(
       tokenIn,
@@ -96,5 +97,43 @@ export class OnchainService implements OnModuleInit {
     const tx = await this.simulateSimpleArbitrage(simulateParams);
     console.log('tx --->', tx);
     return tx;
+  }
+
+  async searchSimpleArbitrage(tokenIn = TOKENS.WETH) {
+    this.logger.log('Searching for arbitrage trade...');
+
+    const profitableRoutes = [];
+    const chunkedPools = chunk(x_weth, 10); // Adjust size to control concurrency
+
+    for (const group of chunkedPools) {
+      const results = await Promise.all(
+        group.map(async (pool) => {
+          try {
+            this.logger.log(`Checking WETH with `, pool.token0.id);
+            const result = await this.scannerService.arbitrage(
+              tokenIn,
+              pool.token0.id,
+              1,
+            );
+            if (result.roundTrip.isProfitable) {
+              this.logger.log(
+                `✅ Profitable arbitrage in ${pool.token0.symbol}/${pool.token1.symbol} [${pool.id}]`,
+                result,
+              );
+              return { poolId: pool.id, result };
+            }
+          } catch (err) {
+            this.logger.warn(
+              `⚠️ Error in ${pool.token0.symbol}/${pool.token1.symbol} [${pool.id}]: ${err.message}`,
+            );
+          }
+          return null;
+        }),
+      );
+
+      profitableRoutes.push(...results.filter(Boolean));
+    }
+
+    return profitableRoutes;
   }
 }

@@ -8,7 +8,7 @@ export interface ISimpleArbitrageParams {
   borrowAmount: bigint;
 }
 
-export interface ISearchSimpleArbitrageTrade {
+export interface ISimpleArbitrageTrade {
   tokenIn: string;
   amountIn: number;
   tokenOut: string;
