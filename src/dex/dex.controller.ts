@@ -1,8 +1,11 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query, UseInterceptors } from '@nestjs/common';
 import { DexService } from './dex.service';
 import { BestRouteFinder } from './bestRouteFinder';
+import { ethers } from 'ethers';
+import { BigIntSerializerInterceptor } from 'src/interceptor/BigIntSerializerInterceptor';
 
 @Controller('dex')
+@UseInterceptors(BigIntSerializerInterceptor)
 export class DexController {
   constructor(
     private readonly dexService: DexService,
@@ -23,20 +26,22 @@ export class DexController {
     );
   }
 
-  // @Get('route')
-  // async getBestRoute(@Query() query: any) {
-  //   const tokenIn = query?.tokenIn;
-  //   const tokenOut = query?.tokenOut;
-  //   const amountIn = query?.amountIn;
+  @Get('route')
+  async getBestRoute(@Query() query: any) {
+    const tokenIn = query?.tokenIn;
+    const tokenOut = query?.tokenOut;
+    const amountIn = query?.amountIn;
 
-  //   const decIn = await this.dexService.getTokenDecimals(tokenIn);
-  //   const decOut = await this.dexService.getTokenDecimals(tokenIn);
-  //   return await this.bestRouteFinder.findBestRoute(
-  //     tokenIn,
-  //     decIn,
-  //     tokenOut,
-  //     decOut,
-  //     parseUnits(amountIn, decIn),
-  //   );
-  // }
+    const [decIn, decOut] = await Promise.all([
+      this.dexService.getTokenDecimals(tokenIn),
+      this.dexService.getTokenDecimals(tokenOut),
+    ]);
+    return await this.bestRouteFinder.findBestRoute(
+      tokenIn,
+      decIn,
+      tokenOut,
+      decOut,
+      ethers.utils.parseUnits(amountIn, decIn).toBigInt(),
+    );
+  }
 }
