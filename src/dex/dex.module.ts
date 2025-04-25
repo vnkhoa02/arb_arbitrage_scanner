@@ -1,12 +1,13 @@
 import { Global, Module } from '@nestjs/common';
-import { DexService } from './dex.service';
-import { DexController } from './dex.controller';
 import { BestRouteFinder } from './bestRouteFinder';
+import { DexController } from './dex.controller';
+import { DexService } from './dex.service';
+import { SushiSwapService } from './sushiswap.dex.service';
 
 @Global()
 @Module({
   controllers: [DexController],
-  providers: [DexService, BestRouteFinder],
-  exports: [DexService, BestRouteFinder],
+  providers: [DexService, SushiSwapService, BestRouteFinder],
+  exports: [DexService, SushiSwapService],
 })
 export class DexModule {}

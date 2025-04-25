@@ -39,9 +39,7 @@ export class BestRouteFinder {
     tokenOutAddress: string,
     tokenOutDecimals: number,
     amountInRaw: string | bigint,
-    options: RouteOptions = {
-      recipient: '0x0CF9Dcf86Ec3A20BF54E852E99823f2978552ED1',
-    },
+    options: RouteOptions = {},
   ): Promise<RouteResult> {
     // Wrap tokens for SDK
     const tokenIn = new Token(this.chainId, tokenInAddress, tokenInDecimals);
