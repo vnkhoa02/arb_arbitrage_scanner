@@ -21,9 +21,9 @@ export class DexController {
     );
   }
 
-  @Get('quote/slow')
+  @Get('quote/v1')
   async getBestRoute(@Query() query: any) {
-    return await this.dexService.getQuoteSlow(
+    return await this.dexService.getQuote(
       query.tokenIn,
       query.tokenOut,
       query.amountIn,

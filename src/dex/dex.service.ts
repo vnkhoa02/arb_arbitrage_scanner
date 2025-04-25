@@ -1,4 +1,9 @@
-import { BadRequestException, Injectable, Logger } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+  Logger,
+} from '@nestjs/common';
 import axios from 'axios';
 import 'dotenv/config';
 import { ethers } from 'ethers';
@@ -80,50 +85,6 @@ export class DexService {
     return Number(tokenInfo.decimals);
   }
 
-  /**
-   * Get a quote for a token swap using the Uniswap Quoter contract.
-   * @param tokenIn The address of the input token.
-   * @param tokenOut The address of the output token.
-   * @param amountIn The amount of the input token.
-   * @param fee The fee tier of the Uniswap pool (e.g., 500, 3000, 10000).
-   * @param decimalOut The number of decimals for the output token (default is 6).
-   * @returns The quoted amount of the output token.
-   */
-  async getQuote(
-    tokenIn: string,
-    tokenOut: string,
-    amountIn: string,
-    feeAmount: string | number,
-  ): Promise<string> {
-    const quoterABI = [
-      'function quoteExactInputSingle(address,address,uint24,uint256,uint160) view returns (uint256)',
-    ];
-    const quoter = new ethers.Contract(
-      DEX.uniswapV3.quoter,
-      quoterABI,
-      provider,
-    );
-    try {
-      const [decIn, decOut] = await Promise.all([
-        this.getTokenDecimals(tokenIn),
-        this.getTokenDecimals(tokenOut),
-      ]);
-      const amountInUnits = ethers.utils.parseUnits(amountIn, decIn);
-
-      const quotedAmount = await quoter.quoteExactInputSingle(
-        tokenIn,
-        tokenOut,
-        BigInt(feeAmount),
-        amountInUnits,
-        0,
-      );
-      return ethers.utils.formatUnits(quotedAmount, decOut);
-    } catch (error) {
-      this.logger.error('Error getting quote:', error);
-      throw new BadRequestException(`Error getting quote: ${error.message}`);
-    }
-  }
-
   async getQuoteV2(tokenIn: string, tokenOut: string, amountIn: number) {
     try {
       // Fetch decimals in parallel
@@ -175,19 +136,25 @@ export class DexService {
     }
   }
 
-  async getQuoteSlow(tokenIn: string, tokenOut: string, amountIn: string) {
-    const [decIn, decOut] = await Promise.all([
-      this.getTokenDecimals(tokenIn),
-      this.getTokenDecimals(tokenOut),
-    ]);
-    return await this.bestRouteFinder.findBestRoute(
-      tokenIn,
-      decIn,
-      tokenOut,
-      decOut,
-      ethers.utils.parseUnits(amountIn, decIn).toBigInt(),
-    );
+  async getQuote(tokenIn: string, tokenOut: string, amountIn: string) {
+    try {
+      const [decIn, decOut] = await Promise.all([
+        this.getTokenDecimals(tokenIn),
+        this.getTokenDecimals(tokenOut),
+      ]);
+      return await this.bestRouteFinder.findBestRoute(
+        tokenIn,
+        decIn,
+        tokenOut,
+        decOut,
+        ethers.utils.parseUnits(amountIn, decIn).toBigInt(),
+      );
+    } catch (error) {
+      this.logger.error(`Error while getQuoteSlow`, error);
+      throw new InternalServerErrorException('Error while getQuoteSlow');
+    }
   }
+
   /**
    * Get price in usd per token
    * @param token_address
