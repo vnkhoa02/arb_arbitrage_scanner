@@ -27,7 +27,7 @@ export function getQuotePayload(
     tokenOutChainId: 1,
     type: 'EXACT_INPUT',
     urgency: 'normal',
-    protocols: ['V3', 'V2'],
+    protocols: ['V3'],
     autoSlippage: 'DEFAULT',
   };
 }

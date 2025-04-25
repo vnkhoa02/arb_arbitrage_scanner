@@ -2,42 +2,36 @@ import { RouteWithValidQuote } from '@uniswap/smart-order-router';
 import { Route, TokenIn, TokenOut } from '../types/quote';
 
 export function extractRoutes(data: RouteWithValidQuote[]): Route[] {
-  return data.flatMap((entry) => {
-    const amountIn = entry.amount.numerator.toString();
-    const amountOut = entry.quote.numerator.toString();
-    const route = entry.route as any;
+  return data
+    .map((entry) => {
+      const tokens = entry.tokenPath;
+      return tokens.map((t) => {
+        const tokenIn: TokenIn = {
+          chainId: t.chainId,
+          decimals: String(t.decimals),
+          address: t.address,
+          symbol: t?.symbol,
+        };
+        const tokenOut: TokenOut = {
+          chainId: t.chainId,
+          decimals: String(t.decimals),
+          address: t.address,
+          symbol: t?.symbol,
+        };
 
-    if (!route?.pools?.length) return [];
-
-    return route.pools.map((pool) => {
-      const tokenIn: TokenIn = {
-        chainId: pool.token0.chainId,
-        decimals: String(pool.token0.decimals),
-        address: pool.token0.address,
-        symbol: pool.token0.symbol,
-      };
-
-      const tokenOut: TokenOut = {
-        chainId: pool.token1.chainId,
-        decimals: String(pool.token1.decimals),
-        address: pool.token1.address,
-        symbol: pool.token1.symbol,
-      };
-
-      const r: Route = {
-        type: entry.protocol,
-        address: '', // You can update this if needed
-        tokenIn,
-        tokenOut,
-        fee: String(pool.fee),
-        liquidity: pool?.liquidity?.toString?.(),
-        sqrtRatioX96: pool?.sqrtRatioX96?.toString?.(),
-        tickCurrent: pool?.tickCurrent?.toString?.(),
-        amountIn,
-        amountOut,
-      };
-
-      return r;
-    });
-  });
+        const r: Route = {
+          type: entry.protocol, // e.g. "V3"
+          address: '', // if you have pool contract address, fill here
+          tokenIn,
+          tokenOut,
+          fee: String(t.fee),
+          liquidity: t?.liquidity.shift(),
+          sqrtRatioX96: t?.sqrtRatioX96?.shift(),
+          tickCurrent: t?.tickCurrent?.toString(),
+        };
+        return r;
+      });
+    })
+    .filter(Boolean)
+    .flat();
 }

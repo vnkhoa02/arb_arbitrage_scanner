@@ -3,7 +3,7 @@ import { CurrencyAmount, Percent, Token, TradeType } from '@uniswap/sdk-core';
 import { AlphaRouter } from '@uniswap/smart-order-router';
 import { provider } from './config/provider';
 import { ethers } from 'ethers';
-import { RouteOptions, RouteResult } from './types/route';
+import { RouteOptions } from './types/route';
 import { extractRoutes } from './utils/extractRouts';
 
 enum UniversalRouterVersion {
@@ -37,7 +37,9 @@ export class BestRouteFinder {
     tokenOutAddress: string,
     tokenOutDecimals: number,
     amountInRaw: string | bigint,
-    options: RouteOptions = {},
+    options: RouteOptions = {
+      recipient: '0x0CF9Dcf86Ec3A20BF54E852E99823f2978552ED1',
+    },
   ) {
     // Wrap tokens for SDK
     const tokenIn = new Token(this.chainId, tokenInAddress, tokenInDecimals);
@@ -51,10 +53,10 @@ export class BestRouteFinder {
     // Set trade type Exact Input (0)
     const tradeType = TradeType.EXACT_INPUT;
 
-    // Default slippage 0.5% and 30m deadline
+    // Default slippage 0.5% and 10m deadline
     const slippage = options.slippageTolerance ?? new Percent(50, 10_000);
     const deadline = Math.floor(
-      Date.now() / 1000 + (options.deadlineSeconds ?? 1800),
+      Date.now() / 1000 + (options?.deadlineSeconds ?? 600),
     );
     const recipient = options?.recipient ?? ethers.constants.AddressZero;
 

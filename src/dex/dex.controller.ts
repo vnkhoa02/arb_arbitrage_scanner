@@ -17,7 +17,7 @@ export class DexController {
     return this.dexService.getTokenBasicInfo(tokenAddress);
   }
 
-  @Get('quotes')
+  @Get('quote')
   async getQuote(@Query() query: any) {
     return await this.dexService.getQuoteV2(
       query.tokenIn,
@@ -26,7 +26,7 @@ export class DexController {
     );
   }
 
-  @Get('route')
+  @Get('quote/slow')
   async getBestRoute(@Query() query: any) {
     const tokenIn = query?.tokenIn;
     const tokenOut = query?.tokenOut;
