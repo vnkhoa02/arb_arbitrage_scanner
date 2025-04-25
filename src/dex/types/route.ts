@@ -1,4 +1,5 @@
 import { Percent } from '@uniswap/sdk-core';
+import { Route } from './quote';
 
 export interface RouteOptions {
   slippageTolerance?: Percent;
@@ -8,9 +9,9 @@ export interface RouteOptions {
 
 export interface RouteResult {
   quote: string;
-  quoteGasAdjusted: string;
+  amountOut: string;
   gasUsed: bigint;
   gasPriceWei: bigint;
-  calldata: string;
-  value: bigint;
+  value?: bigint;
+  routes: Route[][];
 }

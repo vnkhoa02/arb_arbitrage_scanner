@@ -1,8 +1,8 @@
 import { RouteWithValidQuote } from '@uniswap/smart-order-router';
 import { Route, TokenIn, TokenOut } from '../types/quote';
 
-export function extractRoutes(data: RouteWithValidQuote[]): Route[] {
-  return data.flatMap((entry) => {
+export function extractRoutes(data: RouteWithValidQuote[]): Route[][] {
+  return data.map((entry) => {
     const route = entry.route as any;
     if (!route?.pools?.length || !route?.tokenPath?.length) return [];
 

@@ -4,7 +4,7 @@ import { CurrencyAmount, Percent, Token, TradeType } from '@uniswap/sdk-core';
 import { AlphaRouter } from '@uniswap/smart-order-router';
 import { provider } from './config/provider';
 import { ethers } from 'ethers';
-import { RouteOptions } from './types/route';
+import { RouteOptions, RouteResult } from './types/route';
 import { extractRoutes } from './utils/extractRouts';
 
 enum UniversalRouterVersion {
@@ -42,7 +42,7 @@ export class BestRouteFinder {
     options: RouteOptions = {
       recipient: '0x0CF9Dcf86Ec3A20BF54E852E99823f2978552ED1',
     },
-  ) {
+  ): Promise<RouteResult> {
     // Wrap tokens for SDK
     const tokenIn = new Token(this.chainId, tokenInAddress, tokenInDecimals);
     const tokenOut = new Token(this.chainId, tokenOutAddress, tokenOutDecimals);
@@ -76,8 +76,8 @@ export class BestRouteFinder {
     }
     const routes = extractRoutes(route.route);
     return {
-      quote: route.quote.toFixed(),
-      quoteGasAdjusted: route.quoteGasAdjusted.toFixed(tokenOut.decimals),
+      quote: route.quoteGasAdjusted.toFixed(tokenOut.decimals),
+      amountOut: route.quote.toFixed(),
       gasUsed: route.estimatedGasUsed.toBigInt(),
       gasPriceWei: route.gasPriceWei.toBigInt(),
       value: BigInt(route.methodParameters.value || '0'),
