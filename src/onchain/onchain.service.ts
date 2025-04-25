@@ -109,7 +109,7 @@ export class OnchainService implements OnModuleInit {
     this.logger.log('Searching for arbitrage trade...');
 
     const profitableRoutes = [];
-    const chunkedPools = chunk(x_weth, 10); // Adjust size to control concurrency
+    const chunkedPools = chunk(x_weth.slice(0, 500), 10); // Adjust size to control concurrency
 
     for (const group of chunkedPools) {
       const results = await Promise.all(
@@ -122,15 +122,11 @@ export class OnchainService implements OnModuleInit {
               1,
             );
             if (result.roundTrip.isProfitable) {
-              this.logger.log(
-                `✅ Profitable arbitrage in ${pool.token0.symbol}/${pool.token1.symbol} [${pool.id}]`,
-                result,
-              );
               return { poolId: pool.id, result };
             }
           } catch (err) {
             this.logger.warn(
-              `⚠️ Error in ${pool.token0.symbol}/${pool.token1.symbol} [${pool.id}]: ${err.message}`,
+              `⚠️ Error in ${pool.token0.symbol} [${pool.id}]: ${err.message}`,
             );
           }
           return null;

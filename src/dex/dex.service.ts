@@ -142,13 +142,17 @@ export class DexService {
         this.getTokenDecimals(tokenIn),
         this.getTokenDecimals(tokenOut),
       ]);
-      return await this.bestRouteFinder.findBestRoute(
+      const result = await this.bestRouteFinder.findBestRoute(
         tokenIn,
         decIn,
         tokenOut,
         decOut,
         ethers.utils.parseUnits(amountIn, decIn).toBigInt(),
       );
+      return {
+        route: result.routes,
+        amountOut: result.amountOut,
+      };
     } catch (error) {
       this.logger.error(`Error while getQuoteSlow`, error);
       throw new InternalServerErrorException('Error while getQuoteSlow');
@@ -168,6 +172,26 @@ export class DexService {
       },
     });
     return data.usdPrice;
+  }
+
+  /** Evaluate a single-direction arbitrage leg and return fee & price. */
+  async evaluateArbitrage(
+    tokenIn: string,
+    tokenOut: string,
+    amountIn: number | string,
+  ): Promise<ArbPathResult> {
+    const { amountOut, route } = await this.getQuote(
+      tokenIn,
+      tokenOut,
+      amountIn.toString(),
+    );
+    return {
+      route,
+      amountOut,
+      amountIn,
+      tokenIn,
+      tokenOut,
+    };
   }
 
   /** Evaluate a single-direction arbitrage leg and return fee & price. */

@@ -1,6256 +1,7 @@
-const usdt_x = [
-  {
-    feeTier: '3000',
-    id: '0x19f83460e387f1b01f94b85c2532ebc15b0b712e',
-    liquidity: '2499870996906169499',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfa14fa6958401314851a17d6c5360ca29f74b57b',
-      name: 'SAITO',
-      symbol: 'SAITO',
-    },
-    volumeUSD: '113854975.0089663376533516385332199',
-  },
-  {
-    feeTier: '10000',
-    id: '0xbe3cd9b751360a8030770425acf947c8cb4cab38',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xed04915c23f00a313a544955524eb7dbd823143d',
-      name: 'Alchemy',
-      symbol: 'ACH',
-    },
-    volumeUSD: '82693700.800912455992936357204263',
-  },
-  {
-    feeTier: '3000',
-    id: '0xa109209a2380fd4454b0364c4689f6de18ad18cc',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xed328e9c1179a30ddc1e7595e036aed8760c22af',
-      name: 'Metacade',
-      symbol: 'MCADE',
-    },
-    volumeUSD: '58143350.92659648368920874472438933',
-  },
-  {
-    feeTier: '3000',
-    id: '0x7736b5006d90d5d5c0ee8148f1ea07ef82ab1677',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xdddddd4301a082e62e84e43f474f044423921918',
-      name: 'DeversiFi Token',
-      symbol: 'DVF',
-    },
-    volumeUSD: '57863098.64516288675335475676303147',
-  },
-  {
-    feeTier: '3000',
-    id: '0x2eb8f5708f238b0a2588f044ade8dea7221639ab',
-    liquidity: '67391204873787',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf1ca9cb74685755965c7458528a36934df52a3ef',
-      name: 'AVINOC Token',
-      symbol: 'AVINOC',
-    },
-    volumeUSD: '31418071.77952588964938628609291865',
-  },
-  {
-    feeTier: '3000',
-    id: '0x80fa4c1fd0fbb9a4f071999af69531dee1016644',
-    liquidity: '56374581885943927',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb',
-      name: 'ether.fi governance token',
-      symbol: 'ETHFI',
-    },
-    volumeUSD: '31268590.73947297660354749318540078',
-  },
-  {
-    feeTier: '3000',
-    id: '0x9275e26bfb23b18bebb07bff45e85110f60963e9',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xef952363c1d990a2fa58f8b379a9fa33bad1dfd1',
-      name: 'LynKey',
-      symbol: 'LYNK',
-    },
-    volumeUSD: '29077691.4101786988114054213839993',
-  },
-  {
-    feeTier: '100',
-    id: '0xc275a7390966e4bcbf331b837cd7316c4a3efa83',
-    liquidity: '1111111525981099413944',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfa2b947eec368f42195f24f36d2af29f7c24cec2',
-      name: 'Falcon USD',
-      symbol: 'USDf',
-    },
-    volumeUSD: '15968632.21734264669407191783723764',
-  },
-  {
-    feeTier: '3000',
-    id: '0xc07044d4b947e7c5701f1922db048c6b47799b84',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xdef1ca1fb7fbcdc777520aa7f396b4e015f497ab',
-      name: 'CoW Protocol Token',
-      symbol: 'COW',
-    },
-    volumeUSD: '7359611.419742658969842785281279188',
-  },
-  {
-    feeTier: '3000',
-    id: '0x7cc38463812dcb87ad9d0c6a66547308e82689ee',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf16e81dce15b08f326220742020379b855b87df9',
-      name: 'IceToken',
-      symbol: 'ICE',
-    },
-    volumeUSD: '6836360.546033968521076887671575422',
-  },
-  {
-    feeTier: '10000',
-    id: '0x9cd0d20ca1db098d85b553a19d8816104f9878bf',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xff8c479134a18918059493243943150776cf8cf2',
-      name: 'Renq Finance',
-      symbol: 'RENQ',
-    },
-    volumeUSD: '5534660.514224066809688564666880749',
-  },
-  {
-    feeTier: '3000',
-    id: '0x38265fd46cae892f03c65d287738f37940c71812',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xed0d5747a9ab03a75fbfec3228cd55848245b75d',
-      name: 'Next Generation Money',
-      symbol: 'NGM',
-    },
-    volumeUSD: '5074886.056610806032695873666718089',
-  },
-  {
-    feeTier: '10000',
-    id: '0x7990e8be7612925826381961a0e8752e23ddeca7',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xed40834a13129509a89be39a9be9c0e96a0ddd71',
-      name: 'Warp Token',
-      symbol: 'WARP',
-    },
-    volumeUSD: '5011369.412543824146901838266264826',
-  },
-  {
-    feeTier: '10000',
-    id: '0x39f9ff86479579952e7218c27ab9d2a9ff9bfe3e',
-    liquidity: '104750724554105116',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3',
-      name: 'Ondo',
-      symbol: 'ONDO',
-    },
-    volumeUSD: '4916647.403942688551521154968056873',
-  },
-  {
-    feeTier: '3000',
-    id: '0x51c2e82b1d0815eda5f21d63795a77774e988e50',
-    liquidity: '64679559748232329',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '10',
-      id: '0xdae0fafd65385e7775cf75b1398735155ef6acd2',
-      name: 'Truth',
-      symbol: 'TRU',
-    },
-    volumeUSD: '4374877.688567534756464892768294513',
-  },
-  {
-    feeTier: '3000',
-    id: '0xe2a210ec9ebd39a784071ce4966c47319b758fdc',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xed04915c23f00a313a544955524eb7dbd823143d',
-      name: 'Alchemy',
-      symbol: 'ACH',
-    },
-    volumeUSD: '3535458.813461147332950700586153212',
-  },
-  {
-    feeTier: '500',
-    id: '0x4c37048089eb53ebf822afc27121b106e641a6b5',
-    liquidity: '35236658849958',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '9',
-      id: '0xfcaa8eef70f373e00ac29208023d106c846259ee',
-      name: 'GizaSwap',
-      symbol: 'GIZA',
-    },
-    volumeUSD: '3303818.939531928788969852352887626',
-  },
-  {
-    feeTier: '3000',
-    id: '0x3902428a74a08a91e2cb2fd834de75e69974fe67',
-    liquidity: '28351528942586966',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfc82bb4ba86045af6f327323a46e80412b91b27d',
-      name: 'Token Prometeus Network',
-      symbol: 'PROM',
-    },
-    volumeUSD: '3261073.048269865855667622680170157',
-  },
-  {
-    feeTier: '3000',
-    id: '0x21202591a02ee22ecc9a4e3a11ab2cf8956f5b07',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe939f011a3d8fc0aa874c97e8156053a903d7176',
-      name: 'Dolz',
-      symbol: 'DOLZ',
-    },
-    volumeUSD: '3193917.983494676492325571350790754',
-  },
-  {
-    feeTier: '10000',
-    id: '0xeee645ef3736d63358852dec46be7cda61e5aeef',
-    liquidity: '9528974453260',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '7',
-      id: '0xee7527841a932d2912224e20a405e1a1ff747084',
-      name: 'Stronghold SHx',
-      symbol: 'SHX',
-    },
-    volumeUSD: '2749725.47967694483883484468071605',
-  },
-  {
-    feeTier: '10000',
-    id: '0x291db2c056d94017e67725e5133528851a156cd0',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xdb82c0d91e057e05600c8f8dc836beb41da6df14',
-      name: 'Smart Layer Network Token',
-      symbol: 'SLN',
-    },
-    volumeUSD: '2638033.049330300661232592991398569',
-  },
-  {
-    feeTier: '3000',
-    id: '0x4de67c57e883cc00a92a1dcd4a739f0a5b5089ff',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfe3e6a25e6b192a42a44ecddcd13796471735acf',
-      name: 'Reef.finance',
-      symbol: 'REEF',
-    },
-    volumeUSD: '2372478.185038140646849570898202377',
-  },
-  {
-    feeTier: '500',
-    id: '0xb06abbe96b347d1a8bbc17672b08c48509a009e4',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf0b692ace03ffb689628e68d4919f91723d1c5a2',
-      name: 'SEX DAO',
-      symbol: 'SED',
-    },
-    volumeUSD: '2076056.700666020258012778502478031',
-  },
-  {
-    feeTier: '3000',
-    id: '0xd6b25525bad29aeee6f592550355bacc403303a8',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf4d2888d29d722226fafa5d9b24f9164c092421e',
-      name: 'LooksRare Token',
-      symbol: 'LOOKS',
-    },
-    volumeUSD: '2059522.392824391059290294358977443',
-  },
-  {
-    feeTier: '3000',
-    id: '0xaade01fc97afa48edf8dd16c8aad5bb1a222d3ab',
-    liquidity: '31824229139360805',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf85ba4a69ae05308249f19f5a25e9be765576340',
-      name: 'Antares DeFi Token',
-      symbol: 'ANTd',
-    },
-    volumeUSD: '1804711.515400398678581082152182918',
-  },
-  {
-    feeTier: '500',
-    id: '0xe3704bb68f505ee8a1a664d0776029c4e4e6c2ef',
-    liquidity: '932861953910115687',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe07ecc676daf0b24b24a1c46c966d9c463984b38',
-      name: 'USEU',
-      symbol: 'USEU',
-    },
-    volumeUSD: '1767464.624612532651301933890694341',
-  },
-  {
-    feeTier: '3000',
-    id: '0xf1666c2e04eeab81b839e77b5d2cc85bac380994',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe516d78d784c77d479977be58905b3f2b1111126',
-      name: 'BitSpawn Token',
-      symbol: 'SPWN',
-    },
-    volumeUSD: '1571409.726702839750044944114858935',
-  },
-  {
-    feeTier: '10000',
-    id: '0x76d80ff4be1d77c5c0eae498698f7475c85acac0',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf16e81dce15b08f326220742020379b855b87df9',
-      name: 'IceToken',
-      symbol: 'ICE',
-    },
-    volumeUSD: '1520620.321968217638926270323866017',
-  },
-  {
-    feeTier: '10000',
-    id: '0x918674ad038506ed38b292ead059b1385592fb47',
-    liquidity: '781362537208034217',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfa1b1f13080857bf373de0de93970c96d2c29fd0',
-      name: 'Ondo DeFAI',
-      symbol: 'ONDOAI',
-    },
-    volumeUSD: '1422070.266726903741155502586072736',
-  },
-  {
-    feeTier: '3000',
-    id: '0xb71a1a57d79893ec4fefc252e8e623575bb044be',
-    liquidity: '77148852195',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xec56840be7c495cbf98c0157b458cd207ff85da1',
-      name: 'Wrapped RUNI',
-      symbol: 'wRUNI',
-    },
-    volumeUSD: '1351510.592433755105749644312495365',
-  },
-  {
-    feeTier: '10000',
-    id: '0x9d442a1444f36c9a6c3f921dcd06e5d0c20299e3',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe453c3409f8ad2b1fe1ed08e189634d359705a5b',
-      name: 'DGI Game',
-      symbol: 'DGI',
-    },
-    volumeUSD: '1347323.543618587534393326745756666',
-  },
-  {
-    feeTier: '500',
-    id: '0xb0791b1ced7228b1e1b2dccb190a412b95ed0462',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xeae92a4582957e19c5f5d697c6e1ba9efd7d0c43',
-      name: 'Command Token',
-      symbol: 'CMD',
-    },
-    volumeUSD: '1333854.401505296688360319078292297',
-  },
-  {
-    feeTier: '3000',
-    id: '0x200ac088da37d50ae5daed87b509719a8d32b2d8',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe7c3755482d0da522678af05945062d4427e0923',
-      name: 'ALEX',
-      symbol: 'ALEX',
-    },
-    volumeUSD: '1297982.921179493426249235270156027',
-  },
-  {
-    feeTier: '3000',
-    id: '0x57d8d016cd297043c742f4d1a1d53b0e21483165',
-    liquidity: '10553267255684097',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfd4f2caf941b6d737382dce420b368de3fc7f2d4',
-      name: 'Patex Token',
-      symbol: 'PATEX',
-    },
-    volumeUSD: '1297795.711495782327550931432269016',
-  },
-  {
-    feeTier: '3000',
-    id: '0xb31a38f4e228ca8d0873ddb3530a89ac80aafdf4',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xe5caef4af8780e59df925470b050fb23c43ca68c',
-      name: 'Ferrum Network Token',
-      symbol: 'FRM',
-    },
-    volumeUSD: '1271488.792049119252959726962229826',
-  },
-  {
-    feeTier: '10000',
-    id: '0x1ed69f74a2f276947ed97af3a40325aff30eac9a',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xff9c1f21c621696c4f91cf781ec31bd913ee2c26',
-      name: '.com',
-      symbol: '.com',
-    },
-    volumeUSD: '1227117.033239341795232602856913637',
-  },
-  {
-    feeTier: '3000',
-    id: '0xd6899675ee7a34df0fec1f997499e4080f337423',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfa1b1f13080857bf373de0de93970c96d2c29fd0',
-      name: 'Ondo DeFAI',
-      symbol: 'ONDOAI',
-    },
-    volumeUSD: '1145580.362688118304031365162532697',
-  },
-  {
-    feeTier: '10000',
-    id: '0x3fd2fe4006c48b7ba2cbb5426ca0cf6ca570ee02',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xedadeb5faa413e6c8623461849dfd0b7c3790c32',
-      name: 'OBORTECH',
-      symbol: 'OBOT',
-    },
-    volumeUSD: '1096693.528414344090026266044111039',
-  },
-  {
-    feeTier: '3000',
-    id: '0x2a372c76aff0b6393c12520566a626fa6810f4c0',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xde30da39c46104798bb5aa3fe8b9e0e1f348163f',
-      name: 'Gitcoin',
-      symbol: 'GTC',
-    },
-    volumeUSD: '1080047.356032844846613268441566388',
-  },
-  {
-    feeTier: '10000',
-    id: '0x7a6afca7d92f457d8b01061c816f7d5babaa4a03',
-    liquidity: '369719953545952',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe66b3aa360bb78468c00bebe163630269db3324f',
-      name: 'Merchant Token',
-      symbol: 'MTO',
-    },
-    volumeUSD: '979518.2745964722604221906610908066',
-  },
-  {
-    feeTier: '3000',
-    id: '0xb65859e27e7bac92f806c04258372e3be314a502',
-    liquidity: '2756431829',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '0',
-      id: '0xf5b5efc906513b4344ebabcf47a04901f99f09f3',
-      name: 'UBX',
-      symbol: 'UBX',
-    },
-    volumeUSD: '978864.5109941011845074854512873422',
-  },
-  {
-    feeTier: '3000',
-    id: '0x7373126710174da79118a553731bd702c89244b1',
-    liquidity: '731911388200644176',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xff8c479134a18918059493243943150776cf8cf2',
-      name: 'Renq Finance',
-      symbol: 'RENQ',
-    },
-    volumeUSD: '971706.6328476016294000454402217109',
-  },
-  {
-    feeTier: '3000',
-    id: '0x5f0b233671153ce0c1c1ab713a0bb077cf323071',
-    liquidity: '1025573392488',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xed11c9bcf69fdd2eefd9fe751bfca32f171d53ae',
-      name: 'Koinos',
-      symbol: 'KOIN',
-    },
-    volumeUSD: '968121.1832018397776491811409675382',
-  },
-  {
-    feeTier: '3000',
-    id: '0x7c7b2ac3bd6376886333868db084dfebe6be6795',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe0ffddf8fd7d63cf907e433c9293069704d4d40d',
-      name: 'Fightout',
-      symbol: 'FGHT',
-    },
-    volumeUSD: '963452.9403074644327928015735930684',
-  },
-  {
-    feeTier: '3000',
-    id: '0x4b59b383948ee7d5466022f8c048209b86f633ec',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf5c583affda8dfbefec2cd5c072dc78e9250cce5',
-      name: 'Yieldflow',
-      symbol: 'YFLOW',
-    },
-    volumeUSD: '902908.3799210996470624857589448755',
-  },
-  {
-    feeTier: '10000',
-    id: '0xd6c1b2469565be541971bf860627720dbd645dce',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfb7b4564402e5500db5bb6d63ae671302777c75a',
-      name: 'DEXTools',
-      symbol: 'DEXT',
-    },
-    volumeUSD: '692035.48495316587507755382987248',
-  },
-  {
-    feeTier: '10000',
-    id: '0x402cb412aa0311cc58a94cd9485413532eaa23dc',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xec53bf9167f50cdeb3ae105f56099aaab9061f83',
-      name: 'Eigen',
-      symbol: 'EIGEN',
-    },
-    volumeUSD: '686413.2344122373296039608981227454',
-  },
-  {
-    feeTier: '500',
-    id: '0x491c5ed26fad0967d51eef447d165df52b3856f2',
-    liquidity: '243234086252',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfe39c384d702914127a005523f9915addb9bd59b',
-      name: 'Hippocrat',
-      symbol: 'HPO',
-    },
-    volumeUSD: '668787.7902565961354532825577891924',
-  },
-  {
-    feeTier: '10000',
-    id: '0x141aae4c91b8e66e98effa7768af8c57108f107f',
-    liquidity: '47524201707936862',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf65b5c5104c4fafd4b709d9d60a185eae063276c',
-      name: 'Truebit',
-      symbol: 'TRU',
-    },
-    volumeUSD: '659921.355451586007625550051549164',
-  },
-  {
-    feeTier: '3000',
-    id: '0x0e183a9fec85c7c083c163a6f67ae8be3e140207',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf34b1db61aca1a371fe97bad2606c9f534fb9d7d',
-      name: 'Arbismart Token',
-      symbol: 'RBIS',
-    },
-    volumeUSD: '603408.6977272773568280585115395075',
-  },
-  {
-    feeTier: '3000',
-    id: '0x779174236cb65f61448926152d402437f439d2bc',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe8fc52b1bb3a40fd8889c0f8f75879676310ddf0',
-      name: 'Mystiko Token',
-      symbol: 'XZK',
-    },
-    volumeUSD: '602215.3765251832374753599595218875',
-  },
-  {
-    feeTier: '10000',
-    id: '0xe8818e9666ff824c56135675a182d9153d279f8e',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe9572938bcbf08adcee86fd12a7c0d08dc4ab841',
-      name: 'Inscribe',
-      symbol: 'INS',
-    },
-    volumeUSD: '585865.6569139980537028596397926809',
-  },
-  {
-    feeTier: '3000',
-    id: '0x95d438c593f16d4e0ea0877373c457dc660e17d7',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfa704148d516b209d52c2d75f239274c8f8eaf1a',
-      name: 'wOCTA',
-      symbol: 'wOCTA',
-    },
-    volumeUSD: '578466.2722383148804726005417441802',
-  },
-  {
-    feeTier: '3000',
-    id: '0x8b31f10b1e43fed91dcfc7bca351f8cd5c0b0a2b',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe0c8b298db4cffe05d1bea0bb1ba414522b33c1b',
-      name: 'NCDToken',
-      symbol: 'NCDT',
-    },
-    volumeUSD: '558638.3340803725362454931445010714',
-  },
-  {
-    feeTier: '3000',
-    id: '0x747a87bd0d701de6aab92d7eb366591f93b2d0fe',
-    liquidity: '1317553819816',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xfb19075d77a0f111796fb259819830f4780f1429',
-      name: 'Fenerbahce Token',
-      symbol: 'FB',
-    },
-    volumeUSD: '558462.2022610855258478732558882508',
-  },
-  {
-    feeTier: '3000',
-    id: '0xd9a1594e7af2f3b31f2e2abe9ff4c3d18478db08',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf9fa60ef4f23f00cce403cc4d2c11baf4880a0d6',
-      name: 'FARCANA',
-      symbol: 'FAR',
-    },
-    volumeUSD: '509978.5866883490224475513095291713',
-  },
-  {
-    feeTier: '100',
-    id: '0x49a294ce1edb6782a2e7e96ab29858d0c09599d4',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xe831f96a7a1dce1aa2eb760b1e296c6a74caa9d5',
-      name: 'Nexum Coin',
-      symbol: 'NEXM',
-    },
-    volumeUSD: '497001.2561047870926246255623661428',
-  },
-  {
-    feeTier: '3000',
-    id: '0x54391669a4dd8ca24cde86074d4ac6b6f6c9ec37',
-    liquidity: '114411811',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '2',
-      id: '0xe52a736828c782c2a4a345bbe8052aed010fc82d',
-      name: 'Huanghuali Token',
-      symbol: 'HLT',
-    },
-    volumeUSD: '468619.2280084998404189972129501497',
-  },
-  {
-    feeTier: '10000',
-    id: '0x33cffed9848b8fa7bcce0cfc1cb9a7f637c78e50',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xdc8af07a7861bedd104b8093ae3e9376fc8596d2',
-      name: 'Rocket Vault',
-      symbol: 'RVF',
-    },
-    volumeUSD: '444208.805834',
-  },
-  {
-    feeTier: '3000',
-    id: '0xff93bd4446cdf0ba86dee0d7ac90fa099f76f797',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xec67005c4e498ec7f55e092bd1d35cbc47c91892',
-      name: 'Melon Token',
-      symbol: 'MLN',
-    },
-    volumeUSD: '424133.2561789081882139448648359371',
-  },
-  {
-    feeTier: '10000',
-    id: '0x2ac81052aa940c61178a612496528a2cbed0a800',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xdef1ca1fb7fbcdc777520aa7f396b4e015f497ab',
-      name: 'CoW Protocol Token',
-      symbol: 'COW',
-    },
-    volumeUSD: '415930.9193356194580868966460444186',
-  },
-  {
-    feeTier: '10000',
-    id: '0x8842d44c207b84739a69513410f3b6bd26dd499c',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe76c6c83af64e4c60245d8c7de953df673a7a33d',
-      name: 'Rail',
-      symbol: 'RAIL',
-    },
-    volumeUSD: '399083.6621782561569116440810829278',
-  },
-  {
-    feeTier: '10000',
-    id: '0xeb23039d6542a413839f5a9e1e8df16563e1d0fb',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xdb5c3c46e28b53a39c255aa39a411dd64e5fed9c',
-      name: 'Neos Credits',
-      symbol: 'NCR',
-    },
-    volumeUSD: '397173.4449873050416730458528408007',
-  },
-  {
-    feeTier: '500',
-    id: '0x6e4b8e743bf016df0f55ae246a94cd9a338f1c1a',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf07391673d3861406ea65584155abedb2abff0b7',
-      name: 'CPFINANCE',
-      symbol: 'CPF',
-    },
-    volumeUSD: '385026.6451225554374662613714334908',
-  },
-  {
-    feeTier: '10000',
-    id: '0x1415fe5ce521ff1eee3f195075412adfe5c4427a',
-    liquidity: '274391556598984641',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xeb55ad3f84c75960aba35143bc7128f0bcdfc0ef',
-      name: 'rats',
-      symbol: 'rats',
-    },
-    volumeUSD: '368694.6373829156228338084476277274',
-  },
-  {
-    feeTier: '3000',
-    id: '0x82ea0f02f1226b6d39267746839c592f333d986e',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfca59cd816ab1ead66534d82bc21e7515ce441cf',
-      name: 'Rarible',
-      symbol: 'RARI',
-    },
-    volumeUSD: '355717.0518088143575887059118461063',
-  },
-  {
-    feeTier: '3000',
-    id: '0x8147aeb1cb347a781d97644af6c284003f11db74',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe41d2489571d322189246dafa5ebde1f4699f498',
-      name: '0x Protocol Token',
-      symbol: 'ZRX',
-    },
-    volumeUSD: '341606.0912434557151081695838244791',
-  },
-  {
-    feeTier: '10000',
-    id: '0x5134c6edf6ec3b10dc52744db354d2b4ebca4b33',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf1182229b71e79e504b1d2bf076c15a277311e05',
-      name: 'LBR',
-      symbol: 'LBR',
-    },
-    volumeUSD: '331055.8500595032100308405180404232',
-  },
-  {
-    feeTier: '3000',
-    id: '0x16d19dd56d2cf11d2d898f15d3033afb8b1adafd',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xeef9f339514298c6a857efcfc1a762af84438dee',
-      name: 'Hermez Network Token',
-      symbol: 'HEZ',
-    },
-    volumeUSD: '320361.1180263672004083789088133524',
-  },
-  {
-    feeTier: '3000',
-    id: '0x4a23749d6407aa9fa54fff38d1f5c792d46c781b',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf81df93ab37d5b1396139f294418b2741143b280',
-      name: 'PION Network',
-      symbol: 'PION',
-    },
-    volumeUSD: '317071.6128526027477316606788166754',
-  },
-  {
-    feeTier: '3000',
-    id: '0x1a754754f09d483d1b422e9df54ab37fb2f12c6e',
-    liquidity: '110656538976131321',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe2808d7298f0d4111ea1773d3320f5d80eab83e8',
-      name: 'WAVX',
-      symbol: 'WAVX',
-    },
-    volumeUSD: '244225.4125869445343374003719820024',
-  },
-  {
-    feeTier: '10000',
-    id: '0x9ba0e2fab185b0952e54c92e12673de2dac18a37',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '12',
-      id: '0xdd782657af86492771bdb369caeb8c246be362f5',
-      name: 'RUGame Labs',
-      symbol: 'RUG',
-    },
-    volumeUSD: '235043.6747571128408551450649820706',
-  },
-  {
-    feeTier: '500',
-    id: '0x7c470ed7a4f211418e0fea1df4a0ae4a0ecb8e6a',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe9572938bcbf08adcee86fd12a7c0d08dc4ab841',
-      name: 'Inscribe',
-      symbol: 'INS',
-    },
-    volumeUSD: '225953.8552218446217644939482129592',
-  },
-  {
-    feeTier: '500',
-    id: '0xe0d3928e05969f450ae4b851ade4c6fbf74e4dfb',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xee9e5eff401ee921b138490d00ca8d1f13f67a72',
-      name: 'Asian Fintech',
-      symbol: 'Afin',
-    },
-    volumeUSD: '225681.068198787645664938560593562',
-  },
-  {
-    feeTier: '10000',
-    id: '0x6c3ed7295061dbac761c87eaa63dd2523de55dd9',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xed35af169af46a02ee13b9d79eb57d6d68c1749e',
-      name: 'OMI Token',
-      symbol: 'OMI',
-    },
-    volumeUSD: '209020.6300065378135007422208551859',
-  },
-  {
-    feeTier: '10000',
-    id: '0xb3bf1f934dbe99bb0677ad104879e5a577324e8d',
-    liquidity: '479913470104534071',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf56bbe7dfbcf2a4b62b799e6f13f15738a82fd98',
-      name: 'X7',
-      symbol: 'X7',
-    },
-    volumeUSD: '207504.0815824096816790943358993679',
-  },
-  {
-    feeTier: '3000',
-    id: '0xa2f79182bca10ce96ca679e9c91a708ea0367cce',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf939e0a03fb07f59a73314e73794be0e57ac1b4e',
-      name: 'Curve.Fi USD Stablecoin',
-      symbol: 'crvUSD',
-    },
-    volumeUSD: '204855.5685376970146517903119564363',
-  },
-  {
-    feeTier: '10000',
-    id: '0x4ca74024f035f25488e40466573bc112e1544843',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xde4ce5447ce0c67920a1371605a39187cb6847c8',
-      name: 'Deesse',
-      symbol: 'LOVE',
-    },
-    volumeUSD: '203337.433162814834470745472086085',
-  },
-  {
-    feeTier: '500',
-    id: '0xfe05fbffa166f96a70477973a34e3cb3b081ff7d',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf939e0a03fb07f59a73314e73794be0e57ac1b4e',
-      name: 'Curve.Fi USD Stablecoin',
-      symbol: 'crvUSD',
-    },
-    volumeUSD: '201526.5513294328535783583294656942',
-  },
-  {
-    feeTier: '3000',
-    id: '0xbf2d5709edd257560a3994a00a27a11e901d950b',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf938424f7210f31df2aee3011291b658f872e91e',
-      name: 'VISOR',
-      symbol: 'VISR',
-    },
-    volumeUSD: '193862.7406869321272291954521392691',
-  },
-  {
-    feeTier: '3000',
-    id: '0x985ef1848539ba22ef6e901e6c78035ec445ab22',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf4b5470523ccd314c6b9da041076e7d79e0df267',
-      name: 'BlockBank',
-      symbol: 'BBANK',
-    },
-    volumeUSD: '188055.2918124547002418829849072696',
-  },
-  {
-    feeTier: '10000',
-    id: '0x8019c759f64da94a2f1b25795f41ab9187785004',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xde5ea375ffbdc8b25a80fe13d631e8ba0ab4bb02',
-      name: 'Gera',
-      symbol: 'GERA',
-    },
-    volumeUSD: '182756.5799242059454554076474535377',
-  },
-  {
-    feeTier: '10000',
-    id: '0xbd494dfc1f3e81fe0f648f6446f9bfb5bf0bdcc6',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '9',
-      id: '0xdc054ec9ba00c0908ce346d05fef72c91c26717a',
-      name: 'YUAN 元',
-      symbol: 'YUAN',
-    },
-    volumeUSD: '182747.5950825305703617766298963606',
-  },
-  {
-    feeTier: '500',
-    id: '0x1a336ff8c330de628455ee93034806c0aca36eea',
-    liquidity: '14145784315090568411',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xffeca753fe3e1990067eef2f8b7155a8833784e8',
-      name: 'ENCORE',
-      symbol: 'ENC',
-    },
-    volumeUSD: '170872.0507486157761915324672988356',
-  },
-  {
-    feeTier: '3000',
-    id: '0xefd5a703244c2b13f957ff72aa64de137bd27660',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '9',
-      id: '0xeaa260c1d247135cec29ec10fb6acedf2a55dc6b',
-      name: 'TheADA',
-      symbol: 'TADA',
-    },
-    volumeUSD: '156222.468213',
-  },
-  {
-    feeTier: '10000',
-    id: '0xcf4c6c0074f812470321b734c0bc5af03520e0d7',
-    liquidity: '86468962067662214',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf9d4daae1300cff251979722c4a3c45857973079',
-      name: 'Castle',
-      symbol: 'CASTLE',
-    },
-    volumeUSD: '130084.2249367913548750370956145992',
-  },
-  {
-    feeTier: '10000',
-    id: '0x86dd9ed87b80b1666574495b02b285e22eed0afe',
-    liquidity: '307010645475927',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '10',
-      id: '0xe4b70f9ddbb286f3cfa836e0fd970479f3193252',
-      name: 'USD ZeroGas',
-      symbol: 'USDZ',
-    },
-    volumeUSD: '123398.1640327297582230316895227894',
-  },
-  {
-    feeTier: '10000',
-    id: '0x3bccebe76865c19f827c66df20a575ef52f9ba2b',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe6502cee5b040d813d0a9d8cba60c096a22e3ec9',
-      name: 'Conan',
-      symbol: 'vllc',
-    },
-    volumeUSD: '121253.9342732084746453034006073935',
-  },
-  {
-    feeTier: '3000',
-    id: '0xd8d893108f85468dfc5771d6da0045fb4beb5d30',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfd4168e642ebd04c3684a6cdb3a5e86de85d3908',
-      name: 'The APIs',
-      symbol: 'API',
-    },
-    volumeUSD: '119361.833906153461807413137413858',
-  },
-  {
-    feeTier: '3000',
-    id: '0x8e1f4f8b435b4e8640a43cae0610f903c81e644c',
-    liquidity: '138023884825',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xf197ffc28c23e0309b5559e7a166f2c6164c80aa',
-      name: 'MXNB',
-      symbol: 'MXNB',
-    },
-    volumeUSD: '103514.6298541082920332089376709593',
-  },
-  {
-    feeTier: '10000',
-    id: '0x1986ff16da17da5e5eea7f7aa2b62f403d02da48',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe8fc52b1bb3a40fd8889c0f8f75879676310ddf0',
-      name: 'Mystiko Token',
-      symbol: 'XZK',
-    },
-    volumeUSD: '92299.685645228357060423280807272',
-  },
-  {
-    feeTier: '10000',
-    id: '0x3425dd3e3d4f442143183247c15aa594f2270a24',
-    liquidity: '39772534301799',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf944e35f95e819e752f3ccb5faf40957d311e8c5',
-      name: 'Moca',
-      symbol: 'MOCA',
-    },
-    volumeUSD: '91805.70641644325464363669759923294',
-  },
-  {
-    feeTier: '3000',
-    id: '0xe3100bb16871d9f53a5bc8a659803811a4d08e59',
-    liquidity: '1580032616369935',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xec70ff4a5b09110e4d20ada4f2db4a86ec61fac6',
-      name: 'GRAPE',
-      symbol: 'GRP',
-    },
-    volumeUSD: '91684.15953446208986657483830982616',
-  },
-  {
-    feeTier: '3000',
-    id: '0x8eb7f5ba619900c3c85b4a41dae07feb02c3492f',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe29fd02c9a06b67bafac2a0b8088d84efeeb7623',
-      name: 'HKFLY',
-      symbol: 'HKF',
-    },
-    volumeUSD: '89834.354495',
-  },
-  {
-    feeTier: '10000',
-    id: '0x18875852835b38689295d374edd8dbb6129a16fe',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe2353069f71a27bbbe66eeabff05de109c7d5e19',
-      name: 'Bonsai3',
-      symbol: 'SEED',
-    },
-    volumeUSD: '89213.32474804527403641399747012521',
-  },
-  {
-    feeTier: '3000',
-    id: '0x17c750aba1673e23b1df33eb436594c3af009871',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe4815ae53b124e7263f08dcdbbb757d41ed658c6',
-      name: 'Zks',
-      symbol: 'ZKS',
-    },
-    volumeUSD: '82738.29026562552724543753637215621',
-  },
-  {
-    feeTier: '500',
-    id: '0xe90fbb3a6ab3839e5910984e30076b296ac93afd',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '2',
-      id: '0xdb25f211ab05b1c97d595516f45794528a807ad8',
-      name: 'STASIS EURS Token',
-      symbol: 'EURS',
-    },
-    volumeUSD: '80125.25108812591838743670364698228',
-  },
-  {
-    feeTier: '10000',
-    id: '0x3d6d13244074e0277bf1e7ddf9e0c28310d2dc3d',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xdb85f6685950e285b1e611037bebe5b34e2b7d78',
-      name: 'Wrapped Zano',
-      symbol: 'WZANO',
-    },
-    volumeUSD: '77279.823584',
-  },
-  {
-    feeTier: '10000',
-    id: '0x9277a25e1f4d0d3f23d9b39ab98f5d987af10313',
-    liquidity: '5935510615369701430',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xecacab6725ac1711d97e55df35d525b863b8b9f7',
-      name: 'Trillion',
-      symbol: 'TT',
-    },
-    volumeUSD: '73131.63146177887954469635046441548',
-  },
-  {
-    feeTier: '10000',
-    id: '0x83ca8479b56ea4db534493e266fd877149ab85e4',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xea4170a365952c666a9f34950771e51841732de9',
-      name: 'Filter AI',
-      symbol: 'FILTER',
-    },
-    volumeUSD: '70333.557865',
-  },
-  {
-    feeTier: '10000',
-    id: '0x2f8b8d2501c470d2e27485f832f5fa322f804684',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xebd9d99a3982d547c5bb4db7e3b1f9f14b67eb83',
-      name: 'Everest ID',
-      symbol: 'ID',
-    },
-    volumeUSD: '70293.92276470433985872168239236669',
-  },
-  {
-    feeTier: '3000',
-    id: '0x9701acd240767e28603c458276fb774af7006bbc',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xec213f83defb583af3a000b1c0ada660b1902a0f',
-      name: 'Presearch',
-      symbol: 'PRE',
-    },
-    volumeUSD: '67590.95097553807494584146886320678',
-  },
-  {
-    feeTier: '10000',
-    id: '0x4ba4ea17868645da561ee3f94db807a5f9f124f0',
-    liquidity: '138238282858824',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf5c771e0b749444eaec5c1f7ef5c0b93200bb0e4',
-      name: 'SONE Token',
-      symbol: 'SONE',
-    },
-    volumeUSD: '66776.96870050963206787469333370055',
-  },
-  {
-    feeTier: '10000',
-    id: '0xd4a3ab0619f34028caf362e67ab9a7f751a6cbd1',
-    liquidity: '1023712626730550',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe2ae1a99bbd2efab0a5c38f2146b7ace61abc5ce',
-      name: 'ordi',
-      symbol: 'ordi',
-    },
-    volumeUSD: '65040.40466191484646336004043889613',
-  },
-  {
-    feeTier: '100',
-    id: '0x7e9308c1fcf663ac08d9c0dda6c4353e5fdb1cde',
-    liquidity: '39330579504888755473',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfb12b89de65758ce1ce05406473794322a16ca34',
-      name: 'ARBITRUM',
-      symbol: 'ARB',
-    },
-    volumeUSD: '61288.282174',
-  },
-  {
-    feeTier: '10000',
-    id: '0x9564823c9383900c81e87190337bb995ef47be44',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfb5778205c0fee829bad5ee1b43062ff067103cc',
-      name: 'Unichain Finance Protocol',
-      symbol: 'UFP',
-    },
-    volumeUSD: '55412.07214713254355733925513804736',
-  },
-  {
-    feeTier: '10000',
-    id: '0xfef5feb817e40c78d467c0211a47393eedf2485c',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '9',
-      id: '0xe410fbd0977c8a2f276283425de488129f7faff9',
-      name: 'Sesterce',
-      symbol: 'SES',
-    },
-    volumeUSD: '54730.179918',
-  },
-  {
-    feeTier: '10000',
-    id: '0x0179eac7402915c64431019d76875a7e5d86f7fd',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfb83869f7ee52aebaddea254f647953afb1f99f8',
-      name: 'Lean Management Token',
-      symbol: 'LEAN',
-    },
-    volumeUSD: '51520.0436731362326181829060612781',
-  },
-  {
-    feeTier: '500',
-    id: '0x91b24319e9cfefa7454c3c33b3144a6108feb759',
-    liquidity: '1988685775593247',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xeb837ece90fd2d85ddd3ed129481c7333419f38b',
-      name: 'Rims Of Legend',
-      symbol: 'ROL',
-    },
-    volumeUSD: '49484.01094542212010726085599424963',
-  },
-  {
-    feeTier: '100',
-    id: '0x6a0717052ce0452c10a79852d3612566fc942f33',
-    liquidity: '1686667999848714343',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe9229776fbb2ebc93c1ce66c4db835280b25ca92',
-      name: 'ArabEconomicUnion',
-      symbol: 'LNA',
-    },
-    volumeUSD: '47195.66873324063837455825765358871',
-  },
-  {
-    feeTier: '3000',
-    id: '0x9738486435f65caaa98a807933591cf6bb4528e1',
-    liquidity: '745299832779471145',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf38774a034f5f533d7f9e2ba6b7f3a7542714fa9',
-      name: 'Hashstack',
-      symbol: 'HSTK',
-    },
-    volumeUSD: '46236.072825',
-  },
-  {
-    feeTier: '10000',
-    id: '0x3b364d5bfabafedb53233b1bf1ce03827e282a82',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe90cc7d807712b2b41632f3900c8bd19bdc502b1',
-      name: 'Kuma',
-      symbol: 'KUMA',
-    },
-    volumeUSD: '45596.11402173388994308097793215558',
-  },
-  {
-    feeTier: '3000',
-    id: '0x933d1aab4ea454a695c8be1fca69c1b380cf22ed',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfb5778205c0fee829bad5ee1b43062ff067103cc',
-      name: 'Unichain Finance Protocol',
-      symbol: 'UFP',
-    },
-    volumeUSD: '44145.93153410052204474373539826365',
-  },
-  {
-    feeTier: '3000',
-    id: '0x08c119404dddcce48182441fd1316ba02b2731ec',
-    liquidity: '89788267642427093',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf10057d7b887cfc0fe3cfc1fb326ece805334661',
-      name: 'Alpha Vantage Coin',
-      symbol: 'AVC',
-    },
-    volumeUSD: '42914.51733560370334842470238415836',
-  },
-  {
-    feeTier: '3000',
-    id: '0x3efc26a5435cb39d17a58168a316d7130a28be53',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf04a8ac553fcedb5ba99a64799155826c136b0be',
-      name: 'Flixx',
-      symbol: 'FLIXX',
-    },
-    volumeUSD: '42718.99489760953518002050070504141',
-  },
-  {
-    feeTier: '10000',
-    id: '0x53ce3934c9cd3a2ff2c963e03c804339b73e9c51',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfc1c93a2507975e98b9d0e9260ded61a00152bf1',
-      name: 'Atlas Navi',
-      symbol: 'NAVI',
-    },
-    volumeUSD: '42275.68342521368310507389322608488',
-  },
-  {
-    feeTier: '3000',
-    id: '0x661ad6c0aaf4e6e0399c3fb4835e8a777dc35472',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe97db8503dd3e3eb0286aafc50327c598efdb578',
-      name: 'Jinko',
-      symbol: 'JINKO',
-    },
-    volumeUSD: '41753.20402478417349995167759621217',
-  },
-  {
-    feeTier: '3000',
-    id: '0xd1527b96e2f186503ae262680d6b768ef7104946',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf6650117017ffd48b725b4ec5a00b414097108a7',
-      name: 'XIDO FINANCE',
-      symbol: 'XIDO',
-    },
-    volumeUSD: '40770.376418',
-  },
-  {
-    feeTier: '100',
-    id: '0x8b6ceba390c3c38a54fd9067cd647b008de40dd4',
-    liquidity: '11181109342065609',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xdafe2b7d99b95b0d4b3ea4eb366643debb1839c6',
-      name: 'Hokuto 7',
-      symbol: 'HKT',
-    },
-    volumeUSD: '39451.79473684401221014691154657053',
-  },
-  {
-    feeTier: '10000',
-    id: '0xa1b911c7837533230d3cea435d81a8feb438985e',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '9',
-      id: '0xe58a90628052c5f8827f4f0f60b43d46a3930724',
-      name: 'ButtonTranche AMPL B',
-      symbol: 'TRANCHE-AMPL-B',
-    },
-    volumeUSD: '39186.493829',
-  },
-  {
-    feeTier: '100',
-    id: '0xe29c0aa6fdce0cdbd18dee7865fcd4b9d8cdb15a',
-    liquidity: '16509172749',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xfb1172b050bcc798e37ae8abf620cc528e771162',
-      name: 'GoMeat',
-      symbol: 'GOMT',
-    },
-    volumeUSD: '39181.04844278047402779420229582112',
-  },
-  {
-    feeTier: '3000',
-    id: '0x6569b2f023457e2a84181529c059269290d84af1',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf3d127db17136dea1887dfbafdbbf8ee1177f1aa',
-      name: 'PIP',
-      symbol: 'PIP',
-    },
-    volumeUSD: '38026.40680524544070656870886696945',
-  },
-  {
-    feeTier: '100',
-    id: '0x31e29b2b8fd9d6ca57afbac110df2d14cb151d1e',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xdc035d45d973e3ec169d2276ddab16f1e407384f',
-      name: 'USDS Stablecoin',
-      symbol: 'USDS',
-    },
-    volumeUSD: '37701.173415',
-  },
-  {
-    feeTier: '10000',
-    id: '0x9bd6eebe689b51942b22993d9b24fb896bef6d83',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf19308f923582a6f7c465e5ce7a9dc1bec6665b1',
-      name: 'TITAN X',
-      symbol: 'TITANX',
-    },
-    volumeUSD: '35621.35891266003744960809964392439',
-  },
-  {
-    feeTier: '10000',
-    id: '0x51e0fbb0646d90fed438a809ef86d366ced65171',
-    liquidity: '20041912472835600',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe5b826ca2ca02f09c1725e9bd98d9a8874c30532',
-      name: 'ZEON',
-      symbol: 'ZEON',
-    },
-    volumeUSD: '34746.40592141194700935437539651852',
-  },
-  {
-    feeTier: '100',
-    id: '0x957229483c61a7a28e4335a2e8c469648c494270',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe9572938bcbf08adcee86fd12a7c0d08dc4ab841',
-      name: 'Inscribe',
-      symbol: 'INS',
-    },
-    volumeUSD: '32168.722327',
-  },
-  {
-    feeTier: '3000',
-    id: '0xa172ebf87257b24974232a59103c2edb3f680bb0',
-    liquidity: '35893017480157246',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe4a00976191ac5ce7cd15e6a763687635e3c3b79',
-      name: 'TMPI',
-      symbol: 'TMPI',
-    },
-    volumeUSD: '30239.792634',
-  },
-  {
-    feeTier: '3000',
-    id: '0xec47e6bbc03579fc636d7030aba455be137dfd45',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf9a2d7e60a3297e513317ad1d7ce101cc4c6c8f6',
-      name: 'Realio Network USD Stablecoin',
-      symbol: 'rUSD',
-    },
-    volumeUSD: '26350.29957433818754359402096969036',
-  },
-  {
-    feeTier: '100',
-    id: '0xbfdcd8dcc61c1dff5257e1e42c043842ea89e6b5',
-    liquidity: '3700004890909709',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfe7e37f8b2de7ef92290fc26fd87f527323cf4e2',
-      name: 'USDM',
-      symbol: 'USDM',
-    },
-    volumeUSD: '25913.15001300374495263410684866009',
-  },
-  {
-    feeTier: '500',
-    id: '0x599a690e33de75ede4c57fbdf72762d3840e342e',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfb5778205c0fee829bad5ee1b43062ff067103cc',
-      name: 'Unichain Finance Protocol',
-      symbol: 'UFP',
-    },
-    volumeUSD: '25320.33455899233050450958104029195',
-  },
-  {
-    feeTier: '3000',
-    id: '0x616c2909c95b50a567ee030095a843a3b500ddaa',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xea01906843ea8d910658a2c485ffce7c104ab2b6',
-      name: 'Qtoken',
-      symbol: 'QTO',
-    },
-    volumeUSD: '24929.52753098919787407998119042663',
-  },
-  {
-    feeTier: '500',
-    id: '0xc896c027d7855f922bbb81edb2628793332345bc',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xf650c3d88d12db855b8bf7d11be6c55a4e07dcc9',
-      name: 'Compound USDT',
-      symbol: 'cUSDT',
-    },
-    volumeUSD: '24849.98655878013291365108348109907',
-  },
-  {
-    feeTier: '10000',
-    id: '0x23c4855ff903ad733c364780a27b5fadcdad2e17',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xde30da39c46104798bb5aa3fe8b9e0e1f348163f',
-      name: 'Gitcoin',
-      symbol: 'GTC',
-    },
-    volumeUSD: '22111.14431773489805733399286001966',
-  },
-  {
-    feeTier: '10000',
-    id: '0x2ba17aa776a222026f312418048c8910d0ec2bb0',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xf0d33beda4d734c72684b5f9abbebf715d0a7935',
-      name: 'NuNet Utility Token',
-      symbol: 'NTX',
-    },
-    volumeUSD: '21386.16703728327192878344765787659',
-  },
-  {
-    feeTier: '10000',
-    id: '0xe08b1428b003085a818bdc5c30850ecfd5e14f48',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xebe4562b26dfa6db6263e14f396fd44d7fa33b1e',
-      name: 'KLPP',
-      symbol: 'KLPP',
-    },
-    volumeUSD: '20188.138788',
-  },
-  {
-    feeTier: '10000',
-    id: '0x134f9a802a89bdc4e0d8224325ec8212f8bc88fd',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xee4458e052b533b1aabd493b5f8c4d85d7b263dc',
-      name: 'Blockpass',
-      symbol: 'PASS',
-    },
-    volumeUSD: '17949.25039592505917103933001944968',
-  },
-  {
-    feeTier: '100',
-    id: '0x5885f65fc150aefc824f2e3222fae4521c8de93b',
-    liquidity: '20501410246917773332',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '3',
-      id: '0xe50d12853c44baccd5621e5587c6939a487d54b1',
-      name: 'RUNE',
-      symbol: 'RUNE',
-    },
-    volumeUSD: '17114.121579',
-  },
-  {
-    feeTier: '10000',
-    id: '0xaa4d3edc936d3c8e7d2d8fbb0cf76362c1d7fc55',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe6b85d836430b99225767c416dfba6ed1585d610',
-      name: 'X-BOT',
-      symbol: 'X-BOT',
-    },
-    volumeUSD: '17050.652427',
-  },
-  {
-    feeTier: '3000',
-    id: '0xbbd2d2f1c729156f128bd2401477e59256d4da9b',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe9572938bcbf08adcee86fd12a7c0d08dc4ab841',
-      name: 'Inscribe',
-      symbol: 'INS',
-    },
-    volumeUSD: '16765.163067',
-  },
-  {
-    feeTier: '3000',
-    id: '0x96c12209c1130fc16c432978c45f7f6b424ef18d',
-    liquidity: '26601381498373618',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf34ca6b7fe3d6b1c8635a6bf2bd7bdd252f16426',
-      name: 'Schnitzel Coin',
-      symbol: 'SNTZL',
-    },
-    volumeUSD: '16509.898735',
-  },
-  {
-    feeTier: '3000',
-    id: '0x7574ccdca138292d76aa76e589f07bd88fc80c77',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfaba6f8e4a5e8ab82f62fe7c39859fa577269be3',
-      name: 'Ondo',
-      symbol: 'ONDO',
-    },
-    volumeUSD: '16105.41034922969244328408077880559',
-  },
-  {
-    feeTier: '500',
-    id: '0x5571a346c0f4ab951efbd76753654b7891c6397d',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe350e32ca91b04f2d7307185bb352f0b7e7bce35',
-      name: 'Hoard Dollar',
-      symbol: 'USDH',
-    },
-    volumeUSD: '15991.38688',
-  },
-  {
-    feeTier: '3000',
-    id: '0xccfa3658b369093b6c5160a90d459307768bb66f',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '10',
-      id: '0xe33ae4e795114279721047484e5ad5cc7df24fcb',
-      name: 'MCF token',
-      symbol: 'MCF',
-    },
-    volumeUSD: '15542.73584176385553107886643771062',
-  },
-  {
-    feeTier: '10000',
-    id: '0xc58248d98651bfadb7b5a8b398f086d07eb5569d',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf434908dcf8206691bb99cae9232d4833ec257d4',
-      name: 'Blackjack.fun Coin',
-      symbol: 'JACK',
-    },
-    volumeUSD: '15413.656182',
-  },
-  {
-    feeTier: '10000',
-    id: '0xe9614c2b70f3e5b62ebb4c76571e05cd41a65381',
-    liquidity: '7915586781',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xe5acbb03d73267c03349c76ead672ee4d941f499',
-      name: 'Wrapped BEAM',
-      symbol: 'WBEAM',
-    },
-    volumeUSD: '14833.93951583414025470719647416583',
-  },
-  {
-    feeTier: '10000',
-    id: '0xfe38c6ee6c0b001472481d37adb6676802577642',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf8fcc10506ae0734dfd2029959b93e6ace5b2a70',
-      name: 'Unifty Network Token',
-      symbol: 'UNT',
-    },
-    volumeUSD: '14127.34769427594674371940928419692',
-  },
-  {
-    feeTier: '10000',
-    id: '0x3d0ca55498f3f458a258053655334176fed9860a',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf3d127db17136dea1887dfbafdbbf8ee1177f1aa',
-      name: 'PIP',
-      symbol: 'PIP',
-    },
-    volumeUSD: '14005.39176373901692494028242889579',
-  },
-  {
-    feeTier: '10000',
-    id: '0x52b6f5302d4ce99b2beaffab3f8450cd433dd251',
-    liquidity: '174223147110246326',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xdadbbe54bced2fab7c0e2723494acbb7e426e69f',
-      name: 'SAXCOIN',
-      symbol: 'SAX',
-    },
-    volumeUSD: '13240.804293',
-  },
-  {
-    feeTier: '3000',
-    id: '0xf7daf43f9ec40790ad8b931b5c88ed8fb2656bab',
-    liquidity: '156624403116',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xdfbc9050f5b01df53512dcc39b4f2b2bbacd517a',
-      name: 'Jobchain',
-      symbol: 'JOB',
-    },
-    volumeUSD: '12614.05447196177943888501511703508',
-  },
-  {
-    feeTier: '3000',
-    id: '0xb4a4cc381587c4177b3afcc2219c13271d726a43',
-    liquidity: '6235979241694437',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfc8e771e11790c231784b826cb5c94e209233920',
-      name: 'Wrapped Telestai',
-      symbol: 'wTLS',
-    },
-    volumeUSD: '11945.81784219293826921708777261318',
-  },
-  {
-    feeTier: '10000',
-    id: '0xcc7a6b89948322ea164f9aaf6fa2bdf4d73f9e94',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xe831f96a7a1dce1aa2eb760b1e296c6a74caa9d5',
-      name: 'Nexum Coin',
-      symbol: 'NEXM',
-    },
-    volumeUSD: '11233.5664918871227227690383748532',
-  },
-  {
-    feeTier: '3000',
-    id: '0x971d08ea0fcf7263f1ae5cc1c6ba9f50f0802d8b',
-    liquidity: '1427705960742273184',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf69c3a5be775c92898735ff4e1fe99fe6ec89813',
-      name: 'AI Meme Assistant',
-      symbol: 'AIM ',
-    },
-    volumeUSD: '10731.03714800863805994029558361941',
-  },
-  {
-    feeTier: '3000',
-    id: '0x80adfa194ef84a29c807e6243602be43bd46cbd1',
-    liquidity: '80792381096195',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe88d87f910e428813da08f75614d7233a6a3475a',
-      name: 'LIMITLESS COIN',
-      symbol: 'LMTdc',
-    },
-    volumeUSD: '10673.508186',
-  },
-  {
-    feeTier: '10000',
-    id: '0x15ba0ca7048095724fda1b66a6f67bf05f1beb7d',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xdd0ae774f7e300cdaa4ea371cd55169665ee6afe',
-      name: 'Aleph Zero',
-      symbol: 'AZERO',
-    },
-    volumeUSD: '10151.32451',
-  },
-  {
-    feeTier: '3000',
-    id: '0xf1073acfdae23f9ecc1ffae126f35d53d5f3531f',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '9',
-      id: '0xfb24cae98194fbe03b5cc160ca6ef758e8fd9b94',
-      name: 'Baby Doge coin',
-      symbol: 'BaByDoge',
-    },
-    volumeUSD: '9576.029991470224497388798399248881',
-  },
-  {
-    feeTier: '10000',
-    id: '0x26f17495b4889c7f57e101b568dc666f3862ac65',
-    liquidity: '50957428001',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xf0acf8949e705e0ebb6cb42c2164b0b986454223',
-      name: 'Barter',
-      symbol: 'BRTR',
-    },
-    volumeUSD: '8018.035392449780650604311281555284',
-  },
-  {
-    feeTier: '10000',
-    id: '0x2391aa4eba366a4eb2ba14b39b3522bd324e2697',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf50b24a5d079e6699bf6d7f50af7d8248fabcc38',
-      name: 'MATR',
-      symbol: 'MATR',
-    },
-    volumeUSD: '7682.088937',
-  },
-  {
-    feeTier: '10000',
-    id: '0xd9e87e4bb08a791dbc9df4f7e86865eb3553e3c9',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf57e7e7c23978c3caec3c3548e3d615c346e79ff',
-      name: 'Immutable X',
-      symbol: 'IMX',
-    },
-    volumeUSD: '6918.662918',
-  },
-  {
-    feeTier: '500',
-    id: '0xbb605480938f9cddd30df1ee6d41a3091aa78078',
-    liquidity: '2425215706134',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xeda43fa2f35ea174a7e9b73658b18a7da00adf38',
-      name: 'Namx',
-      symbol: 'NAMX',
-    },
-    volumeUSD: '6804.971339703130074257393921430278',
-  },
-  {
-    feeTier: '100',
-    id: '0xc017f460d15cf87e776dd240a415c8cf3f4fa633',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfd4835cdeeadb7fab99abea4f61a84f1c2cf078c',
-      name: 'Tailmon',
-      symbol: 'TAI',
-    },
-    volumeUSD: '6609.196597',
-  },
-  {
-    feeTier: '500',
-    id: '0x680063f1fdc795f08e730416352275b9b2832256',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe93668a56db4273a7cc079423a8f6a9911ad3c1d',
-      name: 'Coinsturn',
-      symbol: 'COVER',
-    },
-    volumeUSD: '6506.112948847880647890543230394589',
-  },
-  {
-    feeTier: '10000',
-    id: '0xe5e2d33d272eb229e3a03c7128e8d767b0d95c79',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe2dde94d42215b1987e7138ea8dbf4f5f4a6b14b',
-      name: 'Biexbi',
-      symbol: 'BXB',
-    },
-    volumeUSD: '6471.037798128285752729176006053609',
-  },
-  {
-    feeTier: '10000',
-    id: '0x37f7ab5b842a7c1591edd6f8975014f1949f1414',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf6cbb7b5aeb5fa2609eb104025e2230cbe3c4949',
-      name: 'Bulltrading',
-      symbol: 'BLT',
-    },
-    volumeUSD: '6414.641672379415542227350145133663',
-  },
-  {
-    feeTier: '3000',
-    id: '0x05f6cd6b226b21c337acf18632aa2abdccc0ab78',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xeeff2a81072321b26e081c4fb572efd9d4c29fd2',
-      name: 'Chihuahua',
-      symbol: 'WAWA',
-    },
-    volumeUSD: '6374.719686550024245806843503655595',
-  },
-  {
-    feeTier: '3000',
-    id: '0x9e8883ed3c25c6293f6feb530ce54cc972d815d8',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xef19f4e48830093ce5bc8b3ff7f903a0ae3e9fa1',
-      name: 'botXcoin',
-      symbol: 'BOTX',
-    },
-    volumeUSD: '6329.844062278076712315754826689836',
-  },
-  {
-    feeTier: '3000',
-    id: '0x56f4a9218a1ca4f45a7478366133017617013372',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xee3675969662a4d3fd901a40f3a3d9ba6f335b99',
-      name: 'KVX Token',
-      symbol: 'KVX',
-    },
-    volumeUSD: '6180.892585629769293470403271261076',
-  },
-  {
-    feeTier: '10000',
-    id: '0x27132ef71d4badeafb220cf5818f9de0c88ceb37',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xdaf88906ac1de12ba2b1d2f7bfc94e9638ac40c4',
-      name: 'EpiK Protocol',
-      symbol: 'ERC20-EPK',
-    },
-    volumeUSD: '5008.215435526974149844548756214811',
-  },
-  {
-    feeTier: '100',
-    id: '0x7477330d04e11762e717ea9504d6d0744c6961a7',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xee453592bf4cc233783d83d01ab8a9a258e950e0',
-      name: 'SBToken',
-      symbol: 'SBT',
-    },
-    volumeUSD: '4908.950702',
-  },
-  {
-    feeTier: '10000',
-    id: '0xaa4ff27111b9f131a2bcee65397f8060c9b5eb78',
-    liquidity: '6190729396089114',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe37246e936a58099c7fcb8a08fa72900c4faf991',
-      name: 'Evelon Token',
-      symbol: 'EVLN',
-    },
-    volumeUSD: '4825.430444612274349667593086500703',
-  },
-  {
-    feeTier: '10000',
-    id: '0x91540e542ebbddfbf016fd40470676aa044e9ede',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf4d2888d29d722226fafa5d9b24f9164c092421e',
-      name: 'LooksRare Token',
-      symbol: 'LOOKS',
-    },
-    volumeUSD: '4810.686347721770947103645156134005',
-  },
-  {
-    feeTier: '3000',
-    id: '0xd95090f32e63633e0f2225bde9cb8399278cdbd9',
-    liquidity: '14180494716',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xe39dfe9006e501360c30b1f772afaae80c17c669',
-      name: 'IPv6 Token',
-      symbol: 'IPv6',
-    },
-    volumeUSD: '4784.159776',
-  },
-  {
-    feeTier: '10000',
-    id: '0x6cf16f12d86fa4c354b473525d4e87509ee9946f',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe245cb63b1abdb46eb4f334b11750d145998a141',
-      name: 'Rannamaari',
-      symbol: 'RANNAMAARI',
-    },
-    volumeUSD: '4682.896163',
-  },
-  {
-    feeTier: '10000',
-    id: '0x0115af6134264eee047a59628d68d94bcea44797',
-    liquidity: '34990775305939182',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf128dc05f5be8dbfcf370c484fe9165c99c9bcc2',
-      name: 'Indie Hackers Lounge',
-      symbol: 'INDIE',
-    },
-    volumeUSD: '4106.062073',
-  },
-  {
-    feeTier: '10000',
-    id: '0xdc83407f74af9492c7d37e3e40e7670bb6fbe563',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf61bf4d1a948487d61b8fa63808aac06bda55f98',
-      name: 'Tr3zor',
-      symbol: 'TR3',
-    },
-    volumeUSD: '4097.118845872628591414424662287837',
-  },
-  {
-    feeTier: '10000',
-    id: '0xf744f1c51a93b406565573f74561d34481a10c86',
-    liquidity: '208851444623945',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfeab3b2b9eba8b82e3f3d3d7b525b94a6de71c8b',
-      name: 'SMUDGE',
-      symbol: 'SMUDGE',
-    },
-    volumeUSD: '3958.187957766898206926401767481461',
-  },
-  {
-    feeTier: '3000',
-    id: '0x400d569b45faef46df52a47efd3b7e3991eba34b',
-    liquidity: '2668391605864369',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe1631864495a2251ae092d678111ace32ee28ad4',
-      name: 'FuraCoin',
-      symbol: 'FURA',
-    },
-    volumeUSD: '3801.942452350369223030626447296934',
-  },
-  {
-    feeTier: '3000',
-    id: '0x44d02e9cc6901a5409e60112e18b1a4ed976e030',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfae444a29cd95133087385d870449cb7790c951d',
-      name: 'Chigyu',
-      symbol: 'CHIGYU',
-    },
-    volumeUSD: '3799.310195',
-  },
-  {
-    feeTier: '10000',
-    id: '0xf5104ecd5fda5cdd08f3f13aac87fd3a73782015',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf2c88757f8d03634671208935974b60a2a28bdb3',
-      name: 'MyShell Token',
-      symbol: 'SHELL',
-    },
-    volumeUSD: '3776.191175',
-  },
-  {
-    feeTier: '10000',
-    id: '0x12c6addcf46db8250d529a8dad39baf4d1e47300',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xed0e2041bfb5a426e5ed426a73765624e08bbb75',
-      name: 'FANZY-X1',
-      symbol: 'FX1',
-    },
-    volumeUSD: '3515.11236498518493373847809491671',
-  },
-  {
-    feeTier: '3000',
-    id: '0xa244b29e2c2abf4e7e68113a69a0be65de02dc4b',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xde28b7965113310967a89da005349e5043e410ac',
-      name: 'TeleToken',
-      symbol: 'TELE',
-    },
-    volumeUSD: '3494.750591087789941815702582268407',
-  },
-  {
-    feeTier: '100',
-    id: '0xde91ae9372e789cfbd25079ff912e57180963659',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe50e1954526f42047296d48fee5cedbe083d7c47',
-      name: 'Movo Swap',
-      symbol: 'MS',
-    },
-    volumeUSD: '3412.997739887998425406264741221757',
-  },
-  {
-    feeTier: '3000',
-    id: '0x417d3589d79709686b4d6df9609c38e7cf434812',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xde280f5e519346e681b6a954f62fd5fdda6a3953',
-      name: 'FartCoin',
-      symbol: 'Fart',
-    },
-    volumeUSD: '3405.756364',
-  },
-  {
-    feeTier: '3000',
-    id: '0xfb59318b2115e752352571dbfff8feedcc4d4b0b',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf629cbd94d3791c9250152bd8dfbdf380e2a3b9c',
-      name: 'Enjin Coin',
-      symbol: 'ENJ',
-    },
-    volumeUSD: '3391.598312905715050064318672113441',
-  },
-  {
-    feeTier: '500',
-    id: '0x808241ac319ef76412eba39a07614b5bebbdeb10',
-    liquidity: '59576909084995',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xec537c4469ff15811595a67db0f6d7bd6131ded8',
-      name: 'SLS Connect Token',
-      symbol: 'SLS',
-    },
-    volumeUSD: '3111.067581566987867933987310300583',
-  },
-  {
-    feeTier: '10000',
-    id: '0x6117934388e5cceb1bc52564461f0f001c492b40',
-    liquidity: '170498551145236',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe57425f1598f9b0d6219706b77f4b3da573a3695',
-      name: 'BitcoinBR',
-      symbol: 'BTCBR',
-    },
-    volumeUSD: '3038.749443604570976582821142422494',
-  },
-  {
-    feeTier: '10000',
-    id: '0xfa0cee015e83b0b070673c644512b25ff3f39fd9',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf867ec2951737f0e7b9691b7debc374c07d4b86d',
-      name: 'GooD wTw ToKen',
-      symbol: 'WTW',
-    },
-    volumeUSD: '3020.941314921543384986947727701499',
-  },
-  {
-    feeTier: '100',
-    id: '0x73d4c165472d38ca879b7cbd4f5f7ab218d49086',
-    liquidity: '1000300018999',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xe2e15a27fd732a96534b9797bf8091f3d9849831',
-      name: 'USPLUS',
-      symbol: 'US+',
-    },
-    volumeUSD: '2924.133427806421580607197088146032',
-  },
-  {
-    feeTier: '3000',
-    id: '0x83816af332e1ca55e7cb46d0a5f6f071a15b311d',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xea6b6a4b813d1436a75883fcc789121e4b3f0465',
-      name: 'Kona Summit Platform Coin',
-      symbol: 'KSPC',
-    },
-    volumeUSD: '2847.582128520541886280173769105281',
-  },
-  {
-    feeTier: '10000',
-    id: '0x1dedbfbb14939b41afbdbcac45e58994f01e9272',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf3b1a5292848431006ca28e2deff4fa78fd928e4',
-      name: 'Emerging Assets Group',
-      symbol: 'EAG',
-    },
-    volumeUSD: '2774.827852',
-  },
-  {
-    feeTier: '10000',
-    id: '0x755b9f5639961ac8077b0801c38af3b41794ac18',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '9',
-      id: '0xecc3330643c6cc09f95a84eeaa2f29acab689ce4',
-      name: 'ButtonTranche AMPL A',
-      symbol: 'TRANCHE-AMPL-A',
-    },
-    volumeUSD: '2691.368284040221282786818698856305',
-  },
-  {
-    feeTier: '100',
-    id: '0x39b1b8f28e9296813a92facf7823075a171f661d',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe9fe25499fe43b9606f5ae10c500a7640f33cbe1',
-      name: 'TOFBOROWCOIN',
-      symbol: 'TBOROWC',
-    },
-    volumeUSD: '2299.750961420158713025536180611025',
-  },
-  {
-    feeTier: '3000',
-    id: '0x438e0bd43f3cf8f60eae4bf93b1da1e40f0990c3',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '2',
-      id: '0xdf1d11025f2a22b9dc01c7a100b4f6ddebac82a3',
-      name: 'AirDance',
-      symbol: 'DANCE',
-    },
-    volumeUSD: '2267.065971',
-  },
-  {
-    feeTier: '10000',
-    id: '0x6e964e54ec5516d618dcc6065f6d2c8e0c8241f8',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '9',
-      id: '0xe9b076b476d8865cdf79d1cf7df420ee397a7f75',
-      name: 'Unification',
-      symbol: 'FUND',
-    },
-    volumeUSD: '2238.789280235441793195293230528241',
-  },
-  {
-    feeTier: '3000',
-    id: '0x9f32a9b5abc715274c380123fa7e39cd5672c841',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe4c8e86692d7f3717fbdabd566d7ceea57003457',
-      name: 'BRCS Token',
-      symbol: 'BRCS',
-    },
-    volumeUSD: '2236.949863919573034901731606200754',
-  },
-  {
-    feeTier: '3000',
-    id: '0x6d377510d6ca8f5e6491198d2154da225314cbf1',
-    liquidity: '3873015489411',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe73ee64adb39a443a251c910e4e3b56f7a4130dc',
-      name: 'ibETH',
-      symbol: 'ibETH',
-    },
-    volumeUSD: '2026.900914694385633509405063503231',
-  },
-  {
-    feeTier: '10000',
-    id: '0x73819a9c37034f027f45a6566e8e08f0dae6db1d',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xec67005c4e498ec7f55e092bd1d35cbc47c91892',
-      name: 'Melon Token',
-      symbol: 'MLN',
-    },
-    volumeUSD: '2000',
-  },
-  {
-    feeTier: '10000',
-    id: '0x7a88cd4ac40e3a41ac92792a0dd9f4790d53e536',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfbd5fd3f85e9f4c5e8b40eec9f8b8ab1caaa146b',
-      name: 'Treat',
-      symbol: 'TREAT',
-    },
-    volumeUSD: '1996.210142868698468675111995105157',
-  },
-  {
-    feeTier: '100',
-    id: '0xe07b6859fa2f22f8220bec4783f740c6294672dc',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xe8ec576b00b394d840d1ee210b6b311f438fa597',
-      name: 'Rain Dollar',
-      symbol: 'USRD',
-    },
-    volumeUSD: '1987.73529',
-  },
-  {
-    feeTier: '3000',
-    id: '0xe2eee71417440d30bee8f3680988d5abe2a8a8c0',
-    liquidity: '31813666376278174',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf269e2aa9d0f727f9f49cfc534a387d5a9bbf6f0',
-      name: '49.3 Coin',
-      symbol: '49.3',
-    },
-    volumeUSD: '1881.972517447009021038936737870506',
-  },
-  {
-    feeTier: '3000',
-    id: '0x31265ce6d2f508657f6b41dc944a59eb53069acb',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf68f0bdd54a7db0c9e3e1b170ca7ba8e1345bd70',
-      name: 'Cloud computing power',
-      symbol: 'CCP',
-    },
-    volumeUSD: '1735.059818',
-  },
-  {
-    feeTier: '10000',
-    id: '0xa5d0b2efd8aa4ddbfc18ed03133937744f78668f',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfa3e941d1f6b7b10ed84a0c211bfa8aee907965e',
-      name: 'HayCoin',
-      symbol: 'HAY',
-    },
-    volumeUSD: '1675.922843',
-  },
-  {
-    feeTier: '10000',
-    id: '0x66def6a1908d40611a0a2074ccc8d43ad64a535a',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xdd0ef0b2de3efec847a79b4ce4de52c4bb98f488',
-      name: 'F9 DAO',
-      symbol: 'DAO9',
-    },
-    volumeUSD: '1616.230558',
-  },
-  {
-    feeTier: '100',
-    id: '0x8e0bdd65a78cbd26f848b9d80e3edd4657c4e9ae',
-    liquidity: '731238007251911',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xee317ebfa9101431bd93a9c6937d372a4a2d9814',
-      name: 'Flaxbit',
-      symbol: 'FLT',
-    },
-    volumeUSD: '1591.803074',
-  },
-  {
-    feeTier: '3000',
-    id: '0x2310faad6a4c0e75d51357fd7f4f6f8579e34235',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe0c15f5066fcbafad6d1972125fb0cc1d2200bbe',
-      name: 'MakeTime Token',
-      symbol: 'MTT',
-    },
-    volumeUSD: '1496.802480091874550068416782315888',
-  },
-  {
-    feeTier: '3000',
-    id: '0xea288f15b888d9f1c327a95f7733f997232214fa',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf8e57ac2730d3088d98b79209739b0d5ba085a03',
-      name: 'Optopia AI',
-      symbol: 'OPAI',
-    },
-    volumeUSD: '1339.859849',
-  },
-  {
-    feeTier: '3000',
-    id: '0x9daafeccd7bc0cf075ef5e01346bb73e9c1d39ac',
-    liquidity: '332311950779808815',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xee9801669c6138e84bd50deb500827b776777d28',
-      name: 'O3 Swap Token',
-      symbol: 'O3',
-    },
-    volumeUSD: '1333.147083663064824327490328934692',
-  },
-  {
-    feeTier: '3000',
-    id: '0x968228e7502dd7840b5c800ddfe9e1f1cde27841',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xec9a85e46f50ec5434cc072deefef23156b12488',
-      name: 'Elites of the World',
-      symbol: 'EOTW',
-    },
-    volumeUSD: '1049.097346770416540805454944118452',
-  },
-  {
-    feeTier: '500',
-    id: '0xda65e4681dad37b3ebba045c7c64199a6f338df8',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf867ec2951737f0e7b9691b7debc374c07d4b86d',
-      name: 'GooD wTw ToKen',
-      symbol: 'WTW',
-    },
-    volumeUSD: '1000.129040071139214626360372827532',
-  },
-  {
-    feeTier: '3000',
-    id: '0xaeffddd58b7510d8e904089202ef1a97ec1af88b',
-    liquidity: '1032628798129414',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xde50da7f5966efe1869349ff2242d7ad932eb785',
-      name: '7EVEN Utility Token',
-      symbol: '7UT',
-    },
-    volumeUSD: '998.1587329282436118951811709492147',
-  },
-  {
-    feeTier: '100',
-    id: '0xcb8b33f09c4b3a1973dc9197a4fce320ecf0ae31',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xeb6b538bddf73c5db3101554e78d47e563220c19',
-      name: 'Animalia',
-      symbol: 'AMAI',
-    },
-    volumeUSD: '944.422526',
-  },
-  {
-    feeTier: '3000',
-    id: '0x06e480786d30ab18ce066d8099f035bfa0c0adbf',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xdfc3829b127761a3218bfcee7fc92e1232c9d116',
-      name: 'Wrapped PRCY',
-      symbol: 'WPRCY',
-    },
-    volumeUSD: '905.4879691083450157559755282380397',
-  },
-  {
-    feeTier: '3000',
-    id: '0x595cd204464e3ddab4d72aca79d4e72fcf2412b0',
-    liquidity: '1208290368609546605',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf8c17c840549974ec17c6573b3963f1e3046c0eb',
-      name: 'Prediqt',
-      symbol: 'PQT',
-    },
-    volumeUSD: '881.4457555292322462378270722579198',
-  },
-  {
-    feeTier: '3000',
-    id: '0x2565ca77e32c84e1287364d98c0314dd3c4487ed',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xe831f96a7a1dce1aa2eb760b1e296c6a74caa9d5',
-      name: 'Nexum Coin',
-      symbol: 'NEXM',
-    },
-    volumeUSD: '847.955069',
-  },
-  {
-    feeTier: '3000',
-    id: '0x278e411e1ec7728700d833a9ecf33864dbae734a',
-    liquidity: '2236044469956183',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf5c8d2b95b02f592442a8c4bbd1a0003b7a4a19f',
-      name: 'VanBit',
-      symbol: 'VANB',
-    },
-    volumeUSD: '684.453742',
-  },
-  {
-    feeTier: '10000',
-    id: '0x727ca1dcd2f5f76af9f4bbf805d041ff4e128167',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xff20817765cb7f73d4bde2e66e067e58d11095c2',
-      name: 'Amp',
-      symbol: 'AMP',
-    },
-    volumeUSD: '679.9710134303197676904629665481754',
-  },
-  {
-    feeTier: '3000',
-    id: '0x1a0331d7fd7510e564d79274e419c7141f58656d',
-    liquidity: '55608274776898195',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe9d972e656f47bc5ff1e65f749aa3f937ec554c2',
-      name: 'Demtunas',
-      symbol: 'TUNA',
-    },
-    volumeUSD: '667.3224176727558489770195459112998',
-  },
-  {
-    feeTier: '500',
-    id: '0x1a0a52d6cd26dd3396a29b7a25b11b7c061345e0',
-    liquidity: '1000201332178997745',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe8847f8d1c3fbd9afaaffca695ce4b4854d3b12e',
-      name: 'BlockWit Token',
-      symbol: 'BWT',
-    },
-    volumeUSD: '657.95207',
-  },
-  {
-    feeTier: '3000',
-    id: '0xd8d7eb839fb1ad8d0cb62db0127e593508e3bb1e',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe25c8a4112a76b474cc215c5c78449e320ce8c7d',
-      name: 'Twerkoin',
-      symbol: 'TWr',
-    },
-    volumeUSD: '655.309695180517313922438370679213',
-  },
-  {
-    feeTier: '100',
-    id: '0x123185debc137fda4a5bb246b5121b76fb29ef06',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf171fc7ec4dd6f890620a9787e1b5425ef1e2b90',
-      name: 'SUSD',
-      symbol: 'SUSD',
-    },
-    volumeUSD: '617.096922',
-  },
-  {
-    feeTier: '500',
-    id: '0x5626df2d1e555ab8d66a34932aa035d6733a23cf',
-    liquidity: '549972750366306',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf938424f7210f31df2aee3011291b658f872e91e',
-      name: 'VISOR',
-      symbol: 'VISR',
-    },
-    volumeUSD: '607.3257800655296190939827106648442',
-  },
-  {
-    feeTier: '500',
-    id: '0xc90ec612a4daf82bc0ccbae9b01e5a42b8874631',
-    liquidity: '812418614592',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '9',
-      id: '0xede4e548df0f6fddc0e3e979cb4df31bbb4caeae',
-      name: 'Cleopatra',
-      symbol: 'CLEO',
-    },
-    volumeUSD: '585.157096585422218252351471973886',
-  },
-  {
-    feeTier: '3000',
-    id: '0x1d6d7203e7901eec6e15aad3f1ab708695779712',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf681396633752ca1c7dd8635e56391bbda1a4768',
-      name: 'Conspiracy DAO',
-      symbol: 'CDAO',
-    },
-    volumeUSD: '542.222906',
-  },
-  {
-    feeTier: '3000',
-    id: '0x086d82076d4eae458a2b0b5cc0c8a9189c16be37',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf56b164efd3cfc02ba739b719b6526a6fa1ca32a',
-      name: 'Curio Governance Token',
-      symbol: 'CGT',
-    },
-    volumeUSD: '541.036074',
-  },
-  {
-    feeTier: '3000',
-    id: '0xe7f04e3374edc985075074d087696c9ecdae23b1',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf9d4daae1300cff251979722c4a3c45857973079',
-      name: 'Castle',
-      symbol: 'CASTLE',
-    },
-    volumeUSD: '483.245959',
-  },
-  {
-    feeTier: '500',
-    id: '0xb58cdb3c34616f85f112fed68ad165fcc086011f',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xe831f96a7a1dce1aa2eb760b1e296c6a74caa9d5',
-      name: 'Nexum Coin',
-      symbol: 'NEXM',
-    },
-    volumeUSD: '444.6546330160224646101442583354142',
-  },
-  {
-    feeTier: '3000',
-    id: '0xf3b036cd98372d9d972bf27a512daead16fadd03',
-    liquidity: '368680748974',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xee9c1ea4dcf0aaf4ff2d78b6ff83aa69797b65eb',
-      name: 'SAFE(AnWang)',
-      symbol: 'SAFE',
-    },
-    volumeUSD: '408.0361018103569991593960426256665',
-  },
-  {
-    feeTier: '10000',
-    id: '0x5c0a2406653f10763700d8ab2f3a931f1ab58ac4',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf04a8ac553fcedb5ba99a64799155826c136b0be',
-      name: 'Flixx',
-      symbol: 'FLIXX',
-    },
-    volumeUSD: '405.966862',
-  },
-  {
-    feeTier: '3000',
-    id: '0x6fca102191466ffcb2030a20b03b5e77f2986e87',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe2b3e90a2c51e4626dbf04e4776ab753189dc0dc',
-      name: 'Blue Sky Lithium Coin',
-      symbol: 'BLSX',
-    },
-    volumeUSD: '403.873799',
-  },
-  {
-    feeTier: '500',
-    id: '0x78f80dd0e63bdaf4edac16efaca76f915c2a4be4',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf075cec1a5a71f412e42c3ab0a42c38b935b36e3',
-      name: 'DFDC Ecological chain',
-      symbol: 'DFDC',
-    },
-    volumeUSD: '400.3704648654199164933128189318585',
-  },
-  {
-    feeTier: '10000',
-    id: '0x50fd08145f9b35734f6c6f98b67c51e58c56b108',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '2',
-      id: '0xed21adccd7fb37d94114b211cb9ee7d602dfdb3f',
-      name: 'love',
-      symbol: 'love',
-    },
-    volumeUSD: '351.919641',
-  },
-  {
-    feeTier: '3000',
-    id: '0x7935d6804609edeee09910687af5a8c89d6c73b6',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf55639a4d0cf6ae63271fa43cc02b39710688380',
-      name: 'Cookie3',
-      symbol: 'COOKIE',
-    },
-    volumeUSD: '346.080486',
-  },
-  {
-    feeTier: '10000',
-    id: '0x460214f8de29ab0d862efab42872faf9c875b77b',
-    liquidity: '126095787931',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xdeff893f6d6fac56a5444527baddfc8d091ec14e',
-      name: 'Python Finance',
-      symbol: 'PYF',
-    },
-    volumeUSD: '339.0375355747354957322797885338746',
-  },
-  {
-    feeTier: '10000',
-    id: '0xfdc7c00cfb8bc061e4ca077ee1a69b1b029450c8',
-    liquidity: '569210415853',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xeec2e29ff5cd4cecea61de09e9f28fae74c70ddd',
-      name: 'AITTCOIN',
-      symbol: 'AITT',
-    },
-    volumeUSD: '337.06126',
-  },
-  {
-    feeTier: '500',
-    id: '0x2ece65091226eed47c53c3ebeb3e18cee917a706',
-    liquidity: '1411011948',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xe39dfe9006e501360c30b1f772afaae80c17c669',
-      name: 'IPv6 Token',
-      symbol: 'IPv6',
-    },
-    volumeUSD: '307.413021',
-  },
-  {
-    feeTier: '3000',
-    id: '0x37fd886867fa6e12bc6c6ff9365837b24dc17848',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf331c2df1f05ff6c14579861f059d4e7ba1f5b53',
-      name: 'Moxx',
-      symbol: 'MOXX',
-    },
-    volumeUSD: '305.017971',
-  },
-  {
-    feeTier: '10000',
-    id: '0x2a71de822ca9b3bc6d3e4fc9d27001187fc4efb0',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe965b9a9c3cd3d2054b276b2e909dd30a9ec140b',
-      name: 'Codon',
-      symbol: 'CDN',
-    },
-    volumeUSD: '291.740879',
-  },
-  {
-    feeTier: '3000',
-    id: '0x49c3d2d6796c7173052b9f36101886fd2bebd5db',
-    liquidity: '54093225621312416',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe0b93b67822ed87a89ad20f350c35d9c3698a077',
-      name: 'AITCSK',
-      symbol: 'AITCSK',
-    },
-    volumeUSD: '290.519309',
-  },
-  {
-    feeTier: '500',
-    id: '0x854b71936a52d58aa0279a9742fbf5bba5b01b4f',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfe2a78e07b35c79b91baf53bf42d9943fb167b10',
-      name: 'XRB Gold',
-      symbol: 'XRBG',
-    },
-    volumeUSD: '268.976634',
-  },
-  {
-    feeTier: '10000',
-    id: '0x123adf5077054b122d6bee147b056f3df542b457',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xde28b7965113310967a89da005349e5043e410ac',
-      name: 'TeleToken',
-      symbol: 'TELE',
-    },
-    volumeUSD: '253.204172',
-  },
-  {
-    feeTier: '3000',
-    id: '0x74e1eb7b708ac05185d248c6bf5f63a11d1105bd',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfcf8eda095e37a41e002e266daad7efc1579bc0a',
-      name: 'FLEX Coin',
-      symbol: 'FLEX',
-    },
-    volumeUSD: '244.022529',
-  },
-  {
-    feeTier: '10000',
-    id: '0xbc00f968705d40724592f4b637b8df30a626bf92',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe8a69929a9ebda6441ca4a593e2daa935e15b7d7',
-      name: 'TEST TOKEN',
-      symbol: 'TST',
-    },
-    volumeUSD: '240',
-  },
-  {
-    feeTier: '3000',
-    id: '0xa8aac7f32109b4615a2086a547bd191f7cdbb54b',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe4dae00bc1c46ea2f44ae71b1beb8b171c15d812',
-      name: 'PREMA',
-      symbol: 'PRMX',
-    },
-    volumeUSD: '218.58905',
-  },
-  {
-    feeTier: '3000',
-    id: '0xc1fe1dcbfca190b8447588ab211f48fd8ea2a332',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '2',
-      id: '0xed21adccd7fb37d94114b211cb9ee7d602dfdb3f',
-      name: 'love',
-      symbol: 'love',
-    },
-    volumeUSD: '187.951905',
-  },
-  {
-    feeTier: '500',
-    id: '0xdeb2796925bebf9d3161e1830651ba5dfaf91f00',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf5e84cf2152be57fac4e78f4e81fb565b67b5ee0',
-      name: 'Xi Network',
-      symbol: 'XIN',
-    },
-    volumeUSD: '183.621125',
-  },
-  {
-    feeTier: '3000',
-    id: '0x93a57f396a953addbf05d11e2b3ecdafdf563d7e',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfc7e04219f8bdf56a6bd1343f4478a5c3a629f33',
-      name: 'WINERYS',
-      symbol: 'WINR',
-    },
-    volumeUSD: '177.1901633718823602887835557544872',
-  },
-  {
-    feeTier: '500',
-    id: '0xb203c4cc2e0d7e086d6a62d4f801137541efb469',
-    liquidity: '2998583503894372',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe8c798c0496ad1698f39a0b9af5f5b6019226018',
-      name: 'WinlinkCoin',
-      symbol: 'WLC',
-    },
-    volumeUSD: '165.1633290778902046486592017289136',
-  },
-  {
-    feeTier: '100',
-    id: '0xd95f2f0fa25c1ca1b0c11a2beb92d44217cc75f5',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '2',
-      id: '0xdc638a86aebd272fd0175550c4eac2c24606eab9',
-      name: 'TEZCA',
-      symbol: 'TEZ',
-    },
-    volumeUSD: '158.358498',
-  },
-  {
-    feeTier: '500',
-    id: '0xfdc3456e1efa79dbab60a63eb8536173e9350a61',
-    liquidity: '3257422014224602',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xdcd6456aba437cd7a038b5b2ec767c0eec834d67',
-      name: 'PHICASH',
-      symbol: 'Φ$',
-    },
-    volumeUSD: '147.2486892354305362496924114816328',
-  },
-  {
-    feeTier: '3000',
-    id: '0x54b6f1b270270043c214fae675b9bc1be836ec1e',
-    liquidity: '100130219416176',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xeaf0e9cac47a478cf15ddab1e1a315e69c0001b8',
-      name: 'Crypto Price Index 8',
-      symbol: 'CPI8',
-    },
-    volumeUSD: '144.0397023189460362267455059669063',
-  },
-  {
-    feeTier: '3000',
-    id: '0xffc9dc8e80049373ac068e6770ae519ef2c47e3e',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe3b4f3c7993baadaf36cdeaea047307bd53ebbbd',
-      name: 'FB',
-      symbol: 'FB',
-    },
-    volumeUSD: '120',
-  },
-  {
-    feeTier: '100',
-    id: '0x039bc7213894da50b5fb044bebb35315edb021ac',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf79e4294f721caec2d5a5b6ef59f580ea572e814',
-      name: 'USD',
-      symbol: 'USD',
-    },
-    volumeUSD: '118',
-  },
-  {
-    feeTier: '3000',
-    id: '0x3486cfe5e0cd123ec89d87919142b4b61851a366',
-    liquidity: '6615889170408174',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf06b22ea0c44314d788d281ab5e6dc22311550dd',
-      name: 'Konfucius',
-      symbol: 'KFU',
-    },
-    volumeUSD: '114.533484',
-  },
-  {
-    feeTier: '500',
-    id: '0x1af72094bb34d8c15db8f8a7fd1bc24fc57cbea9',
-    liquidity: '3972916597755095832',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf67041758d3b6e56d6fdafa5b32038302c3634da',
-      name: 'TBC Shopping Token',
-      symbol: 'TST',
-    },
-    volumeUSD: '104.9710737816658273723875304775942',
-  },
-  {
-    feeTier: '500',
-    id: '0xb32e7ca1b21490c1f28306e53f74a5807b9dd51a',
-    liquidity: '999998447768522',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe8fd09fe59a89388fc4fffeeb9c279fcb7c09be7',
-      name: 'Crypto.Page',
-      symbol: 'PAGE',
-    },
-    volumeUSD: '101.632703',
-  },
-  {
-    feeTier: '10000',
-    id: '0x98098c92a591e7cd2677d2b38c60025acf499b2b',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xfd2ad20c2c5a7af1d6b878e761177de717ca7a74',
-      name: 'cMetal',
-      symbol: 'CMTL',
-    },
-    volumeUSD: '91.206068',
-  },
-  {
-    feeTier: '500',
-    id: '0x4985f830515fbbe31fc39204d454da5b2521a7da',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf293d23bf2cdc05411ca0eddd588eb1977e8dcd4',
-      name: 'Sylo',
-      symbol: 'SYLO',
-    },
-    volumeUSD: '89.658776',
-  },
-  {
-    feeTier: '3000',
-    id: '0xcfd997d258dbf6711a670f42d8a77e7fb6f110b2',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xde45a0658f562957a4fb5781338994a7992f098c',
-      name: 'JAY Token',
-      symbol: 'JAY',
-    },
-    volumeUSD: '86.978177',
-  },
-  {
-    feeTier: '10000',
-    id: '0x01518d2530f3d26c1e4c9ef0dbaaa5a95c84ae82',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfa068f1d9e0f08e2bfb3201744f2d83e1181bf43',
-      name: 'Kaida',
-      symbol: 'KAIDA',
-    },
-    volumeUSD: '80.10833053025256317168391040187466',
-  },
-  {
-    feeTier: '3000',
-    id: '0x4fcb5c6cd2324c33c2b3545e478995259541ece1',
-    liquidity: '348068314',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xfc51dcb9f36934abb12d3abe45b8039f699badba',
-      name: 'IOUZEC',
-      symbol: 'IZEC',
-    },
-    volumeUSD: '75.777168',
-  },
-  {
-    feeTier: '10000',
-    id: '0x4e28c1c26abf424ed65373c707f1103ed7e3888e',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xdd9b84f8b435f09baf02cccd746822bb293c3284',
-      name: 'YARN',
-      symbol: 'PCC Yarn',
-    },
-    volumeUSD: '73.140275',
-  },
-  {
-    feeTier: '3000',
-    id: '0x7a2fed060d14fe931cf089b2eb2bb8e371d7a3b8',
-    liquidity: '84816533731023',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe0955f26515d22e347b17669993fcefcc73c3a0a',
-      name: 'Stacker Ventures Token',
-      symbol: 'STACK',
-    },
-    volumeUSD: '72.93269047375003182796665477101822',
-  },
-  {
-    feeTier: '500',
-    id: '0x903172bd927ae8d4ca64d5786835e43123a7908a',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfc7e04219f8bdf56a6bd1343f4478a5c3a629f33',
-      name: 'WINERYS',
-      symbol: 'WINR',
-    },
-    volumeUSD: '70.36555',
-  },
-  {
-    feeTier: '3000',
-    id: '0x6a95cde9801ec0c21e18f979f935b81b50056454',
-    liquidity: '999142824092513182',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf8fcc10506ae0734dfd2029959b93e6ace5b2a70',
-      name: 'Unifty Network Token',
-      symbol: 'UNT',
-    },
-    volumeUSD: '68.971427',
-  },
-  {
-    feeTier: '100',
-    id: '0x5bb12f690d6d9a3bba5b2eddc74f2a93c86804dc',
-    liquidity: '4904225444581',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xde2491823f76891eeacfa4ed20e5dfb19272c037',
-      name: 'CHIPS',
-      symbol: 'CHIPS',
-    },
-    volumeUSD: '60.767364',
-  },
-  {
-    feeTier: '10000',
-    id: '0x25320cb45d7ba48b0f0ac13dd11c8c23c1796575',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xed1480d12be41d92f36f5f7bdd88212e381a3677',
-      name: 'FIAT DAO Token',
-      symbol: 'FDT',
-    },
-    volumeUSD: '58.564531',
-  },
-  {
-    feeTier: '100',
-    id: '0x609ac31142d68991bc7dc88ab261ba0efabab942',
-    liquidity: '1140085498912',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xf3135c779ce72c9b67afa853c3a8699242826ed7',
-      name: 'USDollarToken',
-      symbol: 'USDŦ',
-    },
-    volumeUSD: '56.999448',
-  },
-  {
-    feeTier: '100',
-    id: '0xa8b23876174d874ceba9a1d3a3bfcd724bc73616',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xf818d845d3bc8d2f7c93821f5ae9279806c4cd4b',
-      name: 'AI Coin',
-      symbol: 'AIC',
-    },
-    volumeUSD: '51.006553',
-  },
-  {
-    feeTier: '10000',
-    id: '0xf80bbbdf95a807e45db3e5ac1d29c95b0196891f',
-    liquidity: '343740101178431',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe00e337b59fee36e3963d38e3e4c555dec8da63f',
-      name: 'MyToken',
-      symbol: 'MTK',
-    },
-    volumeUSD: '48.141065',
-  },
-  {
-    feeTier: '3000',
-    id: '0x3aece23594be4ebbf12c479216aaa13cf79c80a9',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfbe085fdcbfedaef54b59f28a7c44cceb6e25dc5',
-      name: 'Equivalence Token V2',
-      symbol: 'EQT',
-    },
-    volumeUSD: '45.236479',
-  },
-  {
-    feeTier: '3000',
-    id: '0x287c9ee6362feb1f1a38c4dbc5f17c7abfbcd630',
-    liquidity: '3270657622394453',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe7a0ed6d6f518a6fc6ec2e26c4b6258a67b988f1',
-      name: 'test1',
-      symbol: 't1',
-    },
-    volumeUSD: '39.999998',
-  },
-  {
-    feeTier: '10000',
-    id: '0xc004adb4b43f08dac2512166dceb113ae57c45ec',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe4ab17630a87d7d0117aa24cf0cb48a32fc1d8ae',
-      name: 'Yearcoin',
-      symbol: 'YEAR',
-    },
-    volumeUSD: '32.80860764669280467651753188501865',
-  },
-  {
-    feeTier: '10000',
-    id: '0x6c6c74a05b75ad50a9bcd839418c2842657a517b',
-    liquidity: '5092985027801076',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xef10bf0498732cade67bb52a18a4e07f2f2f5e18',
-      name: 'SIORA',
-      symbol: 'XSR',
-    },
-    volumeUSD: '31.030898',
-  },
-  {
-    feeTier: '10000',
-    id: '0xeca836769d57692055d67ec1b9d7d388f4a5f53f',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '2',
-      id: '0xdc638a86aebd272fd0175550c4eac2c24606eab9',
-      name: 'TEZCA',
-      symbol: 'TEZ',
-    },
-    volumeUSD: '27.411631',
-  },
-  {
-    feeTier: '10000',
-    id: '0x8dd43fe84470870ad15a129160b0f9c58fa9a5e4',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xf230b790e05390fc8295f4d3f60332c93bed42e2',
-      name: 'Tronix',
-      symbol: 'TRX',
-    },
-    volumeUSD: '23.662177',
-  },
-  {
-    feeTier: '10000',
-    id: '0x6b9fe1e23c36890a4382e488d9012125c24ef369',
-    liquidity: '5652029327433648',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe67d2a51bd9243071b2d833fa4036c91da415fe3',
-      name: 'TestSIGM',
-      symbol: 'TSGM',
-    },
-    volumeUSD: '17.754559',
-  },
-  {
-    feeTier: '10000',
-    id: '0x3e5d62a881077c97091914e6480021e27800b3bf',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xdcee3841cbaffc9f79f2dca3014cb7fee38e4ab7',
-      name: 'ButtonTranche bWAMPL A',
-      symbol: 'TRANCHE-bWAMPL-A',
-    },
-    volumeUSD: '15.528789',
-  },
-  {
-    feeTier: '100',
-    id: '0xf9647321f4626efef87cd844610736446b82615a',
-    liquidity: '33343618107',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xdc8ddb0c6840c3e19a82cfa9bec567a7a49f4a81',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    volumeUSD: '15.060456',
-  },
-  {
-    feeTier: '3000',
-    id: '0x6de60ab652c72a1792f940e906b244f0339d9343',
-    liquidity: '2304737323',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '5',
-      id: '0xe225aca29524bb65fd82c79a9602f3b4f9c6fe3f',
-      name: 'Tratok',
-      symbol: 'TRAT',
-    },
-    volumeUSD: '11.530036',
-  },
-  {
-    feeTier: '10000',
-    id: '0x40bc38b2a47be2260aed15d39c2ca3171bb78381',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xdeba485cdc089cc60f3482598c7ec1db1c565eb2',
-      name: 'ButtonTranche bWBTC B',
-      symbol: 'TRANCHE-bWBTC-B',
-    },
-    volumeUSD: '4.014346',
-  },
-  {
-    feeTier: '500',
-    id: '0x949c4c64ef93688f06f092a9253496ac85ecc077',
-    liquidity: '1621024337971902',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe6d0ae2d80192359a2b78ab54992f1d8cc3fe547',
-      name: 'usdt',
-      symbol: 'USDT',
-    },
-    volumeUSD: '3.233788',
-  },
-  {
-    feeTier: '3000',
-    id: '0x50bb34b80cd3305ddc3e97c17f774ffe41a543bb',
-    liquidity: '12813817082496',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfc98e825a2264d890f9a1e68ed50e1526abccacd',
-      name: 'Moss Carbon Credit',
-      symbol: 'MCO2',
-    },
-    volumeUSD: '2.999737',
-  },
-  {
-    feeTier: '10000',
-    id: '0x5d1eb44f49cb9837ca6aa3f76a1916900bee1d13',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xdf92015e3e52c2d3b54c402ca1b55a7a38c9f3e2',
-      name: 'Cloud Intelligence Coin',
-      symbol: 'EZC',
-    },
-    volumeUSD: '2.545263902616990751401628232652187',
-  },
-  {
-    feeTier: '10000',
-    id: '0x7c419d7b69b94aa4468822bf9edcb9d83c3027c6',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe95704c9c41e6366274db4393b49a275f44c17f0',
-      name: 'ButtonTranche bWAMPL B',
-      symbol: 'TRANCHE-bWAMPL-B',
-    },
-    volumeUSD: '1.240915',
-  },
-  {
-    feeTier: '10000',
-    id: '0x68f9037ae13cacaf93f3de3ec1984b0c743694cb',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xf54fdf1690ae0d903c0bc4c31dca1f9361b342ef',
-      name: 'ButtonTranche bWBTC A',
-      symbol: 'TRANCHE-bWBTC-A',
-    },
-    volumeUSD: '1.183963',
-  },
-  {
-    feeTier: '10000',
-    id: '0x325bad3656f8dca31714c4adc8c2328c87f747a4',
-    liquidity: '781890696957776841539',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xff89942e645271bf0b6756a6064232986a754b7d',
-      name: 'NFTB',
-      symbol: 'NFTB',
-    },
-    volumeUSD: '1.000803535466819871947620696887983',
-  },
-  {
-    feeTier: '10000',
-    id: '0x0a02df25ca213f5844f28b0bc74f3984e2000119',
-    liquidity: '13808431331',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '3',
-      id: '0xebed4ff9fe34413db8fc8294556bbd1528a4daca',
-      name: 'VENUS',
-      symbol: 'VENUS',
-    },
-    volumeUSD: '0.675684',
-  },
-  {
-    feeTier: '3000',
-    id: '0x005b584315d7c47bb5fca504ac0d8df56aea40f9',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '0',
-      id: '0xf8d325872acbaed090056b4e0bf104b1c735f439',
-      name: 'Store',
-      symbol: 'STC',
-    },
-    volumeUSD: '0.1333806122410035941835000124955043',
-  },
-  {
-    feeTier: '10000',
-    id: '0xd5d4eff2d0da4ec31001ca94fa3e65b87fbb89f0',
-    liquidity: '10540567605389',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe952b239f9a7fb22318051599af5c0c98fb86ab1',
-      name: 'ButtonTranche bWAMPL A',
-      symbol: 'TRANCHE-bWAMPL-A',
-    },
-    volumeUSD: '0.01',
-  },
-  {
-    feeTier: '3000',
-    id: '0xf935aadce7474017eb1b50946fb787fe02678174',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xff40ff26f1ebdcbd4506fa570e41c47e0a879479',
-      name: 'HEADBANGING',
-      symbol: 'HDBI',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0xf49204f0e98e650cb98cdf72e58302a831d2e53b',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfcd484641f09bd490888f19aaf9e5d08edf5f801',
-      name: 'TeslaChargers',
-      symbol: 'TSCH',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0xf390cd1bee0d5d5a7e7aa60e27be1eb03702b17b',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '9',
-      id: '0xf9d8fdd263f3f11018c7e6846b8a338f5e170c32',
-      name: 'WFC TEST',
-      symbol: 'WFCTEST',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0xf1b1d5bee61d97ea0934a2bc34955dde0b4e2b35',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf643b1e77e00491554629ed5607b79bdca615b14',
-      name: 'Axtion',
-      symbol: 'AXT',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '10000',
-    id: '0xefe221d31cf21cd6ea9c7feadc5171d49e11b8c5',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe7c6bf469e97eeb0bfb74c8dbff5bd47d4c1c98a',
-      name: 'HashKey Platform Token',
-      symbol: 'HSK',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '10000',
-    id: '0xe6cb353be74d0efd8f7280130d67cd2665826027',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '10',
-      id: '0xdae0fafd65385e7775cf75b1398735155ef6acd2',
-      name: 'Truth',
-      symbol: 'TRU',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '10000',
-    id: '0xe4846a3667f6b82e99e8c7a63e600866d03fa8ba',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xed1dee937ca2c763afecb94c2e090e9c714dbeaf',
-      name: 'WCCM',
-      symbol: 'WCCM',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0xdefd18078da2aada55d68725be71c7fa88a4b5e6',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xed1dee937ca2c763afecb94c2e090e9c714dbeaf',
-      name: 'WCCM',
-      symbol: 'WCCM',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '100',
-    id: '0xd3f9af3a73a6e543e01ad4b8f4b233f38fd6da47',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe87568a79d1df8ae857456e9c7c8bb9671fd993e',
-      name: 'Black Steed',
-      symbol: 'BSFC',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '100',
-    id: '0xceace6ce2705d9692481d270a822fe43662c0a04',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfaebfd3dfc1b36b8bf918d8697a66e80e1a151bf',
-      name: 'USIT',
-      symbol: 'USIT',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '10000',
-    id: '0xcc64272ced45b99e7e9e12eb076510fa59577e8f',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf009e3ab61c4be1fad14d198dad74433f8c50e3c',
-      name: 'EnergyC',
-      symbol: 'ENERGYC',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '500',
-    id: '0xcb597716c5e5758618d80900cea66bd67b7a9266',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xed03ed872159e199065401b6d0d487d78d9464aa',
-      name: 'TetherToken',
-      symbol: 'MXNt',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '10000',
-    id: '0xc5000daf75e988fba80524f618578e78aa231cca',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xebb82c932759b515b2efc1cfbb6bf2f6dbace404',
-      name: 'shares.finance',
-      symbol: 'SHARES',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '10000',
-    id: '0xc28aeb6d3b16fd5c85beeb78010d9ba42148d5e2',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf0b692ace03ffb689628e68d4919f91723d1c5a2',
-      name: 'SEX DAO',
-      symbol: 'SED',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '10000',
-    id: '0xba9fb8648fdfdbeb6b27528fad94d159920b2ce9',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf2b87ce9c2ce65e786d6ffee0fdb9629ceff05f2',
-      name: 'Dreamscape',
-      symbol: 'DSC',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0xb69e7e45d3a195287a5f7bdfdef940c2c470503a',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '12',
-      id: '0xe3bbb26f03b8d1bf81bce853ec8b580eaa587e4a',
-      name: 'Dumbo NFT',
-      symbol: 'DBN',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '100',
-    id: '0xb1543ff616e4820a54ef845fa76e5a3724ab4bae',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xeff2ac8165ce751408305eb3bb37c905a37bdb4a',
-      name: 'Hoard Dollar',
-      symbol: 'USDH',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0xafc0b19b93901bdf146450d7575a58c4753bf386',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe4136ec749f06d4e5d9060606161fa8384e6013f',
-      name: 'ELON',
-      symbol: 'ELN',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '100',
-    id: '0xad5e07cdcf8755fafdfd061800a69fd961db030b',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xe33d025d03c5be1b252df37588c89ca232b13bb4',
-      name: 'USDT',
-      symbol: 'USDT',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0xa8c6b6d11d88ed68e10b8937aa468ede03792f40',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfc385a1df85660a7e041423db512f779070fcede',
-      name: 'ZKLink',
-      symbol: 'ZKL',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0xa2461fc0ba42c60f0097a494d4260019efa59afe',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf21661d0d1d76d3ecb8e1b9f1c923dbfffae4097',
-      name: 'Realio Network',
-      symbol: 'RIO',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '500',
-    id: '0xa1a676f1a455770bfedf7c5fbcd7365395fc0d42',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe4ab17630a87d7d0117aa24cf0cb48a32fc1d8ae',
-      name: 'Yearcoin',
-      symbol: 'YEAR',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0x928f52d5676a9a41539da3e0bda891b1c9b8e20b',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xed03ed872159e199065401b6d0d487d78d9464aa',
-      name: 'TetherToken',
-      symbol: 'MXNt',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0x914f1dc6a900105a70527d60af3e89ae6cbd36cb',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfa66d09bce909ff5158f760b004bd8d42fa69195',
-      name: 'CGD',
-      symbol: 'CGD',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0x8ca65a25c20e8922fa8a4c2146275d97ac5388e8',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe1283567345349942acdfad3692924a1b16cf3cc',
-      name: 'AiDoge',
-      symbol: 'AI',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0x8bd709e2db221a7e5b00dade46fa551c11e80103',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfd418e42783382e86ae91e445406600ba144d162',
-      name: 'Zircuit',
-      symbol: 'ZRC',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '10000',
-    id: '0x88eabb80364c467f0e77cc575b56c206154a46cb',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe60779cc1b2c1d0580611c526a8df0e3f870ec48',
-      name: 'unshETHing_Token',
-      symbol: 'USH',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '10000',
-    id: '0x8466e74ba52d40226f102b5133572ed5ab96cb3a',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe77076518a813616315eaaba6ca8e595e845eee9',
-      name: 'ether.fi EIGEN',
-      symbol: 'eEIGEN',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '100',
-    id: '0x7e7d4c7ad0a19ce8b805a745545d1b6e778454a2',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xedfe7be1b6df84051cd4dd230a71d532283043b5',
-      name: 'USD Tether',
-      symbol: 'USDT',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '100',
-    id: '0x7c432b1a907e409a93d2b2a83e68f1abe2a09ed2',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '0',
-      id: '0xebad1390c8a54197042183419ef22dba98ca028b',
-      name: '6.5% TRACK MGMT 2030 TOKEN',
-      symbol: 'TRKS1',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '10000',
-    id: '0x74e724de7b44e200de86b05f9e123c3b668f00fe',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xea4bc384184a5ccb02a079ea76931c57732c5de4',
-      name: 'Gimbutis Silver',
-      symbol: 'GXAG',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '10000',
-    id: '0x730b0ed02a90c35fbabb63ad9283a53d6e8c1552',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xee2b9b7e168b5b2d40c507b891c7cfb13a6aaf2b',
-      name: 'Zygo The Frog',
-      symbol: 'ZYGO',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0x6ce86c70d5a747297db660f80ccbfa1a75b48f76',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe36afe5a2f93b724092ffa603ed0f489dc82eafe',
-      name: 'king',
-      symbol: 'JTRC',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0x69318e2534f56a8374b03159741bf4da5e491e24',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '8',
-      id: '0xdea86cd9c0a92fc79d1381203ba5128dc293861d',
-      name: 'SoundCoin',
-      symbol: 'SOUND',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '500',
-    id: '0x63d42f1f1ddd24466d68793f183fba8f534e820f',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '2',
-      id: '0xf1f227f5ecffba9a42b4280d75c1df95ab0c9216',
-      name: 'JSB Coin',
-      symbol: 'JSBC',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0x58df68d2a437ff799002dbc564f8d12ab1f5fa9b',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf0b692ace03ffb689628e68d4919f91723d1c5a2',
-      name: 'SEX DAO',
-      symbol: 'SED',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '10000',
-    id: '0x507a212ef7f676d69a13ceba89fc46e2cbde1970',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '9',
-      id: '0xdbe42e71303253e8f72d59224c68cb09b52ae563',
-      name: 'ButtonTranche AMPL Z',
-      symbol: 'TRANCHE-AMPL-Z',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '500',
-    id: '0x4d20f4c881cb0cc5cfcbac366d78c0389203a577',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '9',
-      id: '0xe230c428ac7511e5a6269fa64b2ff7cc468ac3a5',
-      name: 'Test',
-      symbol: 'TEST',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0x4c9399ac30688773cfd80740805ce3a8262dd537',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xdd9c5c04893a491a04a3a8de015a7df7823a0b65',
-      name: 'COOK',
-      symbol: 'COOK',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '10000',
-    id: '0x3ed73da272d32c3ed01908d640ab64fbc30dff1f',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xed1167b6dc64e8a366db86f2e952a482d0981ebd',
-      name: 'Lybra',
-      symbol: 'LBR',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '10000',
-    id: '0x3d21754aa621124ca79c5f025b64fa8be41ff12c',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xf4e26d087398d8e1bf4ae18106b14c1676257058',
-      name: 'PontexCoin',
-      symbol: 'PTXC',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '100',
-    id: '0x3c7ce5eba93981215fbe2e783dbbcbf821945f51',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe24a3dc889621612422a64e6388927901608b91d',
-      name: 'Staked USN',
-      symbol: 'sUSN',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '100',
-    id: '0x3b687dff9e4d1ca37ab41d554ad74fab139fa888',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xedb171c18ce90b633db442f2a6f72874093b49ef',
-      name: 'Wrapped Ampleforth',
-      symbol: 'WAMPL',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '100',
-    id: '0x38dc8ddde5ab5b8a6be6e0b5f9b71d73a91f2798',
-    liquidity: '3168463',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xf5b150931423f0013fbb9366b769a08b722b2c19',
-      name: 'Tether',
-      symbol: 'USDT',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '10000',
-    id: '0x37d1baeb59cf787d9c359c171bef5c43271cf113',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '6',
-      id: '0xdeb63cd8e60059b9c4ea8adc956c0f728b601776',
-      name: 'Aibot',
-      symbol: 'AIB',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0x335356baccc939815b26710bfd74848dce6aaba5',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xec53bf9167f50cdeb3ae105f56099aaab9061f83',
-      name: 'Eigen',
-      symbol: 'EIGEN',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '100',
-    id: '0x30518350e14049e859602e8c04f839e0908837f4',
-    liquidity: '4396536202338721',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfb0fe45ce97520046e1857aa503ea5612eec4b12',
-      name: 'HAHAOKNOBUYOK',
-      symbol: 'NOBUYOKPLS',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '10000',
-    id: '0x2eefafe397ee9218004d7f44a778fc5399e4d96d',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '9',
-      id: '0xee2a03aa6dacf51c18679c516ad5283d8e7c2637',
-      name: 'Neiro',
-      symbol: 'NEIRO',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0x2ba09bd807e537a9906748ebbb6954cddc15f8b7',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf4445049080ae2fde75aaf0c6e603fb55875f02c',
-      name: 'DGKToken',
-      symbol: 'DGK',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0x2b5fdf0673a8992c40a5c57d0357032194de2ed4',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xeef3b1166ec51c3ac9b23db8786dcf89c43a1c5e',
-      name: 'Ethereum Community Conference',
-      symbol: 'ETHCC',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '10000',
-    id: '0x291a007b8af1c8d4f7da848d616583c0f56a9500',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf819d9cb1c2a819fd991781a822de3ca8607c3c9',
-      name: 'Unibot',
-      symbol: 'UNIBOT',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0x2597f849140e474b70b630065145d2cb9ac99c9b',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe617aefefbadf4bda9c62087b08fa1d81336812a',
-      name: 'Ettios',
-      symbol: 'ETT',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0x20e79f76ee37f7823cde4f4d09db4e96514970d8',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xeb2cab54b8538b50eb5400f068202dcb795e24dc',
-      name: 'MAX7 COIN',
-      symbol: 'MAX7',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0x1fac4bce19f4723c4788ca65056cc0b8363aece6',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf6016421ee2eaabc2ddac1e21e33b6271ca4a059',
-      name: 'kurdistan',
-      symbol: 'KURD',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0x1f0361d1d328b741372eec19d9c965e5cc2eb317',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xea4bc384184a5ccb02a079ea76931c57732c5de4',
-      name: 'Gimbutis Silver',
-      symbol: 'GXAG',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0x1ed31ebc865afa1488b6c3643141bdf393128144',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xf5e84cf2152be57fac4e78f4e81fb565b67b5ee0',
-      name: 'Xi Network',
-      symbol: 'XIN',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0x1bca94f8a999819acf95e1075e536ef52798c8a5',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xdf3ac4f479375802a821f7b7b46cd7eb5e4262cc',
-      name: 'eUSD',
-      symbol: 'eUSD',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '3000',
-    id: '0x0420db196dbe9328c63b596954813fd625316017',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xe2f261f86ab126ea83c353d765c9ec56ff67f9f9',
-      name: 'Undercity',
-      symbol: 'UND',
-    },
-    volumeUSD: '0',
-  },
-  {
-    feeTier: '10000',
-    id: '0x03e4cb4930e9137e365f13465c6a938bfbaef713',
-    liquidity: '0',
-    token0: {
-      decimals: '6',
-      id: '0xdac17f958d2ee523a2206206994597c13d831ec7',
-      name: 'Tether USD',
-      symbol: 'USDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xfa704148d516b209d52c2d75f239274c8f8eaf1a',
-      name: 'wOCTA',
-      symbol: 'wOCTA',
-    },
-    volumeUSD: '0',
-  },
-];
 const x_weth = [
   {
-    feeTier: '500',
     id: '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640',
-    liquidity: '9243440736293920738',
+    liquidity: '9453597067610981028',
     token0: {
       decimals: '6',
       id: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
@@ -6258,17 +9,13 @@ const x_weth = [
       symbol: 'USDC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '552763084360.7418619860163501805197',
+    volumeUSD: '553008930809.269163221493393089588',
   },
   {
-    feeTier: '500',
     id: '0x4585fe77225b41b697c938b018e2ac67ac5a20c0',
-    liquidity: '136004819297557978',
+    liquidity: '132986794500269343',
     token0: {
       decimals: '8',
       id: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
@@ -6276,17 +23,13 @@ const x_weth = [
       symbol: 'WBTC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '87181962133.67578756159809568519133',
+    volumeUSD: '87219505921.70915675770135285038467',
   },
   {
-    feeTier: '3000',
     id: '0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8',
-    liquidity: '4750609745178057451',
+    liquidity: '4173727166277584750',
     token0: {
       decimals: '6',
       id: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
@@ -6294,17 +37,13 @@ const x_weth = [
       symbol: 'USDC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '83323040379.41918369529191762655253',
+    volumeUSD: '83351340705.90769020031838264281327',
   },
   {
-    feeTier: '3000',
     id: '0xcbcdf9626bc03e24f779434178a73a0b4bad62ed',
-    liquidity: '213816726947042168',
+    liquidity: '215349340804614527',
     token0: {
       decimals: '8',
       id: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
@@ -6312,17 +51,13 @@ const x_weth = [
       symbol: 'WBTC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '31877340435.70399978872185770902574',
+    volumeUSD: '31891256226.44984364136748438747999',
   },
   {
-    feeTier: '500',
     id: '0x60594a405d53811d3bc4766596efd80fd545a270',
-    liquidity: '193150028897068957853973',
+    liquidity: '200591011018948299293743',
     token0: {
       decimals: '18',
       id: '0x6b175474e89094c44da98b954eedeac495271d0f',
@@ -6330,17 +65,13 @@ const x_weth = [
       symbol: 'DAI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '31307366457.72201970155870046640798',
+    volumeUSD: '31314995952.07930448328279682200164',
   },
   {
-    feeTier: '100',
     id: '0xe0554a476a092703abdb3ef35c80e0d76d32939f',
-    liquidity: '430032722374376229',
+    liquidity: '522943944154574101',
     token0: {
       decimals: '6',
       id: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
@@ -6348,17 +79,13 @@ const x_weth = [
       symbol: 'USDC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '28044105614.78985987184914402238164',
+    volumeUSD: '28132735617.40700057627493855913753',
   },
   {
-    feeTier: '100',
     id: '0x109830a1aaad605bbf02a9dfa7b0b92ec2fb7daa',
-    liquidity: '6879649841731909292614649',
+    liquidity: '10994795953786232782069846',
     token0: {
       decimals: '18',
       id: '0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0',
@@ -6366,17 +93,13 @@ const x_weth = [
       symbol: 'wstETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '24725090919.02666206167261102466849',
+    volumeUSD: '24735797702.94180152846459623295319',
   },
   {
-    feeTier: '3000',
     id: '0xc2e9f25be6257c210d7adf0d4cd6e3e881ba25f8',
-    liquidity: '820980702801435743709154',
+    liquidity: '827771912532558359642700',
     token0: {
       decimals: '18',
       id: '0x6b175474e89094c44da98b954eedeac495271d0f',
@@ -6384,17 +107,13 @@ const x_weth = [
       symbol: 'DAI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '15427024878.93059086707470445152353',
+    volumeUSD: '15432254079.8145442725770789334297',
   },
   {
-    feeTier: '3000',
     id: '0xa6cc3c2531fdaa6ae1a3ca84c2855806728693e8',
-    liquidity: '488041084623190136689196',
+    liquidity: '456530455981898603524784',
     token0: {
       decimals: '18',
       id: '0x514910771af9ca656af840dff83e8264ecf986ca',
@@ -6402,17 +121,13 @@ const x_weth = [
       symbol: 'LINK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '13099102734.15838051186410835071153',
+    volumeUSD: '13104488925.32996526875285673100252',
   },
   {
-    feeTier: '3000',
     id: '0x1d42064fc4beb5f8aaf85f4617ae8b3b5b8bd801',
-    liquidity: '1417970071159477362494650',
+    liquidity: '1469166144142857106666144',
     token0: {
       decimals: '18',
       id: '0x1f9840a85d5af5bf1d1762f925bdaddc4201f984',
@@ -6420,17 +135,13 @@ const x_weth = [
       symbol: 'UNI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '8626300871.486689315585516927809652',
+    volumeUSD: '8633753790.556501386308681736218696',
   },
   {
-    feeTier: '3000',
     id: '0xac4b3dacb91461209ae9d41ec517c2b9cb1b7daf',
-    liquidity: '52805902741618360534371',
+    liquidity: '52279073427971644958686',
     token0: {
       decimals: '18',
       id: '0x4d224452801aced8b2f0aebe155379bb5d594381',
@@ -6438,17 +149,13 @@ const x_weth = [
       symbol: 'APE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '7135239742.279942283599388032736998',
+    volumeUSD: '7135450332.787474938794079609997527',
   },
   {
-    feeTier: '3000',
     id: '0x11950d141ecb863f01007add7d1a342041227b58',
-    liquidity: '56050670441404161454368811',
+    liquidity: '59761536071073343677973428',
     token0: {
       decimals: '18',
       id: '0x6982508145454ce325ddbe47a25d4ec3d2311933',
@@ -6456,17 +163,13 @@ const x_weth = [
       symbol: 'PEPE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '5491465117.867131941100438052706559',
+    volumeUSD: '5492433657.590368038020287943410627',
   },
   {
-    feeTier: '3000',
     id: '0x290a6a7460b308ee3f19023d2d00de604bcf5b42',
-    liquidity: '12970293648273797044778',
+    liquidity: '9304118648826981443263',
     token0: {
       decimals: '18',
       id: '0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0',
@@ -6474,17 +177,13 @@ const x_weth = [
       symbol: 'MATIC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '4769854676.787381312824599858905167',
+    volumeUSD: '4770154591.589626189304025363679549',
   },
   {
-    feeTier: '3000',
     id: '0xa3f558aebaecaf0e11ca4b2199cc5ed341edfd74',
-    liquidity: '1074867073759995350801252',
+    liquidity: '1383495767847134497347543',
     token0: {
       decimals: '18',
       id: '0x5a98fcbea516cf06857215779fd812ca3bef1b32',
@@ -6492,17 +191,13 @@ const x_weth = [
       symbol: 'LDO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '3679450273.469002377073736248498984',
+    volumeUSD: '3684490603.183280026083501430303957',
   },
   {
-    feeTier: '3000',
     id: '0xe8c6c9227491c0a8156a0106a0204d881bb7e531',
-    liquidity: '20033540220779698033516',
+    liquidity: '20029493787133952952287',
     token0: {
       decimals: '18',
       id: '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2',
@@ -6510,15 +205,11 @@ const x_weth = [
       symbol: 'MKR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '3647402939.415447834887091380597646',
+    volumeUSD: '3657955695.148970331015134666723789',
   },
   {
-    feeTier: '100',
     id: '0xbe80225f09645f172b079394312220637c440a63',
     liquidity: '134278268156956197023676',
     token0: {
@@ -6528,17 +219,13 @@ const x_weth = [
       symbol: 'ezETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '3576688279.158448494606340297463847',
+    volumeUSD: '3576768191.212373380750694348572582',
   },
   {
-    feeTier: '100',
     id: '0x553e9c493678d8606d6a5ba284643db2110df823',
-    liquidity: '130635019311743338750335',
+    liquidity: '143204205714967835671460',
     token0: {
       decimals: '18',
       id: '0xae78736cd615f374d3085123a210448e74fc6393',
@@ -6546,15 +233,11 @@ const x_weth = [
       symbol: 'rETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '3538712146.776722631536209944578557',
+    volumeUSD: '3541720208.903951008166449900071329',
   },
   {
-    feeTier: '3000',
     id: '0x151ccb92bc1ed5c6d0f9adb5cec4763ceb66ac7f',
     liquidity: '1094813677579483309458',
     token0: {
@@ -6564,17 +247,13 @@ const x_weth = [
       symbol: 'ETH2x-FLI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '2798644844.752652137342797242621871',
+    volumeUSD: '2798647271.579201973840207926059909',
   },
   {
-    feeTier: '3000',
     id: '0x2f62f2b4c5fcd7570a709dec05d68ea19c82a9ec',
-    liquidity: '35564758022229528991530942',
+    liquidity: '18072223224098723213729472',
     token0: {
       decimals: '18',
       id: '0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce',
@@ -6582,17 +261,13 @@ const x_weth = [
       symbol: 'SHIB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '2768435023.863528272692988623595693',
+    volumeUSD: '2768885653.416223353794184613115355',
   },
   {
-    feeTier: '3000',
     id: '0x5ab53ee1d50eef2c1dd3d5402789cd27bb52c1bb',
-    liquidity: '152323213817611976886569',
+    liquidity: '150782130810655465563144',
     token0: {
       decimals: '18',
       id: '0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9',
@@ -6600,15 +275,11 @@ const x_weth = [
       symbol: 'AAVE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '2680263255.091196875572817258860999',
+    volumeUSD: '2687037150.648382865483461460427676',
   },
   {
-    feeTier: '500',
     id: '0x840deeef2f115cf50da625f7368c24af6fe74410',
     liquidity: '10796975475247570803688',
     token0: {
@@ -6618,17 +289,13 @@ const x_weth = [
       symbol: 'cbETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '2653262037.13799660672607623567456',
+    volumeUSD: '2653429346.474668566210492363404312',
   },
   {
-    feeTier: '3000',
     id: '0x9e0905249ceefffb9605e034b534544684a58be6',
-    liquidity: '1901007266451402487',
+    liquidity: '1906504502918357812',
     token0: {
       decimals: '8',
       id: '0x2b591e99afe9f32eaa6214f7b7629768c40eeb39',
@@ -6636,17 +303,13 @@ const x_weth = [
       symbol: 'HEX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '2365790677.559180956623263358389774',
+    volumeUSD: '2366036636.490090716711525547447968',
   },
   {
-    feeTier: '3000',
     id: '0xc3db44adc1fcdfd5671f555236eae49f4a8eea18',
-    liquidity: '383096172989077300741247',
+    liquidity: '352574450676173924544928',
     token0: {
       decimals: '18',
       id: '0x57e114b691db790c35207b2e685d4a43181e6061',
@@ -6654,17 +317,13 @@ const x_weth = [
       symbol: 'ENA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '2353677075.966174183804557913933935',
+    volumeUSD: '2356635785.489278071116211644450009',
   },
   {
-    feeTier: '3000',
     id: '0x3019d4e366576a88d28b623afaf3ecb9ec9d9580',
-    liquidity: '398469165973970272413',
+    liquidity: '399714753132976843542',
     token0: {
       decimals: '18',
       id: '0xbb0e17ef65f82ab018d8edd776e8dd940327b28b',
@@ -6672,15 +331,11 @@ const x_weth = [
       symbol: 'AXS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '2220715259.786505217640150415915904',
+    volumeUSD: '2220728758.92936676426398445256863',
   },
   {
-    feeTier: '100',
     id: '0xe6ff8b9a37b0fab776134636d9981aa778c4e718',
     liquidity: '897319015269',
     token0: {
@@ -6690,15 +345,11 @@ const x_weth = [
       symbol: 'WBTC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '2165918423.495308804474909768803288',
+    volumeUSD: '2165918468.884283212217590440031243',
   },
   {
-    feeTier: '3000',
     id: '0x1c98562a2fab5af19d8fb3291a36ac3c618835d9',
     liquidity: '3850586539579865126177',
     token0: {
@@ -6708,17 +359,13 @@ const x_weth = [
       symbol: 'Metis',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '1880782884.718453152438974281051465',
+    volumeUSD: '1880841688.620393976446969432880717',
   },
   {
-    feeTier: '10000',
     id: '0x5764a6f2212d502bc5970f9f129ffcd61e5d7563',
-    liquidity: '1882018078259911877306772',
+    liquidity: '7123522264624804055793789',
     token0: {
       decimals: '18',
       id: '0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce',
@@ -6726,17 +373,13 @@ const x_weth = [
       symbol: 'SHIB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '1732432244.328767609306982470588304',
+    volumeUSD: '1732467015.662333642728277558669994',
   },
   {
-    feeTier: '3000',
     id: '0xd8de6af55f618a7bc69835d55ddc6582220c36c0',
-    liquidity: '30514466991146846799',
+    liquidity: '22403589287732739103',
     token0: {
       decimals: '18',
       id: '0x92d6c1e31e14520e676a687f0a93788b716beff5',
@@ -6744,17 +387,13 @@ const x_weth = [
       symbol: 'DYDX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '1684484340.87456657225870745259667',
+    volumeUSD: '1684484497.037420328533520172557544',
   },
   {
-    feeTier: '3000',
     id: '0x510100d5143e011db24e2aa38abe85d73d5b2177',
-    liquidity: '181399899730740757162767',
+    liquidity: '181590786859411364249832',
     token0: {
       decimals: '18',
       id: '0x046eee2cc3188071c02bfc1745a6b17c656e3f3d',
@@ -6762,17 +401,13 @@ const x_weth = [
       symbol: 'RLB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '1606976470.415312263236302487932914',
+    volumeUSD: '1607306648.557003376033014159097393',
   },
   {
-    feeTier: '10000',
     id: '0x3b685307c8611afb2a9e83ebc8743dc20480716e',
-    liquidity: '49285108373558299627709',
+    liquidity: '49368629200519443609882',
     token0: {
       decimals: '18',
       id: '0x4e15361fd6b4bb609fa63c81a2be19d873717870',
@@ -6780,15 +415,11 @@ const x_weth = [
       symbol: 'FTM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '1591773082.279034517410941754161942',
+    volumeUSD: '1591891111.464225910341953050480197',
   },
   {
-    feeTier: '3000',
     id: '0xf8a95b2409c27678a6d18d950c5d913d5c38ab03',
     liquidity: '0',
     token0: {
@@ -6798,17 +429,13 @@ const x_weth = [
       symbol: 'GALA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '1542419449.239335323837038028728047',
   },
   {
-    feeTier: '3000',
     id: '0x2982d3295a0e1a99e6e88ece0e93ffdfc5c761ae',
-    liquidity: '314081807510314353',
+    liquidity: '320345477151716900',
     token0: {
       decimals: '9',
       id: '0x77e06c9eccf2e797fd462a92b6d7642ef85b0a44',
@@ -6816,15 +443,11 @@ const x_weth = [
       symbol: 'wTAO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '1457847571.498398609133934562242799',
+    volumeUSD: '1461043696.60386103721893937626017',
   },
   {
-    feeTier: '500',
     id: '0xa4e0faa58465a2d369aa21b3e42d43374c6f9613',
     liquidity: '4945269252500508676986',
     token0: {
@@ -6834,15 +457,11 @@ const x_weth = [
       symbol: 'rETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '1368157319.691343726731182489021244',
+    volumeUSD: '1368161382.7245753187646846488818',
   },
   {
-    feeTier: '3000',
     id: '0x824a30f2984f9013f2c8d0a29c0a3cc5fd5c0673',
     liquidity: '1728081883948329226348',
     token0: {
@@ -6852,17 +471,13 @@ const x_weth = [
       symbol: 'BLUR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '1295862725.903004067929636943146824',
+    volumeUSD: '1295864136.742740269175442982966888',
   },
   {
-    feeTier: '3000',
     id: '0x24ee2c6b9597f035088cda8575e9d5e15a84b9df',
-    liquidity: '2997781221108676238016',
+    liquidity: '3056617093026419637823',
     token0: {
       decimals: '18',
       id: '0x4a220e6096b25eadb88358cb44068a3248254675',
@@ -6870,15 +485,11 @@ const x_weth = [
       symbol: 'QNT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '1230386928.158691033264864491048242',
+    volumeUSD: '1230538402.878611172243140775700347',
   },
   {
-    feeTier: '10000',
     id: '0x94981f69f7483af3ae218cbfe65233cc3c60d93a',
     liquidity: '19074978595292954353',
     token0: {
@@ -6888,15 +499,11 @@ const x_weth = [
       symbol: 'RBN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '1173557247.786268693929593401381016',
+    volumeUSD: '1173557250.829434556973163250838911',
   },
   {
-    feeTier: '10000',
     id: '0x5d752f322befb038991579972e912b02f61a3dda',
     liquidity: '2099988961285127714444',
     token0: {
@@ -6906,15 +513,11 @@ const x_weth = [
       symbol: 'AGLD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '1114347095.609772112247214771686815',
+    volumeUSD: '1114347696.408755473000509676828018',
   },
   {
-    feeTier: '3000',
     id: '0xd34e4855146ac0c6d0e4a652bd5fb54830f91ba8',
     liquidity: '0',
     token0: {
@@ -6924,15 +527,11 @@ const x_weth = [
       symbol: 'STRONG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '1094154249.618360924570436257820587',
   },
   {
-    feeTier: '10000',
     id: '0x1df4c6e36d61416813b42fe32724ef11e363eddc',
     liquidity: '2047932195797407550764',
     token0: {
@@ -6942,15 +541,11 @@ const x_weth = [
       symbol: 'PANDORA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '1060700357.896300895484209922297746',
+    volumeUSD: '1060711047.428713568544671636236076',
   },
   {
-    feeTier: '3000',
     id: '0xfebf38b1d34818d4827034f97b7d6d77c79d4997',
     liquidity: '43538665042332596645005',
     token0: {
@@ -6960,17 +555,13 @@ const x_weth = [
       symbol: 'SPELL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '1059274059.782053254477538376464749',
+    volumeUSD: '1059281327.192270432923519180644922',
   },
   {
-    feeTier: '3000',
     id: '0x4c54ff7f1c424ff5487a32aad0b48b19cbaf087f',
-    liquidity: '2172921113646040918502',
+    liquidity: '1877610727041287632975',
     token0: {
       decimals: '18',
       id: '0xb62132e35a6c13ee1ee0f84dc5d40bad8d815206',
@@ -6978,15 +569,11 @@ const x_weth = [
       symbol: 'NEXO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '1048891485.488686632309437263601903',
+    volumeUSD: '1048901272.845240006862562245531452',
   },
   {
-    feeTier: '10000',
     id: '0xf79fc43494ce8a4613cb0b2a67a1b1207fd05d27',
     liquidity: '6177465818585080368',
     token0: {
@@ -6996,17 +583,13 @@ const x_weth = [
       symbol: 'APE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '1040167204.073130727360195895634538',
+    volumeUSD: '1040167206.098015311250540306377234',
   },
   {
-    feeTier: '3000',
     id: '0x16588709ca8f7b84829b43cc1c5cb7e84a321b16',
-    liquidity: '9025619902986328300293',
+    liquidity: '8533836933089245488195',
     token0: {
       decimals: '18',
       id: '0xb23d80f5fefcddaa212212f028021b41ded428cf',
@@ -7014,15 +597,11 @@ const x_weth = [
       symbol: 'PRIME',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '1020784711.485076276469794774087644',
+    volumeUSD: '1021080148.68642070395469072348386',
   },
   {
-    feeTier: '500',
     id: '0x99950bae3d0b79b8bee86a8a208ae1b087b9dcb0',
     liquidity: '1899795383331',
     token0: {
@@ -7032,17 +611,13 @@ const x_weth = [
       symbol: 'TRX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '1011416668.015159194796784647057407',
+    volumeUSD: '1011416689.145982707293768493498972',
   },
   {
-    feeTier: '10000',
     id: '0x844eb5c280f38c7462316aad3f338ef9bda62668',
-    liquidity: '33557280235408880274946',
+    liquidity: '32358603104103377332141',
     token0: {
       decimals: '18',
       id: '0x38e382f74dfb84608f3c1f10187f6bef5951de93',
@@ -7050,17 +625,13 @@ const x_weth = [
       symbol: 'MUBI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '937463520.9170673783224744351213176',
+    volumeUSD: '937490295.4398743069309746912516604',
   },
   {
-    feeTier: '10000',
     id: '0x7bea39867e4169dbe237d55c8242a8f2fcdcc387',
-    liquidity: '13950497815826584',
+    liquidity: '15582109950410215',
     token0: {
       decimals: '6',
       id: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
@@ -7068,17 +639,13 @@ const x_weth = [
       symbol: 'USDC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '892355841.2856416078218778224532888',
+    volumeUSD: '892374266.7084789789678001888859787',
   },
   {
-    feeTier: '3000',
     id: '0xcd83055557536eff25fd0eafbc56e74a1b4260b3',
-    liquidity: '76253640715300690665807',
+    liquidity: '75803672198061287485900',
     token0: {
       decimals: '18',
       id: '0xbc396689893d065f41bc2c6ecbee5e0085233447',
@@ -7086,15 +653,11 @@ const x_weth = [
       symbol: 'PERP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '864115572.8361003319271786415307932',
+    volumeUSD: '865651002.8518370879115806891401412',
   },
   {
-    feeTier: '3000',
     id: '0x06729eb2424da47898f935267bd4a62940de5105',
     liquidity: '0',
     token0: {
@@ -7104,17 +667,13 @@ const x_weth = [
       symbol: 'CEL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '858322701.5055667913207104378694287',
   },
   {
-    feeTier: '10000',
     id: '0x331399c614ca67dee86733e5a2fba40dbb16827c',
-    liquidity: '15008493577335864658914457',
+    liquidity: '9582087712293232890135543',
     token0: {
       decimals: '18',
       id: '0xb9f599ce614feb2e1bbe58f180f370d05b39344e',
@@ -7122,17 +681,13 @@ const x_weth = [
       symbol: 'PORK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '857515755.756522415022234866620934',
+    volumeUSD: '857618507.4879799321559672372912317',
   },
   {
-    feeTier: '3000',
     id: '0xea4ba4ce14fdd287f380b55419b1c5b6c3f22ab6',
-    liquidity: '515292514286621354528',
+    liquidity: '30140584537783814919655',
     token0: {
       decimals: '18',
       id: '0xc00e94cb662c3520282e6f5717214004a7f26888',
@@ -7140,15 +695,11 @@ const x_weth = [
       symbol: 'COMP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '847860186.331726545395384225910683',
+    volumeUSD: '848214602.98076721389829249442865',
   },
   {
-    feeTier: '500',
     id: '0xc39e83fe4e412a885c0577c08eb53bdb6548004a',
     liquidity: '136932959109743945675630',
     token0: {
@@ -7158,15 +709,11 @@ const x_weth = [
       symbol: 'RCH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '844677654.6753820447757223897244694',
+    volumeUSD: '844682204.9941186877621546140954564',
   },
   {
-    feeTier: '3000',
     id: '0xd83d78108dd0d1dffff11ea3f99871671a52488b',
     liquidity: '0',
     token0: {
@@ -7176,15 +723,11 @@ const x_weth = [
       symbol: 'PAX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '838947741.3244856514267196102647864',
   },
   {
-    feeTier: '3000',
     id: '0xd1d5a4c0ea98971894772dcd6d2f1dc71083c44e',
     liquidity: '30981296848788827024494',
     token0: {
@@ -7194,17 +737,13 @@ const x_weth = [
       symbol: 'LQTY',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '826473026.3112177083534935296622702',
+    volumeUSD: '826741470.3270317967409485597872882',
   },
   {
-    feeTier: '10000',
     id: '0x7baece5d47f1bc5e1953fbe0e9931d54dab6d810',
-    liquidity: '102366345766615873686406',
+    liquidity: '102726864316906608296189',
     token0: {
       decimals: '18',
       id: '0xa35923162c49cf95e6bf26623385eb431ad920d3',
@@ -7212,15 +751,11 @@ const x_weth = [
       symbol: 'TURBO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '765723916.4555319771156966928788769',
+    volumeUSD: '765997804.0801018151588381366702369',
   },
   {
-    feeTier: '10000',
     id: '0x83abecf7204d5afc1bea5df734f085f2535a9976',
     liquidity: '32848797296120648419723',
     token0: {
@@ -7230,17 +765,13 @@ const x_weth = [
       symbol: 'PEOPLE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '762733207.8676296460219419542078366',
+    volumeUSD: '762770217.6631855034366294909181059',
   },
   {
-    feeTier: '10000',
     id: '0x5b97b125cf8af96834f2d08c8f1291bd47724939',
-    liquidity: '5134137939847688603678',
+    liquidity: '5169364002889362423679',
     token0: {
       decimals: '18',
       id: '0x3845badade8e6dff049820680d1f14bd3903a5d0',
@@ -7248,17 +779,13 @@ const x_weth = [
       symbol: 'SAND',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '745623431.899724962682742884408016',
+    volumeUSD: '745636755.8485683200964242629806599',
   },
   {
-    feeTier: '10000',
     id: '0xe936f0073549ad8b1fa53583600d629ba9375161',
-    liquidity: '40438486698065137506002',
+    liquidity: '40879161123124211198555',
     token0: {
       decimals: '18',
       id: '0x6de037ef9ad2725eb40118bb1702ebb27e4aeb24',
@@ -7266,15 +793,11 @@ const x_weth = [
       symbol: 'RNDR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '696153297.811089128307435062748955',
+    volumeUSD: '696584071.6373418838846764426761148',
   },
   {
-    feeTier: '3000',
     id: '0x7685cd3ddd862b8745b1082a6acb19e14eaa74f3',
     liquidity: '1627255387064593790226',
     token0: {
@@ -7284,15 +807,11 @@ const x_weth = [
       symbol: 'RARE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '685095673.6567243947843805092323722',
+    volumeUSD: '685099177.0016208135646417157383105',
   },
   {
-    feeTier: '3000',
     id: '0xd35efae4097d005720608eaf37e42a5936c94b44',
     liquidity: '132245826509839910688',
     token0: {
@@ -7302,17 +821,13 @@ const x_weth = [
       symbol: '1INCH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '674568457.1118967549529650956532102',
+    volumeUSD: '674568524.9767921648383839806757206',
   },
   {
-    feeTier: '10000',
     id: '0xf4ad61db72f114be877e87d62dc5e7bd52df4d9b',
-    liquidity: '1337854638737371875458',
+    liquidity: '4634462575155335700681',
     token0: {
       decimals: '18',
       id: '0x5a98fcbea516cf06857215779fd812ca3bef1b32',
@@ -7320,15 +835,11 @@ const x_weth = [
       symbol: 'LDO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '658758558.6589870759141862835800621',
+    volumeUSD: '658762573.4549529379043921307930765',
   },
   {
-    feeTier: '10000',
     id: '0xf1b63cd9d80f922514c04b0fd0a30373316dd75b',
     liquidity: '2029006137698288',
     token0: {
@@ -7338,17 +849,13 @@ const x_weth = [
       symbol: 'OHM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '634875233.2189423948742729255734609',
+    volumeUSD: '634875309.7858289502331296633709898',
   },
   {
-    feeTier: '100',
     id: '0x177622e79acece98c39f6e12fa78ac7fc8a8bf62',
-    liquidity: '4817916732627821575769',
+    liquidity: '14547972090146678738275',
     token0: {
       decimals: '18',
       id: '0xbe9895146f7af43049ca1c1ae358b0541ea49704',
@@ -7356,17 +863,13 @@ const x_weth = [
       symbol: 'cbETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '605979146.2056293416667356522396048',
+    volumeUSD: '608513862.2638041804938021700831037',
   },
   {
-    feeTier: '10000',
     id: '0x0c30062368eefb96bf3ade1218e685306b8e89fa',
-    liquidity: '2481746566541560925',
+    liquidity: '2477518268960492632',
     token0: {
       decimals: '8',
       id: '0x72e4f9f808c49a2a61de9c5896298920dc4eeea9',
@@ -7374,17 +877,13 @@ const x_weth = [
       symbol: 'BITCOIN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '604763755.0980395446137812547352273',
+    volumeUSD: '605221950.3740227572465135401586019',
   },
   {
-    feeTier: '3000',
     id: '0x1385fc1fe0418ea0b4fcf7adc61fc7535ab7f80d',
-    liquidity: '3251671172319832993787',
+    liquidity: '3239923701940856278797',
     token0: {
       decimals: '18',
       id: '0x1495bc9e44af1f8bcb62278d2bec4540cf0c05ea',
@@ -7392,17 +891,13 @@ const x_weth = [
       symbol: 'DEAI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '591261740.6706554302641023423380809',
+    volumeUSD: '591655874.0201382287409208289208567',
   },
   {
-    feeTier: '3000',
     id: '0xb011e4eb4111ef00b620a5ed195836dcd69db1ff',
-    liquidity: '12164925206119024993094',
+    liquidity: '6898891906748149520877',
     token0: {
       decimals: '18',
       id: '0x9813037ee2218799597d83d4a5b6f3b6778218d9',
@@ -7410,17 +905,13 @@ const x_weth = [
       symbol: 'BONE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '588755938.7679469389991957412043666',
+    volumeUSD: '588784466.4466163707020930667913692',
   },
   {
-    feeTier: '10000',
     id: '0xe0cfa17aa9b8f930fd936633c0252d5cb745c2c3',
-    liquidity: '539604768472234145683',
+    liquidity: '540470810068141046395',
     token0: {
       decimals: '18',
       id: '0x92d6c1e31e14520e676a687f0a93788b716beff5',
@@ -7428,15 +919,11 @@ const x_weth = [
       symbol: 'DYDX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '577103985.2439150984044566857146487',
+    volumeUSD: '577109237.8023643851993217749307161',
   },
   {
-    feeTier: '3000',
     id: '0x80ed1b41476b95fb47830825b65fd3bf59f6a348',
     liquidity: '26105203073891741018326',
     token0: {
@@ -7446,15 +933,11 @@ const x_weth = [
       symbol: 'BVM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '567764177.9140873963130206569366988',
+    volumeUSD: '567779556.8468946673959796607583134',
   },
   {
-    feeTier: '500',
     id: '0x19fe9857bb3652e9007f2347a1f877ffa9215f7f',
     liquidity: '40182960818703494577',
     token0: {
@@ -7464,17 +947,13 @@ const x_weth = [
       symbol: 'FLC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '565795143.9588019679718931915318984',
   },
   {
-    feeTier: '10000',
     id: '0xc4ce8e63921b8b6cbdb8fcb6bd64cc701fb926f2',
-    liquidity: '1888920043612008861938839',
+    liquidity: '1900229470948308083511355',
     token0: {
       decimals: '18',
       id: '0x0000000000c5dc95539589fbd24be07c6c14eca4',
@@ -7482,53 +961,13 @@ const x_weth = [
       symbol: 'CULT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '564365229.802092120363120005933372',
+    volumeUSD: '564739140.8627478785920399369356491',
   },
   {
-    feeTier: '10000',
-    id: '0xcd8286b48936cdac20518247dbd310ab681a9fbf',
-    liquidity: '9710874453534059421747',
-    token0: {
-      decimals: '18',
-      id: '0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0',
-      name: 'Frax Share',
-      symbol: 'FXS',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '544431103.1368984305409134428018637',
-  },
-  {
-    feeTier: '10000',
-    id: '0x5aaa28ca43c6646fd1403e508f0fca1d92357dde',
-    liquidity: '57728369086012328559473',
-    token0: {
-      decimals: '18',
-      id: '0x037a54aab062628c9bbae1fdb1583c195585fe41',
-      name: 'LCX',
-      symbol: 'LCX',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '542281972.933527800138849367071884',
-  },
-  {
-    feeTier: '3000',
     id: '0xe331de28cd81b768c19a366b0e4e4675c45ec2da',
-    liquidity: '154755929549475094916619',
+    liquidity: '147244595617037931246396',
     token0: {
       decimals: '18',
       id: '0x55296f69f40ea6d20e478533c15a6b08b654e758',
@@ -7536,15 +975,39 @@ const x_weth = [
       symbol: 'XYO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '541805829.0585081169577222220145426',
+    volumeUSD: '545629491.064276306454501849327484',
   },
   {
-    feeTier: '3000',
+    id: '0xcd8286b48936cdac20518247dbd310ab681a9fbf',
+    liquidity: '366159608731192070668',
+    token0: {
+      decimals: '18',
+      id: '0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0',
+      name: 'Frax Share',
+      symbol: 'FXS',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '544457114.574666178990141088588748',
+  },
+  {
+    id: '0x5aaa28ca43c6646fd1403e508f0fca1d92357dde',
+    liquidity: '54893922469990384870138',
+    token0: {
+      decimals: '18',
+      id: '0x037a54aab062628c9bbae1fdb1583c195585fe41',
+      name: 'LCX',
+      symbol: 'LCX',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '542848667.3774119971445897995189933',
+  },
+  {
     id: '0xdce93ed9ae7c53143e19cf799d156b72d1cc2777',
     liquidity: '194925828424830899188',
     token0: {
@@ -7554,15 +1017,11 @@ const x_weth = [
       symbol: 'BEN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '539959951.3761058625287903587056847',
   },
   {
-    feeTier: '10000',
     id: '0xad9ef19e289dcbc9ab27b83d2df53cdeff60f02d',
     liquidity: '9141216799191710767073',
     token0: {
@@ -7572,17 +1031,13 @@ const x_weth = [
       symbol: 'SAVM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '536103196.9688580994078147196705443',
+    volumeUSD: '536105851.6672867861024470774347704',
   },
   {
-    feeTier: '3000',
     id: '0x57af956d3e2cca3b86f3d8c6772c03ddca3eaacb',
-    liquidity: '76908075401858330836175',
+    liquidity: '78953944050735185738719',
     token0: {
       decimals: '18',
       id: '0x808507121b80c02388fad14726482e061b8da827',
@@ -7590,15 +1045,11 @@ const x_weth = [
       symbol: 'PENDLE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '534081576.020677464210187741428338',
+    volumeUSD: '535990823.3663884284073059559512029',
   },
   {
-    feeTier: '3000',
     id: '0x80c7770b4399ae22149db17e97f9fc8a10ca5100',
     liquidity: '34587081977159356273',
     token0: {
@@ -7608,17 +1059,13 @@ const x_weth = [
       symbol: 'LYXe',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '516337348.9200744235574417774066932',
   },
   {
-    feeTier: '3000',
     id: '0x8661ae7918c0115af9e3691662f605e9c550ddc9',
-    liquidity: '11546093658408997609781',
+    liquidity: '11275850209526724700536',
     token0: {
       decimals: '18',
       id: '0x0f5d2fb29fb7d3cfee444a200298f468908cc942',
@@ -7626,15 +1073,11 @@ const x_weth = [
       symbol: 'MANA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '502600181.3665639287529260864451093',
+    volumeUSD: '502652503.6585859139704720087871363',
   },
   {
-    feeTier: '3000',
     id: '0x7a5ae802895d5f90b6edbafc870fd348fba2a3d2',
     liquidity: '0',
     token0: {
@@ -7644,15 +1087,11 @@ const x_weth = [
       symbol: 'UST',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '497958156.191102990083291794300037',
   },
   {
-    feeTier: '10000',
     id: '0x3afdc5e6dfc0b0a507a8e023c9dce2cafc310316',
     liquidity: '18383920643723866611180',
     token0: {
@@ -7662,15 +1101,11 @@ const x_weth = [
       symbol: 'MKR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '494612925.5551779717953779997093174',
+    volumeUSD: '495389456.291072684491186184285898',
   },
   {
-    feeTier: '3000',
     id: '0xf56d08221b5942c428acc5de8f78489a97fc5599',
     liquidity: '1720896890940648311',
     token0: {
@@ -7680,15 +1115,11 @@ const x_weth = [
       symbol: 'GNO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '489516293.0103141878641735681225946',
+    volumeUSD: '489516317.0611254721321784954029535',
   },
   {
-    feeTier: '500',
     id: '0xd340b57aacdd10f96fc1cf10e15921936f41e29c',
     liquidity: '1568003741676753365',
     token0: {
@@ -7698,15 +1129,11 @@ const x_weth = [
       symbol: 'wstETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '487858331.4156779533936776517200338',
+    volumeUSD: '487858435.4744651087574209116811082',
   },
   {
-    feeTier: '500',
     id: '0x8db1b906d47dfc1d84a87fc49bd0522e285b98b9',
     liquidity: '56505909199138561938',
     token0: {
@@ -7716,15 +1143,11 @@ const x_weth = [
       symbol: 'agEUR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '484987635.9148429507796612750134844',
+    volumeUSD: '484987785.1751803090006801989295966',
   },
   {
-    feeTier: '10000',
     id: '0xb82d251b7e92832dccb7f3c6f03ae20f2d7ee597',
     liquidity: '49374200484380042337469',
     token0: {
@@ -7734,17 +1157,13 @@ const x_weth = [
       symbol: 'SOS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '480984393.3995131159245015406449043',
   },
   {
-    feeTier: '500',
     id: '0x059615ebf32c946aaab3d44491f78e4f8e97e1d3',
-    liquidity: '923262270154574032876',
+    liquidity: '83144233808641696098',
     token0: {
       decimals: '18',
       id: '0xa1290d69c65a6fe4df752f95823fae25cb99e5a7',
@@ -7752,17 +1171,13 @@ const x_weth = [
       symbol: 'rsETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '478258561.3427891183437748810093338',
+    volumeUSD: '478265280.714584447278746447098139',
   },
   {
-    feeTier: '10000',
     id: '0x99132b53ab44694eeb372e87bced3929e4ab8456',
-    liquidity: '142106000116424627',
+    liquidity: '130009318150761555',
     token0: {
       decimals: '8',
       id: '0x5b7533812759b45c2b44c19e320ba2cd2681b542',
@@ -7770,17 +1185,13 @@ const x_weth = [
       symbol: 'AGIX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '471674081.3850802581112988185369348',
+    volumeUSD: '471696855.1941441747074500616512993',
   },
   {
-    feeTier: '10000',
     id: '0x43e7ade137b86798654d8e78c36d5a556a647224',
-    liquidity: '1178340327877975626',
+    liquidity: '1197925044414626928',
     token0: {
       decimals: '8',
       id: '0x8143182a775c54578c8b7b3ef77982498866945d',
@@ -7788,35 +1199,13 @@ const x_weth = [
       symbol: 'wQUIL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '456784160.7867662076583795180914571',
+    volumeUSD: '456925823.9364173908466277282544715',
   },
   {
-    feeTier: '3000',
-    id: '0xf4c5e0f4590b6679b3030d29a84857f226087fef',
-    liquidity: '4825859381064116987149',
-    token0: {
-      decimals: '18',
-      id: '0x3c3a81e81dc49a522a592e7622a7e711c06bf354',
-      name: 'Mantle',
-      symbol: 'MNT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '455241493.9926645288374917353879328',
-  },
-  {
-    feeTier: '3000',
     id: '0x3ebec0a1b4055c8d1180fce64db2a8c068170880',
-    liquidity: '219573236673236124179502',
+    liquidity: '219621508991743664847306',
     token0: {
       decimals: '18',
       id: '0xadd39272e83895e7d3f244f696b7a25635f34234',
@@ -7824,15 +1213,25 @@ const x_weth = [
       symbol: 'PEPU',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '454369237.4942210210352873520113368',
+    volumeUSD: '455736671.8370178362347507517690978',
   },
   {
-    feeTier: '10000',
+    id: '0xf4c5e0f4590b6679b3030d29a84857f226087fef',
+    liquidity: '4953095737863888909484',
+    token0: {
+      decimals: '18',
+      id: '0x3c3a81e81dc49a522a592e7622a7e711c06bf354',
+      name: 'Mantle',
+      symbol: 'MNT',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '455341445.6486920028119809828236834',
+  },
+  {
     id: '0x6c4c7f46d9d4ef6bc5c9e155f011ad19fc4ef321',
     liquidity: '14214450652891790582744955',
     token0: {
@@ -7842,17 +1241,13 @@ const x_weth = [
       symbol: 'RFD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '452820950.7373298039067911198133108',
+    volumeUSD: '452832684.7416614172471944649175991',
   },
   {
-    feeTier: '10000',
     id: '0xcd423f3ab39a11ff1d9208b7d37df56e902c932b',
-    liquidity: '5149931993215416628801',
+    liquidity: '5149932010807602673217',
     token0: {
       decimals: '18',
       id: '0xb23d80f5fefcddaa212212f028021b41ded428cf',
@@ -7860,15 +1255,11 @@ const x_weth = [
       symbol: 'PRIME',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '450584979.711425706841106316170259',
+    volumeUSD: '450624386.5155848711917355088502972',
   },
   {
-    feeTier: '10000',
     id: '0x2e4784446a0a06df3d1a040b03e1680ee266c35a',
     liquidity: '3128832493887542427389',
     token0: {
@@ -7878,17 +1269,13 @@ const x_weth = [
       symbol: 'CVX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '436030869.7705153639460859561138298',
+    volumeUSD: '436064033.5545005505722157772554583',
   },
   {
-    feeTier: '10000',
     id: '0x95a45a87dd4d3a1803039072f37e075f37b23d75',
-    liquidity: '57898166980794839165519',
+    liquidity: '74875798137199164296735',
     token0: {
       decimals: '18',
       id: '0x44ff8620b8ca30902395a7bd3f2407e1a091bf73',
@@ -7896,15 +1283,11 @@ const x_weth = [
       symbol: 'VIRTUAL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '420259399.8853871810286631047855476',
+    volumeUSD: '421367476.8137069984535388789435355',
   },
   {
-    feeTier: '3000',
     id: '0x632e675672f2657f227da8d9bb3fe9177838e726',
     liquidity: '89103097228971660656',
     token0: {
@@ -7914,15 +1297,11 @@ const x_weth = [
       symbol: 'RPL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '417774457.7825381124791915458243077',
   },
   {
-    feeTier: '3000',
     id: '0x3139bbba7f4b9125595cb4ebeefdac1fce7ab5f1',
     liquidity: '0',
     token0: {
@@ -7932,17 +1311,13 @@ const x_weth = [
       symbol: 'RUNE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '412737363.7810400727498063885241306',
   },
   {
-    feeTier: '10000',
     id: '0x433a00819c771b33fa7223a5b3499b24fbcd1bbc',
-    liquidity: '8421796401951810',
+    liquidity: '12256255347788996',
     token0: {
       decimals: '9',
       id: '0x77e06c9eccf2e797fd462a92b6d7642ef85b0a44',
@@ -7950,17 +1325,13 @@ const x_weth = [
       symbol: 'wTAO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '407923533.6966108052161997160832562',
+    volumeUSD: '407952170.0488310521525156768475391',
   },
   {
-    feeTier: '3000',
     id: '0x4628a0a564debfc8798eb55db5c91f2200486c24',
-    liquidity: '18859842390215470570230',
+    liquidity: '23700367151984418995241',
     token0: {
       decimals: '18',
       id: '0x6de037ef9ad2725eb40118bb1702ebb27e4aeb24',
@@ -7968,15 +1339,11 @@ const x_weth = [
       symbol: 'RNDR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '405907680.6775713221549444210142918',
+    volumeUSD: '406860964.6370569952266175470971321',
   },
   {
-    feeTier: '3000',
     id: '0xede8dd046586d22625ae7ff2708f879ef7bdb8cf',
     liquidity: '2619916209725503486420',
     token0: {
@@ -7986,15 +1353,11 @@ const x_weth = [
       symbol: 'SNX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '395420366.1675050603151108131773248',
+    volumeUSD: '395442446.853093230504688483205635',
   },
   {
-    feeTier: '3000',
     id: '0x5c128d25a21f681e678cb050e551a895c9309945',
     liquidity: '279193781460782733484',
     token0: {
@@ -8004,17 +1367,13 @@ const x_weth = [
       symbol: 'BIT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '394849313.7140618724696407514343782',
+    volumeUSD: '394850008.6735482053448546150452808',
   },
   {
-    feeTier: '3000',
     id: '0x8107fca5494375fc743a9fc4d4844353a1af3d94',
-    liquidity: '20012036050306706882742',
+    liquidity: '21277005887119724950800',
     token0: {
       decimals: '18',
       id: '0xa35923162c49cf95e6bf26623385eb431ad920d3',
@@ -8022,17 +1381,13 @@ const x_weth = [
       symbol: 'TURBO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '393658456.4434893247679892833223243',
+    volumeUSD: '393766699.2184708244759741776477972',
   },
   {
-    feeTier: '10000',
     id: '0x948b54a93f5ad1df6b8bff6dc249d99ca2eca052',
-    liquidity: '121643521837346826854486',
+    liquidity: '120330424566675962036191',
     token0: {
       decimals: '18',
       id: '0xaea46a60368a7bd060eec7df8cba43b7ef41ad85',
@@ -8040,15 +1395,11 @@ const x_weth = [
       symbol: 'FET',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '390885739.2569898409693390944684976',
+    volumeUSD: '391524082.71595822184390235238148',
   },
   {
-    feeTier: '10000',
     id: '0x757d8d585ee1488097305bcb0fcec1ac4a55e9d6',
     liquidity: '6257089171155333286063978',
     token0: {
@@ -8058,17 +1409,13 @@ const x_weth = [
       symbol: 'PEW',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '386386618.2403615460220322557162359',
+    volumeUSD: '386386685.8047196603242551158025358',
   },
   {
-    feeTier: '10000',
     id: '0x4b62fa30fea125e43780dc425c2be5acb4ba743b',
-    liquidity: '1860155921866824744',
+    liquidity: '1837156294804750308',
     token0: {
       decimals: '9',
       id: '0x582d872a1b094fc48f5de31d3b73f2d9be47def1',
@@ -8076,17 +1423,13 @@ const x_weth = [
       symbol: 'TONCOIN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '374918989.0193750426693194397613179',
+    volumeUSD: '375037523.9108327941622620427072669',
   },
   {
-    feeTier: '3000',
     id: '0x744159757cac173a7a3ecf5e97adb10d1a725377',
-    liquidity: '13619002684782682675078',
+    liquidity: '13716896408360806245360',
     token0: {
       decimals: '18',
       id: '0xaea46a60368a7bd060eec7df8cba43b7ef41ad85',
@@ -8094,17 +1437,13 @@ const x_weth = [
       symbol: 'FET',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '368264257.0554373993464004785652996',
+    volumeUSD: '368789566.2257452438143146925225269',
   },
   {
-    feeTier: '10000',
     id: '0xc64350c0eab6faed8f17cc2cdff0761c53fb4152',
-    liquidity: '4896729326068316033342726',
+    liquidity: '4896836357686594766112494',
     token0: {
       decimals: '18',
       id: '0x423f4e6138e475d85cf7ea071ac92097ed631eea',
@@ -8112,15 +1451,11 @@ const x_weth = [
       symbol: 'PNDC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '366637975.2878459193426452462235887',
+    volumeUSD: '366730927.9739640493438037951648995',
   },
   {
-    feeTier: '100',
     id: '0x29f0096512b4af1d689c1a11a867a6e707a8dcde',
     liquidity: '0',
     token0: {
@@ -8130,15 +1465,11 @@ const x_weth = [
       symbol: 'FUN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '364594043.9576759502078301410716053',
   },
   {
-    feeTier: '10000',
     id: '0x2cad29e9640b9bcfb1d8d25cf3e4bd05f55cce70',
     liquidity: '350761164924996939644',
     token0: {
@@ -8148,15 +1479,11 @@ const x_weth = [
       symbol: 'OX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '362309279.1946133739979891348341966',
   },
   {
-    feeTier: '3000',
     id: '0xb03f87e577c4fe4685cf2c88a8473414bb1d04f1',
     liquidity: '0',
     token0: {
@@ -8166,17 +1493,13 @@ const x_weth = [
       symbol: 'FX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '352831882.0365812549820713815984111',
   },
   {
-    feeTier: '10000',
     id: '0x2a9d2ba41aba912316d16742f259412b681898db',
-    liquidity: '59071798567529463786498734',
+    liquidity: '115780661701349920238193927',
     token0: {
       decimals: '18',
       id: '0x06450dee7fd2fb8e39061434babcfc05599a6fb8',
@@ -8184,15 +1507,11 @@ const x_weth = [
       symbol: 'XEN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '350390583.7788346812137598008183457',
+    volumeUSD: '350521024.9581191428222411960431478',
   },
   {
-    feeTier: '10000',
     id: '0xcbbc981bd5b358d09a9346726115d3ac8822d00b',
     liquidity: '73982052528160805718',
     token0: {
@@ -8202,15 +1521,11 @@ const x_weth = [
       symbol: 'VXV',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '344390973.4032111271758596923697326',
+    volumeUSD: '344391435.1576528858129719443491547',
   },
   {
-    feeTier: '10000',
     id: '0xf239009a101b6b930a527deaab6961b6e7dec8a6',
     liquidity: '941778471540019005895884',
     token0: {
@@ -8220,17 +1535,13 @@ const x_weth = [
       symbol: 'PEPE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '341418175.7846435659601076430714004',
+    volumeUSD: '341421238.4301598060268691179957223',
   },
   {
-    feeTier: '10000',
     id: '0xe931b03260b2854e77e8da8378a1bc017b13cb97',
-    liquidity: '178288027753636265991935',
+    liquidity: '177986493967289143942013',
     token0: {
       decimals: '18',
       id: '0x111111111117dc0aa78b770fa6a738034120c302',
@@ -8238,15 +1549,11 @@ const x_weth = [
       symbol: '1INCH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '338707938.9964119717015607260817725',
+    volumeUSD: '338760725.9031085770106347430818174',
   },
   {
-    feeTier: '3000',
     id: '0x6a888fb73f13104473a4bdfb1beb220ac1eafda3',
     liquidity: '3138676514235748188045',
     token0: {
@@ -8256,35 +1563,13 @@ const x_weth = [
       symbol: 'MAVIA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '333675149.9752417982629002226058005',
+    volumeUSD: '333840670.1992994479652309185424071',
   },
   {
-    feeTier: '3000',
-    id: '0x9b3423373e6e786c9ac367120533abe4ee398373',
-    liquidity: '51593640320292974743246',
-    token0: {
-      decimals: '18',
-      id: '0xbaac2b4491727d78d2b78815144570b9f2fe8899',
-      name: 'The Doge NFT',
-      symbol: 'DOG',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '326846572.8294392199898109108192347',
-  },
-  {
-    feeTier: '3000',
     id: '0xf359492d26764481002ed88bd2acae83ca50b5c9',
-    liquidity: '4169204599258671',
+    liquidity: '4345295854306634',
     token0: {
       decimals: '2',
       id: '0x467bccd9d29f223bce8043b84e8c8b282827790f',
@@ -8292,15 +1577,25 @@ const x_weth = [
       symbol: 'TEL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '326622039.2877082345656819784763791',
+    volumeUSD: '327429671.2094466194089189649617722',
   },
   {
-    feeTier: '500',
+    id: '0x9b3423373e6e786c9ac367120533abe4ee398373',
+    liquidity: '51499548384616849910402',
+    token0: {
+      decimals: '18',
+      id: '0xbaac2b4491727d78d2b78815144570b9f2fe8899',
+      name: 'The Doge NFT',
+      symbol: 'DOG',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '326851884.3059416056868558463708501',
+  },
+  {
     id: '0xe3fe800b0de664bf0bca8ad58ecbc73b259047b0',
     liquidity: '70141022062492655',
     token0: {
@@ -8310,15 +1605,11 @@ const x_weth = [
       symbol: 'POWR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '323349801.1411516539927324526956972',
+    volumeUSD: '323503290.0200500384526394183412623',
   },
   {
-    feeTier: '3000',
     id: '0x9359c87b38dd25192c5f2b07b351ac91c90e6ca7',
     liquidity: '164788064001570174420',
     token0: {
@@ -8328,17 +1619,13 @@ const x_weth = [
       symbol: 'DPI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '322028488.9080316840245382878750079',
+    volumeUSD: '322031108.6246525155102908743011417',
   },
   {
-    feeTier: '3000',
     id: '0x04916039b1f59d9745bf6e0a21f191d1e0a84287',
-    liquidity: '3675613274174392130',
+    liquidity: '3675755305953949937',
     token0: {
       decimals: '18',
       id: '0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e',
@@ -8346,17 +1633,13 @@ const x_weth = [
       symbol: 'YFI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '318332651.6936394980270202587904011',
+    volumeUSD: '318332903.7138507989762824218623625',
   },
   {
-    feeTier: '3000',
     id: '0x59354356ec5d56306791873f567d61ebf11dfbd5',
-    liquidity: '10051567460398546275302',
+    liquidity: '8092732597648877243193',
     token0: {
       decimals: '18',
       id: '0xb50721bcf8d664c30412cfbc6cf7a15145234ad1',
@@ -8364,15 +1647,11 @@ const x_weth = [
       symbol: 'ARB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '315291393.214287544661983626148164',
+    volumeUSD: '315320142.4033067854078712739890649',
   },
   {
-    feeTier: '3000',
     id: '0xf935f557e06a7d040dea4691f90c9a755301818b',
     liquidity: '211878539422716914469151',
     token0: {
@@ -8382,15 +1661,11 @@ const x_weth = [
       symbol: 'SPONGE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '312412430.1384298563637203480426966',
   },
   {
-    feeTier: '10000',
     id: '0x7b12d855445073987d45ea97b1af3554f05e4ef4',
     liquidity: '1013022071030848320606',
     token0: {
@@ -8400,17 +1675,13 @@ const x_weth = [
       symbol: 'WOOL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '311038732.0994917809527130474228439',
   },
   {
-    feeTier: '3000',
     id: '0x198063c23ac1317ff3cc57d9f54faac6b675d89f',
-    liquidity: '0',
+    liquidity: '604780272963808528608',
     token0: {
       decimals: '18',
       id: '0xb131f4a55907b10d1f0a50d8ab8fa09ec342cd74',
@@ -8418,15 +1689,11 @@ const x_weth = [
       symbol: 'MEME',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '308863656.5623296900961596511417574',
+    volumeUSD: '308863656.6087098679773931496622871',
   },
   {
-    feeTier: '3000',
     id: '0x70bb8e6844dfb681810fd557dd741bcaf027bf94',
     liquidity: '194861146016974476066',
     token0: {
@@ -8436,15 +1703,11 @@ const x_weth = [
       symbol: 'OGN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '307489442.7412416307732632140659419',
+    volumeUSD: '307489487.3482570016123134657060713',
   },
   {
-    feeTier: '3000',
     id: '0x7f7ff8f22a902bb9b0aef07c6cb41d91a47e18e1',
     liquidity: '72511368270524689121',
     token0: {
@@ -8454,15 +1717,11 @@ const x_weth = [
       symbol: 'FLIP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '305722983.9477657830159497979215693',
+    volumeUSD: '305723086.2038442440582285653526898',
   },
   {
-    feeTier: '10000',
     id: '0xe9e12db15d8a0ec338f148ffd9dc9606312a6b28',
     liquidity: '0',
     token0: {
@@ -8472,15 +1731,11 @@ const x_weth = [
       symbol: 'MC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '302338393.3168323963263265228136343',
   },
   {
-    feeTier: '3000',
     id: '0xd31d41dffa3589bb0c0183e46a1eed983a5e5978',
     liquidity: '155863019990231185703652',
     token0: {
@@ -8490,15 +1745,11 @@ const x_weth = [
       symbol: 'ATH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '301799191.4623869638561516321923075',
+    volumeUSD: '301900104.7238224733649457322773523',
   },
   {
-    feeTier: '3000',
     id: '0x15153da0e9e13cfc167b3d417d3721bf545479bb',
     liquidity: '21410979383859598673',
     token0: {
@@ -8508,17 +1759,13 @@ const x_weth = [
       symbol: 'Neiro',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '297474434.5742913065823488382368694',
+    volumeUSD: '297749278.7955633514827507125569182',
   },
   {
-    feeTier: '3000',
     id: '0xae614a7a56cb79c04df2aeba6f5dab80a39ca78e',
-    liquidity: '5850889639275251421880',
+    liquidity: '5040754437740042805714',
     token0: {
       decimals: '18',
       id: '0x0d8775f648430679a709e98d2b0cb6250d2887ef',
@@ -8526,17 +1773,13 @@ const x_weth = [
       symbol: 'BAT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '293623826.8419245356724108995505483',
+    volumeUSD: '293641139.4795721392867467372039685',
   },
   {
-    feeTier: '10000',
     id: '0x2a0330c7e979a4d18e5b0c987b877da24dd37d04',
-    liquidity: '30713694280418754581712',
+    liquidity: '30790783313441588225211',
     token0: {
       decimals: '18',
       id: '0x626e8036deb333b408be468f951bdb42433cbf18',
@@ -8544,17 +1787,13 @@ const x_weth = [
       symbol: 'AIOZ',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '288336996.9837243567237830544405095',
+    volumeUSD: '288496965.4826421078264099095709272',
   },
   {
-    feeTier: '10000',
     id: '0xd3e9895230e8fb1460852f6cda3c4b926fbc29d8',
-    liquidity: '113584328265079121411167',
+    liquidity: '106668713669855571704484',
     token0: {
       decimals: '18',
       id: '0x9ce84f6a69986a83d92c324df10bc8e64771030f',
@@ -8562,17 +1801,13 @@ const x_weth = [
       symbol: 'CHEX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '286711340.7723240020075925564177947',
+    volumeUSD: '287116477.0139504764099405480112092',
   },
   {
-    feeTier: '10000',
     id: '0x3782a3425cd093d5cd0c5b684be72641e199029c',
-    liquidity: '0',
+    liquidity: '145542202372565619035',
     token0: {
       decimals: '18',
       id: '0x7d647b1a0dcd5525e9c6b3d14be58f27674f8c95',
@@ -8580,17 +1815,13 @@ const x_weth = [
       symbol: 'BYTES',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '286154315.4535699717917300178632084',
+    volumeUSD: '286154734.1694551317127236682362674',
   },
   {
-    feeTier: '10000',
     id: '0x4d1eff861316396dd1915f69b49f4c2d7b11590d',
-    liquidity: '166652785274876834457943',
+    liquidity: '126981938736326423859684',
     token0: {
       decimals: '18',
       id: '0x7420b4b9a0110cdc71fb720908340c03f9bc03ec',
@@ -8598,15 +1829,11 @@ const x_weth = [
       symbol: 'JASMY',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '276741873.8029182779868904838361527',
+    volumeUSD: '277122437.3303994011187222902082489',
   },
   {
-    feeTier: '10000',
     id: '0x058d79a4c6eb5b11d0248993ffa1faa168ddd3c0',
     liquidity: '28147332191946181163',
     token0: {
@@ -8616,15 +1843,11 @@ const x_weth = [
       symbol: 'wNXM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '275575603.6898202042615614424126576',
   },
   {
-    feeTier: '3000',
     id: '0xa06591252908576a0f64a8560ec0c8051782377c',
     liquidity: '509385277667862162476',
     token0: {
@@ -8634,15 +1857,11 @@ const x_weth = [
       symbol: 'PNDC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '273046638.4059184566933781642467947',
+    volumeUSD: '273046639.3571698644654265225258243',
   },
   {
-    feeTier: '3000',
     id: '0x5d7b4563f794f52423181c8320cdd3bf8fdf55d7',
     liquidity: '67519442429375850839',
     token0: {
@@ -8652,15 +1871,11 @@ const x_weth = [
       symbol: 'PEOPLE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '269720525.4851884441115844246765145',
+    volumeUSD: '269720533.0250126773781407211191744',
   },
   {
-    feeTier: '3000',
     id: '0x7981877bd447de8ff0507ba2bcf9ae6ae510ade3',
     liquidity: '538050628051465057',
     token0: {
@@ -8670,15 +1885,11 @@ const x_weth = [
       symbol: 'Nvir',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '268872857.3908258893916040561794767',
   },
   {
-    feeTier: '3000',
     id: '0xe3170d65018882a336743a9c396c52ea4b9c5563',
     liquidity: '3034403486655275429689',
     token0: {
@@ -8688,15 +1899,25 @@ const x_weth = [
       symbol: 'DMT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '268354675.9442731812201683477809142',
+    volumeUSD: '268387813.6640202149155305850649471',
   },
   {
-    feeTier: '10000',
+    id: '0xc8219b876753a85025156b22176c2edea17aac53',
+    liquidity: '128614255047651417170408',
+    token0: {
+      decimals: '18',
+      id: '0x58d97b57bb95320f9a05dc918aef65434969c2b2',
+      name: 'Morpho Token',
+      symbol: 'MORPHO',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '262934571.6933957835336341393791979',
+  },
+  {
     id: '0xae790e2a4785298cb18150f3dc4a60bd81fcd274',
     liquidity: '277225216756003975259318',
     token0: {
@@ -8706,15 +1927,25 @@ const x_weth = [
       symbol: '1CAT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '262158842.3760987433271455595642024',
+    volumeUSD: '262158847.8017215891196822888035548',
   },
   {
-    feeTier: '10000',
+    id: '0x6dcba3657ee750a51a13a235b4ed081317da3066',
+    liquidity: '264521361266732453923886',
+    token0: {
+      decimals: '18',
+      id: '0x97ad75064b20fb2b2447fed4fa953bf7f007a706',
+      name: 'Berachain STONE',
+      symbol: 'beraSTONE',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '261225021.6163555492542575137421982',
+  },
+  {
     id: '0x68082ecc5bbad8fe77c2cb9d0e3403d9a00ccbc2',
     liquidity: '848856460534353360236976',
     token0: {
@@ -8724,51 +1955,11 @@ const x_weth = [
       symbol: 'WDOGE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '260984679.3906364085772557887316769',
+    volumeUSD: '261164339.8671286753765486035260005',
   },
   {
-    feeTier: '500',
-    id: '0x6dcba3657ee750a51a13a235b4ed081317da3066',
-    liquidity: '263813542202015249843043',
-    token0: {
-      decimals: '18',
-      id: '0x97ad75064b20fb2b2447fed4fa953bf7f007a706',
-      name: 'Berachain STONE',
-      symbol: 'beraSTONE',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '260395770.4743697618863185696526564',
-  },
-  {
-    feeTier: '3000',
-    id: '0xc8219b876753a85025156b22176c2edea17aac53',
-    liquidity: '128187143032818116507840',
-    token0: {
-      decimals: '18',
-      id: '0x58d97b57bb95320f9a05dc918aef65434969c2b2',
-      name: 'Morpho Token',
-      symbol: 'MORPHO',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '260176574.0530927716777724855076639',
-  },
-  {
-    feeTier: '10000',
     id: '0x319f4366b2ec8b0120d09522c88f919bedbb18ff',
     liquidity: '0',
     token0: {
@@ -8778,17 +1969,13 @@ const x_weth = [
       symbol: 'YGG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '257892273.019436546351813492332913',
   },
   {
-    feeTier: '10000',
     id: '0x841820459769cd629b10a36fd12e603938cc2679',
-    liquidity: '58922519021922285658079',
+    liquidity: '60030576187370537410665',
     token0: {
       decimals: '18',
       id: '0x163f8c2467924be0ae7b5347228cabf260318753',
@@ -8796,17 +1983,13 @@ const x_weth = [
       symbol: 'WLD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '256111286.7207745520382005105472348',
+    volumeUSD: '256707437.1868957789299400786507983',
   },
   {
-    feeTier: '3000',
     id: '0xb1914469141ebb6e244e75cee3f35d43bf6b85e5',
-    liquidity: '45667120584719737347142',
+    liquidity: '46053641246417112836639',
     token0: {
       decimals: '18',
       id: '0xaa7a9ca87d3694b5755f213b5d04094b8d0f0a6f',
@@ -8814,17 +1997,13 @@ const x_weth = [
       symbol: 'TRAC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '254056515.0046311148810213486915418',
+    volumeUSD: '254402708.9687552111801643444356009',
   },
   {
-    feeTier: '10000',
     id: '0x7832310cd0de39c4ce0a635f34d9a4b5b47fd434',
-    liquidity: '19063423584173027946297664',
+    liquidity: '12129451949478952937555263',
     token0: {
       decimals: '18',
       id: '0xaaee1a9723aadb7afa2810263653a34ba2c21c7a',
@@ -8832,15 +2011,11 @@ const x_weth = [
       symbol: 'Mog',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '253176091.6945302475235550487426326',
+    volumeUSD: '253295795.7120147491153138456969674',
   },
   {
-    feeTier: '3000',
     id: '0x42d403ab9b0603442ac991c0cfe124105dde0811',
     liquidity: '10223769723508487154',
     token0: {
@@ -8850,17 +2025,13 @@ const x_weth = [
       symbol: 'PSYOP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '251718973.0261787070840332630869645',
   },
   {
-    feeTier: '10000',
     id: '0x87b1d1b59725209879cc5c5adeb99d8bc9eccf12',
-    liquidity: '2133227331961288983',
+    liquidity: '2192081628224854487',
     token0: {
       decimals: '8',
       id: '0xa0b73e1ff0b80914ab6fe0444e65848c4c34450b',
@@ -8868,15 +2039,11 @@ const x_weth = [
       symbol: 'CRO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '247819428.0986474807304372677371287',
+    volumeUSD: '248042023.3733881545957869443678723',
   },
   {
-    feeTier: '100',
     id: '0x02edd21f1db8eb146be60998e9801691e725f119',
     liquidity: '71051146299405177385203',
     token0: {
@@ -8886,15 +2053,11 @@ const x_weth = [
       symbol: 'pxETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '246534675.9321794564095768574602537',
+    volumeUSD: '246579542.0888538050111646072001518',
   },
   {
-    feeTier: '3000',
     id: '0x0a55882f4e1117adc54afbbac4a39079ad52fb89',
     liquidity: '2470272573978293093911',
     token0: {
@@ -8904,17 +2067,13 @@ const x_weth = [
       symbol: 'SSV',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '245611808.3438785272340677947071946',
+    volumeUSD: '245675418.1775779101312633868187044',
   },
   {
-    feeTier: '3000',
     id: '0x157dfa656fdf0d18e1ba94075a53600d81cb3a97',
-    liquidity: '14794257760699739909383',
+    liquidity: '14802230802863710733236',
     token0: {
       decimals: '18',
       id: '0x04fa0d235c4abf4bcf4787af4cf447de572ef828',
@@ -8922,17 +2081,13 @@ const x_weth = [
       symbol: 'UMA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '243935011.6887828308419055393094751',
+    volumeUSD: '243974701.1478760745561783066993744',
   },
   {
-    feeTier: '10000',
     id: '0xcf7e21b96a7dae8e1663b5a266fd812cbe973e70',
-    liquidity: '50095649817814087703',
+    liquidity: '50953562787706772330',
     token0: {
       decimals: '18',
       id: '0x0ab87046fbb341d058f17cbc4c1133f25a20a52f',
@@ -8940,15 +2095,11 @@ const x_weth = [
       symbol: 'gOHM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '243603955.7172431699930896159975295',
+    volumeUSD: '243615363.4485554151435722952502807',
   },
   {
-    feeTier: '3000',
     id: '0x959c7d5706ac0b5a29f506a1019ba7f2a1c70c70',
     liquidity: '13729093354552482647697773',
     token0: {
@@ -8958,15 +2109,11 @@ const x_weth = [
       symbol: 'SHI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '240368985.6114854034928427315945437',
+    volumeUSD: '240380809.5522672261190263295763205',
   },
   {
-    feeTier: '3000',
     id: '0x9ac681f68a589cc3763bad9ce43be3380696b136',
     liquidity: '16227651533776620867',
     token0: {
@@ -8976,17 +2123,13 @@ const x_weth = [
       symbol: 'MM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '238719768.9251064413913586145748046',
   },
   {
-    feeTier: '10000',
     id: '0x3ee301ed8f42d106def4f9d9730ea3367880b771',
-    liquidity: '320840378738828589647',
+    liquidity: '351805474104434543116',
     token0: {
       decimals: '18',
       id: '0x64d91f12ece7362f91a6f8e7940cd55f05060b92',
@@ -8994,15 +2137,11 @@ const x_weth = [
       symbol: 'ASH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '236436969.837087298880294102344371',
+    volumeUSD: '236442274.2993477568127976290120442',
   },
   {
-    feeTier: '3000',
     id: '0x122e55503a0b2e5cd528effa44d0b2fea300f24b',
     liquidity: '87011143899579997863',
     token0: {
@@ -9012,15 +2151,11 @@ const x_weth = [
       symbol: 'WOO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '234433608.034721755670015691919157',
+    volumeUSD: '234433657.1816140526794362248600764',
   },
   {
-    feeTier: '3000',
     id: '0xb404057ee4b1d7359ca5a57ac1c020b74c23e56b',
     liquidity: '305726919971348449',
     token0: {
@@ -9030,15 +2165,11 @@ const x_weth = [
       symbol: 'FTX Token',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '231101047.9065270931888272768696693',
   },
   {
-    feeTier: '10000',
     id: '0xc48396f068c62e0192c9f2c1caa7e07bbd15dbc7',
     liquidity: '4470237158052283707141',
     token0: {
@@ -9048,15 +2179,11 @@ const x_weth = [
       symbol: 'FI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '230423851.2259687086936167283800257',
   },
   {
-    feeTier: '500',
     id: '0xfca9090d2c91e11cc546b0d7e4918c79e0088194',
     liquidity: '0',
     token0: {
@@ -9066,17 +2193,13 @@ const x_weth = [
       symbol: 'XSGD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '229808487.2906550850873366750011109',
   },
   {
-    feeTier: '3000',
     id: '0x283e2e83b7f3e297c4b7c02114ab0196b001a109',
-    liquidity: '3374971536900439240617',
+    liquidity: '3893497844016733246762',
     token0: {
       decimals: '18',
       id: '0x967da4048cd07ab37855c090aaf366e4ce1b9f48',
@@ -9084,17 +2207,13 @@ const x_weth = [
       symbol: 'OCEAN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '226648886.1987493405553865109110405',
+    volumeUSD: '226683359.7333125654098328977162516',
   },
   {
-    feeTier: '3000',
     id: '0xe4e86c6805884736c0faea1e559c51f37da15812',
-    liquidity: '42376656260072175911855',
+    liquidity: '42450832815625407295412',
     token0: {
       decimals: '18',
       id: '0x710287d1d39dcf62094a83ebb3e736e79400068a',
@@ -9102,17 +2221,13 @@ const x_weth = [
       symbol: 'ENQAI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '225781849.755765184637929861897883',
+    volumeUSD: '225791416.1970282837065952430517334',
   },
   {
-    feeTier: '3000',
     id: '0xaf81e930620eb55a9a6927c4b2afcb4d61040c32',
-    liquidity: '88869854602526588',
+    liquidity: '70811549836465302',
     token0: {
       decimals: '9',
       id: '0x582d872a1b094fc48f5de31d3b73f2d9be47def1',
@@ -9120,15 +2235,11 @@ const x_weth = [
       symbol: 'TONCOIN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '224178058.025374505342519150448551',
+    volumeUSD: '224210568.9975806567363391015632039',
   },
   {
-    feeTier: '10000',
     id: '0x25b96761e765b9ac20db18fa57fa91e3b617ec6f',
     liquidity: '7327136027364669958561',
     token0: {
@@ -9138,15 +2249,11 @@ const x_weth = [
       symbol: 'MORPHO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '222966233.7833355175475442902336971',
+    volumeUSD: '223049886.5109564468747132372042337',
   },
   {
-    feeTier: '10000',
     id: '0x6f41040b9e098c2ac4b88e27b50d4e9ab486781b',
     liquidity: '103382331072203940032',
     token0: {
@@ -9156,15 +2263,11 @@ const x_weth = [
       symbol: 'BLUR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '220668278.1628880935459850063930105',
+    volumeUSD: '220668332.3174328071976484245776277',
   },
   {
-    feeTier: '3000',
     id: '0xbf85f94d3233ee588f0907a9147fbb59d7246b54',
     liquidity: '44966267979056080826413',
     token0: {
@@ -9174,15 +2277,11 @@ const x_weth = [
       symbol: 'MYRIA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '219147919.0300459698488356651880834',
+    volumeUSD: '219269310.7163056572757807553095029',
   },
   {
-    feeTier: '3000',
     id: '0xff2c97303089b6af24c4b424047b7c192dfd2e85',
     liquidity: '0',
     token0: {
@@ -9192,15 +2291,11 @@ const x_weth = [
       symbol: 'SOS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '213830648.1662463329229342862015364',
   },
   {
-    feeTier: '10000',
     id: '0x498498fa386ef2860e7abf8c60254580c8c41ec5',
     liquidity: '1644240201316981262547',
     token0: {
@@ -9210,17 +2305,13 @@ const x_weth = [
       symbol: 'DC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '212148379.455508504099965642988284',
+    volumeUSD: '212148500.0734572283153556750560271',
   },
   {
-    feeTier: '10000',
     id: '0xe092769bc1fa5262d4f48353f90890dcc339bf80',
-    liquidity: '1587197676679724630177',
+    liquidity: '1490386540324649751970',
     token0: {
       decimals: '18',
       id: '0x39d5313c3750140e5042887413ba8aa6145a9bd2',
@@ -9228,15 +2319,11 @@ const x_weth = [
       symbol: 'EMP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '211851972.8828581534866438215050528',
+    volumeUSD: '212084181.7554365909514837290813204',
   },
   {
-    feeTier: '10000',
     id: '0xa9c5b677f0ed59d39d3f441dcb5daf0d6e276b5b',
     liquidity: '0',
     token0: {
@@ -9246,17 +2333,13 @@ const x_weth = [
       symbol: 'TOWN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '208347147.0969849520799163004204015',
   },
   {
-    feeTier: '10000',
     id: '0xc1cd3d0913f4633b43fcddbcd7342bc9b71c676f',
-    liquidity: '175032949658728596718114',
+    liquidity: '175097822768371873312098',
     token0: {
       decimals: '18',
       id: '0x6f40d4a6237c257fff2db00fa0510deeecd303eb',
@@ -9264,15 +2347,11 @@ const x_weth = [
       symbol: 'INST',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '207434503.94408079338109813885728',
+    volumeUSD: '207489079.7621381023664841785281746',
   },
   {
-    feeTier: '3000',
     id: '0x8debdc55ae250b4334f96dfdfe04e76652658c7a',
     liquidity: '0',
     token0: {
@@ -9282,15 +2361,11 @@ const x_weth = [
       symbol: 'QRDO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '206745190.225271509815727426840326',
   },
   {
-    feeTier: '3000',
     id: '0xdd5a65da22031b6ae5205fd89f67b5141e4f0ead',
     liquidity: '0',
     token0: {
@@ -9300,17 +2375,13 @@ const x_weth = [
       symbol: 'UBT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '205052071.020760567659991300583932',
   },
   {
-    feeTier: '3000',
     id: '0x73a6a761fe483ba19debb8f56ac5bbf14c0cdad1',
-    liquidity: '137998000330900132501',
+    liquidity: '138707487818036280322',
     token0: {
       decimals: '18',
       id: '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2',
@@ -9318,17 +2389,13 @@ const x_weth = [
       symbol: 'SUSHI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '199788620.9335297053422794308081762',
+    volumeUSD: '199788760.2441071406099435519168592',
   },
   {
-    feeTier: '10000',
     id: '0x381fe4eb128db1621647ca00965da3f9e09f4fac',
-    liquidity: '5939345758447223719480075',
+    liquidity: '6102677932930118798157748',
     token0: {
       decimals: '18',
       id: '0x761d38e5ddf6ccf6cf7c55759d5210750b5d60f3',
@@ -9336,17 +2403,13 @@ const x_weth = [
       symbol: 'ELON',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '197824020.6941256305732414390096589',
+    volumeUSD: '197824071.5281928082496577323746084',
   },
   {
-    feeTier: '3000',
     id: '0x32d9259e6792b2150fd50395d971864647fa27b2',
-    liquidity: '74541924973278145699297',
+    liquidity: '318512332288763409838076',
     token0: {
       decimals: '18',
       id: '0x320623b8e4ff03373931769a31fc52a4e78b5d70',
@@ -9354,15 +2417,11 @@ const x_weth = [
       symbol: 'RSR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '196370553.5125061858733730958387055',
+    volumeUSD: '196905972.1498466020486943851538925',
   },
   {
-    feeTier: '3000',
     id: '0xcba27c8e7115b4eb50aa14999bc0866674a96ecb',
     liquidity: '20580206968022029082769',
     token0: {
@@ -9372,15 +2431,11 @@ const x_weth = [
       symbol: 'INST',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '195573777.844840985446665850130178',
+    volumeUSD: '195751598.753022266693120793337173',
   },
   {
-    feeTier: '10000',
     id: '0xaddd24a001243e6d446ed8d088c82aeff84073a3',
     liquidity: '54092264259191672',
     token0: {
@@ -9390,15 +2445,11 @@ const x_weth = [
       symbol: 'AGRS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '193665503.9556863853893837774028427',
+    volumeUSD: '193668858.0593429332863361947684857',
   },
   {
-    feeTier: '3000',
     id: '0xa2ff3d4ffaf8c67cfc71a19ea437bcc2a9893d16',
     liquidity: '2122543532526661789285906',
     token0: {
@@ -9408,15 +2459,11 @@ const x_weth = [
       symbol: 'TKING',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '193092263.2849874880150764123985138',
+    volumeUSD: '193092273.3260952649988315659161293',
   },
   {
-    feeTier: '10000',
     id: '0x66ba59cbd09e75b209d1d7e8cf97f4ab34da413b',
     liquidity: '129488133941249000',
     token0: {
@@ -9426,15 +2473,11 @@ const x_weth = [
       symbol: 'GROK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '190346014.5503937909184692068671921',
+    volumeUSD: '190346295.9094525129174747445384297',
   },
   {
-    feeTier: '3000',
     id: '0xfc9f572124d8f469960b94537b493f2676776c03',
     liquidity: '32462999983193850916',
     token0: {
@@ -9444,17 +2487,13 @@ const x_weth = [
       symbol: 'PILOT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '189883757.8489985062464280838804454',
   },
   {
-    feeTier: '10000',
     id: '0xf9bc02a0f79ee8b6982a754979c9dbd909ccee10',
-    liquidity: '24027742607362032506969',
+    liquidity: '4931542648129665042225',
     token0: {
       decimals: '18',
       id: '0x1bbe973bef3a977fc51cbed703e8ffdefe001fed',
@@ -9462,15 +2501,11 @@ const x_weth = [
       symbol: 'PORTAL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '189768820.7180947489538028440812884',
+    volumeUSD: '189800592.5342966195005389011741074',
   },
   {
-    feeTier: '10000',
     id: '0xc00c5977395664267c118d71569dccf4bc37bf5f',
     liquidity: '544',
     token0: {
@@ -9480,15 +2515,11 @@ const x_weth = [
       symbol: 'BGLD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '189551000.0076792562226903907577907',
   },
   {
-    feeTier: '10000',
     id: '0xc246467ab1466f4963ba45c335479b3055e82060',
     liquidity: '227982349981419375',
     token0: {
@@ -9498,15 +2529,11 @@ const x_weth = [
       symbol: 'LEASH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '187523699.3942018374495942267500123',
+    volumeUSD: '187523700.9717087749185796111741843',
   },
   {
-    feeTier: '3000',
     id: '0xc4472dcd0e42ffccc1dbb0b9b3855688c22f3a0f',
     liquidity: '0',
     token0: {
@@ -9516,15 +2543,11 @@ const x_weth = [
       symbol: 'WLD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '184010758.3606628082277239070963686',
   },
   {
-    feeTier: '3000',
     id: '0xba8eb224b656681b2b8cce9c3fc920d98594675b',
     liquidity: '13438725979944688556516',
     token0: {
@@ -9534,15 +2557,11 @@ const x_weth = [
       symbol: 'RSR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '183403508.77328796460947537989602',
   },
   {
-    feeTier: '10000',
     id: '0xa2542303c9a01c011da9106128d9b0838e6c3e57',
     liquidity: '546566697132835905',
     token0: {
@@ -9552,15 +2571,11 @@ const x_weth = [
       symbol: 'KEKIUS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '181478855.3404031004947813464082099',
+    volumeUSD: '181513451.001348118886929701676884',
   },
   {
-    feeTier: '10000',
     id: '0x6de28f1176311b7408329a4d21c2bd1441be157f',
     liquidity: '102437487205620314763434',
     token0: {
@@ -9570,15 +2585,11 @@ const x_weth = [
       symbol: 'MOONEY',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '178958657.6877858440817259408192753',
+    volumeUSD: '178959107.5650072690088374161135574',
   },
   {
-    feeTier: '10000',
     id: '0xf10e8ccdb3f065bf24afa14d08cc6336d4a9a281',
     liquidity: '4407097702127931268527',
     token0: {
@@ -9588,15 +2599,11 @@ const x_weth = [
       symbol: 'GNUS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '176841562.421526736490330552876402',
+    volumeUSD: '176860008.7039663355870304761573723',
   },
   {
-    feeTier: '10000',
     id: '0xfa4a4c553733f2e0c54f1c4b0ddc1fa2f5f10ce6',
     liquidity: '609425111132970896854',
     token0: {
@@ -9606,17 +2613,13 @@ const x_weth = [
       symbol: 'basedAI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '176624425.2854199389379111351439999',
+    volumeUSD: '176626408.8320893915802288578927993',
   },
   {
-    feeTier: '3000',
     id: '0x360acf12e72044ba3eaaa654e51e4725c699dcb1',
-    liquidity: '23641347634519317750402',
+    liquidity: '22927757835795334011961',
     token0: {
       decimals: '18',
       id: '0x6985884c4392d348587b19cb9eaaf157f13271cd',
@@ -9624,15 +2627,11 @@ const x_weth = [
       symbol: 'ZRO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '175210108.7234470614522172095176465',
+    volumeUSD: '175425383.6356627907984356087743008',
   },
   {
-    feeTier: '3000',
     id: '0x71d091e35abbd51b46db179184684633581d1816',
     liquidity: '1813353569714030242389',
     token0: {
@@ -9642,17 +2641,13 @@ const x_weth = [
       symbol: 'RBX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '173888961.2605823037718142178743809',
   },
   {
-    feeTier: '10000',
     id: '0x531b6a4b3f962208ea8ed5268c642c84bb29be0b',
-    liquidity: '10234613419474431562392',
+    liquidity: '10791104328735737250182',
     token0: {
       decimals: '18',
       id: '0x7dd9c5cba05e151c895fde1cf355c9a1d5da6429',
@@ -9660,15 +2655,11 @@ const x_weth = [
       symbol: 'GLM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '169789481.7661492379227625432092082',
+    volumeUSD: '169792976.8480848931093083445229719',
   },
   {
-    feeTier: '10000',
     id: '0x508acdc358be2ed126b1441f0cff853dec49d40f',
     liquidity: '78145566867813766304122',
     token0: {
@@ -9678,15 +2669,11 @@ const x_weth = [
       symbol: 'ACX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '167799314.1006526476499727542407265',
+    volumeUSD: '167898904.5847285587881108078234523',
   },
   {
-    feeTier: '10000',
     id: '0x2dd31cc03ed996a99fbfdffa07f8f4604b1a2ec1',
     liquidity: '14271758688042085222',
     token0: {
@@ -9696,15 +2683,11 @@ const x_weth = [
       symbol: 'GEL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '166706850.6303612461873318330534626',
+    volumeUSD: '166707305.2026297431359409819804803',
   },
   {
-    feeTier: '3000',
     id: '0x07ed78c6c91ce18811ad281d0533819cf848075b',
     liquidity: '94658774986039489',
     token0: {
@@ -9714,17 +2697,13 @@ const x_weth = [
       symbol: 'ERN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '162191866.7689691286806104633193305',
   },
   {
-    feeTier: '3000',
     id: '0x18bbe20f81bdcb340325e28a6ee6bb426b7ccbc1',
-    liquidity: '12622710643293624505514',
+    liquidity: '8565895077700806827036',
     token0: {
       decimals: '18',
       id: '0x8248270620aa532e4d64316017be5e873e37cc09',
@@ -9732,15 +2711,11 @@ const x_weth = [
       symbol: 'DEVVE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '160016101.4275820076680235637918272',
+    volumeUSD: '160266531.2985096707183837506567147',
   },
   {
-    feeTier: '10000',
     id: '0xc3f6b81fb9e6db259272026601689e383f94c0b0',
     liquidity: '32758608238762902270242',
     token0: {
@@ -9750,17 +2725,13 @@ const x_weth = [
       symbol: 'OVR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '158797005.0950440273683009402992939',
+    volumeUSD: '158808475.5851199258603840389606285',
   },
   {
-    feeTier: '10000',
     id: '0x9e0fc414e8d5c45b0890c32ab9329ac90b3ab534',
-    liquidity: '3631759945266108555737940',
+    liquidity: '2887814869652456642070440',
     token0: {
       decimals: '18',
       id: '0x3ffeea07a27fab7ad1df5297fa75e77a43cb5790',
@@ -9768,17 +2739,13 @@ const x_weth = [
       symbol: 'PEIPEI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '158496022.4891333913046465076532709',
+    volumeUSD: '158504980.5986020740346331234704118',
   },
   {
-    feeTier: '3000',
     id: '0xb1608e16609a7ff3ac5b0da49a0539bb0c3c3d9d',
-    liquidity: '16955516698764990891',
+    liquidity: '6585893629837926272',
     token0: {
       decimals: '18',
       id: '0x178c820f862b14f316509ec36b13123da19a6054',
@@ -9786,15 +2753,11 @@ const x_weth = [
       symbol: 'EWTB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '156707028.1573145771930983476156789',
+    volumeUSD: '156707041.5282863160475952914609722',
   },
   {
-    feeTier: '3000',
     id: '0x6ce6d6d40a4c4088309293b0582372a2e6bb632e',
     liquidity: '99709732660961508048',
     token0: {
@@ -9804,15 +2767,11 @@ const x_weth = [
       symbol: 'STG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '156386277.4650655901791681468315757',
+    volumeUSD: '156386446.1640793872223086632836217',
   },
   {
-    feeTier: '10000',
     id: '0x9d2713fa2f387ed1284a4176e7841253b4da2a71',
     liquidity: '0',
     token0: {
@@ -9822,15 +2781,11 @@ const x_weth = [
       symbol: 'FTX Token',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '155046351.4098533938956829261311261',
   },
   {
-    feeTier: '10000',
     id: '0x11b7a6bc0259ed6cf9db8f499988f9ecc7167bf5',
     liquidity: '740262846505062059872',
     token0: {
@@ -9840,15 +2795,11 @@ const x_weth = [
       symbol: 'KP3R',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '152792730.5034462133887660457513949',
+    volumeUSD: '152794336.3447171732355673828574698',
   },
   {
-    feeTier: '3000',
     id: '0xd050430dd432876cf5622ff60c4dc106b64fa753',
     liquidity: '3662245933838174563788',
     token0: {
@@ -9858,15 +2809,11 @@ const x_weth = [
       symbol: 'PUNDIX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '151564739.5588254563059032382254041',
+    volumeUSD: '151577833.3462144688513551576907069',
   },
   {
-    feeTier: '3000',
     id: '0xefc73f21bb4645ea4cb1f1b5a674985c590c4070',
     liquidity: '0',
     token0: {
@@ -9876,15 +2823,11 @@ const x_weth = [
       symbol: 'XFT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '149154816.3753868067058159096161971',
   },
   {
-    feeTier: '10000',
     id: '0x2e8daf55f212be91d3fa882cceab193a08fddeb2',
     liquidity: '42906355179792773289',
     token0: {
@@ -9894,17 +2837,13 @@ const x_weth = [
       symbol: 'YFI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '148474451.2163736532569030051589734',
+    volumeUSD: '148476308.2501848983636450101028031',
   },
   {
-    feeTier: '10000',
     id: '0x2dd35b4da6534230ff53048f7477f17f7f4e7a70',
-    liquidity: '1780841280126346494303',
+    liquidity: '14784240576171794950832',
     token0: {
       decimals: '18',
       id: '0x0f2d719407fdbeff09d87557abb7232601fd9f29',
@@ -9912,17 +2851,13 @@ const x_weth = [
       symbol: 'SYN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '147762513.1948659971371708620315767',
+    volumeUSD: '147958463.5142073614008164530206717',
   },
   {
-    feeTier: '10000',
     id: '0x60b0dad2d7d65b7d6efc0b746687020ccef0a233',
-    liquidity: '3081613317679806703352',
+    liquidity: '3093429737043451637621',
     token0: {
       decimals: '18',
       id: '0x1121acc14c63f3c872bfca497d10926a6098aac5',
@@ -9930,17 +2865,13 @@ const x_weth = [
       symbol: 'DOGE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '146196961.1528661240998429993656736',
+    volumeUSD: '146203413.3794314515989353197945318',
   },
   {
-    feeTier: '10000',
     id: '0x403b1b747b1efb309070436c9ac99bf476f299ea',
-    liquidity: '1634077347325826922',
+    liquidity: '1640257156108249375',
     token0: {
       decimals: '5',
       id: '0x1151cb3d861920e07a38e03eead12c32178567f6',
@@ -9948,17 +2879,13 @@ const x_weth = [
       symbol: 'Bonk',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '144226391.3864210746665482197870386',
+    volumeUSD: '144425984.2455547838809414921492236',
   },
   {
-    feeTier: '10000',
     id: '0xf7849d0852fc588210b9c0d8b26f43c0c9bc1470',
-    liquidity: '335435529179428927149029',
+    liquidity: '312180028034909525772217',
     token0: {
       decimals: '18',
       id: '0x6c6ee5e31d828de241282b9606c8e98ea48526e2',
@@ -9966,17 +2893,13 @@ const x_weth = [
       symbol: 'HOT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '144144103.1172810893442142543641881',
+    volumeUSD: '144160856.674831636748458908439028',
   },
   {
-    feeTier: '3000',
     id: '0x4a2987c255ad7f9409c54a4fce7823441e14f08b',
-    liquidity: '7730879397179818998719',
+    liquidity: '7711339052314323603929',
     token0: {
       decimals: '18',
       id: '0xa882606494d86804b5514e07e6bd2d6a6ee6d68a',
@@ -9984,15 +2907,11 @@ const x_weth = [
       symbol: 'WPLS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '143654158.0968862723429158450218583',
+    volumeUSD: '143654364.7557942750381188300153026',
   },
   {
-    feeTier: '10000',
     id: '0x79db69ab1ed51261a9fdc3bf0e6db3fa48b8cc52',
     liquidity: '15243551261970447745722',
     token0: {
@@ -10002,17 +2921,13 @@ const x_weth = [
       symbol: 'TURT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '143222616.1345766012169267672486175',
+    volumeUSD: '143226207.5921255245881713844133068',
   },
   {
-    feeTier: '3000',
     id: '0x99a6880748ceb61c3d9b6d4cd49edb59f79f405d',
-    liquidity: '91848006660771933',
+    liquidity: '103070916507027496',
     token0: {
       decimals: '8',
       id: '0x5b7533812759b45c2b44c19e320ba2cd2681b542',
@@ -10020,15 +2935,11 @@ const x_weth = [
       symbol: 'AGIX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '141058111.8312328475211721227885398',
+    volumeUSD: '141087347.8618443053619930973186194',
   },
   {
-    feeTier: '3000',
     id: '0xd1ede4862697fa88e8948fd83317e4d7888910f5',
     liquidity: '44128655266170366284',
     token0: {
@@ -10038,15 +2949,11 @@ const x_weth = [
       symbol: 'MCB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '140246635.4185516625634044126798967',
   },
   {
-    feeTier: '3000',
     id: '0x6ae0cdc5d2b89a8dcb99ad6b3435b3e7f7290077',
     liquidity: '59997039880423470625700',
     token0: {
@@ -10056,15 +2963,11 @@ const x_weth = [
       symbol: 'KROM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '140159134.4142759037307711644296851',
+    volumeUSD: '140159275.6416873551906917988457174',
   },
   {
-    feeTier: '10000',
     id: '0x93c212b82c41dc99ba8ff5b21e03946da567ae6f',
     liquidity: '99600067078727861535621',
     token0: {
@@ -10074,17 +2977,13 @@ const x_weth = [
       symbol: 'SHIT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '139530402.4991067320290331868164185',
+    volumeUSD: '139530419.5294735232508953400400904',
   },
   {
-    feeTier: '10000',
     id: '0x87f9eaede70419f704b361cf040693a30d731dcf',
-    liquidity: '17039545604752121075746',
+    liquidity: '16954310142282954710224',
     token0: {
       decimals: '18',
       id: '0xa9e8acf069c58aec8825542845fd754e41a9489a',
@@ -10092,15 +2991,11 @@ const x_weth = [
       symbol: 'pepecoin',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '138537177.3051834326939458576070948',
+    volumeUSD: '138561594.4304198304584767649654951',
   },
   {
-    feeTier: '10000',
     id: '0xc3881fbb90daf3066da30016d578ed024027317c',
     liquidity: '61734697471218098295040',
     token0: {
@@ -10110,15 +3005,11 @@ const x_weth = [
       symbol: 'GLQ',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '137644922.4208667177116114570947697',
+    volumeUSD: '137716136.9413734651571049124244733',
   },
   {
-    feeTier: '10000',
     id: '0xef9a9283440b2d7efb9c7dcc17e94e234d5ccccd',
     liquidity: '0',
     token0: {
@@ -10128,15 +3019,11 @@ const x_weth = [
       symbol: 'sILV2',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '136540513.1364833782268123401763617',
   },
   {
-    feeTier: '10000',
     id: '0xc7cbff2a23d0926604f9352f65596e65729b8a17',
     liquidity: '450942277636396576468735',
     token0: {
@@ -10146,17 +3033,13 @@ const x_weth = [
       symbol: 'SDEX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '136287192.5719035266609664991924293',
+    volumeUSD: '136318306.3935499000271236045434518',
   },
   {
-    feeTier: '10000',
     id: '0x120ffad35bb97a5baf9ab68f9dd7667864530245',
-    liquidity: '129043124430878935356300',
+    liquidity: '129298780258657327685653',
     token0: {
       decimals: '18',
       id: '0x594daad7d77592a2b97b725a7ad59d7e188b5bfa',
@@ -10164,15 +3047,11 @@ const x_weth = [
       symbol: 'APU',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '135400727.8346685770376569786028725',
+    volumeUSD: '135417543.2299548222050858681345962',
   },
   {
-    feeTier: '3000',
     id: '0xecf678bf1850ac206f42c9e959f72a0ab0e86f77',
     liquidity: '120813706026282594827597',
     token0: {
@@ -10182,15 +3061,11 @@ const x_weth = [
       symbol: 'LADYS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '135288342.3742664005245966533132881',
+    volumeUSD: '135288391.3317225478741678707449925',
   },
   {
-    feeTier: '3000',
     id: '0x1becf1ac50f31c3441181563f9d350ddf72a2bfa',
     liquidity: '5235152004652336384666',
     token0: {
@@ -10200,17 +3075,13 @@ const x_weth = [
       symbol: 'SMT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '134838443.0740213431599812665790566',
+    volumeUSD: '134849687.4601779247053968449286255',
   },
   {
-    feeTier: '10000',
     id: '0x9f41a3ac0c16a9feb5400751a34c609211839cfa',
-    liquidity: '1096892798295810615062',
+    liquidity: '1814174260105908550184',
     token0: {
       decimals: '18',
       id: '0x33349b282065b0284d756f0577fb39c158f935e6',
@@ -10218,15 +3089,11 @@ const x_weth = [
       symbol: 'MPL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '133991394.1162714000973521607376597',
+    volumeUSD: '134027935.9044857328328087650465426',
   },
   {
-    feeTier: '3000',
     id: '0x88051b0eea095007d3bef21ab287be961f3d8598',
     liquidity: '346361376133834891',
     token0: {
@@ -10236,17 +3103,13 @@ const x_weth = [
       symbol: 'OHM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '133723216.535196780066255608769719',
+    volumeUSD: '133870454.0134943662767236132230433',
   },
   {
-    feeTier: '10000',
     id: '0x59b4bb1f5d943cf71a10df63f6b743ee4a4489ee',
-    liquidity: '4432478048652155022',
+    liquidity: '4432432317944219119',
     token0: {
       decimals: '18',
       id: '0x3aada3e213abf8529606924d8d1c55cbdc70bf74',
@@ -10254,15 +3117,11 @@ const x_weth = [
       symbol: 'XMON',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '133632731.544287557670745445632763',
+    volumeUSD: '133633255.7126338361990017946915967',
   },
   {
-    feeTier: '3000',
     id: '0x610a94f64d1d149623369e5bac9576065d23893b',
     liquidity: '128492741080963678203',
     token0: {
@@ -10272,15 +3131,11 @@ const x_weth = [
       symbol: 'ELON',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '132400046.2540657191501262849883829',
   },
   {
-    feeTier: '10000',
     id: '0xad6d2f2cb7bf2c55c7493fd650d3a66a4c72c483',
     liquidity: '7164926200847085390103',
     token0: {
@@ -10290,17 +3145,13 @@ const x_weth = [
       symbol: 'PAPER',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '132112656.6311322293602493332410097',
+    volumeUSD: '132112699.5427635974441807779902017',
   },
   {
-    feeTier: '10000',
     id: '0xa04d13f092f68f603a193832222898b0d9f52c71',
-    liquidity: '289313262258642763',
+    liquidity: '203838210996527404',
     token0: {
       decimals: '8',
       id: '0x3073f7aaa4db83f95e9fff17424f71d4751a3073',
@@ -10308,15 +3159,11 @@ const x_weth = [
       symbol: 'MOVE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '130309372.6276688932317055164222855',
+    volumeUSD: '130344155.9740811386056106180535498',
   },
   {
-    feeTier: '10000',
     id: '0x01a8227d4e7c3068ad1000c97a059af5c5fa3476',
     liquidity: '552828597346203247020',
     token0: {
@@ -10326,15 +3173,11 @@ const x_weth = [
       symbol: 'FLC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '130229483.7857888395098982064698727',
   },
   {
-    feeTier: '3000',
     id: '0x04dd76803f247b611d4f470fc6cd206a9d02f869',
     liquidity: '7219322083361438949',
     token0: {
@@ -10344,15 +3187,11 @@ const x_weth = [
       symbol: 'EFI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '129590493.5917948471172252112549259',
+    volumeUSD: '129590614.1264098057899001071571491',
   },
   {
-    feeTier: '10000',
     id: '0x2b43fe4f41d871fbc75af6e0ce85bce38ff1edc7',
     liquidity: '18309672806396740',
     token0: {
@@ -10362,15 +3201,11 @@ const x_weth = [
       symbol: 'Coval',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '127786425.8146058948593824688407843',
+    volumeUSD: '127786653.3671409787125603937645866',
   },
   {
-    feeTier: '3000',
     id: '0xcd1a2cee37107767c59ac61102c9dae171ef76b2',
     liquidity: '0',
     token0: {
@@ -10380,15 +3215,11 @@ const x_weth = [
       symbol: 'RFD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '127604099.1673371921991052593819898',
   },
   {
-    feeTier: '10000',
     id: '0x8e794abe66a4f65c0b6369ceb91af9d50d78fbfa',
     liquidity: '3909429819226226811055',
     token0: {
@@ -10398,15 +3229,11 @@ const x_weth = [
       symbol: 'UFO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '126644491.6178046097091408752361834',
   },
   {
-    feeTier: '10000',
     id: '0xefbd546647fda46067225bd0221e08ba91071584',
     liquidity: '479890050267510969098',
     token0: {
@@ -10416,15 +3243,11 @@ const x_weth = [
       symbol: 'RVP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '126535112.6674292142768671223921952',
   },
   {
-    feeTier: '10000',
     id: '0xdb1d1c9a42e3d10717c415bd06853ea7ae818823',
     liquidity: '1693436937341287363458797',
     token0: {
@@ -10434,15 +3257,11 @@ const x_weth = [
       symbol: 'MRF',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '125227056.3826814465956395145152238',
   },
   {
-    feeTier: '10000',
     id: '0x78d4e81fc84a1ce367e90936e49a74a9052137e8',
     liquidity: '0',
     token0: {
@@ -10452,17 +3271,13 @@ const x_weth = [
       symbol: 'FUMO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '125015892.3574078835460723363057478',
   },
   {
-    feeTier: '10000',
     id: '0x70cf99553471fe6c0d513ebfac8acc55ba02ab7b',
-    liquidity: '111988410458491306130451',
+    liquidity: '110074145947853464105570',
     token0: {
       decimals: '18',
       id: '0xb131f4a55907b10d1f0a50d8ab8fa09ec342cd74',
@@ -10470,15 +3285,11 @@ const x_weth = [
       symbol: 'MEME',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '123787618.9245613624038587413373034',
+    volumeUSD: '123869863.6194048982904864264315532',
   },
   {
-    feeTier: '10000',
     id: '0xd3b4f5b4cf06498e4fbdd71c9da4f5befe01a0ed',
     liquidity: '17420607912561859252449',
     token0: {
@@ -10488,15 +3299,11 @@ const x_weth = [
       symbol: 'CAL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '121472838.7805094254534848287242016',
+    volumeUSD: '121473176.0309084033727678172362756',
   },
   {
-    feeTier: '3000',
     id: '0xb11d15da84a206670beba4e8172c69e653516e80',
     liquidity: '0',
     token0: {
@@ -10506,15 +3313,11 @@ const x_weth = [
       symbol: 'FLOKI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '120610215.5508757629995601728372694',
   },
   {
-    feeTier: '3000',
     id: '0x489cebe6cd5dc5dcb7047a1f0d4f358a5d2fb295',
     liquidity: '46411213407797567933230',
     token0: {
@@ -10524,17 +3327,13 @@ const x_weth = [
       symbol: 'IOTX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '120332313.7409166646958812587889553',
+    volumeUSD: '120343220.6291281992938392555366398',
   },
   {
-    feeTier: '3000',
     id: '0xc02d0fa00c0bec48186026c71da2e54ebf680139',
-    liquidity: '305247197484313842384658',
+    liquidity: '304074310609120756194259',
     token0: {
       decimals: '18',
       id: '0x0d438f3b5175bebc262bf23753c1e53d03432bde',
@@ -10542,33 +3341,11 @@ const x_weth = [
       symbol: 'wNXM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '119937440.9445611977558056721779931',
+    volumeUSD: '120174115.1626279994297206414663178',
   },
   {
-    feeTier: '10000',
-    id: '0xbaec0e18c770993ffb1175fef493b5113cc6e32d',
-    liquidity: '2939665370496767416449',
-    token0: {
-      decimals: '18',
-      id: '0x767fe9edc9e0df98e07454847909b5e959d7ca0e',
-      name: 'Illuvium',
-      symbol: 'ILV',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '119449068.1326077557181769410695064',
-  },
-  {
-    feeTier: '10000',
     id: '0x97a5a0b2d7ed3accb7fd6404a1f5ca29320905af',
     liquidity: '3281855488929017347381',
     token0: {
@@ -10578,15 +3355,25 @@ const x_weth = [
       symbol: 'TORN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '119439157.8146755195120789727311226',
+    volumeUSD: '119527775.3376813795899166443819395',
   },
   {
-    feeTier: '100',
+    id: '0xbaec0e18c770993ffb1175fef493b5113cc6e32d',
+    liquidity: '2939665370496767416449',
+    token0: {
+      decimals: '18',
+      id: '0x767fe9edc9e0df98e07454847909b5e959d7ca0e',
+      name: 'Illuvium',
+      symbol: 'ILV',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '119470010.5676563181131147621381473',
+  },
+  {
     id: '0xdb9580b93e4c6f126f74db3a59166a39dda532cd',
     liquidity: '11519246969745895677239',
     token0: {
@@ -10596,15 +3383,11 @@ const x_weth = [
       symbol: 'IAI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '118869296.69567835244605998122506',
   },
   {
-    feeTier: '3000',
     id: '0x5859ebe6fd3bbc6bd646b73a5dbb09a5d7b6e7b7',
     liquidity: '32083852376597171',
     token0: {
@@ -10614,17 +3397,13 @@ const x_weth = [
       symbol: 'SAND',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '117790096.3330794955431706085107096',
   },
   {
-    feeTier: '10000',
     id: '0x7a233f0e957a9ff4726c738e9d790b9956f4c894',
-    liquidity: '22087082522066241493798',
+    liquidity: '9563898099456104664032',
     token0: {
       decimals: '18',
       id: '0xacd2c239012d17beb128b0944d49015104113650',
@@ -10632,15 +3411,11 @@ const x_weth = [
       symbol: 'KARRAT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '117279845.6339673942392751186605885',
+    volumeUSD: '117351925.5716936692157529473567655',
   },
   {
-    feeTier: '3000',
     id: '0x9496d107a4b90c7d18c703e8685167f90ac273b0',
     liquidity: '53695205033154446222',
     token0: {
@@ -10650,17 +3425,13 @@ const x_weth = [
       symbol: 'agEUR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '116570737.7212040667664860736194661',
+    volumeUSD: '116570780.5970707020964017247884435',
   },
   {
-    feeTier: '10000',
     id: '0x79a6683d82f25535ff3fd2753e03e0961060e882',
-    liquidity: '15346627952368147',
+    liquidity: '17861319984430412',
     token0: {
       decimals: '9',
       id: '0x812ba41e071c7b7fa4ebcfb62df5f45f6fa853ee',
@@ -10668,17 +3439,13 @@ const x_weth = [
       symbol: 'Neiro',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '114185429.874611649781289868973664',
+    volumeUSD: '114185486.9668016355133124743117916',
   },
   {
-    feeTier: '10000',
     id: '0x7c0d6cbe332dac916944c61956b291a4045f9bfa',
-    liquidity: '43667149416964152149975',
+    liquidity: '43437902638404694907215',
     token0: {
       decimals: '18',
       id: '0xad86b91a1d1db15a4cd34d0634bbd4ecacb5b61a',
@@ -10686,15 +3453,11 @@ const x_weth = [
       symbol: 'Daram',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '113805778.7194098337231248841511312',
+    volumeUSD: '113806913.6596919802450027149180308',
   },
   {
-    feeTier: '3000',
     id: '0xe72377ae353edc1d07f6c0be34969a481d030d19',
     liquidity: '18181559680745619594',
     token0: {
@@ -10704,15 +3467,11 @@ const x_weth = [
       symbol: 'μBAYC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '113661748.5023047921940518495387219',
   },
   {
-    feeTier: '10000',
     id: '0x9ee5f9bf3c2619a443d1cc228aa67b6a9776f961',
     liquidity: '0',
     token0: {
@@ -10722,15 +3481,11 @@ const x_weth = [
       symbol: 'Nvir',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '113104109.7822782078406792004819317',
   },
   {
-    feeTier: '3000',
     id: '0x97944213d2caeea773da1c9b11b0525f25b749cc',
     liquidity: '60789065402963138',
     token0: {
@@ -10740,15 +3495,11 @@ const x_weth = [
       symbol: 'tBTC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '112773039.5323612602401746217131916',
   },
   {
-    feeTier: '10000',
     id: '0x666ed8c2151f00e7e58b4d941f65a9df68d2245b',
     liquidity: '1080780602182932639903973',
     token0: {
@@ -10758,15 +3509,11 @@ const x_weth = [
       symbol: 'WOOF',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '111909258.5172372988638626650127306',
+    volumeUSD: '111910786.8054439875055272339591516',
   },
   {
-    feeTier: '10000',
     id: '0x82743c07bf3be4d55876f87bca6cce5f84429bd0',
     liquidity: '1366125597250316',
     token0: {
@@ -10776,15 +3523,11 @@ const x_weth = [
       symbol: 'HEX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '111620474.1818899759494791994397552',
+    volumeUSD: '111620497.1922221436572587706166898',
   },
   {
-    feeTier: '10000',
     id: '0xb38cc8c5f6eebc03a38515e2aad580e0b80d67ea',
     liquidity: '3663681904596202989799',
     token0: {
@@ -10794,15 +3537,11 @@ const x_weth = [
       symbol: 'ALEPH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '110079436.7169797952652751744588487',
+    volumeUSD: '110086360.6533981407185662479173515',
   },
   {
-    feeTier: '3000',
     id: '0x0f2e5e488daa815361ada55ef816b47679918897',
     liquidity: '16493194591359916758851',
     token0: {
@@ -10812,17 +3551,13 @@ const x_weth = [
       symbol: 'MOBY',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '109813627.3960238573616207119897264',
+    volumeUSD: '109816945.1409629118181170833805014',
   },
   {
-    feeTier: '10000',
     id: '0x32121e0d11ecc79035045bc7466ede30816c5674',
-    liquidity: '1525032453031768129289',
+    liquidity: '2914042173677826651690',
     token0: {
       decimals: '18',
       id: '0x64bc2ca1be492be7185faa2c8835d9b824c8a194',
@@ -10830,17 +3565,13 @@ const x_weth = [
       symbol: 'BIGTIME',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '108697466.0146797233354377587107997',
+    volumeUSD: '108700135.3708187080505478410510876',
   },
   {
-    feeTier: '10000',
     id: '0xcbcc3cbad991ec59204be2963b4a87951e4d292b',
-    liquidity: '13984591575665690337533',
+    liquidity: '24169407585314756969256',
     token0: {
       decimals: '18',
       id: '0x81f8f0bb1cb2a06649e51913a151f0e7ef6fa321',
@@ -10848,15 +3579,11 @@ const x_weth = [
       symbol: 'VITA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '108177305.4927173816189394558226197',
+    volumeUSD: '108317648.9922105357961318899524211',
   },
   {
-    feeTier: '10000',
     id: '0xaa683fd3ae3033e0f3ffba14619e5371057740b7',
     liquidity: '68134556748478888680135',
     token0: {
@@ -10866,15 +3593,11 @@ const x_weth = [
       symbol: 'MAZZE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '107787902.5831276366593742839439436',
+    volumeUSD: '107819459.0607053405050335753800695',
   },
   {
-    feeTier: '3000',
     id: '0x92f0b57e3814e4bd74ef6a6fd6d825db522ccfe2',
     liquidity: '0',
     token0: {
@@ -10884,15 +3607,11 @@ const x_weth = [
       symbol: 'SOUL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '107489963.2539893234719268919209292',
   },
   {
-    feeTier: '3000',
     id: '0x5104846dc1c3c7697b856dc69e350ae4dcc47e24',
     liquidity: '824110658074484262977',
     token0: {
@@ -10902,15 +3621,11 @@ const x_weth = [
       symbol: 'LORDS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '106151326.5734980040968106680644123',
+    volumeUSD: '106151460.1089499930949305518039435',
   },
   {
-    feeTier: '3000',
     id: '0x2b1b8052eed6467967d047b58b71f8e9ffa057b5',
     liquidity: '20533684817509682753',
     token0: {
@@ -10920,15 +3635,11 @@ const x_weth = [
       symbol: 'CIV',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '105851147.1111756091914138418438707',
   },
   {
-    feeTier: '500',
     id: '0xe5d028350093a743a9769e6fd7f5546eeddaa320',
     liquidity: '0',
     token0: {
@@ -10938,15 +3649,11 @@ const x_weth = [
       symbol: 'icETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '105294478.5188364214047282963012186',
   },
   {
-    feeTier: '10000',
     id: '0xa7f72a1ec0ab189998a3eec8b886e6360aff39da',
     liquidity: '845941423432306529',
     token0: {
@@ -10956,15 +3663,11 @@ const x_weth = [
       symbol: 'sILV',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '104439168.265368929859251064573947',
   },
   {
-    feeTier: '3000',
     id: '0x0b1d8faff1fe1ead5ab05729b0739d758ed26024',
     liquidity: '0',
     token0: {
@@ -10974,15 +3677,11 @@ const x_weth = [
       symbol: 'EEFI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '104405990.4465483229660333635918692',
   },
   {
-    feeTier: '10000',
     id: '0x0ebc0443b8187066a00f31049fb1c4700389f3db',
     liquidity: '0',
     token0: {
@@ -10992,17 +3691,13 @@ const x_weth = [
       symbol: 'ALPHABET',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '103881849.6767995689977757754816175',
   },
   {
-    feeTier: '3000',
     id: '0xa424cea71c4aea3d11877240b2f221c027c0e0be',
-    liquidity: '343806168117861642',
+    liquidity: '2605015283209356575917',
     token0: {
       decimals: '18',
       id: '0x27702a26126e0b3702af63ee09ac4d1a084ef628',
@@ -11010,17 +3705,13 @@ const x_weth = [
       symbol: 'ALEPH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '101584479.9529183859744981751553171',
+    volumeUSD: '101586710.8530940228124195920751658',
   },
   {
-    feeTier: '3000',
     id: '0xcb488b8452996454237d824d72f86090470292f4',
-    liquidity: '22825497486985264338606',
+    liquidity: '18710990915178212854269',
     token0: {
       decimals: '18',
       id: '0x66761fa41377003622aee3c7675fc7b5c1c2fac5',
@@ -11028,15 +3719,11 @@ const x_weth = [
       symbol: 'CPOOL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '100616506.6482785706511658779471932',
+    volumeUSD: '100878452.2996755101232005740783285',
   },
   {
-    feeTier: '3000',
     id: '0xbea615376d1184f3670a341b70f6f45d9d0fbaad',
     liquidity: '12426752126035720',
     token0: {
@@ -11046,15 +3733,11 @@ const x_weth = [
       symbol: 'cbETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '99980581.98101828139151022620818839',
   },
   {
-    feeTier: '3000',
     id: '0x000ba527862e5b82cff0f7c66b646af023274aa1',
     liquidity: '42347778968804416638329',
     token0: {
@@ -11064,33 +3747,11 @@ const x_weth = [
       symbol: 'SAFE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '99029670.41117336429134569282208344',
+    volumeUSD: '99162660.47601988641084308396891254',
   },
   {
-    feeTier: '10000',
-    id: '0x68d01efdfbe5c0eebe3b19b571b18ae6d6ee16fc',
-    liquidity: '1257071531346269729773',
-    token0: {
-      decimals: '18',
-      id: '0x3446dd70b2d52a6bf4a5a192d9b0a161295ab7f9',
-      name: 'SUDO GOVERNANCE TOKEN',
-      symbol: 'SUDO',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '96146624.22598073724485608037641046',
-  },
-  {
-    feeTier: '3000',
     id: '0x084b5191bd08412952337b1108b6e5942418928f',
     liquidity: '147674951297530613845233',
     token0: {
@@ -11100,15 +3761,25 @@ const x_weth = [
       symbol: 'SNT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '96145538.86097120291162186509759115',
+    volumeUSD: '96280720.63206022766854714744873396',
   },
   {
-    feeTier: '500',
+    id: '0x68d01efdfbe5c0eebe3b19b571b18ae6d6ee16fc',
+    liquidity: '1257071531346269729773',
+    token0: {
+      decimals: '18',
+      id: '0x3446dd70b2d52a6bf4a5a192d9b0a161295ab7f9',
+      name: 'SUDO GOVERNANCE TOKEN',
+      symbol: 'SUDO',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '96146670.22684396660888041154916461',
+  },
+  {
     id: '0xfaa318479b7755b2dbfdd34dc306cb28b420ad12',
     liquidity: '86601854364224192536',
     token0: {
@@ -11118,17 +3789,13 @@ const x_weth = [
       symbol: 'UNI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '96145334.55878852035697694628730934',
+    volumeUSD: '96145587.82933172683931319121899888',
   },
   {
-    feeTier: '10000',
     id: '0x318fbee0a0d60e5de7009864632ceda8d77489b8',
-    liquidity: '23269058251751878750944',
+    liquidity: '20534225125252874627308',
     token0: {
       decimals: '18',
       id: '0x62d0a8458ed7719fdaf978fe5929c6d342b0bfce',
@@ -11136,17 +3803,13 @@ const x_weth = [
       symbol: 'BEAM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '95020337.34809629250641896445979669',
+    volumeUSD: '95039699.56729051154241358872020863',
   },
   {
-    feeTier: '10000',
     id: '0xb02045ad2ca16e8f4675088140e369260bb280c8',
-    liquidity: '17997687953632887',
+    liquidity: '6032128192271466',
     token0: {
       decimals: '8',
       id: '0x112b08621e27e10773ec95d250604a041f36c582',
@@ -11154,33 +3817,11 @@ const x_weth = [
       symbol: 'KAS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '93691812.44654557176447624748869966',
+    volumeUSD: '93713411.75737978024588864135715513',
   },
   {
-    feeTier: '10000',
-    id: '0x0bb5fd9b4e16607d32c4e5ac625ac5381c605920',
-    liquidity: '0',
-    token0: {
-      decimals: '9',
-      id: '0x04f2694c8fcee23e8fd0dfea1d4f5bb8c352111f',
-      name: 'Staked Olympus',
-      symbol: 'sOHM',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '93399479.05903859665554780292796251',
-  },
-  {
-    feeTier: '3000',
     id: '0x7138eae57e8a214f7297e5e67bb6e183df3572d5',
     liquidity: '64738834186854847537797',
     token0: {
@@ -11190,15 +3831,25 @@ const x_weth = [
       symbol: 'DINERO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '93380616.89855739022230417332963548',
+    volumeUSD: '93412879.75423520237657787657976626',
   },
   {
-    feeTier: '3000',
+    id: '0x0bb5fd9b4e16607d32c4e5ac625ac5381c605920',
+    liquidity: '0',
+    token0: {
+      decimals: '9',
+      id: '0x04f2694c8fcee23e8fd0dfea1d4f5bb8c352111f',
+      name: 'Staked Olympus',
+      symbol: 'sOHM',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '93399479.05903859665554780292796251',
+  },
+  {
     id: '0xcf80234653765aeb7ca786d83466e22baf5bd22b',
     liquidity: '0',
     token0: {
@@ -11208,15 +3859,11 @@ const x_weth = [
       symbol: 'GROK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '92620487.09175529473999844483373129',
   },
   {
-    feeTier: '3000',
     id: '0xf93d138e087b454b4051496346bcc61e4f8f99d4',
     liquidity: '0',
     token0: {
@@ -11226,17 +3873,13 @@ const x_weth = [
       symbol: 'LUNA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '92414364.60332912453072294356883854',
   },
   {
-    feeTier: '10000',
     id: '0x78ab16803d92f6db77ef6d4e92fe139affab78cf',
-    liquidity: '852836664142963408687',
+    liquidity: '835630967547618386260',
     token0: {
       decimals: '18',
       id: '0x4cd0c43b0d53bc318cc5342b77eb6f124e47f526',
@@ -11244,15 +3887,11 @@ const x_weth = [
       symbol: 'FREE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '92354986.95646613507568668618866144',
+    volumeUSD: '92356782.92214337244669191711165836',
   },
   {
-    feeTier: '3000',
     id: '0x275ef1031161d9358a7a35d5028f9d03845d4f2d',
     liquidity: '1143841150019966',
     token0: {
@@ -11262,15 +3901,11 @@ const x_weth = [
       symbol: 'ICHI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '91924360.80445673411815576887053648',
   },
   {
-    feeTier: '3000',
     id: '0x13dc0a39dc00f394e030b97b0b569dedbe634c0d',
     liquidity: '47456661861787096154369',
     token0: {
@@ -11280,17 +3915,13 @@ const x_weth = [
       symbol: 'ANKR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '90879764.58995857298904685281644279',
+    volumeUSD: '90899765.70479821416919893466678919',
   },
   {
-    feeTier: '10000',
     id: '0xe495bfa137b68a037b1f661ed47a44b4fb2a6563',
-    liquidity: '2576757376341412146514',
+    liquidity: '3369635836492923122007',
     token0: {
       decimals: '18',
       id: '0x430ef9263e76dae63c84292c3409d61c598e9682',
@@ -11298,17 +3929,13 @@ const x_weth = [
       symbol: 'PYR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '90307699.65767993948125530766772462',
+    volumeUSD: '90867004.72218911839077207496429604',
   },
   {
-    feeTier: '3000',
     id: '0x06ada8f74d99c6c200672b02e5c3341866ca3bfb',
-    liquidity: '63485250870930440836',
+    liquidity: '129150840762484125413',
     token0: {
       decimals: '18',
       id: '0x72e364f2abdc788b7e918bc238b21f109cd634d7',
@@ -11316,17 +3943,13 @@ const x_weth = [
       symbol: 'MVI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '89616810.90136221458956288569308408',
+    volumeUSD: '89617005.78563704219250641011278125',
   },
   {
-    feeTier: '10000',
     id: '0x5598931bfbb43eec686fa4b5b92b5152ebadc2f6',
-    liquidity: '615732638266026006645',
+    liquidity: '32578775773301537275429',
     token0: {
       decimals: '18',
       id: '0xc00e94cb662c3520282e6f5717214004a7f26888',
@@ -11334,15 +3957,11 @@ const x_weth = [
       symbol: 'COMP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '87601070.93662951890678331821604996',
+    volumeUSD: '87740992.08222458371913090253766539',
   },
   {
-    feeTier: '3000',
     id: '0x2fa7361d7e3b812375604681eb155a97b4d65e9e',
     liquidity: '0',
     token0: {
@@ -11352,15 +3971,11 @@ const x_weth = [
       symbol: 'aKLIMA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '87212998.27124870153448357979998781',
   },
   {
-    feeTier: '10000',
     id: '0xe297c3f3f0190b8341dd543d2d552248207af23a',
     liquidity: '121250690773974507158',
     token0: {
@@ -11370,15 +3985,11 @@ const x_weth = [
       symbol: 'GAS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '86665858.0532726687119121307267047',
   },
   {
-    feeTier: '500',
     id: '0x18ee78020f63bd081fbce9d564db95bce3e72952',
     liquidity: '0',
     token0: {
@@ -11388,15 +3999,11 @@ const x_weth = [
       symbol: 'ezETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '86205441.81576642007164426518957852',
   },
   {
-    feeTier: '10000',
     id: '0x6bee0f0dea573ec04a77ff3547691f2edccf2a7c',
     liquidity: '2990758803157229836',
     token0: {
@@ -11406,15 +4013,11 @@ const x_weth = [
       symbol: 'BETA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '84899939.95193003121304501004066976',
+    volumeUSD: '84899950.83449482407701049715232936',
   },
   {
-    feeTier: '3000',
     id: '0xed4a344f5f1c293881fc65ab37d0d07eba130e11',
     liquidity: '28702797393180434676666',
     token0: {
@@ -11424,15 +4027,25 @@ const x_weth = [
       symbol: 'MONAI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '84395417.64741316240079831945697324',
+    volumeUSD: '84395887.16951713360224270370264575',
   },
   {
-    feeTier: '3000',
+    id: '0x7f74c86cd8ba48be647d541b3e7f5a2184a3afa4',
+    liquidity: '40432053917618525031494',
+    token0: {
+      decimals: '18',
+      id: '0x7613c48e0cd50e42dd9bf0f6c235063145f6f8dc',
+      name: 'Pirate Nation Token',
+      symbol: 'PIRATE',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '83737224.50091489750637502980976859',
+  },
+  {
     id: '0xe2680fd7cdbb04e9087a647ad4d023ef6c8fb4e2',
     liquidity: '79212050684100538964861',
     token0: {
@@ -11442,15 +4055,11 @@ const x_weth = [
       symbol: 'HUNT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '83644868.53704780870871853520778923',
+    volumeUSD: '83712025.12713411935227997473972418',
   },
   {
-    feeTier: '3000',
     id: '0x7df301c4529c58546527f5b912c74ecccad0ae2d',
     liquidity: '0',
     token0: {
@@ -11460,33 +4069,11 @@ const x_weth = [
       symbol: 'SHRAP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '83642288.66789121852884808800025694',
   },
   {
-    feeTier: '10000',
-    id: '0x7f74c86cd8ba48be647d541b3e7f5a2184a3afa4',
-    liquidity: '20812194700223344777055',
-    token0: {
-      decimals: '18',
-      id: '0x7613c48e0cd50e42dd9bf0f6c235063145f6f8dc',
-      name: 'Pirate Nation Token',
-      symbol: 'PIRATE',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '83630991.69035626736682872885775712',
-  },
-  {
-    feeTier: '10000',
     id: '0x63805e5d951398bc1c1bec242d303f59fa7732e3',
     liquidity: '582358653095036223',
     token0: {
@@ -11496,15 +4083,11 @@ const x_weth = [
       symbol: 'X2Y2',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '83322408.08975619501851078662468839',
   },
   {
-    feeTier: '10000',
     id: '0x4e4a4c4c46d3488ff35ff05a0233785a30f03ec4',
     liquidity: '1893752057323570925955',
     token0: {
@@ -11514,15 +4097,11 @@ const x_weth = [
       symbol: 'ORA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '82924493.24084567406455849667500593',
+    volumeUSD: '82935825.11315637033335264004418691',
   },
   {
-    feeTier: '10000',
     id: '0x5552727005cc8194c1559289a532deb288964fd8',
     liquidity: '165216514282403604',
     token0: {
@@ -11532,15 +4111,11 @@ const x_weth = [
       symbol: 'MOODENG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '82762352.30802278713971243232475608',
+    volumeUSD: '82762885.53024699381341412293010405',
   },
   {
-    feeTier: '3000',
     id: '0xfe4ec8f377be9e1e95a49d4e0d20f52d07b1ff0d',
     liquidity: '377078676408414443082',
     token0: {
@@ -11550,15 +4125,11 @@ const x_weth = [
       symbol: 'GLM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '82696328.19912172359175937479196248',
+    volumeUSD: '82696907.23477503645957248849642055',
   },
   {
-    feeTier: '10000',
     id: '0xf9d29c7c0691ca27f076828b4c1de6f6b14c0bda',
     liquidity: '27077635068885169',
     token0: {
@@ -11568,15 +4139,11 @@ const x_weth = [
       symbol: 'UBT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '82630657.11904576530918734184656008',
+    volumeUSD: '82630756.3986425922149141851553477',
   },
   {
-    feeTier: '3000',
     id: '0xc52a18e7358b1c618bd8f0e784b35636775afb4e',
     liquidity: '7922287920679116053995',
     token0: {
@@ -11586,15 +4153,11 @@ const x_weth = [
       symbol: 'MAI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '82233859.77900350618501221663187725',
+    volumeUSD: '82234974.37980159433068547537080823',
   },
   {
-    feeTier: '10000',
     id: '0x88977729330e55aa7111fec4967d8a561ac7c741',
     liquidity: '0',
     token0: {
@@ -11604,15 +4167,11 @@ const x_weth = [
       symbol: 'OCC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '82071906.72643190766110622171279934',
   },
   {
-    feeTier: '10000',
     id: '0x04ed15a29addad1e8189026d17879403997050a3',
     liquidity: '28823044406741611593',
     token0: {
@@ -11622,15 +4181,11 @@ const x_weth = [
       symbol: 'PSWAP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '81964374.68432120346937035310855617',
+    volumeUSD: '81964655.94993918161512826700884718',
   },
   {
-    feeTier: '10000',
     id: '0xaff1025438da93bd86427f2f9f7d06088f720a8d',
     liquidity: '16030519454525877682103',
     token0: {
@@ -11640,15 +4195,11 @@ const x_weth = [
       symbol: 'CELR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '81724645.94009468211250197496168131',
+    volumeUSD: '81728281.61950795200538145886982472',
   },
   {
-    feeTier: '10000',
     id: '0xfe7aff6f4f1b0d9f65767e96573e6df8b1ff5920',
     liquidity: '82218023646606379527865',
     token0: {
@@ -11658,17 +4209,13 @@ const x_weth = [
       symbol: 'JUSTICE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '81335500.58502266225777078810358733',
+    volumeUSD: '81336553.9348541511570673719036036',
   },
   {
-    feeTier: '10000',
     id: '0x44c95bf226a6a1385beaced2bb3328d6afb044a3',
-    liquidity: '1703870893011594268615',
+    liquidity: '709720328420431312162',
     token0: {
       decimals: '18',
       id: '0x02f92800f57bcd74066f5709f1daa1a4302df875',
@@ -11676,15 +4223,11 @@ const x_weth = [
       symbol: 'PEAS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '80895327.64722548642675979847126127',
+    volumeUSD: '80921476.84570802970595079260199046',
   },
   {
-    feeTier: '3000',
     id: '0x2d6fcfde9709343c4c7a78d91077473d6b604653',
     liquidity: '0',
     token0: {
@@ -11694,15 +4237,11 @@ const x_weth = [
       symbol: 'STFX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '80888828.53743261883207386083744219',
   },
   {
-    feeTier: '10000',
     id: '0x6de126c873f111a83da7513b80ebb6dce297e542',
     liquidity: '6552685579835',
     token0: {
@@ -11712,15 +4251,11 @@ const x_weth = [
       symbol: 'FIGHT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '80824501.82453208510589229205366777',
   },
   {
-    feeTier: '10000',
     id: '0x01949723055a451229c7ba3a817937c966748f76',
     liquidity: '457945141319789549835',
     token0: {
@@ -11730,15 +4265,11 @@ const x_weth = [
       symbol: 'CTSI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '80568183.00212068747725421198991598',
+    volumeUSD: '80568442.66962390262638786036032368',
   },
   {
-    feeTier: '10000',
     id: '0x0318170609141bfdb38d20d1f1c5b5197670ecee',
     liquidity: '65573730479176048432939585',
     token0: {
@@ -11748,17 +4279,13 @@ const x_weth = [
       symbol: 'SOV',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '80050251.260102027503885339301072',
   },
   {
-    feeTier: '10000',
     id: '0x27941a235804f33d81adabb2d56589c5f6ea6556',
-    liquidity: '136402553541242982142948',
+    liquidity: '134560835821189508817363',
     token0: {
       decimals: '18',
       id: '0x643c4e15d7d62ad0abec4a9bd4b001aa3ef52d66',
@@ -11766,15 +4293,11 @@ const x_weth = [
       symbol: 'SYRUP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '79515375.49266180983814224798026822',
+    volumeUSD: '79794707.86874456367397444340040212',
   },
   {
-    feeTier: '3000',
     id: '0x9437ad40056ca3ec2fc1efe41885ad4b6ac46061',
     liquidity: '1035277201309664058190',
     token0: {
@@ -11784,15 +4307,11 @@ const x_weth = [
       symbol: 'RNG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '79067035.6340873668197736337353126',
   },
   {
-    feeTier: '10000',
     id: '0xc1b24a9ecf68c14ffe65263b1591c29dd341d09d',
     liquidity: '2626550118760644390679',
     token0: {
@@ -11802,15 +4321,11 @@ const x_weth = [
       symbol: 'AMO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '78826481.07441530726483984665701485',
   },
   {
-    feeTier: '3000',
     id: '0x2a0aab8c854947468915afcff66d7722cea8fdec',
     liquidity: '42236494668075039619',
     token0: {
@@ -11820,15 +4335,25 @@ const x_weth = [
       symbol: 'FLOOR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '78810547.01449697754487783411814686',
   },
   {
-    feeTier: '10000',
+    id: '0xa499b5e6af1d554316bcd96947940de0c3b5836e',
+    liquidity: '16909830882389841793705',
+    token0: {
+      decimals: '18',
+      id: '0xaeb3607ec434454ceb308f5cd540875efb54309a',
+      name: 'Sturdy Token',
+      symbol: 'STRDY',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '77894071.77722345832083710918832927',
+  },
+  {
     id: '0x4fde70fdadfdb82295efacef32c48328f830ab75',
     liquidity: '6050502400229191367',
     token0: {
@@ -11838,33 +4363,11 @@ const x_weth = [
       symbol: 'UNQT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '77863552.57415977672787958924596274',
   },
   {
-    feeTier: '10000',
-    id: '0xa499b5e6af1d554316bcd96947940de0c3b5836e',
-    liquidity: '21621538921891034839306',
-    token0: {
-      decimals: '18',
-      id: '0xaeb3607ec434454ceb308f5cd540875efb54309a',
-      name: 'Sturdy Token',
-      symbol: 'STRDY',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '77828071.19273634809977593950474999',
-  },
-  {
-    feeTier: '3000',
     id: '0x8fe199d58ebbec1c9c8dc45c9961ce3ac33e939c',
     liquidity: '28453615126100637513065',
     token0: {
@@ -11874,15 +4377,11 @@ const x_weth = [
       symbol: 'AZUR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '77160492.64212248251802055520639869',
+    volumeUSD: '77164657.71765920853107411879321073',
   },
   {
-    feeTier: '10000',
     id: '0xbe206379252ed32b85cf8d1f53195c6daac75801',
     liquidity: '8856739750184737',
     token0: {
@@ -11892,17 +4391,13 @@ const x_weth = [
       symbol: 'CATE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '77026876.75722347060013613914729631',
   },
   {
-    feeTier: '10000',
     id: '0x7f808fd904ffa3eb6a6f259e6965fb1466a05372',
-    liquidity: '598055009554331037799',
+    liquidity: '770001934278991350375',
     token0: {
       decimals: '18',
       id: '0x80f0c1c49891dcfdd40b6e0f960f84e6042bcb6f',
@@ -11910,17 +4405,13 @@ const x_weth = [
       symbol: 'DXN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '76557666.11222615634398568633612649',
+    volumeUSD: '76560796.63739851100521209983354065',
   },
   {
-    feeTier: '10000',
     id: '0x9cb91e5451d29c84b51ffd40df0b724b639bf841',
-    liquidity: '2051371924667510843315',
+    liquidity: '2058319903902742980363',
     token0: {
       decimals: '18',
       id: '0x6e2a43be0b1d33b726f0ca3b8de60b3482b8b050',
@@ -11928,17 +4419,13 @@ const x_weth = [
       symbol: 'ARKM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '75974740.20646939939343189523793585',
+    volumeUSD: '75981006.19361564982518490621304764',
   },
   {
-    feeTier: '10000',
     id: '0x8df016708a66377dae191ca6f9fff4705a3d951f',
-    liquidity: '445824781279916149493',
+    liquidity: '434007094545166101113',
     token0: {
       decimals: '18',
       id: '0x1776e1f26f98b1a5df9cd347953a26dd3cb46671',
@@ -11946,15 +4433,25 @@ const x_weth = [
       symbol: 'NMR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '75756890.23766106411767999090631703',
+    volumeUSD: '75769783.26037063328160653728872729',
   },
   {
-    feeTier: '10000',
+    id: '0x1aff94bb420361109097916970b8bfb7ab5ac3a6',
+    liquidity: '448285980033432781046220',
+    token0: {
+      decimals: '18',
+      id: '0x960692640ac4986ffce41620b7e3aa03cf1a0e8f',
+      name: 'MeTeorite',
+      symbol: 'MTT',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '75011201.24268684371377544908286927',
+  },
+  {
     id: '0xf3e53d80c29e3cc5fbcdede2a41cc6a19a6d1118',
     liquidity: '30000525028404720725093',
     token0: {
@@ -11964,15 +4461,11 @@ const x_weth = [
       symbol: 'DOVA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '74599176.68162545478857344852780449',
+    volumeUSD: '74599276.88692364067577799710891567',
   },
   {
-    feeTier: '3000',
     id: '0x09117bff68b5939319e61b226bf1f3f5f985eba1',
     liquidity: '16765858828952086868829',
     token0: {
@@ -11982,33 +4475,11 @@ const x_weth = [
       symbol: 'QANX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '74110823.7695899161466427524819581',
+    volumeUSD: '74155668.42074811325107284616356624',
   },
   {
-    feeTier: '3000',
-    id: '0x1aff94bb420361109097916970b8bfb7ab5ac3a6',
-    liquidity: '153672216697248150917487',
-    token0: {
-      decimals: '18',
-      id: '0x960692640ac4986ffce41620b7e3aa03cf1a0e8f',
-      name: 'MeTeorite',
-      symbol: 'MTT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '74033882.9485642696067948589548589',
-  },
-  {
-    feeTier: '3000',
     id: '0x3bc810483e4e2344f0e114a57af13cedc44cf717',
     liquidity: '0',
     token0: {
@@ -12018,17 +4489,13 @@ const x_weth = [
       symbol: 'LEASH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '73884414.34049654394361344778750574',
   },
   {
-    feeTier: '10000',
     id: '0x6ab3bba2f41e7eaa262fa5a1a9b3932fa161526f',
-    liquidity: '43223350762848',
+    liquidity: '41282995095703',
     token0: {
       decimals: '8',
       id: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
@@ -12036,15 +4503,11 @@ const x_weth = [
       symbol: 'WBTC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '72923292.96796286076375892585103462',
+    volumeUSD: '72923630.29798961587216469363600115',
   },
   {
-    feeTier: '10000',
     id: '0x8c13148228765ba9e84eaf940b0416a5e349a5e7',
     liquidity: '229389398215541074649',
     token0: {
@@ -12054,15 +4517,25 @@ const x_weth = [
       symbol: 'INDEX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '72874885.49339997172081192668153591',
+    volumeUSD: '72875521.28216692401253545426704606',
   },
   {
-    feeTier: '10000',
+    id: '0xfeb09c7e130a4b87b27ebd648ec485657b688b34',
+    liquidity: '2521635780476096751726',
+    token0: {
+      decimals: '18',
+      id: '0xa19f5264f7d7be11c451c093d8f92592820bea86',
+      name: 'BYTES',
+      symbol: 'BYTES',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '72675055.60185204044941627551285244',
+  },
+  {
     id: '0x360b9726186c0f62cc719450685ce70280774dc8',
     liquidity: '507875137191162976191',
     token0: {
@@ -12072,35 +4545,13 @@ const x_weth = [
       symbol: 'UNI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '72647250.61152099501612139390251189',
+    volumeUSD: '72647394.13438644184595293695371507',
   },
   {
-    feeTier: '10000',
-    id: '0xfeb09c7e130a4b87b27ebd648ec485657b688b34',
-    liquidity: '2230513828130245924930',
-    token0: {
-      decimals: '18',
-      id: '0xa19f5264f7d7be11c451c093d8f92592820bea86',
-      name: 'BYTES',
-      symbol: 'BYTES',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '72572534.249588317230062228687617',
-  },
-  {
-    feeTier: '3000',
     id: '0x4006bed7bf103d70a1c6b7f1cef4ad059193dc25',
-    liquidity: '7723160230592907627285',
+    liquidity: '4629750016596180604048',
     token0: {
       decimals: '18',
       id: '0x6bea7cfef803d1e3d5f7c0103f7ded065644e197',
@@ -12108,17 +4559,13 @@ const x_weth = [
       symbol: 'GAMMA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '72462898.01484434609900318076230714',
+    volumeUSD: '72465704.14472087801614235011335744',
   },
   {
-    feeTier: '3000',
     id: '0xe1d92f1de49caec73514f696fea2a7d5441498e5',
-    liquidity: '365498147641078336955',
+    liquidity: '392043451194546657623',
     token0: {
       decimals: '18',
       id: '0xbbbbca6a901c926f240b89eacb641d8aec7aeafd',
@@ -12126,15 +4573,11 @@ const x_weth = [
       symbol: 'LRC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '72306391.12554483298686117259852445',
+    volumeUSD: '72306554.17415133129061120668400699',
   },
   {
-    feeTier: '500',
     id: '0x1dd86410f15924601c49cd8a43a53b3430ebc53e',
     liquidity: '97344015346957',
     token0: {
@@ -12144,15 +4587,11 @@ const x_weth = [
       symbol: 'SWFTC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '71705254.72140539307223254476411836',
   },
   {
-    feeTier: '10000',
     id: '0xb7f27e5ebf97d88f37e16eddecc59523361a60e1',
     liquidity: '33576518471090054206325256',
     token0: {
@@ -12162,17 +4601,13 @@ const x_weth = [
       symbol: 'KIZUNA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '71223676.83011867877440100583174336',
+    volumeUSD: '71237218.56693757828422379132361456',
   },
   {
-    feeTier: '10000',
     id: '0x677d05b8bc5c691afd0dcb8ed81404c1ebe114d6',
-    liquidity: '5398041215161907938241',
+    liquidity: '6643139039426233698208',
     token0: {
       decimals: '18',
       id: '0xb98d4c97425d9908e66e53a6fdf673acca0be986',
@@ -12180,15 +4615,11 @@ const x_weth = [
       symbol: 'ABT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '71181995.40298904683178456437321697',
+    volumeUSD: '71214404.01413094184475498108393905',
   },
   {
-    feeTier: '10000',
     id: '0x7e3a3a525d9d265d11d1d1db3cad678746b47d09',
     liquidity: '0',
     token0: {
@@ -12198,15 +4629,11 @@ const x_weth = [
       symbol: 'GP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '70635508.47237383286225180417145792',
   },
   {
-    feeTier: '10000',
     id: '0x7c6776bac3ea54878a2ddc3fd1c26ef87c8f255f',
     liquidity: '31636228737566229628',
     token0: {
@@ -12216,15 +4643,11 @@ const x_weth = [
       symbol: 'MNRCH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '70426303.86421537664698762340437948',
+    volumeUSD: '70426307.96019436044040602253976536',
   },
   {
-    feeTier: '10000',
     id: '0x8f413ad1f9517d82f9eb3a18b2a1f5ee1a68e5a0',
     liquidity: '63028477695899215015',
     token0: {
@@ -12234,33 +4657,11 @@ const x_weth = [
       symbol: 'ALT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '69860687.10615361588292277528691691',
+    volumeUSD: '69860772.16693690724219610448419161',
   },
   {
-    feeTier: '3000',
-    id: '0xa20ad630cee74bc834aa9b8fcb432c5c02710479',
-    liquidity: '0',
-    token0: {
-      decimals: '18',
-      id: '0x557b933a7c2c45672b610f8954a3deb39a51a8ca',
-      name: 'REVV',
-      symbol: 'REVV',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '69422148.7885898113076842710094221',
-  },
-  {
-    feeTier: '10000',
     id: '0x755f01736f93c91585b840c2179c560b754d69f3',
     liquidity: '13528075593040435695298',
     token0: {
@@ -12270,15 +4671,25 @@ const x_weth = [
       symbol: 'NXRA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '69411104.54976675213987181806251173',
+    volumeUSD: '69423919.47604317662891330348890367',
   },
   {
-    feeTier: '3000',
+    id: '0xa20ad630cee74bc834aa9b8fcb432c5c02710479',
+    liquidity: '0',
+    token0: {
+      decimals: '18',
+      id: '0x557b933a7c2c45672b610f8954a3deb39a51a8ca',
+      name: 'REVV',
+      symbol: 'REVV',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '69422148.7885898113076842710094221',
+  },
+  {
     id: '0x39c9e3128b8736e02a30b2b9b7e50ff522b935c5',
     liquidity: '7298051871083638568',
     token0: {
@@ -12288,15 +4699,11 @@ const x_weth = [
       symbol: 'FXS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '69234649.06034711235965111500869346',
+    volumeUSD: '69234699.31290221488069628934203595',
   },
   {
-    feeTier: '10000',
     id: '0x19363890e559d365e943604286e448a19ffead9c',
     liquidity: '4957401972028980182',
     token0: {
@@ -12306,15 +4713,11 @@ const x_weth = [
       symbol: 'MET',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '68551937.38760862114802566211191036',
   },
   {
-    feeTier: '10000',
     id: '0x19c10e1f20df3a8c2ac93a62d7fba719fa777026',
     liquidity: '24191393270672955961415',
     token0: {
@@ -12324,15 +4727,11 @@ const x_weth = [
       symbol: 'DINO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '68398740.91461963493375091485781232',
+    volumeUSD: '68400927.92115759728989379808075471',
   },
   {
-    feeTier: '3000',
     id: '0x715a3ceac0d039d674f50b07804592e87e8c6d77',
     liquidity: '9488047276630542733493',
     token0: {
@@ -12342,15 +4741,11 @@ const x_weth = [
       symbol: 'GSWIFT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '67543947.31465070686870843223855115',
+    volumeUSD: '67556955.60969765747985819512904375',
   },
   {
-    feeTier: '10000',
     id: '0x7d88b48f250830fc5a5f336cac03bae03091ebb5',
     liquidity: '41629411493937249167090',
     token0: {
@@ -12360,15 +4755,11 @@ const x_weth = [
       symbol: 'BDID',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '67312433.91905258902277930458092453',
+    volumeUSD: '67312440.69811938493088372191770896',
   },
   {
-    feeTier: '10000',
     id: '0xbb0eccb680ff8b2cbbb239b200cc6f9927b4aacb',
     liquidity: '62089621856182385395',
     token0: {
@@ -12378,15 +4769,11 @@ const x_weth = [
       symbol: 'SAFE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '67213352.21160357897397492292539853',
+    volumeUSD: '67213380.02250172741719081768391821',
   },
   {
-    feeTier: '3000',
     id: '0x5aac14ca709846c709f746350ca1f739462027a3',
     liquidity: '179837530278582163',
     token0: {
@@ -12396,17 +4783,13 @@ const x_weth = [
       symbol: 'NII',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '66455247.03443835957773938383318847',
   },
   {
-    feeTier: '10000',
     id: '0x9628105808292699874f20d77d50a09bc26850c5',
-    liquidity: '3219573063247199978212',
+    liquidity: '2941249218096198032902',
     token0: {
       decimals: '18',
       id: '0x590f820444fa3638e022776752c5eef34e2f89a6',
@@ -12414,15 +4797,11 @@ const x_weth = [
       symbol: 'ALPH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '66320870.59564185109124717387835825',
+    volumeUSD: '66373238.50041353740851621512587681',
   },
   {
-    feeTier: '3000',
     id: '0x2dd56b633faa1a5b46107d248714c9ccb6e20920',
     liquidity: '10738420500758200860',
     token0: {
@@ -12432,15 +4811,11 @@ const x_weth = [
       symbol: 'REN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '66175207.10839377865989128707019116',
   },
   {
-    feeTier: '3000',
     id: '0x495864cad6cf60e97efcd3f14ff8b1f167956ba2',
     liquidity: '2612721617906033130286',
     token0: {
@@ -12450,17 +4825,13 @@ const x_weth = [
       symbol: 'API3',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '66121726.75689230382006491402808096',
+    volumeUSD: '66136019.58624779951714144127788624',
   },
   {
-    feeTier: '10000',
     id: '0xd1a47332acad7498af1efdba16158e11317eca4a',
-    liquidity: '89978534026962301757',
+    liquidity: '185047025864074845657',
     token0: {
       decimals: '18',
       id: '0xb528edbef013aff855ac3c50b381f253af13b997',
@@ -12468,15 +4839,11 @@ const x_weth = [
       symbol: 'AEVO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '66087642.69029408139499952894079223',
+    volumeUSD: '66087755.81149507989205470316045969',
   },
   {
-    feeTier: '10000',
     id: '0x877f9474f02ea0b3d440bf1047971a52e79296e2',
     liquidity: '0',
     token0: {
@@ -12486,15 +4853,11 @@ const x_weth = [
       symbol: 'RBE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '65778527.69742985715848391416216138',
   },
   {
-    feeTier: '3000',
     id: '0xda827fe99adb2643d80fd30f750b8b96321d7726',
     liquidity: '0',
     token0: {
@@ -12504,15 +4867,11 @@ const x_weth = [
       symbol: 'FUN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '65670445.75167763861742807293470004',
   },
   {
-    feeTier: '10000',
     id: '0x584ec2562b937c4ac0452184d8d83346382b5d3a',
     liquidity: '287675668875',
     token0: {
@@ -12522,15 +4881,11 @@ const x_weth = [
       symbol: 'OHM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '65368975.91755341924906303073993842',
   },
   {
-    feeTier: '10000',
     id: '0x671b8e61c5588f6ec78b9cd75511614945bb2968',
     liquidity: '0',
     token0: {
@@ -12540,17 +4895,13 @@ const x_weth = [
       symbol: 'TRUF',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '64791461.38182450429449890863463632',
   },
   {
-    feeTier: '3000',
     id: '0xcdff6ddfc9e4807c9927fd58708c2ef3484cc305',
-    liquidity: '771811034787395408984',
+    liquidity: '4468326598169969854184',
     token0: {
       decimals: '18',
       id: '0x0d88ed6e74bbfd96b831231638b66c05571e824f',
@@ -12558,15 +4909,11 @@ const x_weth = [
       symbol: 'AVT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '64641369.44651324444069256805202028',
+    volumeUSD: '64660149.3340282105968578037319279',
   },
   {
-    feeTier: '3000',
     id: '0x9a134d5156b372b865b1f149a99aa2997188e70d',
     liquidity: '0',
     token0: {
@@ -12576,15 +4923,11 @@ const x_weth = [
       symbol: 'COPIUM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '64634829.33670893441172933977744895',
   },
   {
-    feeTier: '3000',
     id: '0x78d4704c65dfd869f7f44d78c3fbbbdb5b412c71',
     liquidity: '233338688972994198',
     token0: {
@@ -12594,15 +4937,11 @@ const x_weth = [
       symbol: 'HDRN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '63803283.74592037569129294728306353',
   },
   {
-    feeTier: '10000',
     id: '0x7922dd6e5de4d23294baef470013c1438edb88db',
     liquidity: '0',
     token0: {
@@ -12612,15 +4951,11 @@ const x_weth = [
       symbol: 'DogeX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '63761551.86928167496893060331529952',
   },
   {
-    feeTier: '10000',
     id: '0x9b1956a09c486ed2d8a4c771c221e7a94ffd7755',
     liquidity: '20486366730812109259748',
     token0: {
@@ -12630,15 +4965,11 @@ const x_weth = [
       symbol: 'wBRGE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '63584826.455869158961293015482885',
   },
   {
-    feeTier: '10000',
     id: '0x7731ca4d00800b6a681d031f565deb355c5b77da',
     liquidity: '4294543423595535144',
     token0: {
@@ -12648,15 +4979,11 @@ const x_weth = [
       symbol: 'DOG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '63134191.78620208459034884516183442',
   },
   {
-    feeTier: '3000',
     id: '0x10b5c63a0a94ec3036238190bc88608a02e91e2c',
     liquidity: '6814381802352778613',
     token0: {
@@ -12666,15 +4993,11 @@ const x_weth = [
       symbol: 'TCR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '63028181.58186767721252754994948044',
   },
   {
-    feeTier: '10000',
     id: '0x91cc8585fd0e7243bd21037014ab9cb8be11f1cc',
     liquidity: '99995559374844397601',
     token0: {
@@ -12684,15 +5007,11 @@ const x_weth = [
       symbol: 'UDW',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '62887869.12813893517875801422171276',
   },
   {
-    feeTier: '3000',
     id: '0x2028d7ef0223c45cadbf05e13f1823c1228012bf',
     liquidity: '729578214059465032',
     token0: {
@@ -12702,15 +5021,11 @@ const x_weth = [
       symbol: 'FEI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '62874734.46349053899570030517927223',
+    volumeUSD: '62874734.64009950180454888537509531',
   },
   {
-    feeTier: '10000',
     id: '0x864ad3830b8b721c17419b135a4709c3776fb9be',
     liquidity: '3748016789400370865917',
     token0: {
@@ -12720,15 +5035,11 @@ const x_weth = [
       symbol: 'KUMA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '62679788.64123873952180444261684741',
   },
   {
-    feeTier: '3000',
     id: '0x94391eecd76d9cb35013d7f263b64921e31842c8',
     liquidity: '0',
     token0: {
@@ -12738,15 +5049,11 @@ const x_weth = [
       symbol: 'XOR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '62644957.65056676072153172607328124',
   },
   {
-    feeTier: '10000',
     id: '0x5e31db99eb2a95755daa062a0cecab632e7524b2',
     liquidity: '1073888974362249674812',
     token0: {
@@ -12756,17 +5063,13 @@ const x_weth = [
       symbol: 'SHRUB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '62617612.12934023509674554681362772',
+    volumeUSD: '62617890.70624010027042349307986834',
   },
   {
-    feeTier: '10000',
     id: '0x49727bbe3ba46aeb1058749ed2741a42fd1ccda8',
-    liquidity: '9902149468102009220128',
+    liquidity: '0',
     token0: {
       decimals: '18',
       id: '0xba0dda8762c24da9487f5fa026a9b64b695a07ea',
@@ -12774,15 +5077,11 @@ const x_weth = [
       symbol: 'OX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '62345330.0813144181012616473705248',
+    volumeUSD: '62345999.61713436608587587535694508',
   },
   {
-    feeTier: '10000',
     id: '0x824664650c789bf01b5bba80473977ca820fb1eb',
     liquidity: '0',
     token0: {
@@ -12792,15 +5091,11 @@ const x_weth = [
       symbol: 'EJS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '62039623.12458350112905690845330636',
   },
   {
-    feeTier: '10000',
     id: '0xea5a12a857e8302d70fcb1123d5f8f57ef7b7d0b',
     liquidity: '64458210236892607',
     token0: {
@@ -12810,15 +5105,11 @@ const x_weth = [
       symbol: 'DOGGO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '61394733.0401608000214968120505305',
   },
   {
-    feeTier: '10000',
     id: '0x3e87d4c24fb56c52a0dbd089a6219b7086d577d8',
     liquidity: '567099681871427779944',
     token0: {
@@ -12828,15 +5119,11 @@ const x_weth = [
       symbol: 'TRIAS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '60837652.5443970319963719334256868',
+    volumeUSD: '60858119.44316240665701650616906591',
   },
   {
-    feeTier: '3000',
     id: '0xac63436b092b944cadea9243f9aff315421d4fee',
     liquidity: '2391619258117685687999',
     token0: {
@@ -12846,15 +5133,25 @@ const x_weth = [
       symbol: 'LOYAL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '60801716.7365648230880365931384269',
   },
   {
-    feeTier: '10000',
+    id: '0xacda7e4d5025ee4dd87d2ff75ecf6d69e921cee3',
+    liquidity: '315110996676818521567',
+    token0: {
+      decimals: '18',
+      id: '0xadf7c35560035944e805d98ff17d58cde2449389',
+      name: 'Spectral Token',
+      symbol: 'SPEC',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '60495279.64952943499770747018162609',
+  },
+  {
     id: '0xb7a71c2e31920019962cb62aeea1dbf502905b81',
     liquidity: '25676274800508242885273',
     token0: {
@@ -12864,33 +5161,11 @@ const x_weth = [
       symbol: 'DZHV',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '60470400.0794918102272527753090767',
+    volumeUSD: '60470550.16911091257344649184608844',
   },
   {
-    feeTier: '10000',
-    id: '0xacda7e4d5025ee4dd87d2ff75ecf6d69e921cee3',
-    liquidity: '1202106542715919387114',
-    token0: {
-      decimals: '18',
-      id: '0xadf7c35560035944e805d98ff17d58cde2449389',
-      name: 'Spectral Token',
-      symbol: 'SPEC',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '60460819.61994210014342386086165237',
-  },
-  {
-    feeTier: '10000',
     id: '0x1c647cb82c4aceaff363598f45a7ad82bcafe021',
     liquidity: '1706132880189689',
     token0: {
@@ -12900,15 +5175,11 @@ const x_weth = [
       symbol: 'LMR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '60446813.69379641536942903058168885',
+    volumeUSD: '60446928.66816372707663411052128271',
   },
   {
-    feeTier: '3000',
     id: '0x27dd7b7d610c9be6620a893b51d0f7856c6f3bfd',
     liquidity: '0',
     token0: {
@@ -12918,15 +5189,11 @@ const x_weth = [
       symbol: 'TLOS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '59962337.22512555306123660775815371',
   },
   {
-    feeTier: '500',
     id: '0x8a15b2dc9c4f295dcebb0e7887dd25980088fdcb',
     liquidity: '104539045898518654945',
     token0: {
@@ -12936,15 +5203,11 @@ const x_weth = [
       symbol: 'frxETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '59273189.38762273781068204482532136',
+    volumeUSD: '59273303.51780131491714319010215292',
   },
   {
-    feeTier: '3000',
     id: '0x541d846ddfa1efc15ca612bd76e2b595056edc8c',
     liquidity: '60296656630223934236',
     token0: {
@@ -12954,15 +5217,11 @@ const x_weth = [
       symbol: 'MASA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '58002353.21811612603078457705287228',
   },
   {
-    feeTier: '10000',
     id: '0x7316f8dd242974f0fd7b16dbcc68920b96bc4db1',
     liquidity: '53602907821979097981743',
     token0: {
@@ -12972,15 +5231,11 @@ const x_weth = [
       symbol: 'WOJAK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '57923609.03362956949190912863109563',
+    volumeUSD: '57925709.80029201750043709466224857',
   },
   {
-    feeTier: '3000',
     id: '0x80dbf454431ba9b64f0a8753f72a86afea6ee2f3',
     liquidity: '0',
     token0: {
@@ -12990,15 +5245,11 @@ const x_weth = [
       symbol: 'QSP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '57636786.86099571716440603037376291',
   },
   {
-    feeTier: '10000',
     id: '0x2818ea851dcfaeeb4633fc8aae08b7063d32e4f5',
     liquidity: '71937310306213069661279',
     token0: {
@@ -13008,15 +5259,11 @@ const x_weth = [
       symbol: 'GURU',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '57300301.01751940807442413326294588',
+    volumeUSD: '57305334.80740144236869199889469369',
   },
   {
-    feeTier: '10000',
     id: '0xcd9dab5e666de980cecdc180cb31f296733e2587',
     liquidity: '6283345824780977314606',
     token0: {
@@ -13026,15 +5273,11 @@ const x_weth = [
       symbol: 'AKITA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '56810688.38383329539309554454930321',
   },
   {
-    feeTier: '10000',
     id: '0xccc42cf5d6a2f3ed8f948541455950ed6ce14707',
     liquidity: '349994664262990216323',
     token0: {
@@ -13044,15 +5287,11 @@ const x_weth = [
       symbol: 'OS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '56791255.59468596340217518022806807',
+    volumeUSD: '56791261.10048064165522031592654716',
   },
   {
-    feeTier: '10000',
     id: '0x755e5a186f0469583bd2e80d1216e02ab88ec6ca',
     liquidity: '9639033651799926688',
     token0: {
@@ -13062,15 +5301,11 @@ const x_weth = [
       symbol: 'ARB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '55767618.01718913233901199400356307',
+    volumeUSD: '55767624.11810567995940220634486533',
   },
   {
-    feeTier: '10000',
     id: '0x24dbedb4699eb996a8ceb2baef4a4ae057cf0294',
     liquidity: '120148193221306083663',
     token0: {
@@ -13080,15 +5315,11 @@ const x_weth = [
       symbol: 'MM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '55469441.90000745038500894990674825',
+    volumeUSD: '55469515.74463152675358853773529289',
   },
   {
-    feeTier: '3000',
     id: '0x3840d56cfe2c80ec2d6555dcda986a0982b0d2db',
     liquidity: '0',
     token0: {
@@ -13098,15 +5329,11 @@ const x_weth = [
       symbol: 'QUICK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '55455255.72649853218622073720600759',
   },
   {
-    feeTier: '3000',
     id: '0x9ab0905b39505d8682b58a57a41c4100e9c62ab6',
     liquidity: '355367897904749486111',
     token0: {
@@ -13116,17 +5343,13 @@ const x_weth = [
       symbol: 'FWB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '55033023.75161306084336666783071052',
+    volumeUSD: '55034119.1238567316310375266222719',
   },
   {
-    feeTier: '10000',
     id: '0xa34f0d0314db32f41e1194816d56d55d1f7ca7b5',
-    liquidity: '7990594361568116860611',
+    liquidity: '8049447162503953921899',
     token0: {
       decimals: '18',
       id: '0x362bc847a3a9637d3af6624eec853618a43ed7d2',
@@ -13134,15 +5357,11 @@ const x_weth = [
       symbol: 'PRQ',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '54923617.69718248454766827488877948',
+    volumeUSD: '54932342.82628074738918123176613425',
   },
   {
-    feeTier: '10000',
     id: '0x0311125b58d9602352cba5c925927ecb86a5905a',
     liquidity: '0',
     token0: {
@@ -13152,15 +5371,11 @@ const x_weth = [
       symbol: 'CNV',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '54760210.41456614303462026280160552',
   },
   {
-    feeTier: '10000',
     id: '0x38b73128e790575b72f1b957bba981b08ee85f86',
     liquidity: '0',
     token0: {
@@ -13170,15 +5385,11 @@ const x_weth = [
       symbol: 'VADER',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '54727249.23618379375702183835266237',
   },
   {
-    feeTier: '3000',
     id: '0x8ecc2244e67d0bb6a1850b1db825e25354cf881a',
     liquidity: '2519671736137930228',
     token0: {
@@ -13188,15 +5399,11 @@ const x_weth = [
       symbol: 'AUDIO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '54466015.43314926570363453613397927',
   },
   {
-    feeTier: '3000',
     id: '0xb7e746ff79cb76e2ec804698061aed9ca6c922ea',
     liquidity: '0',
     token0: {
@@ -13206,17 +5413,13 @@ const x_weth = [
       symbol: 'ALT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '54375893.85730221105413380729699209',
   },
   {
-    feeTier: '10000',
     id: '0xba2a013b29631d3277bbbce80c970d06c1bda0c3',
-    liquidity: '93999489976727394479209',
+    liquidity: '31001403162376329579933',
     token0: {
       decimals: '18',
       id: '0x94a8b4ee5cd64c79d0ee816f467ea73009f51aa0',
@@ -13224,15 +5427,11 @@ const x_weth = [
       symbol: 'RIO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '54033018.33993549610593218829567613',
+    volumeUSD: '54237064.98355232107384852565630628',
   },
   {
-    feeTier: '10000',
     id: '0x253c06b22d4b67b675ea7d2fd48422e62c394d7e',
     liquidity: '227895582013280394174',
     token0: {
@@ -13242,15 +5441,11 @@ const x_weth = [
       symbol: 'ferc',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '53988761.31440176813442824523823817',
+    volumeUSD: '53988826.03354987360771958540472168',
   },
   {
-    feeTier: '3000',
     id: '0xf9e18e98a0bb56fe7e663f5ab1170b3105c4c56d',
     liquidity: '6139607967835199400897',
     token0: {
@@ -13260,15 +5455,11 @@ const x_weth = [
       symbol: 'EAI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '53337299.62490630655331441801658595',
+    volumeUSD: '53355864.75349465264749491361776075',
   },
   {
-    feeTier: '3000',
     id: '0x7316b2515940a8573e34f45900e82763ad34a34a',
     liquidity: '0',
     token0: {
@@ -13278,33 +5469,11 @@ const x_weth = [
       symbol: 'WFLOW',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '53114958.93737964365428176082035195',
   },
   {
-    feeTier: '10000',
-    id: '0x08b8cebfca0f49a9303bab1cc4e2c25d280f2c00',
-    liquidity: '103600450011828935966',
-    token0: {
-      decimals: '18',
-      id: '0x57e114b691db790c35207b2e685d4a43181e6061',
-      name: 'ENA',
-      symbol: 'ENA',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '52974934.10607397543162445237918911',
-  },
-  {
-    feeTier: '3000',
     id: '0x1a89ae3ba4f9a97b10bac6a77061f00bb956858b',
     liquidity: '143423634801835959349293',
     token0: {
@@ -13314,15 +5483,25 @@ const x_weth = [
       symbol: 'IMPT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '52971536.37178930598228132865825638',
+    volumeUSD: '52978109.94280753945651523776428197',
   },
   {
-    feeTier: '500',
+    id: '0x08b8cebfca0f49a9303bab1cc4e2c25d280f2c00',
+    liquidity: '103600450011828935966',
+    token0: {
+      decimals: '18',
+      id: '0x57e114b691db790c35207b2e685d4a43181e6061',
+      name: 'ENA',
+      symbol: 'ENA',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '52975114.8489883959082544128002034',
+  },
+  {
     id: '0x94e4b2e24523cf9b3e631a6943c346df9687c723',
     liquidity: '86081067376997662520662',
     token0: {
@@ -13332,15 +5511,11 @@ const x_weth = [
       symbol: 'SHIB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '52671337.67284001191750227478843627',
+    volumeUSD: '52674494.88747038215731390103209386',
   },
   {
-    feeTier: '10000',
     id: '0xa295c1301e063728d733f9fb2155448fff9c70b7',
     liquidity: '10302018287397033213632',
     token0: {
@@ -13350,15 +5525,11 @@ const x_weth = [
       symbol: 'eXRD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '52626702.56167296085745435980737288',
+    volumeUSD: '52631805.99014657203561214608184382',
   },
   {
-    feeTier: '10000',
     id: '0x12026ac556cd535149e47c0ad9846fb7970ec455',
     liquidity: '0',
     token0: {
@@ -13368,15 +5539,11 @@ const x_weth = [
       symbol: 'CRETH2',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '52580753.56379371246845864816736331',
   },
   {
-    feeTier: '10000',
     id: '0x37a981532d7a2754ec53f9fd86fc34ccb15610eb',
     liquidity: '0',
     token0: {
@@ -13386,15 +5553,11 @@ const x_weth = [
       symbol: 'OMNI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '52274244.85349466447871145777467265',
   },
   {
-    feeTier: '500',
     id: '0x1b9669b12959ad51b01fabcf01eabdfadb82f578',
     liquidity: '0',
     token0: {
@@ -13404,15 +5567,11 @@ const x_weth = [
       symbol: 'ETHx',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '51511469.66424039952046491570228977',
   },
   {
-    feeTier: '3000',
     id: '0x59c68e0eca9f0844d9d4cee0bedf23c8dee462c5',
     liquidity: '0',
     token0: {
@@ -13422,15 +5581,11 @@ const x_weth = [
       symbol: 'REZ',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '51218808.17702795789991710636392004',
   },
   {
-    feeTier: '10000',
     id: '0xc923b3d24d9c831c3064a8aecc03b390db6b5eab',
     liquidity: '4743864256743872542655',
     token0: {
@@ -13440,15 +5595,11 @@ const x_weth = [
       symbol: 'ML',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '50720964.52497405322912407779451849',
+    volumeUSD: '50735458.39226159319510299795094054',
   },
   {
-    feeTier: '3000',
     id: '0xf0e02cf61b31260fd5ae527d58be16312bda59b1',
     liquidity: '7157002807885038698',
     token0: {
@@ -13458,15 +5609,11 @@ const x_weth = [
       symbol: 'rETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '50551392.17410883011782217659740122',
+    volumeUSD: '50551410.28420408903568916897261701',
   },
   {
-    feeTier: '3000',
     id: '0x8287c431f547b313d5bfdaf2fc8b738cff65358f',
     liquidity: '3103852791739955360072722',
     token0: {
@@ -13476,15 +5623,11 @@ const x_weth = [
       symbol: 'FORK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '50549008.79216353791368540499524941',
+    volumeUSD: '50551394.03349316764915323289982702',
   },
   {
-    feeTier: '3000',
     id: '0x11184bf5937beb9085b4f070e7b410be052e37a6',
     liquidity: '1474016697984013416655',
     token0: {
@@ -13494,35 +5637,13 @@ const x_weth = [
       symbol: 'ZENIQ',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '50365732.31695657324740899572982845',
   },
   {
-    feeTier: '10000',
-    id: '0x2519042aa735edb4688a8376d69d4bb69431206c',
-    liquidity: '1263473781601592928818',
-    token0: {
-      decimals: '18',
-      id: '0x58b6a8a3302369daec383334672404ee733ab239',
-      name: 'Livepeer Token',
-      symbol: 'LPT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '50184227.95342242894316655072288564',
-  },
-  {
-    feeTier: '10000',
     id: '0x12cc685eeb95d3fcdfae0a996e214e51fa6f7548',
-    liquidity: '41055167853307502823197',
+    liquidity: '58785656439320475370201',
     token0: {
       decimals: '18',
       id: '0x00c83aecc790e8a4453e5dd3b0b4b3680501a7a7',
@@ -13530,15 +5651,25 @@ const x_weth = [
       symbol: 'SKL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '50182328.50475719846168439250288345',
+    volumeUSD: '50225007.38727642287782698665155733',
   },
   {
-    feeTier: '10000',
+    id: '0x2519042aa735edb4688a8376d69d4bb69431206c',
+    liquidity: '1307005091212400109873',
+    token0: {
+      decimals: '18',
+      id: '0x58b6a8a3302369daec383334672404ee733ab239',
+      name: 'Livepeer Token',
+      symbol: 'LPT',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '50201062.14567563291005858484004362',
+  },
+  {
     id: '0x9f2ebe69a86c079f3d4c3b94a11932b676b72f74',
     liquidity: '10553325548328062919234',
     token0: {
@@ -13548,15 +5679,11 @@ const x_weth = [
       symbol: 'BabyDoge',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '50067215.3820593630351887780856005',
+    volumeUSD: '50112343.59173138895722001733900439',
   },
   {
-    feeTier: '10000',
     id: '0xa80838d2bb3d6ebaed1978fa23b38f91775d8378',
     liquidity: '0',
     token0: {
@@ -13566,15 +5693,11 @@ const x_weth = [
       symbol: 'ZERO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '49816622.49062392188331970818591689',
   },
   {
-    feeTier: '3000',
     id: '0xf766436b551d2acb09b73d126fd49869541dfa26',
     liquidity: '0',
     token0: {
@@ -13584,15 +5707,11 @@ const x_weth = [
       symbol: 'PKR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '48662285.65005236605634727417466707',
   },
   {
-    feeTier: '100',
     id: '0xcd530beead88e30e3b672eb52993bf7760b5bc5a',
     liquidity: '6028272758102214853103',
     token0: {
@@ -13602,15 +5721,11 @@ const x_weth = [
       symbol: 'beraSTONE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '48454575.28564300573855083555228985',
+    volumeUSD: '48511795.2676172744533122845094155',
   },
   {
-    feeTier: '10000',
     id: '0x7d45a2557becd766a285d07a4701f5c64d716e2f',
     liquidity: '14444227492856767730294',
     token0: {
@@ -13620,15 +5735,11 @@ const x_weth = [
       symbol: 'LOCK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '48417424.3111231734564890316746838',
+    volumeUSD: '48443660.79702866879542951767399023',
   },
   {
-    feeTier: '10000',
     id: '0x0e304f5b7d89597f841631ba752f6dea55e6b095',
     liquidity: '0',
     token0: {
@@ -13638,15 +5749,11 @@ const x_weth = [
       symbol: 'EMERALD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '48337556.49225483377731994305314537',
   },
   {
-    feeTier: '3000',
     id: '0x84ae4aa9581e6b7f50f660c5b6970aef1ed82be8',
     liquidity: '0',
     token0: {
@@ -13656,15 +5763,11 @@ const x_weth = [
       symbol: 'PPAY',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '48305971.98884182168008582805136166',
   },
   {
-    feeTier: '10000',
     id: '0xfba31f01058db09573a383f26a088f23774d4e5d',
     liquidity: '24776867874519986398',
     token0: {
@@ -13674,15 +5777,11 @@ const x_weth = [
       symbol: 'GHST',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '48248403.49658144474831384971737391',
+    volumeUSD: '48248504.82805492975391477216089375',
   },
   {
-    feeTier: '10000',
     id: '0x2a4a220beb6a0fd217a129125d0034e2db0dee46',
     liquidity: '2206706045294385086070870',
     token0: {
@@ -13692,17 +5791,13 @@ const x_weth = [
       symbol: 'HARAMBE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '48223523.64342826176346855569315907',
   },
   {
-    feeTier: '10000',
     id: '0x842293fa6ee0642bf61ebf8310e7e546039ba7f4',
-    liquidity: '10092490008379738',
+    liquidity: '10633570159899124',
     token0: {
       decimals: '9',
       id: '0x42069026eac8eee0fd9b5f7adfa4f6e6d69a2b39',
@@ -13710,15 +5805,11 @@ const x_weth = [
       symbol: 'MSTR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '47957040.68695843889187705335801582',
+    volumeUSD: '47959840.94415158779755874103473745',
   },
   {
-    feeTier: '100',
     id: '0xf44d4d68c2ea473c93c1f3d2c81e900535d73843',
     liquidity: '0',
     token0: {
@@ -13728,15 +5819,11 @@ const x_weth = [
       symbol: 'ETH2X',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '47762018.61169993960058837017464073',
   },
   {
-    feeTier: '10000',
     id: '0xc50f5f0e2421c307b3892a103b45b54f05259668',
     liquidity: '0',
     token0: {
@@ -13746,15 +5833,11 @@ const x_weth = [
       symbol: 'XRGB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '47742051.37256888894141624436766366',
   },
   {
-    feeTier: '3000',
     id: '0x5615af7746f6c6da1c8b9b2f17c27604fb5b5db9',
     liquidity: '172059468168076522039215',
     token0: {
@@ -13764,15 +5847,11 @@ const x_weth = [
       symbol: 'DOGEVERSE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '47724771.3089443651692057324757759',
+    volumeUSD: '47726341.78206022369575908020172557',
   },
   {
-    feeTier: '3000',
     id: '0xd3248cdafddd8dda92dc53df4ce99a5031b9e897',
     liquidity: '0',
     token0: {
@@ -13782,15 +5861,11 @@ const x_weth = [
       symbol: 'NGL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '47435481.64597242625535012379240996',
   },
   {
-    feeTier: '3000',
     id: '0x4261a2fc11abd29697513f197fccf09fb45ec346',
     liquidity: '4527943954644952960',
     token0: {
@@ -13800,15 +5875,11 @@ const x_weth = [
       symbol: 'ETH2X',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '47367479.92142110161648399017381934',
   },
   {
-    feeTier: '10000',
     id: '0x59b6bc21c6a53186d0d20b06e19a2d9cfd3faf36',
     liquidity: '13433195970335490867',
     token0: {
@@ -13818,15 +5889,11 @@ const x_weth = [
       symbol: 'SHEB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '47168957.34993596617071305088240167',
   },
   {
-    feeTier: '3000',
     id: '0xf5381d47148ee3606448df3764f39da0e7b25985',
     liquidity: '164667182704053113943',
     token0: {
@@ -13836,15 +5903,11 @@ const x_weth = [
       symbol: 'POLS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '47070997.37639756070613947139569285',
+    volumeUSD: '47073756.35754051142684092206562876',
   },
   {
-    feeTier: '10000',
     id: '0xf8fe2525a9e23d0e8892d2a41c087e17eef19971',
     liquidity: '3781750388877660100255875',
     token0: {
@@ -13854,15 +5917,11 @@ const x_weth = [
       symbol: 'PSALE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '46909461.28301003863684498833316588',
   },
   {
-    feeTier: '3000',
     id: '0x256bd88baf707eaad1b73dc8b2b8a5d599b45584',
     liquidity: '8032891088162124333427',
     token0: {
@@ -13872,17 +5931,13 @@ const x_weth = [
       symbol: 'BOBA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '46168317.15225762318735133750177234',
+    volumeUSD: '46192795.67217990975392736875851059',
   },
   {
-    feeTier: '10000',
     id: '0x33f6e97ea6f5dfa6691176b33ad5677e08fb6b38',
-    liquidity: '217033334491976770',
+    liquidity: '207381245640280238',
     token0: {
       decimals: '6',
       id: '0xbd31ea8212119f94a611fa969881cba3ea06fa3d',
@@ -13890,15 +5945,11 @@ const x_weth = [
       symbol: 'LUNA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '46030492.30891998464178407127485957',
+    volumeUSD: '46032605.87825205474847616128852592',
   },
   {
-    feeTier: '3000',
     id: '0x786b582a0bbcac5d192d7e039f49c116ac5f05a8',
     liquidity: '0',
     token0: {
@@ -13908,15 +5959,11 @@ const x_weth = [
       symbol: 'PDT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '45954315.62897579928697461965450313',
   },
   {
-    feeTier: '10000',
     id: '0x05aaa0053fa5c28e8c558d4c648cc129bea45018',
     liquidity: '280541006414072575600',
     token0: {
@@ -13926,15 +5973,11 @@ const x_weth = [
       symbol: 'NCT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '45418171.19780764261024365501788735',
+    volumeUSD: '45418392.3683349199653912824482447',
   },
   {
-    feeTier: '10000',
     id: '0xc7cf089fb4bc91f1981df2285ca019ab09a5dd3b',
     liquidity: '56406736417450210',
     token0: {
@@ -13944,17 +5987,13 @@ const x_weth = [
       symbol: 'PRO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '45275491.86392857988961836112493258',
+    volumeUSD: '45341322.70517540337655741199683867',
   },
   {
-    feeTier: '3000',
     id: '0xc987d503a9f78f6d1d782c1fff5af4cb34437e3f',
-    liquidity: '56560321895379114314',
+    liquidity: '70959273253568087061',
     token0: {
       decimals: '18',
       id: '0x0ab87046fbb341d058f17cbc4c1133f25a20a52f',
@@ -13962,15 +6001,11 @@ const x_weth = [
       symbol: 'gOHM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '44877690.76151579336366573529899552',
+    volumeUSD: '44893644.78006550491667960134785782',
   },
   {
-    feeTier: '10000',
     id: '0x983b92ea1f0a20844466f3e4bb988c1de145293e',
     liquidity: '37425164986271478967804',
     token0: {
@@ -13980,15 +6015,11 @@ const x_weth = [
       symbol: 'FLT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '44460334.09979051833893353768021954',
+    volumeUSD: '44474381.84431870030074388469621817',
   },
   {
-    feeTier: '10000',
     id: '0x8ea48337c6c6677b0973437f2685d17717c0408e',
     liquidity: '34739229697557468404050',
     token0: {
@@ -13998,15 +6029,11 @@ const x_weth = [
       symbol: 'VEE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '43609589.07423232524462288803310428',
+    volumeUSD: '43630238.55743785188833744118089766',
   },
   {
-    feeTier: '3000',
     id: '0x4ec7d47cfd3f35e47b86f9eaa31cb9d3ee1e801a',
     liquidity: '38398823371586968304941465',
     token0: {
@@ -14016,15 +6043,11 @@ const x_weth = [
       symbol: 'AGB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '43512768.28374004992587985708793961',
+    volumeUSD: '43513091.42761003481941061596450416',
   },
   {
-    feeTier: '10000',
     id: '0x15d12305d0f57c99d947e66d4164094ffccf78fc',
     liquidity: '0',
     token0: {
@@ -14034,33 +6057,11 @@ const x_weth = [
       symbol: 'SWISE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '43382368.87105392972223402033819052',
   },
   {
-    feeTier: '10000',
-    id: '0xd43e4955b5ea62a87386631b01200dd4dc82283c',
-    liquidity: '2429161774747824647',
-    token0: {
-      decimals: '18',
-      id: '0x9e976f211daea0d652912ab99b0dc21a7fd728e4',
-      name: 'MAP Protocol',
-      symbol: 'MAP',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '43305137.87889845480258117316213717',
-  },
-  {
-    feeTier: '3000',
     id: '0xdc75e957e13487224c273fba04b2a4cf9a325a57',
     liquidity: '31244109459472384089261',
     token0: {
@@ -14070,17 +6071,27 @@ const x_weth = [
       symbol: 'TREE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '43296932.40180994913607151941499265',
+    volumeUSD: '43351937.43707337632808775157787547',
   },
   {
-    feeTier: '10000',
+    id: '0xd43e4955b5ea62a87386631b01200dd4dc82283c',
+    liquidity: '2429161774747824647',
+    token0: {
+      decimals: '18',
+      id: '0x9e976f211daea0d652912ab99b0dc21a7fd728e4',
+      name: 'MAP Protocol',
+      symbol: 'MAP',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '43305139.02943993527449651558209293',
+  },
+  {
     id: '0x8b6ed5fa776f10787f1171bdeea4f3c40974df6e',
-    liquidity: '1865401591724202592',
+    liquidity: '930264183595747986',
     token0: {
       decimals: '8',
       id: '0x3597bfd533a99c9aa083587b074434e61eb0a258',
@@ -14088,15 +6099,11 @@ const x_weth = [
       symbol: 'DENT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '42941513.31070729335733361799414101',
+    volumeUSD: '42966953.85781786836079504741754982',
   },
   {
-    feeTier: '10000',
     id: '0x2138a12520c9b45bb4b2c742923b514d5f662fec',
     liquidity: '122146928361563520822411',
     token0: {
@@ -14106,15 +6113,11 @@ const x_weth = [
       symbol: 'SPELL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '42415305.21667470637969210069033963',
+    volumeUSD: '42428526.99551795113787191671422932',
   },
   {
-    feeTier: '10000',
     id: '0x19c1f6c7468ad4076b05a5f79e3ee80ce0064718',
     liquidity: '0',
     token0: {
@@ -14124,15 +6127,11 @@ const x_weth = [
       symbol: 'SORA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '42216241.89995350145884386606995722',
   },
   {
-    feeTier: '10000',
     id: '0x18f9a12e7b58257c749385712ecb4fa03cb7910e',
     liquidity: '0',
     token0: {
@@ -14142,15 +6141,11 @@ const x_weth = [
       symbol: 'ANON',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '42023070.29533560749798367023555031',
   },
   {
-    feeTier: '3000',
     id: '0x5b2904022847e8a63847277df635162a0e7fc498',
     liquidity: '2890828648218333140',
     token0: {
@@ -14160,15 +6155,11 @@ const x_weth = [
       symbol: 'ZYN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '42010144.62262555805877471665710091',
   },
   {
-    feeTier: '3000',
     id: '0x632f8512166ec65c90a40fd85b8e0d76b2acdd89',
     liquidity: '0',
     token0: {
@@ -14178,15 +6169,11 @@ const x_weth = [
       symbol: 'CAP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '41659137.26211138530286472962410184',
   },
   {
-    feeTier: '10000',
     id: '0x3688ec45e6c03e78954f96a17d3dc4d7c4794ca4',
     liquidity: '0',
     token0: {
@@ -14196,15 +6183,11 @@ const x_weth = [
       symbol: 'UNIDX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '41599583.77369333795356068634805663',
   },
   {
-    feeTier: '3000',
     id: '0xe3a4f7959f4e4aac08ae3029d3a707ef4ec6da95',
     liquidity: '0',
     token0: {
@@ -14214,15 +6197,11 @@ const x_weth = [
       symbol: 'TOWER',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '41586038.4606424589458336337482032',
   },
   {
-    feeTier: '10000',
     id: '0x820e5ab3d952901165f858703ae968e5ea67eb31',
     liquidity: '0',
     token0: {
@@ -14232,15 +6211,11 @@ const x_weth = [
       symbol: 'OXT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '41506610.22014945781905573935866541',
   },
   {
-    feeTier: '3000',
     id: '0xb9ed555632c308f0f44489500045a9afba73473c',
     liquidity: '0',
     token0: {
@@ -14250,17 +6225,13 @@ const x_weth = [
       symbol: 'PORK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '40887288.47992403041311033207080337',
   },
   {
-    feeTier: '10000',
     id: '0xc1df8037881df17dc88998824b9aea81c71bbb1b',
-    liquidity: '8498167743822085740380',
+    liquidity: '9825060565445248711842',
     token0: {
       decimals: '18',
       id: '0x77fba179c79de5b7653f68b5039af940ada60ce0',
@@ -14268,15 +6239,11 @@ const x_weth = [
       symbol: 'FORTH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '40700169.41496425850864287012340889',
+    volumeUSD: '40775029.4580385656655820918707678',
   },
   {
-    feeTier: '10000',
     id: '0xc0793782d11dd9bf7b3a7a5a74614f1debe1da2e',
     liquidity: '80276722603021263803',
     token0: {
@@ -14286,33 +6253,11 @@ const x_weth = [
       symbol: 'POW',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '40583774.52409664671118969826820298',
   },
   {
-    feeTier: '10000',
-    id: '0x36095c32623186aa74257fc6729e2aa80ee17cee',
-    liquidity: '17983761087764426021737',
-    token0: {
-      decimals: '18',
-      id: '0x4ec1b60b96193a64acae44778e51f7bff2007831',
-      name: 'Edge',
-      symbol: 'EDGE',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '40426612.35477989808149565123355669',
-  },
-  {
-    feeTier: '3000',
     id: '0x764510ab1d39cf300e7abe8f5b8977d18f290628',
     liquidity: '561235295911054164165183',
     token0: {
@@ -14322,15 +6267,25 @@ const x_weth = [
       symbol: 'SKY',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '40151353.58316978505824776164187278',
+    volumeUSD: '40566893.57104661373827448505664304',
   },
   {
-    feeTier: '10000',
+    id: '0x36095c32623186aa74257fc6729e2aa80ee17cee',
+    liquidity: '19132791291378334560207',
+    token0: {
+      decimals: '18',
+      id: '0x4ec1b60b96193a64acae44778e51f7bff2007831',
+      name: 'Edge',
+      symbol: 'EDGE',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '40529279.231891675370136753839194',
+  },
+  {
     id: '0x757a197b3b17b207d6de3840de09bcf2dfb75b72',
     liquidity: '7364613342130496574595',
     token0: {
@@ -14340,17 +6295,13 @@ const x_weth = [
       symbol: 'PEPE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '40103692.94551487570324308855999066',
+    volumeUSD: '40103764.00128423949545731150372298',
   },
   {
-    feeTier: '10000',
     id: '0x76366d95c2016446247296ea50c8d06d0585ae00',
-    liquidity: '17491308504365120586',
+    liquidity: '2099590826811555145682',
     token0: {
       decimals: '18',
       id: '0x3b50805453023a91a8bf641e279401a0b23fa6f9',
@@ -14358,33 +6309,11 @@ const x_weth = [
       symbol: 'REZ',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '40005849.9703549340763834115546656',
+    volumeUSD: '40007886.04924460917249706243689713',
   },
   {
-    feeTier: '10000',
-    id: '0x3e5a6af33cc70646bc46aff0af4b930d92856b18',
-    liquidity: '1553419109942627352',
-    token0: {
-      decimals: '18',
-      id: '0x99d8a9c45b2eca8864373a26d1459e3dff1e17f3',
-      name: 'Magic Internet Money',
-      symbol: 'MIM',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '39711894.54213257483290610575001025',
-  },
-  {
-    feeTier: '3000',
     id: '0xc7ec87aeb9d1129c42123859220c525aba1ca617',
     liquidity: '961965052518215508',
     token0: {
@@ -14394,15 +6323,25 @@ const x_weth = [
       symbol: 'FUEL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '39682347.88771332175880271131103753',
+    volumeUSD: '39893935.84689970941990755333671033',
   },
   {
-    feeTier: '3000',
+    id: '0x3e5a6af33cc70646bc46aff0af4b930d92856b18',
+    liquidity: '1553419109942627352',
+    token0: {
+      decimals: '18',
+      id: '0x99d8a9c45b2eca8864373a26d1459e3dff1e17f3',
+      name: 'Magic Internet Money',
+      symbol: 'MIM',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '39711894.54213257483290610575001025',
+  },
+  {
     id: '0x5ee84bed805df225ee23aec4160cc0bfcf1bd892',
     liquidity: '0',
     token0: {
@@ -14412,15 +6351,11 @@ const x_weth = [
       symbol: 'μPPG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '39675758.88440159025069023487092092',
   },
   {
-    feeTier: '3000',
     id: '0xbc9b75563e8df1dc761589444103342ec582cc29',
     liquidity: '219978567795420664122',
     token0: {
@@ -14430,15 +6365,11 @@ const x_weth = [
       symbol: 'FORTH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '39430903.06922005265970536432208985',
+    volumeUSD: '39432171.16176133175961067536391113',
   },
   {
-    feeTier: '3000',
     id: '0xbfcae9f989e47436fd1678ef5f9182d94b81dbac',
     liquidity: '38046338302444744808913',
     token0: {
@@ -14448,15 +6379,11 @@ const x_weth = [
       symbol: 'FMC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '39408289.02973734220578891003057228',
+    volumeUSD: '39419846.99930936933292830456773098',
   },
   {
-    feeTier: '10000',
     id: '0xaf1291730f716e13791d3bd837c7c31111a01778',
     liquidity: '0',
     token0: {
@@ -14466,15 +6393,11 @@ const x_weth = [
       symbol: 'QUICK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '39235658.09539835853286693160417272',
   },
   {
-    feeTier: '10000',
     id: '0x2ca1d6950182d28434f89a719ed9e915b8c417b5',
     liquidity: '62652935038534741788665',
     token0: {
@@ -14484,15 +6407,11 @@ const x_weth = [
       symbol: 'DBI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '39186075.62497333007040040987531195',
+    volumeUSD: '39189970.6116249410601160077764579',
   },
   {
-    feeTier: '3000',
     id: '0x7c3b1297ac649b36547b913de50919acb45a250c',
     liquidity: '37304486859646758157',
     token0: {
@@ -14502,15 +6421,11 @@ const x_weth = [
       symbol: 'DATA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '39120194.9885994896509229566375912',
+    volumeUSD: '39120848.0147992488361711576802334',
   },
   {
-    feeTier: '3000',
     id: '0xe73fe82f905e265d26e4a5a3d36d0d03bc4119fc',
     liquidity: '256967240098545948885',
     token0: {
@@ -14520,17 +6435,13 @@ const x_weth = [
       symbol: 'DON',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '38970093.58863651726887059566467968',
   },
   {
-    feeTier: '10000',
     id: '0x9410cf01dcdccdb9b56e285b39cea375e5e90883',
-    liquidity: '1287892409322717672166',
+    liquidity: '1257189666577894650238',
     token0: {
       decimals: '18',
       id: '0x295b42684f90c77da7ea46336001010f2791ec8c',
@@ -14538,15 +6449,11 @@ const x_weth = [
       symbol: 'XI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '38837345.09365191839706227060759622',
+    volumeUSD: '38838256.60950274547649804619818394',
   },
   {
-    feeTier: '10000',
     id: '0x9af99712d45a972a23eabee205342f6055ada474',
     liquidity: '4173334119320121067860',
     token0: {
@@ -14556,15 +6463,11 @@ const x_weth = [
       symbol: 'BOB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '38718520.32773677177082499198139022',
   },
   {
-    feeTier: '10000',
     id: '0x31c0ba10e4e12be6cdceb612e5e829d977532bfc',
     liquidity: '28722085788162520524803',
     token0: {
@@ -14574,15 +6477,11 @@ const x_weth = [
       symbol: 'PIXL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '38602255.57288886624784070590535083',
+    volumeUSD: '38630121.58281216196597283381569994',
   },
   {
-    feeTier: '3000',
     id: '0xccab9aab49e7ce843fec2be7db343fcb24ca6764',
     liquidity: '380022075970512',
     token0: {
@@ -14592,15 +6491,11 @@ const x_weth = [
       symbol: 'DUST',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '38383635.9644682901366447257892271',
   },
   {
-    feeTier: '3000',
     id: '0x86bc870520acf4e9c255270d7f51c814ad184960',
     liquidity: '4893138949122390071556',
     token0: {
@@ -14610,15 +6505,11 @@ const x_weth = [
       symbol: 'W',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '38316988.66282280806139787163376665',
+    volumeUSD: '38329381.32811770777831105705544898',
   },
   {
-    feeTier: '3000',
     id: '0xcb9fe6b9f0411ace824d8bf4bba29f03387ff459',
     liquidity: '0',
     token0: {
@@ -14628,15 +6519,11 @@ const x_weth = [
       symbol: 'Silo',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '38147975.39091994712181595195136088',
   },
   {
-    feeTier: '10000',
     id: '0x0f88a9d642fa9283338e1ec4496e7dc72714831a',
     liquidity: '2000370011204465893456',
     token0: {
@@ -14646,15 +6533,11 @@ const x_weth = [
       symbol: 'TBANK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '38086549.43861659081715275063535186',
+    volumeUSD: '38088020.35823096742011398556565443',
   },
   {
-    feeTier: '3000',
     id: '0xd7f70a72e1693804a42afd9d73c77b2f1f8f8f6d',
     liquidity: '139559300790339961266922',
     token0: {
@@ -14664,15 +6547,11 @@ const x_weth = [
       symbol: 'DOGE20',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '38066735.51988179415528336766290293',
+    volumeUSD: '38069394.08418239736022782291592292',
   },
   {
-    feeTier: '3000',
     id: '0x9c1258108c0e61f891c3895a6899e9c08b8f7218',
     liquidity: '0',
     token0: {
@@ -14682,15 +6561,11 @@ const x_weth = [
       symbol: 'NOMEME',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '37713224.06929045285083883222042526',
   },
   {
-    feeTier: '10000',
     id: '0xa46466ad5507be77ff5abdc27df9dfeda9bd7aee',
     liquidity: '1058748516996294587191',
     token0: {
@@ -14700,15 +6575,11 @@ const x_weth = [
       symbol: 'GNO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '37437183.47307206641619376662349926',
+    volumeUSD: '37447409.14630510114733013477689188',
   },
   {
-    feeTier: '3000',
     id: '0x655e25fed94ddb846601705ace4349815e2a95d1',
     liquidity: '0',
     token0: {
@@ -14718,15 +6589,11 @@ const x_weth = [
       symbol: 'KYL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '37379102.1517572627559499380731',
   },
   {
-    feeTier: '10000',
     id: '0xd572d276b699947a043c85f8d66ce311cc85e357',
     liquidity: '610305199525015603713',
     token0: {
@@ -14736,15 +6603,11 @@ const x_weth = [
       symbol: 'GPU',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '37197052.01214455050014610387309976',
+    volumeUSD: '37198913.85266145066556563257017654',
   },
   {
-    feeTier: '10000',
     id: '0x99c7550be72f05ec31c446cd536f8a29c89fdb77',
     liquidity: '28607811636939646532',
     token0: {
@@ -14754,51 +6617,11 @@ const x_weth = [
       symbol: 'MATIC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '37185494.18755945899946854298222176',
+    volumeUSD: '37185556.36097870276626780374700685',
   },
   {
-    feeTier: '3000',
-    id: '0x4495fe3e57f5c7b46e5527162efd15a7606f35d8',
-    liquidity: '851794420974312185737',
-    token0: {
-      decimals: '18',
-      id: '0x22514ffb0d7232a56f0c24090e7b68f179faa940',
-      name: 'QORPO Token',
-      symbol: 'QORPO',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '37052247.6944665664699264218036908',
-  },
-  {
-    feeTier: '10000',
-    id: '0x325365ed8275f6a74cac98917b7f6face8da533b',
-    liquidity: '1061275685317999966007',
-    token0: {
-      decimals: '18',
-      id: '0x3506424f91fd33084466f402d5d97f05f8e3b4af',
-      name: 'chiliZ',
-      symbol: 'CHZ',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '37027745.64324877541388071287668165',
-  },
-  {
-    feeTier: '3000',
     id: '0x2a8ff49323d42be0af7a1b2f3005b67da55e0c6b',
     liquidity: '7767147953854473248448',
     token0: {
@@ -14808,15 +6631,39 @@ const x_weth = [
       symbol: 'ALVA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '36945847.0233309820414315741287564',
+    volumeUSD: '37058560.80074330883535956168151956',
   },
   {
-    feeTier: '10000',
+    id: '0x4495fe3e57f5c7b46e5527162efd15a7606f35d8',
+    liquidity: '851794420974312185737',
+    token0: {
+      decimals: '18',
+      id: '0x22514ffb0d7232a56f0c24090e7b68f179faa940',
+      name: 'QORPO Token',
+      symbol: 'QORPO',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '37054920.94417133533509736417812414',
+  },
+  {
+    id: '0x325365ed8275f6a74cac98917b7f6face8da533b',
+    liquidity: '1535042564587171064399',
+    token0: {
+      decimals: '18',
+      id: '0x3506424f91fd33084466f402d5d97f05f8e3b4af',
+      name: 'chiliZ',
+      symbol: 'CHZ',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '37028705.35402310116794299698037113',
+  },
+  {
     id: '0x1eefc75cc4458e651480e80d74b263b77a93cb11',
     liquidity: '0',
     token0: {
@@ -14826,15 +6673,11 @@ const x_weth = [
       symbol: 'PERP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '36854714.96029832082641924531392148',
   },
   {
-    feeTier: '3000',
     id: '0x88ad8e1589b00ffcfe2f6fddbfc959377edd3a1c',
     liquidity: '0',
     token0: {
@@ -14844,17 +6687,13 @@ const x_weth = [
       symbol: 'VUSD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '36785586.25453035337999644501845667',
   },
   {
-    feeTier: '10000',
     id: '0xf0230b6f9604e3edc13e125806e4c5446c34dfdf',
-    liquidity: '10894718550318263463215',
+    liquidity: '12861451956309391315023',
     token0: {
       decimals: '18',
       id: '0x289ff00235d2b98b0145ff5d4435d3e92f9540a6',
@@ -14862,15 +6701,11 @@ const x_weth = [
       symbol: 'BOOE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '36617101.02703972551824663029915224',
+    volumeUSD: '36658465.14426362074470799616218186',
   },
   {
-    feeTier: '10000',
     id: '0x0254a309f5140d457c0699e2cd0457a692a69cc4',
     liquidity: '0',
     token0: {
@@ -14880,15 +6715,11 @@ const x_weth = [
       symbol: 'KOIN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '36292627.43731347272404234910780053',
   },
   {
-    feeTier: '3000',
     id: '0x943c66d78875ddeb3aede2ac081625d0a947bbad',
     liquidity: '0',
     token0: {
@@ -14898,15 +6729,11 @@ const x_weth = [
       symbol: 'GMT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '36260839.91422843895422356369173244',
   },
   {
-    feeTier: '3000',
     id: '0xd8857e7da2d6e05667c5b9218f97efaaa671f44a',
     liquidity: '0',
     token0: {
@@ -14916,15 +6743,11 @@ const x_weth = [
       symbol: 'SYN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '35916384.14188683984064933462324037',
   },
   {
-    feeTier: '10000',
     id: '0xb5bc2a4acb16cb18bfc5f6c74f6b605ece8686e3',
     liquidity: '4545892859566099006983952',
     token0: {
@@ -14934,15 +6757,11 @@ const x_weth = [
       symbol: 'MAO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '35912243.23765332925067851579520172',
+    volumeUSD: '35912282.52254158805871956567122759',
   },
   {
-    feeTier: '3000',
     id: '0x1a205d1ef7fb2b247fea813934cf961dc98bc70b',
     liquidity: '0',
     token0: {
@@ -14952,15 +6771,11 @@ const x_weth = [
       symbol: 'renZEC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '35829379.18428909457105797051262569',
   },
   {
-    feeTier: '10000',
     id: '0x96b0837489d046a4f5aa9ac2fc9e086bd14bac1e',
     liquidity: '1306452278622491269560705',
     token0: {
@@ -14970,15 +6785,11 @@ const x_weth = [
       symbol: 'RND',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '35775255.44531275734836344825966232',
   },
   {
-    feeTier: '10000',
     id: '0xe7477f50eca9f4f0d73717b455994b0086dc544f',
     liquidity: '0',
     token0: {
@@ -14988,15 +6799,11 @@ const x_weth = [
       symbol: 'FUSE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '35311622.59046790692548680627787477',
   },
   {
-    feeTier: '10000',
     id: '0x3abb02fb560b07488e264a8e5934b1258503680d',
     liquidity: '2357868697212312294',
     token0: {
@@ -15006,15 +6813,11 @@ const x_weth = [
       symbol: 'THE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '35168460.73952326085291321438413859',
   },
   {
-    feeTier: '10000',
     id: '0xf9f7f108b3e2323343acf9bd9d34906aa478de6d',
     liquidity: '39062759846644833490982414',
     token0: {
@@ -15024,15 +6827,11 @@ const x_weth = [
       symbol: 'MUMU',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '35128717.82066040792367117198737844',
+    volumeUSD: '35147187.40181566119261437774213862',
   },
   {
-    feeTier: '3000',
     id: '0xdd642273ab88e5b4701b0bdf23a47b9adb2274b3',
     liquidity: '0',
     token0: {
@@ -15042,17 +6841,13 @@ const x_weth = [
       symbol: 'PAID',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '35070223.30399924060166316877487012',
   },
   {
-    feeTier: '10000',
     id: '0xc5c9a9ab6403cdba9722463000146c18b504f0ba',
-    liquidity: '44993149498426168805219',
+    liquidity: '25196919529240301015610',
     token0: {
       decimals: '18',
       id: '0x4d1c297d39c5c1277964d0e3f8aa901493664530',
@@ -15060,15 +6855,11 @@ const x_weth = [
       symbol: 'PUFFER',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '34925901.51190216927270735378767322',
+    volumeUSD: '34983161.45725239132364935713170383',
   },
   {
-    feeTier: '3000',
     id: '0xd97a2bd632d32e85ebf88a705bdc47e3a25787ab',
     liquidity: '0',
     token0: {
@@ -15078,15 +6869,11 @@ const x_weth = [
       symbol: 'PSYOP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '34773400.29745030080284005741358588',
   },
   {
-    feeTier: '3000',
     id: '0xc6841742f1a8fec27dea3b9ba0293b5209047600',
     liquidity: '3531306561280663574535673',
     token0: {
@@ -15096,15 +6883,11 @@ const x_weth = [
       symbol: 'HARAMBE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '34668871.68185758072427199319520162',
+    volumeUSD: '34672024.18406579209810068797057813',
   },
   {
-    feeTier: '10000',
     id: '0x34a14b6f05bd4365f2d159fa0ed46201f2eb4665',
     liquidity: '751057377176044964098606',
     token0: {
@@ -15114,15 +6897,11 @@ const x_weth = [
       symbol: 'Frogs',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '34526381.18192335426906850759706825',
+    volumeUSD: '34526438.19529554436609001219959171',
   },
   {
-    feeTier: '3000',
     id: '0x6b1c477b4c67958915b194ae8b007bf078dadb81',
     liquidity: '127155978774958211',
     token0: {
@@ -15132,15 +6911,11 @@ const x_weth = [
       symbol: '⚗️',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '34396358.90607911297909333154772361',
   },
   {
-    feeTier: '3000',
     id: '0x52cfa6bf6659175fce27a23abdee798897fe4c04',
     liquidity: '0',
     token0: {
@@ -15150,15 +6925,11 @@ const x_weth = [
       symbol: 'X2Y2',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '34057497.04020657558691168026134806',
   },
   {
-    feeTier: '10000',
     id: '0x02469e30dd450de2e9de00d49d679f1d1d774ada',
     liquidity: '38034179262386837',
     token0: {
@@ -15168,17 +6939,13 @@ const x_weth = [
       symbol: 'GET',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '33846353.90919030762560740196726512',
   },
   {
-    feeTier: '3000',
     id: '0x6916f79669f745aebd82433583c85665bfae6fbb',
-    liquidity: '278975268196997526',
+    liquidity: '3510501167370293',
     token0: {
       decimals: '8',
       id: '0x112b08621e27e10773ec95d250604a041f36c582',
@@ -15186,15 +6953,11 @@ const x_weth = [
       symbol: 'KAS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '33800605.31523234985450633515048162',
+    volumeUSD: '33842383.67079882954796825541972883',
   },
   {
-    feeTier: '3000',
     id: '0x861d75271e2cde18d927c5170fbf22bf472a7d1a',
     liquidity: '0',
     token0: {
@@ -15204,15 +6967,11 @@ const x_weth = [
       symbol: 'KIRO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '33638597.17107656090409727065290721',
   },
   {
-    feeTier: '10000',
     id: '0x685c401540c103631a0ba7f14a3d16ae3cb4e50b',
     liquidity: '754819218808236826',
     token0: {
@@ -15222,15 +6981,11 @@ const x_weth = [
       symbol: 'wCELL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '33539146.31207678868955247209437406',
   },
   {
-    feeTier: '10000',
     id: '0x2f5c77eaf6fcc3691a3b12a7c117f95201a66a1d',
     liquidity: '0',
     token0: {
@@ -15240,15 +6995,11 @@ const x_weth = [
       symbol: 'midwit',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '33314330.52263797679865868314473495',
   },
   {
-    feeTier: '3000',
     id: '0x126b3e5bfe28244626d4b294a84c50d8a2297859',
     liquidity: '0',
     token0: {
@@ -15258,15 +7009,11 @@ const x_weth = [
       symbol: 'STMX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '33009867.37159775708589685759625303',
   },
   {
-    feeTier: '10000',
     id: '0xc0a59dc65c715187a14b672c149ab4aab173d05a',
     liquidity: '393320762118796057759',
     token0: {
@@ -15276,17 +7023,13 @@ const x_weth = [
       symbol: 'PLT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '33001695.20206061349071041772121716',
+    volumeUSD: '33001753.63402744230067671119844346',
   },
   {
-    feeTier: '10000',
     id: '0x9e7809c21ba130c1a51c112928ea6474d9a9ae3c',
-    liquidity: '512307229747115718548',
+    liquidity: '516158690281288201971',
     token0: {
       decimals: '18',
       id: '0xb8c77482e45f1f44de1745f52c74426c631bdd52',
@@ -15294,15 +7037,11 @@ const x_weth = [
       symbol: 'BNB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '32923999.91918549717756339701672137',
+    volumeUSD: '32949515.63747868654944911987386646',
   },
   {
-    feeTier: '10000',
     id: '0x1c90843ff6f3472002650f8f7616f4d99f4ecd45',
     liquidity: '24879670715822424289',
     token0: {
@@ -15312,15 +7051,11 @@ const x_weth = [
       symbol: 'Silo',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '32907965.70301538379250358803197542',
   },
   {
-    feeTier: '10000',
     id: '0xb573d1708161b82b5f7a77c1035fa724725b42c7',
     liquidity: '68284605198051988311126',
     token0: {
@@ -15330,15 +7065,11 @@ const x_weth = [
       symbol: 'RIVUS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '32289193.87951582812003195483938877',
+    volumeUSD: '32289741.72612595591725234319212712',
   },
   {
-    feeTier: '500',
     id: '0x6e5c0b204d8c5311687513f0e71c10cb9e114b6b',
     liquidity: '0',
     token0: {
@@ -15348,15 +7079,11 @@ const x_weth = [
       symbol: 'PEPE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '32225851.48715831088288153276859515',
   },
   {
-    feeTier: '10000',
     id: '0x48598ff1cee7b4d31f8f9050c2bbae98e17e6b17',
     liquidity: '234246157770438606789',
     token0: {
@@ -15366,15 +7093,11 @@ const x_weth = [
       symbol: 'JBX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '32188296.9455304889548576430193788',
+    volumeUSD: '32188680.81812898480332972569293681',
   },
   {
-    feeTier: '3000',
     id: '0x92c7b5ce4cb0e5483f3365c1449f21578ee9f21a',
     liquidity: '474297838712094844',
     token0: {
@@ -15384,17 +7107,13 @@ const x_weth = [
       symbol: 'FRAX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '31900366.44715323959798063472450733',
   },
   {
-    feeTier: '10000',
     id: '0x2b8574482d62d8df670dfd3be15f2f092941284e',
-    liquidity: '21412342880357164286465',
+    liquidity: '21705399802673287968012',
     token0: {
       decimals: '18',
       id: '0x68bbed6a47194eff1cf514b50ea91895597fc91e',
@@ -15402,15 +7121,11 @@ const x_weth = [
       symbol: 'ANDY',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '31822088.69319970521549755112486033',
+    volumeUSD: '31824625.4079499221157175257806184',
   },
   {
-    feeTier: '10000',
     id: '0x58d7e1d45e9ed962d3279b3834dc8f6bb4aa12b3',
     liquidity: '706928791711089393016',
     token0: {
@@ -15420,15 +7135,11 @@ const x_weth = [
       symbol: 'WSM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '31651758.39285095014619909729240015',
   },
   {
-    feeTier: '10000',
     id: '0xe12644b23aaa654eadc72050641d0ff8d2f32d52',
     liquidity: '1599742544509016804',
     token0: {
@@ -15438,15 +7149,11 @@ const x_weth = [
       symbol: 'RUG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '31496196.43046232162693317921258438',
   },
   {
-    feeTier: '10000',
     id: '0xf577068c05fda48ba1729c9a190f78008c1f11a2',
     liquidity: '13029893380195901174741',
     token0: {
@@ -15456,15 +7163,11 @@ const x_weth = [
       symbol: 'STONE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '31040990.95446576646967266726260514',
+    volumeUSD: '31046336.14735966030546911440018245',
   },
   {
-    feeTier: '3000',
     id: '0x6c1bcf1b99d9f0819459dad661795802d232437e',
     liquidity: '91060974776566236635063',
     token0: {
@@ -15474,15 +7177,11 @@ const x_weth = [
       symbol: 'SNSY',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '31004160.76551487383023775389468496',
+    volumeUSD: '31034190.45719321703537060224772834',
   },
   {
-    feeTier: '10000',
     id: '0xa470ec3a41e87172d57804c93487f5635316132a',
     liquidity: '159786663914932187694220',
     token0: {
@@ -15492,15 +7191,11 @@ const x_weth = [
       symbol: 'POP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '30958805.88869135845168183028566315',
   },
   {
-    feeTier: '3000',
     id: '0x044d1610e600d041229407fb6e514d259276e3b3',
     liquidity: '2791257276603031484538',
     token0: {
@@ -15510,15 +7205,11 @@ const x_weth = [
       symbol: 'CULT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '30941584.94182292096172582869587832',
   },
   {
-    feeTier: '3000',
     id: '0x3a5dbafbac514a0b40dcdf3bc3ff7763da9d2d37',
     liquidity: '0',
     token0: {
@@ -15528,15 +7219,11 @@ const x_weth = [
       symbol: 'VSP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '30924725.72866080963186004077204923',
   },
   {
-    feeTier: '10000',
     id: '0xc34322097f48f2a42b471e0e892e8cf0c7e35ebb',
     liquidity: '244522580672873809011667',
     token0: {
@@ -15546,15 +7233,11 @@ const x_weth = [
       symbol: 'HABIBI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '30815801.73184940260352721032686032',
   },
   {
-    feeTier: '10000',
     id: '0x93236881cbe546de9d46750316942d0821df6ce2',
     liquidity: '49381078011633536448539',
     token0: {
@@ -15564,15 +7247,11 @@ const x_weth = [
       symbol: 'CAI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '30766909.43603058949567667808528167',
+    volumeUSD: '30767305.47902294243464567373267417',
   },
   {
-    feeTier: '10000',
     id: '0x66ad25b5aa3543cb7f4566851fe26da6abab205e',
     liquidity: '3404897293625310096619',
     token0: {
@@ -15582,15 +7261,11 @@ const x_weth = [
       symbol: 'XTP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '30581885.71504266479705637160707084',
+    volumeUSD: '30582306.29010414431959070361011382',
   },
   {
-    feeTier: '10000',
     id: '0xa80964c5bbd1a0e95777094420555fead1a26c1e',
     liquidity: '26689027227763267103',
     token0: {
@@ -15600,15 +7275,11 @@ const x_weth = [
       symbol: 'DAI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '30184360.71274498306188275468199878',
+    volumeUSD: '30184362.4546099329169183526526174',
   },
   {
-    feeTier: '10000',
     id: '0x80d8cde1cdde2174f8af7ffc70e5752e1fab6cfc',
     liquidity: '10248984178991218847421',
     token0: {
@@ -15618,15 +7289,11 @@ const x_weth = [
       symbol: '@LFG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '30162461.77423745960488688795717334',
   },
   {
-    feeTier: '100',
     id: '0x30b8f02dc5c0e049dfa5b570ecc83462698f64aa',
     liquidity: '0',
     token0: {
@@ -15636,15 +7303,11 @@ const x_weth = [
       symbol: 'STONE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '30101091.41293254180666530216501586',
   },
   {
-    feeTier: '3000',
     id: '0xf44876dbfa10609fcdd68cb4122c3a6e1d4acd8f',
     liquidity: '13969194634094',
     token0: {
@@ -15654,15 +7317,11 @@ const x_weth = [
       symbol: 'WMC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '29953237.50306730746086190227142959',
+    volumeUSD: '29957480.90735236319440502735109059',
   },
   {
-    feeTier: '10000',
     id: '0xf1b5cf831ced19136472b2b385f30384ce14a982',
     liquidity: '0',
     token0: {
@@ -15672,15 +7331,11 @@ const x_weth = [
       symbol: 'TAMA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '29869066.04980793469039757561236984',
   },
   {
-    feeTier: '10000',
     id: '0x3157e15e15fd41d6a9c5df255c71506f160db67c',
     liquidity: '0',
     token0: {
@@ -15690,15 +7345,11 @@ const x_weth = [
       symbol: 'RLB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '29783783.69750608177109672088326145',
   },
   {
-    feeTier: '10000',
     id: '0x65be3a91e189555be1524262b7a9a1e66296b2b0',
     liquidity: '170992132498529633540',
     token0: {
@@ -15708,15 +7359,11 @@ const x_weth = [
       symbol: 'COSMIC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '29673855.3579000895824992638923287',
+    volumeUSD: '29674112.15072007060138547208931134',
   },
   {
-    feeTier: '10000',
     id: '0xa7c2454239f88935925e8756d8f1dd6cada81204',
     liquidity: '7116117494781315289',
     token0: {
@@ -15726,15 +7373,11 @@ const x_weth = [
       symbol: 'KIP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '29644942.95455456011119826532793701',
   },
   {
-    feeTier: '3000',
     id: '0xa0b30e46f6aeb8f5a849241d703254bb4a719d92',
     liquidity: '14946289064866675199868',
     token0: {
@@ -15744,15 +7387,11 @@ const x_weth = [
       symbol: 'OGV',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '29465974.41149654814540442182686327',
+    volumeUSD: '29466538.03369249813127546490043883',
   },
   {
-    feeTier: '3000',
     id: '0xbd7f4cca1c58eb370203c1cc990d33bec215f7c3',
     liquidity: '0',
     token0: {
@@ -15762,15 +7401,11 @@ const x_weth = [
       symbol: 'AIT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '29448708.61368718243495788167915841',
   },
   {
-    feeTier: '10000',
     id: '0xd9ed2b5f292a0e319a04e6c1aca15df97705821c',
     liquidity: '0',
     token0: {
@@ -15780,15 +7415,11 @@ const x_weth = [
       symbol: 'MANA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '29415218.22073680091229340118886066',
   },
   {
-    feeTier: '3000',
     id: '0x173a77805b59613a52d921234878aad9ac8fafe1',
     liquidity: '212388123989264377458906',
     token0: {
@@ -15798,33 +7429,11 @@ const x_weth = [
       symbol: 'STARS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '29376295.92501105892874465263375227',
+    volumeUSD: '29391109.68849570547924386296332454',
   },
   {
-    feeTier: '3000',
-    id: '0x22a0738bde54050ffc04408063fd5fbdc1205bdf',
-    liquidity: '0',
-    token0: {
-      decimals: '18',
-      id: '0x90de74265a416e1393a450752175aed98fe11517',
-      name: 'Unlock Discount Token',
-      symbol: 'UDT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '29372642.33207569614177355165988288',
-  },
-  {
-    feeTier: '3000',
     id: '0xed6b5fb20322c2822cd97845261422f9d581b9c4',
     liquidity: '238034547256629431156689',
     token0: {
@@ -15834,15 +7443,25 @@ const x_weth = [
       symbol: 'KARATE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '29362145.67921632793861883636584597',
+    volumeUSD: '29374126.52259100830415460575863558',
   },
   {
-    feeTier: '10000',
+    id: '0x22a0738bde54050ffc04408063fd5fbdc1205bdf',
+    liquidity: '0',
+    token0: {
+      decimals: '18',
+      id: '0x90de74265a416e1393a450752175aed98fe11517',
+      name: 'Unlock Discount Token',
+      symbol: 'UDT',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '29372642.33207569614177355165988288',
+  },
+  {
     id: '0x0b8383c2187d809bffcdce04c0d8f13312ffe6a9',
     liquidity: '0',
     token0: {
@@ -15852,15 +7471,11 @@ const x_weth = [
       symbol: 'PEPEW',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '29288197.45199949879668570897270312',
   },
   {
-    feeTier: '10000',
     id: '0xc75a99fa00803896349891f8471da3614bd07564',
     liquidity: '10795713435951829805',
     token0: {
@@ -15870,15 +7485,11 @@ const x_weth = [
       symbol: 'SOCKS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '28932550.95054138992769626860374742',
   },
   {
-    feeTier: '10000',
     id: '0x1353fe67fff8f376762b7034dc9066f0be15a723',
     liquidity: '37570560450748303714',
     token0: {
@@ -15888,15 +7499,11 @@ const x_weth = [
       symbol: 'AAVE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '28750734.64695806473299097487060171',
+    volumeUSD: '28751449.26484713793226587246358838',
   },
   {
-    feeTier: '3000',
     id: '0x8a8c520b206cc3ab6fb77ffdc29b2825a37f674f',
     liquidity: '19296353582135589598',
     token0: {
@@ -15906,17 +7513,13 @@ const x_weth = [
       symbol: 'WSM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '28711554.50280458499756266756050479',
   },
   {
-    feeTier: '10000',
     id: '0x8cd6c8c449918d92d2ad4658c32f2e2ff1e7096d',
-    liquidity: '4327464873910116828859985',
+    liquidity: '1008781056362357076586444',
     token0: {
       decimals: '18',
       id: '0xa882606494d86804b5514e07e6bd2d6a6ee6d68a',
@@ -15924,15 +7527,11 @@ const x_weth = [
       symbol: 'WPLS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '28622539.38461249425898229961228735',
+    volumeUSD: '28705965.8222517866291876102518546',
   },
   {
-    feeTier: '3000',
     id: '0xaaaa50ab9c0eb7ca6e797cfe05d9805d61687e10',
     liquidity: '287743065875676088685',
     token0: {
@@ -15942,15 +7541,11 @@ const x_weth = [
       symbol: 'AAA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '28450691.37200983732504494761629922',
   },
   {
-    feeTier: '10000',
     id: '0xb32fcfff9616deec20dd44d664f490dee7fe2c7a',
     liquidity: '58808935238154302316',
     token0: {
@@ -15960,15 +7555,11 @@ const x_weth = [
       symbol: 'PANDA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '28437174.8641153486474318018134572',
   },
   {
-    feeTier: '3000',
     id: '0x3edb676bcbdbf7a6c792893f1aeb6f6459e90b53',
     liquidity: '0',
     token0: {
@@ -15978,15 +7569,11 @@ const x_weth = [
       symbol: 'MEME',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '28436159.02584961045415736020720389',
   },
   {
-    feeTier: '10000',
     id: '0x77924185cf0cbb2ae0b746a0086a065d6875b0a5',
     liquidity: '0',
     token0: {
@@ -15996,15 +7583,11 @@ const x_weth = [
       symbol: 'XDEFI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '28161093.62519060527469391604916876',
   },
   {
-    feeTier: '10000',
     id: '0xd10b1aa3a49cc06f65c723f14ea0e43edda3102f',
     liquidity: '0',
     token0: {
@@ -16014,15 +7597,11 @@ const x_weth = [
       symbol: 'WPEPE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '28044034.8613612474080425430889407',
   },
   {
-    feeTier: '10000',
     id: '0x15620cf83d427dd6955f31c14f401e7879ad7291',
     liquidity: '24931703366884266',
     token0: {
@@ -16032,15 +7611,25 @@ const x_weth = [
       symbol: 'GFY',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '27940469.35993531375333697436127204',
   },
   {
-    feeTier: '10000',
+    id: '0x2b7e68fa478ebf6b1b4697fabaedb61fe17cfab5',
+    liquidity: '39672708794861425856806',
+    token0: {
+      decimals: '18',
+      id: '0x28d38df637db75533bd3f71426f3410a82041544',
+      name: 'Prompt',
+      symbol: 'PROMPT',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '27919083.89329327359193247993846974',
+  },
+  {
     id: '0xf6e28a6bf73980d573cb53b71112b6886896ebcb',
     liquidity: '123188368378734807107',
     token0: {
@@ -16050,15 +7639,11 @@ const x_weth = [
       symbol: 'PIXEL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '27884481.93410357346864237531590422',
+    volumeUSD: '27884512.00845294881824109937382008',
   },
   {
-    feeTier: '3000',
     id: '0xc31f5c3f7ba9a2e4c50a89255efc619152a5adaf',
     liquidity: '3060102689175540686',
     token0: {
@@ -16068,15 +7653,11 @@ const x_weth = [
       symbol: 'RVST',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '27838827.68027677691218525212582414',
   },
   {
-    feeTier: '10000',
     id: '0x68f8d8fbc1283f9667d6373c55f96f8c0aea1c33',
     liquidity: '0',
     token0: {
@@ -16086,15 +7667,11 @@ const x_weth = [
       symbol: 'HUNT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '27743862.47043037121085997302926081',
   },
   {
-    feeTier: '10000',
     id: '0x95ad5d38ad6bb17500e9a57bfeb6569b36a94ea5',
     liquidity: '687264850775242449977715',
     token0: {
@@ -16104,15 +7681,25 @@ const x_weth = [
       symbol: '$MONG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '27629938.25956141808709192260669332',
+    volumeUSD: '27629958.68410226357633770943627486',
   },
   {
-    feeTier: '10000',
+    id: '0x117439f6fdde9a09d28eb78759cd5c852a8653f0',
+    liquidity: '1815728751179859',
+    token0: {
+      decimals: '4',
+      id: '0x27054b13b1b798b345b591a4d22e6562d47ea75a',
+      name: 'AirSwap Token',
+      symbol: 'AST',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '27620995.56324933719246062797581103',
+  },
+  {
     id: '0x2ce54a0f63f5be7b62aec66104a1038206a154e3',
     liquidity: '0',
     token0: {
@@ -16122,15 +7709,11 @@ const x_weth = [
       symbol: 'NOMAD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '27460130.34546234504792613649505731',
   },
   {
-    feeTier: '10000',
     id: '0x306778ba370d803301d32cefe49cdc581c24b824',
     liquidity: '0',
     token0: {
@@ -16140,15 +7723,11 @@ const x_weth = [
       symbol: 'INSP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '27426003.09567140505911137178944458',
   },
   {
-    feeTier: '10000',
     id: '0x0a61a26c0dc08f4ed68a00966cc5a0ca60918ea3',
     liquidity: '1706054090954853',
     token0: {
@@ -16158,15 +7737,11 @@ const x_weth = [
       symbol: 'ALI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '27277742.75652417826769503406872045',
   },
   {
-    feeTier: '3000',
     id: '0xfb9256c0f94d0b7495327426c0dd954bdf72d220',
     liquidity: '0',
     token0: {
@@ -16176,15 +7751,11 @@ const x_weth = [
       symbol: 'MRPH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '27214813.83893377309782878691747432',
   },
   {
-    feeTier: '10000',
     id: '0x49bd1fa4c7286c2754ec7607f6f2e835f3ca6ddd',
     liquidity: '72467461951886881',
     token0: {
@@ -16194,15 +7765,11 @@ const x_weth = [
       symbol: '$PAAL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '27174570.16844733294990519906841088',
+    volumeUSD: '27180118.78411333048461475623449793',
   },
   {
-    feeTier: '3000',
     id: '0x03e67a3a7775f80e49cc8fe004592c5bc8e2d273',
     liquidity: '0',
     token0: {
@@ -16212,15 +7779,11 @@ const x_weth = [
       symbol: 'OTACON',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '27060851.62531156778329457248760432',
   },
   {
-    feeTier: '3000',
     id: '0x64652315d86f5dfae30885fbd29d1da05b63add7',
     liquidity: '52536231578994936128',
     token0: {
@@ -16230,15 +7793,11 @@ const x_weth = [
       symbol: 'FTM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '26963847.20199897961198822805666723',
+    volumeUSD: '26963954.98739065329664198601396883',
   },
   {
-    feeTier: '10000',
     id: '0x5cec64b1a39d46f2cb08b97abf086d78bacc9b61',
     liquidity: '0',
     token0: {
@@ -16248,15 +7807,11 @@ const x_weth = [
       symbol: 'RSTK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '26873530.74085661378770428165739087',
   },
   {
-    feeTier: '500',
     id: '0x287139599f1b5849f12cf18244a74f595da9936d',
     liquidity: '765430526191682029047',
     token0: {
@@ -16266,15 +7821,11 @@ const x_weth = [
       symbol: 'boxETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '26844212.29620564492493540803287659',
   },
   {
-    feeTier: '10000',
     id: '0x3be033b60bc4aa789368954595332fab143987ec',
     liquidity: '8088867631015191383',
     token0: {
@@ -16284,33 +7835,11 @@ const x_weth = [
       symbol: 'BONE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '26839868.41672571486016481382257264',
   },
   {
-    feeTier: '3000',
-    id: '0x117439f6fdde9a09d28eb78759cd5c852a8653f0',
-    liquidity: '1632892523115527',
-    token0: {
-      decimals: '4',
-      id: '0x27054b13b1b798b345b591a4d22e6562d47ea75a',
-      name: 'AirSwap Token',
-      symbol: 'AST',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '26838501.51311230353799992083965714',
-  },
-  {
-    feeTier: '10000',
     id: '0xe63a3d5d02247e11c3cf99450bdd997e36ce6b4e',
     liquidity: '0',
     token0: {
@@ -16320,15 +7849,11 @@ const x_weth = [
       symbol: 'yvBOOST',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '26772070.20763134956855156348811852',
   },
   {
-    feeTier: '10000',
     id: '0xdf19389d0b2bee33230d73f07c8e0e2c4e78fb59',
     liquidity: '114472013152528725329718',
     token0: {
@@ -16338,15 +7863,11 @@ const x_weth = [
       symbol: 'PEPES',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '26767333.95204974554384914212011401',
   },
   {
-    feeTier: '10000',
     id: '0x3012e36cc30eb7ed916b8d4b82750b39551874dc',
     liquidity: '42332586557248840414',
     token0: {
@@ -16356,15 +7877,11 @@ const x_weth = [
       symbol: 'LYRA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '26682130.96803429070976226587836287',
   },
   {
-    feeTier: '10000',
     id: '0x6981449ddaa030f83bc5ac9fde1c19544521906e',
     liquidity: '30123444322314672594723',
     token0: {
@@ -16374,15 +7891,11 @@ const x_weth = [
       symbol: 'WOLF',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '26619963.97689084110705656692485729',
+    volumeUSD: '26636749.78311829367626828370893185',
   },
   {
-    feeTier: '10000',
     id: '0xfb76cd5e9fb9351137c3ce0ac1c23212c46995a7',
     liquidity: '0',
     token0: {
@@ -16392,17 +7905,13 @@ const x_weth = [
       symbol: 'XD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '26563407.43833279308633583084608816',
   },
   {
-    feeTier: '3000',
     id: '0x779dfffb81550bf503c19d52b1e91e9251234faa',
-    liquidity: '831007902683987023887',
+    liquidity: '823992831206818946675',
     token0: {
       decimals: '18',
       id: '0x2af1df3ab0ab157e1e2ad8f88a7d04fbea0c7dc6',
@@ -16410,33 +7919,11 @@ const x_weth = [
       symbol: 'BED',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '26420470.55512170446959026430856461',
+    volumeUSD: '26425366.04036067467972937848953454',
   },
   {
-    feeTier: '3000',
-    id: '0x2b7e68fa478ebf6b1b4697fabaedb61fe17cfab5',
-    liquidity: '22214867768998686298307',
-    token0: {
-      decimals: '18',
-      id: '0x28d38df637db75533bd3f71426f3410a82041544',
-      name: 'Prompt',
-      symbol: 'PROMPT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '26412371.00643387189382875040465428',
-  },
-  {
-    feeTier: '10000',
     id: '0x363ab2dd5dcb55f8d8c82bd465c7be4271e6ae74',
     liquidity: '0',
     token0: {
@@ -16446,15 +7933,11 @@ const x_weth = [
       symbol: 'X',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '26328359.08382320440122976784814777',
   },
   {
-    feeTier: '10000',
     id: '0x0ece3ea4da76f78ec0823d4492dcc7bf223ad8fc',
     liquidity: '0',
     token0: {
@@ -16464,15 +7947,11 @@ const x_weth = [
       symbol: 'RARE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '26149373.85581794205653607241478031',
   },
   {
-    feeTier: '3000',
     id: '0x1c3e5c8d42db6775db34dd833eeae8029948ce9e',
     liquidity: '0',
     token0: {
@@ -16482,15 +7961,11 @@ const x_weth = [
       symbol: 'ROCK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '26080471.12008076576585298178019221',
   },
   {
-    feeTier: '10000',
     id: '0x0c4d3065116a2be127682411c23292c66c6dfde6',
     liquidity: '7035813445171613674802561',
     token0: {
@@ -16500,15 +7975,11 @@ const x_weth = [
       symbol: 'RWD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '26070300.05332735149463021985462925',
   },
   {
-    feeTier: '3000',
     id: '0xfc62bec949e5e18f8050f34ca12ca155b300d960',
     liquidity: '447210000000000000000001',
     token0: {
@@ -16518,15 +7989,11 @@ const x_weth = [
       symbol: 'WUKONG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '25966759.28995766340391878441142832',
+    volumeUSD: '25966778.6975505920417134694830875',
   },
   {
-    feeTier: '10000',
     id: '0x18f7b33172f5150949eef05ebb3b5d4fe245f391',
     liquidity: '129416592449635866287',
     token0: {
@@ -16536,15 +8003,11 @@ const x_weth = [
       symbol: 'OLAS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '25938568.69961039384932789100746408',
+    volumeUSD: '25938658.3749693856898814405262318',
   },
   {
-    feeTier: '10000',
     id: '0xafaaf2d8faa2772924f7c6e671d5e62f2a736bf9',
     liquidity: '12232713426329191',
     token0: {
@@ -16554,15 +8017,11 @@ const x_weth = [
       symbol: 'ELON',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '25579748.6790015548529616156906908',
   },
   {
-    feeTier: '3000',
     id: '0xcf63846bfdefc68067f835df6d0eddf6743c9de8',
     liquidity: '0',
     token0: {
@@ -16572,15 +8031,11 @@ const x_weth = [
       symbol: 'XSGD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '25535971.44271630623281342239487191',
   },
   {
-    feeTier: '3000',
     id: '0x4858411a69af3351ed7d448a0d65c6146c11c218',
     liquidity: '161524319057898310572',
     token0: {
@@ -16590,15 +8045,11 @@ const x_weth = [
       symbol: 'XCHF',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '25491547.22406381714761144502648754',
+    volumeUSD: '25491564.90301222328617621759570332',
   },
   {
-    feeTier: '10000',
     id: '0xd8c7b685cae56609e93a7af77a06cc98db960c9e',
     liquidity: '40954033051110681988280',
     token0: {
@@ -16608,15 +8059,11 @@ const x_weth = [
       symbol: 'ISLAND',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '25293519.07785894208575931223964017',
+    volumeUSD: '25327907.4002560563018810501815598',
   },
   {
-    feeTier: '10000',
     id: '0xb61a4da17b87d8761d39b57888b0fcfd9b7bff7d',
     liquidity: '19267723350591538244543',
     token0: {
@@ -16626,15 +8073,11 @@ const x_weth = [
       symbol: 'OPSEC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '25287298.07728388322069136106470371',
+    volumeUSD: '25312934.15543397192100702640542812',
   },
   {
-    feeTier: '10000',
     id: '0xb388f880ed2b4ee377da6d5a6af4f33161787526',
     liquidity: '3643688690264998640',
     token0: {
@@ -16644,15 +8087,11 @@ const x_weth = [
       symbol: 'PORT3',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '25045149.97995900816510510172727611',
   },
   {
-    feeTier: '10000',
     id: '0xa961ba3daa48376d3f6d7d6420be34c3a11d232e',
     liquidity: '36314050180183056250',
     token0: {
@@ -16662,15 +8101,11 @@ const x_weth = [
       symbol: 'BANANA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '24936404.77622285639833586767864132',
   },
   {
-    feeTier: '10000',
     id: '0x386fd65191edb32024f7d31e28f4e0cf1cfc75a1',
     liquidity: '0',
     token0: {
@@ -16680,15 +8115,11 @@ const x_weth = [
       symbol: 'AVG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '24852274.78848810965231740672775298',
   },
   {
-    feeTier: '10000',
     id: '0xd6eb9af2b8a37f5a7451e2a445cb93661a466a66',
     liquidity: '981597350519105780522',
     token0: {
@@ -16698,15 +8129,11 @@ const x_weth = [
       symbol: 'VMPX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '24790830.9305018877817578018254671',
+    volumeUSD: '24791267.6746068650025385141212882',
   },
   {
-    feeTier: '3000',
     id: '0xb0288f2b136f741b05ede945cc9c821749f4420b',
     liquidity: '142311213766487590186',
     token0: {
@@ -16716,51 +8143,11 @@ const x_weth = [
       symbol: 'WEWE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '24709467.59669956462081891484591075',
   },
   {
-    feeTier: '10000',
-    id: '0x3bd4c71155de785328bd7d1118acad7798cbaf6b',
-    liquidity: '2071436279636348432982',
-    token0: {
-      decimals: '18',
-      id: '0x85f138bfee4ef8e540890cfb48f620571d67eda3',
-      name: 'Wrapped AVAX (Wormhole)',
-      symbol: 'WAVAX',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '24597412.61041528698505855075716802',
-  },
-  {
-    feeTier: '3000',
-    id: '0x12014971036f0279d08705d1824c30f631c4b7fb',
-    liquidity: '0',
-    token0: {
-      decimals: '18',
-      id: '0x8798249c2e607446efb7ad49ec89dd1865ff4272',
-      name: 'SushiBar',
-      symbol: 'xSUSHI',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '24569745.54370706486754155262614698',
-  },
-  {
-    feeTier: '3000',
     id: '0x4b1f895066058662b9fa885e87a4e4159be0798a',
     liquidity: '1185409499078301586315',
     token0: {
@@ -16770,17 +8157,41 @@ const x_weth = [
       symbol: 'NMR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '24549220.0466769930037115481288648',
+    volumeUSD: '24655387.38578523708851777283589105',
   },
   {
-    feeTier: '3000',
+    id: '0x3bd4c71155de785328bd7d1118acad7798cbaf6b',
+    liquidity: '2071436279636348432982',
+    token0: {
+      decimals: '18',
+      id: '0x85f138bfee4ef8e540890cfb48f620571d67eda3',
+      name: 'Wrapped AVAX (Wormhole)',
+      symbol: 'WAVAX',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '24643837.11267980511044382302340706',
+  },
+  {
+    id: '0x12014971036f0279d08705d1824c30f631c4b7fb',
+    liquidity: '0',
+    token0: {
+      decimals: '18',
+      id: '0x8798249c2e607446efb7ad49ec89dd1865ff4272',
+      name: 'SushiBar',
+      symbol: 'xSUSHI',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '24569745.54370706486754155262614698',
+  },
+  {
     id: '0xea7d10e9b963e28a2a59429f44cd7922482000b7',
-    liquidity: '10287601785257179894147',
+    liquidity: '4800766440776956426676',
     token0: {
       decimals: '18',
       id: '0x1e4746dc744503b53b4a082cb3607b169a289090',
@@ -16788,15 +8199,11 @@ const x_weth = [
       symbol: 'IPOR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '24448511.91619060552378546709259806',
+    volumeUSD: '24455479.87234101684550806233579662',
   },
   {
-    feeTier: '10000',
     id: '0x28b67e0a4e570720c111c090c45daa065a54e58d',
     liquidity: '0',
     token0: {
@@ -16806,15 +8213,11 @@ const x_weth = [
       symbol: 'LQTY',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '24432773.41332336287143651214186779',
   },
   {
-    feeTier: '3000',
     id: '0x217616ea25a8b91389e806a4a0fa99b805f1b2e7',
     liquidity: '129194442030400861974976',
     token0: {
@@ -16824,15 +8227,11 @@ const x_weth = [
       symbol: 'APUFF',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '24351705.06127320576836114061626821',
+    volumeUSD: '24351800.42222484682027052072768607',
   },
   {
-    feeTier: '3000',
     id: '0xd43b29aaf8ad938cff4f478a0756defffb329d07',
     liquidity: '8692206244381310883347',
     token0: {
@@ -16842,15 +8241,11 @@ const x_weth = [
       symbol: 'ORC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '24309490.72978852312738298231263664',
+    volumeUSD: '24337990.12479413250331201143274265',
   },
   {
-    feeTier: '10000',
     id: '0xcf96fcf38dfc404e42366f05bffda6336df5174f',
     liquidity: '0',
     token0: {
@@ -16860,15 +8255,11 @@ const x_weth = [
       symbol: 'FORGE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '24109761.8359351646516433399113737',
   },
   {
-    feeTier: '3000',
     id: '0xe95a4c410a7e1b8c3282be1af9df57c24e48eb85',
     liquidity: '0',
     token0: {
@@ -16878,15 +8269,11 @@ const x_weth = [
       symbol: 'CGG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '24070608.44192498985785737455382118',
   },
   {
-    feeTier: '3000',
     id: '0x22a80b1365b651eb61ed90f5d732be7735efc43f',
     liquidity: '0',
     token0: {
@@ -16896,15 +8283,11 @@ const x_weth = [
       symbol: 'RAZOR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '24039913.47930492258610512679373172',
   },
   {
-    feeTier: '10000',
     id: '0x0abc86c50a3489200060b7226094a04b45924a68',
     liquidity: '0',
     token0: {
@@ -16914,15 +8297,11 @@ const x_weth = [
       symbol: 'BTRST',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '24013840.88311397034466486935012802',
   },
   {
-    feeTier: '500',
     id: '0xfececebf44d38858a0c478c2c4afa2601f5352fb',
     liquidity: '331731285000368540447',
     token0: {
@@ -16932,15 +8311,11 @@ const x_weth = [
       symbol: 'ETHMAXY',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '24012130.52689585902361963407719028',
   },
   {
-    feeTier: '10000',
     id: '0x52db713d60249e52024dfb54a5b4c32fe0893f54',
     liquidity: '10461288858713828899979',
     token0: {
@@ -16950,15 +8325,11 @@ const x_weth = [
       symbol: 'SHIA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '23964121.63340640815418579698827002',
+    volumeUSD: '23964260.31214275760653788063709539',
   },
   {
-    feeTier: '10000',
     id: '0x23655ec96b201bf1574316783f3d943a955ce5fe',
     liquidity: '514276903398056906239',
     token0: {
@@ -16968,15 +8339,11 @@ const x_weth = [
       symbol: 'EEFI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '23901887.0504878635309955673560241',
+    volumeUSD: '23909033.66462033741174629850584569',
   },
   {
-    feeTier: '10000',
     id: '0x460d507154b41f9f4134ff64057b7139675fa852',
     liquidity: '208051978508681950742',
     token0: {
@@ -16986,15 +8353,11 @@ const x_weth = [
       symbol: 'ALPHA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '23895742.8278180592925183681999329',
+    volumeUSD: '23895871.32214625002106723763292216',
   },
   {
-    feeTier: '3000',
     id: '0x1af432ed9c8b573de073c4c90a9d7b3d4e08f26d',
     liquidity: '62677788936626082464',
     token0: {
@@ -17004,15 +8367,11 @@ const x_weth = [
       symbol: 'BZN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '23858876.8887037129407236940321191',
   },
   {
-    feeTier: '3000',
     id: '0x9b146ea3ac0d33e1682d64b92725797c8111e606',
     liquidity: '27140956300419462452643',
     token0: {
@@ -17022,15 +8381,11 @@ const x_weth = [
       symbol: 'GLS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '23831721.59354808634307517508643178',
+    volumeUSD: '23851185.26183458682118543437757216',
   },
   {
-    feeTier: '500',
     id: '0x44b0901fbef7d9329516ad820196998a9f8adbcb',
     liquidity: '0',
     token0: {
@@ -17040,15 +8395,11 @@ const x_weth = [
       symbol: 'NU',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '23786651.78672966713590239858309871',
   },
   {
-    feeTier: '3000',
     id: '0xe4b82df044511a7162bea1f11119f6d1283a43a8',
     liquidity: '0',
     token0: {
@@ -17058,15 +8409,11 @@ const x_weth = [
       symbol: 'SHOPX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '23783796.03515722634062321926854843',
   },
   {
-    feeTier: '10000',
     id: '0x3c8e1997d9f93c989d4d7660b6ca52c451ad7554',
     liquidity: '4085800824851585647307',
     token0: {
@@ -17076,15 +8423,11 @@ const x_weth = [
       symbol: 'MFG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '23712088.32650147023100001077178867',
+    volumeUSD: '23712224.81574472113828868208155152',
   },
   {
-    feeTier: '10000',
     id: '0xce0f0a0f61d3e100d66a3cc234aa7ced9301d65e',
     liquidity: '0',
     token0: {
@@ -17094,15 +8437,11 @@ const x_weth = [
       symbol: 'PEPE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '23597023.80614525697215122376857372',
   },
   {
-    feeTier: '500',
     id: '0x9cd1e0793ced49f5e592d77328967fffc6ea7516',
     liquidity: '0',
     token0: {
@@ -17112,15 +8451,11 @@ const x_weth = [
       symbol: 'LOVE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '23462116.04124304759180393948499647',
   },
   {
-    feeTier: '10000',
     id: '0x9a599caa30032e55f05f38772c6d0ed36afdde07',
     liquidity: '8916559513033126522034',
     token0: {
@@ -17130,15 +8465,11 @@ const x_weth = [
       symbol: 'RST',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '23412527.79403922725454600253789979',
+    volumeUSD: '23420336.99155515411037388912206786',
   },
   {
-    feeTier: '3000',
     id: '0xa9966025816c490dffe18b5c58818ec14e0ce5da',
     liquidity: '112145172668857102381',
     token0: {
@@ -17148,15 +8479,11 @@ const x_weth = [
       symbol: 'GENE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '23277015.13893931610295656302905293',
   },
   {
-    feeTier: '3000',
     id: '0x9887507bea38d49b04ce06052ed32339264fef2c',
     liquidity: '14054150021870021483754073',
     token0: {
@@ -17166,15 +8493,11 @@ const x_weth = [
       symbol: 'TRG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '23217499.92614792674408445982454846',
+    volumeUSD: '23217676.70200109730134197627615858',
   },
   {
-    feeTier: '10000',
     id: '0x1346d1ee3fb1b65fecfcb65c149ca0702c286f53',
     liquidity: '172633507508422412160',
     token0: {
@@ -17184,15 +8507,11 @@ const x_weth = [
       symbol: 'KAI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '23190873.4187178735394939051350621',
   },
   {
-    feeTier: '10000',
     id: '0xa3a9a863ed908aa95cb17e1781aa97e6693bf604',
     liquidity: '930403848354327195031',
     token0: {
@@ -17202,15 +8521,11 @@ const x_weth = [
       symbol: 'RSR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '23165598.27826230992104871685535619',
+    volumeUSD: '23165839.74400824126531781837749424',
   },
   {
-    feeTier: '3000',
     id: '0xf784ce42e5d95a9f047bb6dec0d20729a30ceb77',
     liquidity: '0',
     token0: {
@@ -17220,15 +8535,11 @@ const x_weth = [
       symbol: 'GLCH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '23099333.82924820996584374498062296',
   },
   {
-    feeTier: '10000',
     id: '0x95945750a799bf95bafe29a06897ca549ba33530',
     liquidity: '0',
     token0: {
@@ -17238,15 +8549,11 @@ const x_weth = [
       symbol: 'PYR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '22983994.96957966935322088742432914',
   },
   {
-    feeTier: '3000',
     id: '0x77843ea21a4cc006766bba8bdefd934cbea20f4a',
     liquidity: '5770751326913550044421',
     token0: {
@@ -17256,15 +8563,11 @@ const x_weth = [
       symbol: 'INDEX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '22911870.06236705369470483558663508',
+    volumeUSD: '22940115.1515208501696174325684292',
   },
   {
-    feeTier: '3000',
     id: '0xc5c7c21f4e60770ca5991a8832127a40f5236f73',
     liquidity: '0',
     token0: {
@@ -17274,15 +8577,11 @@ const x_weth = [
       symbol: 'XAUt',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '22910544.27616799979599670157728795',
   },
   {
-    feeTier: '3000',
     id: '0x8ea45f0bf608d553a4d8837ebdd5b2c7d0eba772',
     liquidity: '0',
     token0: {
@@ -17292,15 +8591,11 @@ const x_weth = [
       symbol: 'XMT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '22808963.99142290514383518101029704',
   },
   {
-    feeTier: '10000',
     id: '0x01c49e7550d670759b2d54cbba3b65ce3a2e39a2',
     liquidity: '10552246257304745912',
     token0: {
@@ -17310,17 +8605,13 @@ const x_weth = [
       symbol: 'ALVA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '22773533.74988557743129188666072892',
   },
   {
-    feeTier: '10000',
     id: '0xb7b694137e97079e53c36100481bd2d622962014',
-    liquidity: '0',
+    liquidity: '82681730594276143',
     token0: {
       decimals: '8',
       id: '0x3c4b6e6e1ea3d4863700d7f76b36b7f3d3f13e3d',
@@ -17328,15 +8619,11 @@ const x_weth = [
       symbol: 'VGX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '22671508.32380914222555779431647257',
+    volumeUSD: '22671600.58746906726117221747747041',
   },
   {
-    feeTier: '10000',
     id: '0x75ea68f3c8c59bbc032dfce2db0705e2c6efad0b',
     liquidity: '27502372626722362',
     token0: {
@@ -17346,15 +8633,11 @@ const x_weth = [
       symbol: 'PDT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '22622719.79548605890366859588931719',
   },
   {
-    feeTier: '3000',
     id: '0x1d48fc96200153033476faaefb837e3381e081ce',
     liquidity: '6529329633236643455',
     token0: {
@@ -17364,15 +8647,11 @@ const x_weth = [
       symbol: 'CHEX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '22598418.83247317422437616790505879',
   },
   {
-    feeTier: '3000',
     id: '0x24099552f5dadd07c4c3e32c52fd7109e7c72727',
     liquidity: '0',
     token0: {
@@ -17382,15 +8661,11 @@ const x_weth = [
       symbol: 'ZORT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '22529092.43872228929470888858610638',
   },
   {
-    feeTier: '3000',
     id: '0xf845cba831be88268b1415d976db0afc7b8c6357',
     liquidity: '0',
     token0: {
@@ -17400,17 +8675,13 @@ const x_weth = [
       symbol: 'DSLA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '22511528.64621713477734365106314885',
   },
   {
-    feeTier: '10000',
     id: '0xceb63a909d95c9222cdf5b08044f5dae72cd036e',
-    liquidity: '4277932815396121266290',
+    liquidity: '4277933096871097976946',
     token0: {
       decimals: '18',
       id: '0x76e222b07c53d28b89b0bac18602810fc22b49a8',
@@ -17418,15 +8689,25 @@ const x_weth = [
       symbol: 'JOE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '22347666.46876550815591258136937296',
+    volumeUSD: '22354316.7630930953834806108136402',
   },
   {
-    feeTier: '3000',
+    id: '0xe061b362aa157a5037b225570cff9ebf1d657929',
+    liquidity: '17135682030962453853765',
+    token0: {
+      decimals: '18',
+      id: '0x88909d489678dd17aa6d9609f89b0419bf78fd9a',
+      name: 'Layer3',
+      symbol: 'L3',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '22318888.08293768740653882299761269',
+  },
+  {
     id: '0x2ad99c938471770da0cd60e08eaf29ebff67a92a',
     liquidity: '0',
     token0: {
@@ -17436,33 +8717,11 @@ const x_weth = [
       symbol: 'TOS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '22300295.98456382608605962318744386',
   },
   {
-    feeTier: '10000',
-    id: '0xe061b362aa157a5037b225570cff9ebf1d657929',
-    liquidity: '54051553360396663024677',
-    token0: {
-      decimals: '18',
-      id: '0x88909d489678dd17aa6d9609f89b0419bf78fd9a',
-      name: 'Layer3',
-      symbol: 'L3',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '22284186.71862365252045422771649405',
-  },
-  {
-    feeTier: '10000',
     id: '0x41b536722c014a577f06a4bb0dfa08bf0b8f5e87',
     liquidity: '0',
     token0: {
@@ -17472,15 +8731,11 @@ const x_weth = [
       symbol: 'NU',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '22280950.1057224565807125456812974',
   },
   {
-    feeTier: '3000',
     id: '0x21f396dd37a26d7754c513fd916d07f66aa6b81e',
     liquidity: '192608336820030433668',
     token0: {
@@ -17490,15 +8745,11 @@ const x_weth = [
       symbol: 'MON',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '22227737.60535765134264600189142839',
   },
   {
-    feeTier: '500',
     id: '0x886072a44bdd944495eff38ace8ce75c1eacdaf6',
     liquidity: '0',
     token0: {
@@ -17508,15 +8759,11 @@ const x_weth = [
       symbol: 'MKR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '22104212.4944071453297893472154057',
   },
   {
-    feeTier: '10000',
     id: '0xb38c979367cbadbe23026e9dda66ec6cbe926ff7',
     liquidity: '13994748835570132399',
     token0: {
@@ -17526,15 +8773,11 @@ const x_weth = [
       symbol: 'ARCX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '21966486.82257876302918377377789267',
   },
   {
-    feeTier: '10000',
     id: '0x2e571c1479e9b5415057655e454680a61820ce65',
     liquidity: '0',
     token0: {
@@ -17544,15 +8787,11 @@ const x_weth = [
       symbol: 'xSUSHI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '21707761.79251177681966722865153138',
   },
   {
-    feeTier: '10000',
     id: '0xc4090b37eeff584fc48c58e9d2303acca82247dc',
     liquidity: '15822654776591639652',
     token0: {
@@ -17562,15 +8801,11 @@ const x_weth = [
       symbol: 'APW',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '21693140.57034290168175000528890071',
+    volumeUSD: '21693166.09891390195556845421197549',
   },
   {
-    feeTier: '3000',
     id: '0xc12af0c4aa39d3061c56cd3cb19f5e62deeaebde',
     liquidity: '6259889886970917',
     token0: {
@@ -17580,15 +8815,11 @@ const x_weth = [
       symbol: 'wstETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '21684977.26621426020576170778804416',
   },
   {
-    feeTier: '10000',
     id: '0x2ecd02761b21376b12c65190727a0d50914025f0',
     liquidity: '0',
     token0: {
@@ -17598,15 +8829,11 @@ const x_weth = [
       symbol: 'Auction',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '21631785.17652468661905929553960376',
   },
   {
-    feeTier: '10000',
     id: '0x0616189d9a6c609ccbdc74fec3853146795efed3',
     liquidity: '0',
     token0: {
@@ -17616,15 +8843,11 @@ const x_weth = [
       symbol: 'FINE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '21270477.90318789076414308488568799',
   },
   {
-    feeTier: '500',
     id: '0x4f845c5ccf059002894d4e05cad5735ceceed68b',
     liquidity: '1219216070829767777',
     token0: {
@@ -17634,15 +8857,11 @@ const x_weth = [
       symbol: 'ICHI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '21211109.03999617108955250635010167',
   },
   {
-    feeTier: '3000',
     id: '0xde90022e08a142d4a2d35aac8d1f2a0264d34ade',
     liquidity: '35318857589987001453655216',
     token0: {
@@ -17652,15 +8871,11 @@ const x_weth = [
       symbol: '똥코인',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '21160375.30257248856116503085697246',
+    volumeUSD: '21161317.27290277789534200312603924',
   },
   {
-    feeTier: '10000',
     id: '0x3c4323f83d91b500b0f52cb19f7086813595f4c9',
     liquidity: '863094807307404360602',
     token0: {
@@ -17670,15 +8885,11 @@ const x_weth = [
       symbol: 'eSOV',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '21075877.49866951764239010644034838',
+    volumeUSD: '21083135.54065144569593433908839169',
   },
   {
-    feeTier: '10000',
     id: '0x7569349084fce8e5162d96d351b994e166ef6778',
     liquidity: '32216300530508262',
     token0: {
@@ -17688,15 +8899,11 @@ const x_weth = [
       symbol: 'XRT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '20896768.81567701531088591644829712',
+    volumeUSD: '20903886.36013932191760849171824806',
   },
   {
-    feeTier: '10000',
     id: '0x9507f5c18b0178bea743727ff00f1619f97e2bfb',
     liquidity: '87211966779601333779945',
     token0: {
@@ -17706,15 +8913,11 @@ const x_weth = [
       symbol: 'KATA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '20614271.2952429089334234373821512',
+    volumeUSD: '20627841.95462924057508407155151249',
   },
   {
-    feeTier: '3000',
     id: '0x917c52869df752d784ec73fa0881898f9bfd0fd8',
     liquidity: '0',
     token0: {
@@ -17724,15 +8927,11 @@ const x_weth = [
       symbol: 'BORING',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '20514465.26212439466021359286567088',
   },
   {
-    feeTier: '3000',
     id: '0x26fa8b07dce29fb1f0fb3c889e01b59debadefda',
     liquidity: '39985467983343371786895',
     token0: {
@@ -17742,15 +8941,11 @@ const x_weth = [
       symbol: 'BCUT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '20482452.58451321486369564901491731',
+    volumeUSD: '20500909.53799706052594642511888115',
   },
   {
-    feeTier: '3000',
     id: '0x701b319aff36311f720f0a1ebd6636dd84bb3e8b',
     liquidity: '7976680121859437959221',
     token0: {
@@ -17760,15 +8955,11 @@ const x_weth = [
       symbol: 'XFT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '20408497.74193586328051123999182541',
+    volumeUSD: '20408524.10602131391071629693929201',
   },
   {
-    feeTier: '3000',
     id: '0x0fddb7063f2db3c6b5b00b33758cdbd51ed2cc6f',
     liquidity: '130485205089457051622',
     token0: {
@@ -17778,15 +8969,11 @@ const x_weth = [
       symbol: 'VERSE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '20292549.97010609511578732807253438',
   },
   {
-    feeTier: '3000',
     id: '0x40a8003ea28e518c6e63b1b61ce15623557fed25',
     liquidity: '30005779561212499675425',
     token0: {
@@ -17796,15 +8983,11 @@ const x_weth = [
       symbol: 'BOO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '20132404.55655135208019467309221025',
+    volumeUSD: '20132579.17039150227602534061275523',
   },
   {
-    feeTier: '10000',
     id: '0x45f4d60405b797a2b0e5ea581fe6ea445cb46b8f',
     liquidity: '0',
     token0: {
@@ -17814,15 +8997,11 @@ const x_weth = [
       symbol: 'OPSEC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '20131150.33546516847511999742372324',
   },
   {
-    feeTier: '10000',
     id: '0x8119c00d8a02c61f813675d23d5acb98851cf274',
     liquidity: '3436717355206723053692',
     token0: {
@@ -17832,15 +9011,11 @@ const x_weth = [
       symbol: 'ELAND',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '20123117.97738799004190188732605042',
+    volumeUSD: '20124832.06934815599847701906383578',
   },
   {
-    feeTier: '10000',
     id: '0x2773caa898ad7043ec4df2d22526ed331d54b671',
     liquidity: '45197148957762856494043',
     token0: {
@@ -17850,15 +9025,11 @@ const x_weth = [
       symbol: '00',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '20029297.15055787453063217828376409',
+    volumeUSD: '20107842.47787757258901230535394453',
   },
   {
-    feeTier: '10000',
     id: '0x7e6f87150859315ae9f92958156f3a0107382316',
     liquidity: '333012038455643163341651',
     token0: {
@@ -17868,15 +9039,11 @@ const x_weth = [
       symbol: 'BITCOIN2',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '20020198.24504892265467067260280243',
   },
   {
-    feeTier: '10000',
     id: '0x9cd56c4ce09ce2422007173ff345b011a1278491',
     liquidity: '33964128236497294835',
     token0: {
@@ -17886,15 +9053,11 @@ const x_weth = [
       symbol: 'MARS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '19953558.01988167779702347278147494',
+    volumeUSD: '19957329.67212577550720438238135465',
   },
   {
-    feeTier: '500',
     id: '0x4efc9e2e3e77732ce2f9612b8f050082c01688bd',
     liquidity: '303747214124771672',
     token0: {
@@ -17904,15 +9067,11 @@ const x_weth = [
       symbol: 'GREEN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '19934200.49626503534683875428905122',
+    volumeUSD: '19935905.17812822368640119425953336',
   },
   {
-    feeTier: '3000',
     id: '0xdc2c21f1b54ddaf39e944689a8f90cb844135cc9',
     liquidity: '31258660833166441962',
     token0: {
@@ -17922,15 +9081,11 @@ const x_weth = [
       symbol: 'BAL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '19932972.4445803696566122544770042',
+    volumeUSD: '19933037.37362515718854232044605692',
   },
   {
-    feeTier: '10000',
     id: '0x84b54635a43441ee7748658660f79fe05c03ba7c',
     liquidity: '411335424269969769649',
     token0: {
@@ -17940,15 +9095,11 @@ const x_weth = [
       symbol: 'WAGMI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '19889398.74676042096465517095867277',
+    volumeUSD: '19890073.40656427075175307242858115',
   },
   {
-    feeTier: '3000',
     id: '0xd330236c40712d9003768ba70c70af2fc0739451',
     liquidity: '11000085823013019769436',
     token0: {
@@ -17958,15 +9109,11 @@ const x_weth = [
       symbol: 'THOL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '19804601.7084913262257934337580045',
   },
   {
-    feeTier: '3000',
     id: '0x4a382e0fb2abc4bc087d2f7953a4689ecbb96374',
     liquidity: '11719439873787239121577',
     token0: {
@@ -17976,15 +9123,11 @@ const x_weth = [
       symbol: 'μDEGODS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '19778577.41106558680208099561664874',
   },
   {
-    feeTier: '10000',
     id: '0x2c58685eeff15d359799a95d4e569c249d542a67',
     liquidity: '0',
     token0: {
@@ -17994,15 +9137,25 @@ const x_weth = [
       symbol: 'FOUR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '19776293.15009201643259447171502975',
   },
   {
-    feeTier: '3000',
+    id: '0xc57cac126676471c547d2d9b1c283e56ef1b28f4',
+    liquidity: '47902079608341191',
+    token0: {
+      decimals: '9',
+      id: '0xb60acd2057067dc9ed8c083f5aa227a244044fd6',
+      name: 'Tensorplex Staked TAO',
+      symbol: 'stTAO',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '19701693.63571978444604938644873516',
+  },
+  {
     id: '0x2f95eaa4fa8593f7f1e7e69fabb3c44a89ba989d',
     liquidity: '0',
     token0: {
@@ -18012,33 +9165,11 @@ const x_weth = [
       symbol: 'BANANA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '19635250.45181431127923133615263984',
   },
   {
-    feeTier: '3000',
-    id: '0xc57cac126676471c547d2d9b1c283e56ef1b28f4',
-    liquidity: '47774798357817858',
-    token0: {
-      decimals: '9',
-      id: '0xb60acd2057067dc9ed8c083f5aa227a244044fd6',
-      name: 'Tensorplex Staked TAO',
-      symbol: 'stTAO',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '19574618.46304838603035328590888546',
-  },
-  {
-    feeTier: '10000',
     id: '0x482ece59976461f5bfbcc2f5546c4878fd44ec71',
     liquidity: '7264462562952297256420',
     token0: {
@@ -18048,15 +9179,11 @@ const x_weth = [
       symbol: 'ELO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '19568417.17556195329418673507914708',
   },
   {
-    feeTier: '100',
     id: '0xa71e34ae378401e14bfbfe0a4147ce08524b35a5',
     liquidity: '0',
     token0: {
@@ -18066,15 +9193,11 @@ const x_weth = [
       symbol: 'WOOF',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '19531980.92252062410680468158160525',
   },
   {
-    feeTier: '10000',
     id: '0x3234dd4f15cd4174a7d612d567a594cc69406343',
     liquidity: '0',
     token0: {
@@ -18084,15 +9207,11 @@ const x_weth = [
       symbol: 'HOPPY',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '19514510.38676786087908596536478945',
   },
   {
-    feeTier: '10000',
     id: '0xeba623e4f5c7735427a9ef491ecee082dd4bf6ce',
     liquidity: '6414655687163',
     token0: {
@@ -18102,15 +9221,11 @@ const x_weth = [
       symbol: 'WAAC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '19482727.09235800455101788453950701',
+    volumeUSD: '19485408.26455084778952236473042045',
   },
   {
-    feeTier: '10000',
     id: '0x13f59e144dc9e09270454eb1e228b0fde44f9002',
     liquidity: '0',
     token0: {
@@ -18120,15 +9235,11 @@ const x_weth = [
       symbol: 'VOMBATUS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '19470558.05163747604765521234751319',
   },
   {
-    feeTier: '10000',
     id: '0x66bea722346efc72a5a2fc3d35abd7915547fea0',
     liquidity: '382711591289347198320658',
     token0: {
@@ -18138,15 +9249,11 @@ const x_weth = [
       symbol: 'DRAGONX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '19455865.11197287593629772488430871',
+    volumeUSD: '19464295.47409161578414736728946612',
   },
   {
-    feeTier: '10000',
     id: '0x80464c5024253974506e8dd36b8ee49791c1f1ea',
     liquidity: '5076638048730688187502',
     token0: {
@@ -18156,51 +9263,11 @@ const x_weth = [
       symbol: 'BTCINU',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '19383236.78695415227120765969461134',
+    volumeUSD: '19383269.51107938982984533551110369',
   },
   {
-    feeTier: '3000',
-    id: '0x1a3fb049c2d88a16b927be6a4cae48ca38d93d4c',
-    liquidity: '11183443318848555296671',
-    token0: {
-      decimals: '18',
-      id: '0x41545f8b9472d758bb669ed8eaeeecd7a9c4ec29',
-      name: 'Forta',
-      symbol: 'FORT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '19131851.66379435725714303402716094',
-  },
-  {
-    feeTier: '10000',
-    id: '0x6cdff40fcad846328a8aa19ea928d3fa9412517f',
-    liquidity: '1560735056885701369',
-    token0: {
-      decimals: '18',
-      id: '0x38e68a37e401f7271568cecaac63c6b1e19130b4',
-      name: 'Banana',
-      symbol: 'BANANA',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '19119095.21639905040958233999675809',
-  },
-  {
-    feeTier: '3000',
     id: '0x88b81bc7f6dd4032ed626f452d66028ecd50e64a',
     liquidity: '23780113660268110008823',
     token0: {
@@ -18210,15 +9277,39 @@ const x_weth = [
       symbol: 'TLOS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '19102228.3117612458056954103433026',
+    volumeUSD: '19150260.22740298231697846527944674',
   },
   {
-    feeTier: '10000',
+    id: '0x1a3fb049c2d88a16b927be6a4cae48ca38d93d4c',
+    liquidity: '11183443318848555296671',
+    token0: {
+      decimals: '18',
+      id: '0x41545f8b9472d758bb669ed8eaeeecd7a9c4ec29',
+      name: 'Forta',
+      symbol: 'FORT',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '19144194.29687587058614463032810348',
+  },
+  {
+    id: '0x6cdff40fcad846328a8aa19ea928d3fa9412517f',
+    liquidity: '1560735056885701369',
+    token0: {
+      decimals: '18',
+      id: '0x38e68a37e401f7271568cecaac63c6b1e19130b4',
+      name: 'Banana',
+      symbol: 'BANANA',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '19119095.21639905040958233999675809',
+  },
+  {
     id: '0xc8fa85920a4cb22d8c6d15e0125f5c76f27a3a73',
     liquidity: '8870306588988558874630317',
     token0: {
@@ -18228,15 +9319,11 @@ const x_weth = [
       symbol: 'HIPP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '19066828.41315763334067086842962574',
+    volumeUSD: '19066860.36558833580469340860409338',
   },
   {
-    feeTier: '10000',
     id: '0xebe4cb1f00e84e4eff385868f109ec8573db0f77',
     liquidity: '0',
     token0: {
@@ -18246,15 +9333,11 @@ const x_weth = [
       symbol: '404Blocks',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '18965600.5926751001766978431504693',
   },
   {
-    feeTier: '3000',
     id: '0x02b9e949ba711523ee0f10470d09b47c64d7a46d',
     liquidity: '12674715793815183222598',
     token0: {
@@ -18264,15 +9347,11 @@ const x_weth = [
       symbol: 'SSNC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '18806594.70659300090543181310445578',
+    volumeUSD: '18810727.88122471088996311201234426',
   },
   {
-    feeTier: '10000',
     id: '0xde2af72e916dc56f9a65f3c9766262c00c030c98',
     liquidity: '453786139361644',
     token0: {
@@ -18282,15 +9361,11 @@ const x_weth = [
       symbol: 'CEL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '18799044.05012753236430909047345353',
   },
   {
-    feeTier: '3000',
     id: '0x1b211b0d4589004b78d9f2ab36db11f8e42ae212',
     liquidity: '0',
     token0: {
@@ -18300,15 +9375,11 @@ const x_weth = [
       symbol: 'RBN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '18750751.83801818991570071952113304',
   },
   {
-    feeTier: '10000',
     id: '0x9bd730ddcfe6b5b9ecba1cf66e153adaa807e238',
     liquidity: '59288762419422022495',
     token0: {
@@ -18318,15 +9389,11 @@ const x_weth = [
       symbol: 'GRPFT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '18687303.83568364041407145532124369',
   },
   {
-    feeTier: '10000',
     id: '0x4da56307a38aa15ebb28c81766415b9179984036',
     liquidity: '59374356614642',
     token0: {
@@ -18336,15 +9403,11 @@ const x_weth = [
       symbol: 'FARM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '18624647.59946483925167929058887644',
   },
   {
-    feeTier: '10000',
     id: '0x930b2c8ff1de619d4d6594da0ba03fdeda09a672',
     liquidity: '114439807877070145',
     token0: {
@@ -18354,15 +9417,11 @@ const x_weth = [
       symbol: 'NFTX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '18606242.85100421109262269256841465',
   },
   {
-    feeTier: '10000',
     id: '0x910e600ab442c0f0ae5df916a82974fee7de3b33',
     liquidity: '0',
     token0: {
@@ -18372,15 +9431,11 @@ const x_weth = [
       symbol: 'FST',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '18568505.47705713446109914304811837',
   },
   {
-    feeTier: '3000',
     id: '0xcb9a5551090c3c56fd1647c2849c315e88c0c5f3',
     liquidity: '0',
     token0: {
@@ -18390,15 +9445,11 @@ const x_weth = [
       symbol: 'rsETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '18561001.5643725170507472578388709',
   },
   {
-    feeTier: '10000',
     id: '0x132a6e4fd04b862a83bf95127d23be2c3ab28502',
     liquidity: '0',
     token0: {
@@ -18408,15 +9459,11 @@ const x_weth = [
       symbol: 'GOG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '18553509.37555137676356670386982192',
   },
   {
-    feeTier: '500',
     id: '0x0357bd46f9c723f8c39a3c04702f62c8615d02e6',
     liquidity: '0',
     token0: {
@@ -18426,15 +9473,11 @@ const x_weth = [
       symbol: 'TRUMP47',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '18409004.22803859726680887056449308',
   },
   {
-    feeTier: '3000',
     id: '0x01bd1d1f933692dfc64d1d64cc3ed1c24887edaa',
     liquidity: '0',
     token0: {
@@ -18444,15 +9487,11 @@ const x_weth = [
       symbol: 'OMNI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '18376790.19864321736651873861179105',
+    volumeUSD: '18376839.11907478541770659610780134',
   },
   {
-    feeTier: '3000',
     id: '0xafc9efc44e227ab144a22aebdf001ecda48b0549',
     liquidity: '3248088435547865799715',
     token0: {
@@ -18462,15 +9501,25 @@ const x_weth = [
       symbol: 'OCH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '18232579.41130484034396338779449725',
+    volumeUSD: '18233318.42720218345914489873145924',
   },
   {
-    feeTier: '10000',
+    id: '0xae4045ffeddf61d570e6d1fe2d71ded1a2e85a88',
+    liquidity: '4079379328004508471408',
+    token0: {
+      decimals: '18',
+      id: '0x57e114b691db790c35207b2e685d4a43181e6061',
+      name: 'ENA',
+      symbol: 'ENA',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '18230582.6497460765350314271436302',
+  },
+  {
     id: '0x8b6a6f5b828f086a2a9d8a3150b958e79e91a82f',
     liquidity: '277099157305299569385186287',
     token0: {
@@ -18480,15 +9529,11 @@ const x_weth = [
       symbol: 'EDOGE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '18179595.28749228457975224986340584',
+    volumeUSD: '18184821.61424507701976828560669136',
   },
   {
-    feeTier: '3000',
     id: '0x816ed78d38b6ff9bf7a02bac70bba4ea9e850f06',
     liquidity: '2240136089102274817',
     token0: {
@@ -18498,15 +9543,11 @@ const x_weth = [
       symbol: 'OSMI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '18166866.95440500396782360991578276',
+    volumeUSD: '18166872.70930788183011020467193895',
   },
   {
-    feeTier: '500',
     id: '0xe3baa96ad46457d9e6cdd4e32abc11e2c124ec49',
     liquidity: '47219714869733045772',
     token0: {
@@ -18516,15 +9557,11 @@ const x_weth = [
       symbol: 'MATIC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '18157371.17771432289902696839551516',
+    volumeUSD: '18157602.74582696064884524920424641',
   },
   {
-    feeTier: '500',
     id: '0x5ba84601bd66a09034318836761041a5cc9a7ccb',
     liquidity: '8660675511352943',
     token0: {
@@ -18534,33 +9571,11 @@ const x_weth = [
       symbol: 'CATE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '18107208.93641602232628268649056521',
   },
   {
-    feeTier: '500',
-    id: '0xae4045ffeddf61d570e6d1fe2d71ded1a2e85a88',
-    liquidity: '386890203982994113669',
-    token0: {
-      decimals: '18',
-      id: '0x57e114b691db790c35207b2e685d4a43181e6061',
-      name: 'ENA',
-      symbol: 'ENA',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '18100299.87990085900310375269218585',
-  },
-  {
-    feeTier: '10000',
     id: '0x1091b1f0be94745a6f220243d7f451e228da1b52',
     liquidity: '45457589879742439925539210',
     token0: {
@@ -18570,15 +9585,11 @@ const x_weth = [
       symbol: 'MOYA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '18078863.59680531083448264559939238',
+    volumeUSD: '18078899.05153215602071210615112503',
   },
   {
-    feeTier: '10000',
     id: '0x593974accc0ec830d8ce24e12f4629f05315c4ba',
     liquidity: '92746935386513968252',
     token0: {
@@ -18588,33 +9599,11 @@ const x_weth = [
       symbol: 'BCRED',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '18018835.26043364487348395639273196',
+    volumeUSD: '18019395.91286912026070272905108503',
   },
   {
-    feeTier: '10000',
-    id: '0xaf585783337434fee47c9abfbd737156f9a84dd1',
-    liquidity: '197602384070662340947045',
-    token0: {
-      decimals: '18',
-      id: '0xa0335820dc549dbfae5b8d691331cadfca7026e0',
-      name: 'Shiba v2 Limited',
-      symbol: 'SHIBA2',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '17985777.34573332951780148735891001',
-  },
-  {
-    feeTier: '3000',
     id: '0x9bdc7dfd19b75b023e28bbb8e197295c51ce55e4',
     liquidity: '6852534686993748095407',
     token0: {
@@ -18624,15 +9613,25 @@ const x_weth = [
       symbol: 'NETVR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '17984094.08888194615859542417833537',
+    volumeUSD: '17996643.97041517519821615999466134',
   },
   {
-    feeTier: '3000',
+    id: '0xaf585783337434fee47c9abfbd737156f9a84dd1',
+    liquidity: '197602384070662340947045',
+    token0: {
+      decimals: '18',
+      id: '0xa0335820dc549dbfae5b8d691331cadfca7026e0',
+      name: 'Shiba v2 Limited',
+      symbol: 'SHIBA2',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '17991915.33623189950826944438500078',
+  },
+  {
     id: '0x5233c9541b40e5d2c9ee45fc40e351bf8311435e',
     liquidity: '37177385620628972157724',
     token0: {
@@ -18642,15 +9641,11 @@ const x_weth = [
       symbol: 'WOMBAT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '17936793.49869833647055796401870219',
+    volumeUSD: '17939254.43538254313384990814885921',
   },
   {
-    feeTier: '10000',
     id: '0xdab040a387cb425357392a6693730e34a289770c',
     liquidity: '55897404685654645860',
     token0: {
@@ -18660,15 +9655,11 @@ const x_weth = [
       symbol: 'WSB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '17923959.3170450433908037237502316',
   },
   {
-    feeTier: '10000',
     id: '0xfd213ee4d00656caaab11c5c507bffac12b1bd4f',
     liquidity: '0',
     token0: {
@@ -18678,15 +9669,11 @@ const x_weth = [
       symbol: 'NHUB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '17899102.76161269596517936116772719',
   },
   {
-    feeTier: '500',
     id: '0x5d4f3c6fa16908609bac31ff148bd002aa6b8c83',
     liquidity: '21305112669968070758',
     token0: {
@@ -18696,15 +9683,11 @@ const x_weth = [
       symbol: 'LINK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '17834271.58858892949113873287615909',
+    volumeUSD: '17835325.76172310843237279891719335',
   },
   {
-    feeTier: '3000',
     id: '0xf6c6ac7d03699dd6d139826ce88c690bbc7d71d8',
     liquidity: '0',
     token0: {
@@ -18714,15 +9697,11 @@ const x_weth = [
       symbol: 'UST',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '17701875.1272723704397570304329677',
   },
   {
-    feeTier: '3000',
     id: '0xe13cf2d5d235aa25b489f55e4a940f8715d8d5ae',
     liquidity: '36510873571379583684764',
     token0: {
@@ -18732,15 +9711,11 @@ const x_weth = [
       symbol: 'PLOT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '17606566.02415875415476420927303048',
   },
   {
-    feeTier: '10000',
     id: '0x837cf5b89916139baa0e57ffb0e35d7181c03ac6',
     liquidity: '0',
     token0: {
@@ -18750,15 +9725,11 @@ const x_weth = [
       symbol: 'KEP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '17587826.95960252998415176918018444',
   },
   {
-    feeTier: '10000',
     id: '0x07a72f8f6a29cf501e7226ca82264f9ee79380e7',
     liquidity: '201716626792300886274495634',
     token0: {
@@ -18768,15 +9739,25 @@ const x_weth = [
       symbol: 'USDC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '17568760.97963730614757647597260454',
   },
   {
-    feeTier: '3000',
+    id: '0x29567ae23d65225870c5bd738a6debe7ac5a1d66',
+    liquidity: '464557063552203241837',
+    token0: {
+      decimals: '18',
+      id: '0x8f08b70456eb22f6109f57b8fafe862ed28e6040',
+      name: 'LrtSquare',
+      symbol: 'LRT2',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '17562239.69797222565761879898240467',
+  },
+  {
     id: '0xc164636803193c7ff196ca7334cfd7059a75d0f0',
     liquidity: '350259993530040193310807',
     token0: {
@@ -18786,33 +9767,25 @@ const x_weth = [
       symbol: 'RAS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '17551997.36417796096694973757421349',
   },
   {
-    feeTier: '10000',
-    id: '0x29567ae23d65225870c5bd738a6debe7ac5a1d66',
-    liquidity: '464505146895043234319',
+    id: '0x44f9469d0d5393d3a01a0d4fa14fe7713c1ad1f7',
+    liquidity: '20220620113826067024052',
     token0: {
       decimals: '18',
-      id: '0x8f08b70456eb22f6109f57b8fafe862ed28e6040',
-      name: 'LrtSquare',
-      symbol: 'LRT2',
+      id: '0x419c4db4b9e25d6db2ad9691ccb832c8d9fda05e',
+      name: 'Dragon',
+      symbol: 'DRGN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '17504860.12818558414719359246596845',
+    volumeUSD: '17482991.17083665388299019099071636',
   },
   {
-    feeTier: '10000',
     id: '0xb53af7e5ae3b6fdcfe861f88ddfa575e75caa012',
     liquidity: '0',
     token0: {
@@ -18822,15 +9795,11 @@ const x_weth = [
       symbol: 'TEE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '17434971.38171860384271551017712439',
   },
   {
-    feeTier: '3000',
     id: '0x66b0b142881a69379075d601756b77301080ec5d',
     liquidity: '0',
     token0: {
@@ -18840,33 +9809,11 @@ const x_weth = [
       symbol: 'AMO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '17410256.92872555260940329938482153',
   },
   {
-    feeTier: '3000',
-    id: '0x880ed8e3c0bad6a4a2fa6355bb0caa7fe03199f4',
-    liquidity: '22657571924259735263884',
-    token0: {
-      decimals: '18',
-      id: '0x0921799cb1d702148131024d18fcde022129dc73',
-      name: 'LightLink',
-      symbol: 'LL',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '17370794.89229201003627403542420302',
-  },
-  {
-    feeTier: '500',
     id: '0xf260d15e8ebe54d210ef53f5b61cb46bd9aa29ee',
     liquidity: '17748260005594968901588',
     token0: {
@@ -18876,15 +9823,25 @@ const x_weth = [
       symbol: 'ALI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '17347306.34066731944624830590117334',
+    volumeUSD: '17409108.17643709815518732119388368',
   },
   {
-    feeTier: '10000',
+    id: '0x880ed8e3c0bad6a4a2fa6355bb0caa7fe03199f4',
+    liquidity: '22657571924259735263884',
+    token0: {
+      decimals: '18',
+      id: '0x0921799cb1d702148131024d18fcde022129dc73',
+      name: 'LightLink',
+      symbol: 'LL',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '17386505.91241075883368761914133587',
+  },
+  {
     id: '0x4e680c7162fe5abaccf3409aea564a653f1c91c0',
     liquidity: '235520267342207499196',
     token0: {
@@ -18894,15 +9851,11 @@ const x_weth = [
       symbol: 'ASTX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '17299848.80732825482207338228093474',
+    volumeUSD: '17302300.29600014533137409610352735',
   },
   {
-    feeTier: '10000',
     id: '0xd9d854a1061b8ce606fe904cb29beb6793c88643',
     liquidity: '26051774163845848226064',
     token0: {
@@ -18912,15 +9865,11 @@ const x_weth = [
       symbol: 'Rait',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '17275239.93746541486587476807257499',
   },
   {
-    feeTier: '10000',
     id: '0xe4bb8d8b001502ed418ebd7a5b952ade6f305b18',
     liquidity: '0',
     token0: {
@@ -18930,15 +9879,11 @@ const x_weth = [
       symbol: 'CARDS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '17190188.43040406022530689546671316',
   },
   {
-    feeTier: '3000',
     id: '0x42eb481a3338563e1247d461477f4cbc97c9a444',
     liquidity: '0',
     token0: {
@@ -18948,15 +9893,11 @@ const x_weth = [
       symbol: 'MIR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '17145902.12001507151115426843722807',
   },
   {
-    feeTier: '10000',
     id: '0x3f93129a61c0c60759a9a871dc683ae58e55209f',
     liquidity: '28585811439757558',
     token0: {
@@ -18966,15 +9907,11 @@ const x_weth = [
       symbol: 'SIPHER',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '17039225.99661258726025016316232495',
   },
   {
-    feeTier: '10000',
     id: '0xd94fdb60194fefa7ef8b416f8ba99278ab3e00dc',
     liquidity: '725756493263327314733582',
     token0: {
@@ -18984,15 +9921,11 @@ const x_weth = [
       symbol: 'DINU',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '16964217.20647076327448116728136768',
+    volumeUSD: '16964247.76981517868556517265433979',
   },
   {
-    feeTier: '10000',
     id: '0xebdab3e7787501cad4159d87561aee0687a852ff',
     liquidity: '0',
     token0: {
@@ -19002,33 +9935,11 @@ const x_weth = [
       symbol: 'iFARM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '16942585.75094761076586128275941714',
   },
   {
-    feeTier: '10000',
-    id: '0x44f9469d0d5393d3a01a0d4fa14fe7713c1ad1f7',
-    liquidity: '21624143450092371305694',
-    token0: {
-      decimals: '18',
-      id: '0x419c4db4b9e25d6db2ad9691ccb832c8d9fda05e',
-      name: 'Dragon',
-      symbol: 'DRGN',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '16928511.25106614203241157121889261',
-  },
-  {
-    feeTier: '10000',
     id: '0x9396c357befc79abfef7f229a3bd8dd0ae8e6bfd',
     liquidity: '15933168234534019314',
     token0: {
@@ -19038,15 +9949,11 @@ const x_weth = [
       symbol: 'SHPING',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '16868336.30913389538186077637499022',
+    volumeUSD: '16868363.09068982483230391462338206',
   },
   {
-    feeTier: '3000',
     id: '0x9d87494b184286986b4358ce9217f98645ed3418',
     liquidity: '10352755735812143',
     token0: {
@@ -19056,15 +9963,11 @@ const x_weth = [
       symbol: 'LNDX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '16807384.28252505537759128552660506',
+    volumeUSD: '16808710.98221487210539100750134625',
   },
   {
-    feeTier: '10000',
     id: '0x50fe1432a9127b25d81ba12d739b744f84111134',
     liquidity: '69166125892500917250',
     token0: {
@@ -19074,15 +9977,11 @@ const x_weth = [
       symbol: 'PENDLE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '16725294.06685196737316491799331032',
+    volumeUSD: '16725814.47718419429421732915446444',
   },
   {
-    feeTier: '10000',
     id: '0xe1903edc010d0e55f9eb7b250246da3b6e0192bd',
     liquidity: '0',
     token0: {
@@ -19092,15 +9991,11 @@ const x_weth = [
       symbol: 'P404',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '16662780.43444403634747209488227458',
   },
   {
-    feeTier: '10000',
     id: '0xcb990d22b65af82c4c9e420f732bb813facc4c65',
     liquidity: '5433325731941968053144152',
     token0: {
@@ -19110,15 +10005,11 @@ const x_weth = [
       symbol: 'GM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '16632035.11167366872732179477366913',
+    volumeUSD: '16632038.60439250859740872985042831',
   },
   {
-    feeTier: '3000',
     id: '0xa9c6b614fa5503bd12e037d96fa292e4e15bb123',
     liquidity: '2730323199353386',
     token0: {
@@ -19128,15 +10019,11 @@ const x_weth = [
       symbol: 'DAR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '16583026.1247346330106847766054919',
+    volumeUSD: '16594092.89486687773815612340202189',
   },
   {
-    feeTier: '10000',
     id: '0xe3c162081fe092c4f7aa0d6cb97a4b5c2769fc2e',
     liquidity: '46157655102629959',
     token0: {
@@ -19146,15 +10033,11 @@ const x_weth = [
       symbol: 'MAPE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '16564293.54890845853916645388980511',
   },
   {
-    feeTier: '3000',
     id: '0x8a5a44685c922402b221ccb3ea1817b279926c61',
     liquidity: '0',
     token0: {
@@ -19164,15 +10047,11 @@ const x_weth = [
       symbol: 'DEVT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '16514265.2743357396244714970679796',
   },
   {
-    feeTier: '10000',
     id: '0xa1b4b8ee671123b49cd8a129b3c1c5b7944e5601',
     liquidity: '0',
     token0: {
@@ -19182,15 +10061,11 @@ const x_weth = [
       symbol: 'BEND',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '16491660.25119415190615822055522401',
   },
   {
-    feeTier: '10000',
     id: '0x7d5435b2e974e1b2e03e71ff489edcd0a1c7b46e',
     liquidity: '3183710197646732895344',
     token0: {
@@ -19200,17 +10075,13 @@ const x_weth = [
       symbol: 'CMPT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '16490012.48606407201612274234291096',
+    volumeUSD: '16490381.36343024977917975082178684',
   },
   {
-    feeTier: '10000',
     id: '0x74092c7c0024feeb3839bed5ab6189eed86ae856',
-    liquidity: '269301076228687057634',
+    liquidity: '1508002402204983635',
     token0: {
       decimals: '18',
       id: '0x3472a5a71965499acd81997a54bba8d852c6e53d',
@@ -19218,15 +10089,25 @@ const x_weth = [
       symbol: 'BADGER',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '16360080.91196891654555712052149629',
+    volumeUSD: '16360126.85776938174313648078135566',
   },
   {
-    feeTier: '3000',
+    id: '0x9ba3f47fe7f5a12562ba0a4a5645d8bf9ea1dd8e',
+    liquidity: '6694895526724782740899851',
+    token0: {
+      decimals: '24',
+      id: '0x85f17cf997934a597031b2e18a9ab6ebd4b9f6a4',
+      name: 'NEAR',
+      symbol: 'NEAR',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '16256131.56147592620287319503279457',
+  },
+  {
     id: '0x14de8287adc90f0f95bf567c0707670de52e3813',
     liquidity: '229559690383091225838',
     token0: {
@@ -19236,15 +10117,11 @@ const x_weth = [
       symbol: 'RAI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '16240305.64860730845822118344259713',
+    volumeUSD: '16240936.8904592523738133367703244',
   },
   {
-    feeTier: '10000',
     id: '0xd05d35b500dee15aecbae563a28e790ae1594cb4',
     liquidity: '277839863657713842990',
     token0: {
@@ -19254,33 +10131,11 @@ const x_weth = [
       symbol: 'WTK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '16236012.71731930992245712740394132',
+    volumeUSD: '16236114.65241493753080707218695233',
   },
   {
-    feeTier: '10000',
-    id: '0x9ba3f47fe7f5a12562ba0a4a5645d8bf9ea1dd8e',
-    liquidity: '3234272049467587127076225',
-    token0: {
-      decimals: '24',
-      id: '0x85f17cf997934a597031b2e18a9ab6ebd4b9f6a4',
-      name: 'NEAR',
-      symbol: 'NEAR',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '16204853.58351804706740010796853496',
-  },
-  {
-    feeTier: '3000',
     id: '0x41e570fc65d0f9efe89a6145306e2ba7b8a0fa6b',
     liquidity: '2819953084672302350875',
     token0: {
@@ -19290,15 +10145,11 @@ const x_weth = [
       symbol: 'AVA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '16112375.60269036392547700866456015',
+    volumeUSD: '16184259.08714397401074061080661021',
   },
   {
-    feeTier: '3000',
     id: '0xc772a65917d5da983b7fc3c9cfbfb53ef01aef7e',
     liquidity: '0',
     token0: {
@@ -19308,15 +10159,11 @@ const x_weth = [
       symbol: 'EPSTEIN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '16109417.74566998990334947669322567',
   },
   {
-    feeTier: '10000',
     id: '0x4b9d0663acb7a774c327b679d423993c2a11a263',
     liquidity: '17583777071721187900',
     token0: {
@@ -19326,15 +10173,11 @@ const x_weth = [
       symbol: 'SDAO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '15979186.06175901900643538796216496',
+    volumeUSD: '15979192.76259492263929186455697309',
   },
   {
-    feeTier: '3000',
     id: '0x2c6099a4079c0a9816abe7730a608dcd84516f80',
     liquidity: '585594909963352811338978278',
     token0: {
@@ -19344,15 +10187,11 @@ const x_weth = [
       symbol: 'MVDG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '15978277.45922263236195214258594417',
   },
   {
-    feeTier: '3000',
     id: '0xe935fac6b950539f37450f80c76325a6b2232725',
     liquidity: '13363056461966339711873',
     token0: {
@@ -19362,17 +10201,13 @@ const x_weth = [
       symbol: 'VINU',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '15941358.1273669418105326935372249',
   },
   {
-    feeTier: '10000',
     id: '0xc2fa5fd1c1ad37701ef1b26c5f0680ac807e3efd',
-    liquidity: '2068500153536854973792',
+    liquidity: '2397753035252953945142',
     token0: {
       decimals: '18',
       id: '0x7ddc52c4de30e94be3a6a0a2b259b2850f421989',
@@ -19380,15 +10215,11 @@ const x_weth = [
       symbol: 'GMT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '15878489.01912873474907348018875423',
+    volumeUSD: '15885341.16008765438984981104850481',
   },
   {
-    feeTier: '3000',
     id: '0xfa13a031581f5dca62b3aa5a235792bb105c0411',
     liquidity: '0',
     token0: {
@@ -19398,15 +10229,11 @@ const x_weth = [
       symbol: 'Taikula',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '15757793.44487114043558966188569617',
   },
   {
-    feeTier: '10000',
     id: '0x434a5e4bbe97e3c4f248ea88b67461bd8c3068ee',
     liquidity: '0',
     token0: {
@@ -19416,15 +10243,11 @@ const x_weth = [
       symbol: 'MOCHI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '15745018.05321985080854247630626078',
   },
   {
-    feeTier: '10000',
     id: '0x4ff7e1e713e30b0d1fb9cd00477cef399ff9d493',
     liquidity: '13008631235234004204',
     token0: {
@@ -19434,15 +10257,11 @@ const x_weth = [
       symbol: 'BUSD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '15692726.29290425842485677614569392',
+    volumeUSD: '15692829.52726090506765038703489116',
   },
   {
-    feeTier: '10000',
     id: '0xf522c0f04dbb5b07610d7b2f67f018dab4a28df5',
     liquidity: '0',
     token0: {
@@ -19452,15 +10271,11 @@ const x_weth = [
       symbol: 'WOMBAT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '15595230.57215358055169778483854855',
   },
   {
-    feeTier: '3000',
     id: '0x3eb8224923774f668d6e722cdbf8b0f4e46dae38',
     liquidity: '4909220687367266693132',
     token0: {
@@ -19470,15 +10285,11 @@ const x_weth = [
       symbol: 'iZi',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '15513765.92971336672307519274651395',
+    volumeUSD: '15514280.33208750161515956683659131',
   },
   {
-    feeTier: '3000',
     id: '0xf43ac4b82ca94edaef7b74dc0b1d788a6a0985dd',
     liquidity: '245020023125984761557458',
     token0: {
@@ -19488,15 +10299,11 @@ const x_weth = [
       symbol: 'D/ACC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '15509903.74740528927899055427434934',
   },
   {
-    feeTier: '3000',
     id: '0x70ac2e9f374cddaa3adb19aa0ffa953f9c00e83f',
     liquidity: '0',
     token0: {
@@ -19506,15 +10313,11 @@ const x_weth = [
       symbol: 'WILD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '15499640.85133638670677805198891761',
   },
   {
-    feeTier: '500',
     id: '0x74c6eb5e3f55b372a0147c2438f4e7c07a965f9f',
     liquidity: '0',
     token0: {
@@ -19524,15 +10327,11 @@ const x_weth = [
       symbol: 'TOWER',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '15465325.26231609998845020925784326',
   },
   {
-    feeTier: '10000',
     id: '0xad9314aabedf0b07f115dc55af6814125d291574',
     liquidity: '198438759740099281078',
     token0: {
@@ -19542,15 +10341,11 @@ const x_weth = [
       symbol: 'PDX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '15416062.44156424276028328514457335',
+    volumeUSD: '15416065.37319817072926164156156547',
   },
   {
-    feeTier: '3000',
     id: '0x9b4a963942a2823144de3e01e994cc4fbf464fa4',
     liquidity: '218252975950564393053',
     token0: {
@@ -19560,33 +10355,11 @@ const x_weth = [
       symbol: 'GPOOL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '15403126.43291554609084436782483457',
+    volumeUSD: '15403128.42965617716693500333074095',
   },
   {
-    feeTier: '10000',
-    id: '0xf5d90ce04151979d0a7c8eaced8ed1419e190477',
-    liquidity: '10336294336979673550',
-    token0: {
-      decimals: '18',
-      id: '0x77f0cc420dea0ae726db6bef1460a4b69176a8ea',
-      name: 'KONG Land Alpha Citizenship',
-      symbol: 'CITIZEN',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '15371301.35187868306162578709470016',
-  },
-  {
-    feeTier: '500',
     id: '0x52299416c469843f4e0d54688099966a6c7d720f',
     liquidity: '24997215713607810758348',
     token0: {
@@ -19596,15 +10369,25 @@ const x_weth = [
       symbol: 'OETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '15366935.94716598128738755491139468',
+    volumeUSD: '15399031.13515260070179503003482913',
   },
   {
-    feeTier: '10000',
+    id: '0xf5d90ce04151979d0a7c8eaced8ed1419e190477',
+    liquidity: '10336294336979673550',
+    token0: {
+      decimals: '18',
+      id: '0x77f0cc420dea0ae726db6bef1460a4b69176a8ea',
+      name: 'KONG Land Alpha Citizenship',
+      symbol: 'CITIZEN',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '15371301.35187868306162578709470016',
+  },
+  {
     id: '0x593965c0c4433ef4e2852c53169045c384e4a1fe',
     liquidity: '36994970134403',
     token0: {
@@ -19614,15 +10397,11 @@ const x_weth = [
       symbol: 'BIAO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '15314582.23226567659218562167047555',
   },
   {
-    feeTier: '10000',
     id: '0x3155664406c850bab9b96a287e45f3cb12b90610',
     liquidity: '0',
     token0: {
@@ -19632,15 +10411,11 @@ const x_weth = [
       symbol: 'CSWAP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '15288134.16244586287443254966627915',
   },
   {
-    feeTier: '10000',
     id: '0x62cbac19051b130746ec4cf96113af5618f3a212',
     liquidity: '27694643837059051568',
     token0: {
@@ -19650,15 +10425,11 @@ const x_weth = [
       symbol: 'SGT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '15263625.21160136526373859030681531',
   },
   {
-    feeTier: '3000',
     id: '0x8fec7a391cd9838935f4d4fd516ba6a3b3d2cda7',
     liquidity: '0',
     token0: {
@@ -19668,51 +10439,11 @@ const x_weth = [
       symbol: 'MDT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '15222779.01027694861188684523626558',
   },
   {
-    feeTier: '10000',
-    id: '0xf5e4a4480f5e73cfe697384525d6f4a07617ac71',
-    liquidity: '330825803254512657446',
-    token0: {
-      decimals: '18',
-      id: '0xb6ca7399b4f9ca56fc27cbff44f4d2e4eef1fc81',
-      name: 'Muse',
-      symbol: 'MUSE',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '15138061.07612506806618956398844258',
-  },
-  {
-    feeTier: '3000',
-    id: '0x1e4ea375a450c36bd7e56a250a79dc7559414998',
-    liquidity: '0',
-    token0: {
-      decimals: '18',
-      id: '0x47110d43175f7f2c2425e7d15792acc5817eb44f',
-      name: 'Bankless DeFi Innovation Index',
-      symbol: 'GMI',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '15135046.38986183896113734095800013',
-  },
-  {
-    feeTier: '3000',
     id: '0x25ca2719b2b4bc137be0ea6e5bb83bf3a3dbdb7e',
     liquidity: '26351870165894098464884',
     token0: {
@@ -19722,33 +10453,39 @@ const x_weth = [
       symbol: 'KIP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '15134145.04725519777869643900487665',
+    volumeUSD: '15146265.45994896404192080518594931',
   },
   {
-    feeTier: '500',
-    id: '0xbf857d7a4a7c4fc5215607672a9b26d47a60a735',
-    liquidity: '134575596377742176792',
+    id: '0xf5e4a4480f5e73cfe697384525d6f4a07617ac71',
+    liquidity: '330825803254512657446',
     token0: {
       decimals: '18',
-      id: '0x19d4beb2bc410b80084fcbd0ac024326f4d3a370',
-      name: 'ViCA Token',
-      symbol: 'ViCA',
+      id: '0xb6ca7399b4f9ca56fc27cbff44f4d2e4eef1fc81',
+      name: 'Muse',
+      symbol: 'MUSE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '15101089.64296339623395322295424472',
+    volumeUSD: '15139002.95456841345561923491215147',
   },
   {
-    feeTier: '10000',
+    id: '0x1e4ea375a450c36bd7e56a250a79dc7559414998',
+    liquidity: '0',
+    token0: {
+      decimals: '18',
+      id: '0x47110d43175f7f2c2425e7d15792acc5817eb44f',
+      name: 'Bankless DeFi Innovation Index',
+      symbol: 'GMI',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '15135046.38986183896113734095800013',
+  },
+  {
     id: '0x70c6bd8fc6c48dc57f95c9b8adff4ab9f0e19f5a',
     liquidity: '28417439567939860897174',
     token0: {
@@ -19758,15 +10495,25 @@ const x_weth = [
       symbol: 'MDT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '15093391.22521581509045510217097885',
+    volumeUSD: '15111893.98986824504979254926210976',
   },
   {
-    feeTier: '3000',
+    id: '0xbf857d7a4a7c4fc5215607672a9b26d47a60a735',
+    liquidity: '134575596377742176792',
+    token0: {
+      decimals: '18',
+      id: '0x19d4beb2bc410b80084fcbd0ac024326f4d3a370',
+      name: 'ViCA Token',
+      symbol: 'ViCA',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '15101089.64296339623395322295424472',
+  },
+  {
     id: '0x8581788cef3b7ee7313fea15fe279dc2f6c43899',
     liquidity: '49822131239286617',
     token0: {
@@ -19776,15 +10523,11 @@ const x_weth = [
       symbol: 'FLX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '15011132.93233115768694780266849615',
   },
   {
-    feeTier: '10000',
     id: '0x00f59b15dc1fe2e16cde0678d2164fd5ff10e424',
     liquidity: '4610402001739902689',
     token0: {
@@ -19794,15 +10537,11 @@ const x_weth = [
       symbol: 'STC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '14948584.46495586827305241993945898',
   },
   {
-    feeTier: '10000',
     id: '0xfa5a486ec5a12307f94fd26125109652ea42b2b7',
     liquidity: '48414873747640817733424',
     token0: {
@@ -19812,15 +10551,11 @@ const x_weth = [
       symbol: 'GOLD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '14915017.95486986676398222005003802',
   },
   {
-    feeTier: '10000',
     id: '0xaa6f403c1816cd60da685c7e0da2089a57403464',
     liquidity: '0',
     token0: {
@@ -19830,15 +10565,11 @@ const x_weth = [
       symbol: 'MASQ',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '14831343.0838347309431758409306543',
   },
   {
-    feeTier: '10000',
     id: '0x1474c1fa8078edeeeb9753d76526c142158f3236',
     liquidity: '13899343314864111111078',
     token0: {
@@ -19848,15 +10579,11 @@ const x_weth = [
       symbol: 'Kendu',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '14648737.41543954716440583746455586',
+    volumeUSD: '14648751.98979712337766909483969262',
   },
   {
-    feeTier: '10000',
     id: '0xe8b0ce81e206e537fea0c90e085311b72cc7ec04',
     liquidity: '0',
     token0: {
@@ -19866,15 +10593,11 @@ const x_weth = [
       symbol: 'CNC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '14582365.35222843364760547857461697',
   },
   {
-    feeTier: '500',
     id: '0xb09c5dad762df413d5fc677f03400d3a3b9993a1',
     liquidity: '79680083655501373488126',
     token0: {
@@ -19884,15 +10607,11 @@ const x_weth = [
       symbol: 'WILD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '14484810.0608168131636555499859098',
+    volumeUSD: '14513463.84362908774209734774606148',
   },
   {
-    feeTier: '10000',
     id: '0x27f82c89b5380da1a39a8f4f2b56145256a98d34',
     liquidity: '15699182421428012303589',
     token0: {
@@ -19902,15 +10621,11 @@ const x_weth = [
       symbol: 'BOO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '14464598.01834010045532208891711261',
   },
   {
-    feeTier: '3000',
     id: '0x35b88354c51613fe8857e02668c68e8c52161ba2',
     liquidity: '1055742173163802820430',
     token0: {
@@ -19920,15 +10635,11 @@ const x_weth = [
       symbol: 'SWELL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '14419962.37752652941514773204060951',
+    volumeUSD: '14420635.92319249923671454753843028',
   },
   {
-    feeTier: '10000',
     id: '0x3536c21b5c7b0ec72a58e7bce46b7fadef10f941',
     liquidity: '11648649961667715946',
     token0: {
@@ -19938,15 +10649,11 @@ const x_weth = [
       symbol: 'RWASTE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '14414118.4979474325077101087536404',
   },
   {
-    feeTier: '3000',
     id: '0x262faf36239baa6488c116f273c9b98a1f117ad9',
     liquidity: '1088341804859784967823',
     token0: {
@@ -19956,15 +10663,11 @@ const x_weth = [
       symbol: 'GEMS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '14389570.2367992669480528165332054',
+    volumeUSD: '14390706.91762811742793782341273041',
   },
   {
-    feeTier: '3000',
     id: '0xbcaa74f7401ff4a2702e4f0dba83b546815299f3',
     liquidity: '19916485568676781',
     token0: {
@@ -19974,15 +10677,11 @@ const x_weth = [
       symbol: 'SMOG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '14385748.29419660860353922905705658',
+    volumeUSD: '14385781.49444513633618479401307041',
   },
   {
-    feeTier: '10000',
     id: '0xb9ad117834579543ed5e79f2a32476d50d7ce35f',
     liquidity: '0',
     token0: {
@@ -19992,15 +10691,11 @@ const x_weth = [
       symbol: 'dogwifhat',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '14286467.47396343088439945891128105',
   },
   {
-    feeTier: '10000',
     id: '0xb5f2ace1cba02d59dde4f783753f4822801b0bf3',
     liquidity: '0',
     token0: {
@@ -20010,15 +10705,11 @@ const x_weth = [
       symbol: 'MINER',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '14272168.29897403307751536309849896',
   },
   {
-    feeTier: '500',
     id: '0x3887e82dbdbe8ec6db44e6298a2d48af572a3b78',
     liquidity: '0',
     token0: {
@@ -20028,15 +10719,11 @@ const x_weth = [
       symbol: 'BOB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '14245560.6062263255103798020344615',
   },
   {
-    feeTier: '10000',
     id: '0x4b9280d5c95c5380baad4726cff08416100644a8',
     liquidity: '62447673551059490026033',
     token0: {
@@ -20046,15 +10733,11 @@ const x_weth = [
       symbol: 'COFFEE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '14245054.84199703076862668270525839',
   },
   {
-    feeTier: '3000',
     id: '0xcacccd2f319227d4993af404ad573a5af7b97734',
     liquidity: '127377825454474107544847',
     token0: {
@@ -20064,15 +10747,11 @@ const x_weth = [
       symbol: 'UNI-V2',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '14107083.44795583790315316503048743',
   },
   {
-    feeTier: '10000',
     id: '0x2976dca9be2037c7c50df4c3da1f6f98cd99dac9',
     liquidity: '48261424260382845',
     token0: {
@@ -20082,15 +10761,11 @@ const x_weth = [
       symbol: 'HARRIS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '14086071.5256288085842768548029434',
   },
   {
-    feeTier: '10000',
     id: '0x21bc57259cea22061ea3405c7fb5b7d5384cde0c',
     liquidity: '15087527667355769',
     token0: {
@@ -20100,15 +10775,11 @@ const x_weth = [
       symbol: 'PAC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '14070820.23254899906949185976161157',
   },
   {
-    feeTier: '10000',
     id: '0xb9abcf33069f2df034f3219b2ff10beca3321364',
     liquidity: '0',
     token0: {
@@ -20118,15 +10789,11 @@ const x_weth = [
       symbol: 'PILOT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '14061386.58567915623984542188522334',
   },
   {
-    feeTier: '3000',
     id: '0xbfa558bb74658486719dd0ee923b66214f2b0f75',
     liquidity: '9847397701305129495471',
     token0: {
@@ -20136,15 +10803,11 @@ const x_weth = [
       symbol: 'MFERS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '14012141.85474428395276732545737422',
   },
   {
-    feeTier: '10000',
     id: '0x66d2fca609b9bf860873ce83bf7ca71cc968a715',
     liquidity: '0',
     token0: {
@@ -20154,15 +10817,25 @@ const x_weth = [
       symbol: 'RYOSHI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '13981674.17698822869445434550772839',
   },
   {
-    feeTier: '3000',
+    id: '0x5696c2c2fcb7e304a5b9faaec9cd37d369c9d067',
+    liquidity: '392614035694373853669',
+    token0: {
+      decimals: '16',
+      id: '0x19062190b1925b5b6689d7073fdfc8c2976ef8cb',
+      name: 'BZZ',
+      symbol: 'BZZ',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '13952954.80491536346552747685633708',
+  },
+  {
     id: '0x6ae34e9cabaad597516c512a21c107e8701e2f33',
     liquidity: '0',
     token0: {
@@ -20172,33 +10845,11 @@ const x_weth = [
       symbol: 'eRSDL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '13940639.65832782876046281576585951',
   },
   {
-    feeTier: '10000',
-    id: '0x5696c2c2fcb7e304a5b9faaec9cd37d369c9d067',
-    liquidity: '305641279493938300421',
-    token0: {
-      decimals: '16',
-      id: '0x19062190b1925b5b6689d7073fdfc8c2976ef8cb',
-      name: 'BZZ',
-      symbol: 'BZZ',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '13940333.22947619144448546291326862',
-  },
-  {
-    feeTier: '3000',
     id: '0x2af41d838763e3c5cad6adc111af9c5da19b9afa',
     liquidity: '123637309491461031705136',
     token0: {
@@ -20208,15 +10859,11 @@ const x_weth = [
       symbol: 'SWISE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '13907867.31309135468885009219051106',
+    volumeUSD: '13918884.18075860744725017289863149',
   },
   {
-    feeTier: '10000',
     id: '0x61847189477150832d658d8f34f84c603ac269af',
     liquidity: '15077467183834086116214',
     token0: {
@@ -20226,15 +10873,11 @@ const x_weth = [
       symbol: 'GROW',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '13888726.28445508784326837122148879',
+    volumeUSD: '13890254.77372346570742924415272903',
   },
   {
-    feeTier: '10000',
     id: '0x700f4dc28170f9903faa6da32d6663ff1ac94f27',
     liquidity: '14464825217558282240519',
     token0: {
@@ -20244,15 +10887,11 @@ const x_weth = [
       symbol: 'BLOOD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '13873781.15251058497044892184739133',
+    volumeUSD: '13873824.59747644982739813100972192',
   },
   {
-    feeTier: '3000',
     id: '0x37ea8f1188ab0fae47cba3469a295e8da5442189',
     liquidity: '0',
     token0: {
@@ -20262,15 +10901,11 @@ const x_weth = [
       symbol: 'PEW',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '13744153.18404254843320536820375746',
   },
   {
-    feeTier: '10000',
     id: '0x4538c52bdcb3398f929adedfa1af89a06e44864e',
     liquidity: '2197025773419623944',
     token0: {
@@ -20280,15 +10915,11 @@ const x_weth = [
       symbol: 'WILD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '13736792.73971744043832818636343693',
   },
   {
-    feeTier: '500',
     id: '0x5d811a9d059ddab0c18b385ad3b752f734f011cb',
     liquidity: '194091921343829456789',
     token0: {
@@ -20298,15 +10929,11 @@ const x_weth = [
       symbol: 'LsETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '13709734.80356628728896526975140199',
+    volumeUSD: '13726366.05558952980759693708100323',
   },
   {
-    feeTier: '3000',
     id: '0xfba26c3f9c8ecef989def3c5c8ad037487462d83',
     liquidity: '669044907131565171666',
     token0: {
@@ -20316,17 +10943,13 @@ const x_weth = [
       symbol: 'BIFI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '13701193.18700249097457173090804267',
+    volumeUSD: '13722761.88933456897506156620185742',
   },
   {
-    feeTier: '3000',
     id: '0x88ada7b1dd1c728ea87404cea7a0780139eb35d1',
-    liquidity: '8528557367696107754239',
+    liquidity: '1327246190274017920153',
     token0: {
       decimals: '18',
       id: '0x455e53cbb86018ac2b8092fdcd39d8444affc3f6',
@@ -20334,17 +10957,13 @@ const x_weth = [
       symbol: 'POL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '13674205.85813401442346314311947813',
+    volumeUSD: '13695976.3736380884834464110071467',
   },
   {
-    feeTier: '10000',
     id: '0x2afeaf811fe57b72cb496e841113b020a5cf0d60',
-    liquidity: '16787894572108780786511',
+    liquidity: '12335938716240816728039',
     token0: {
       decimals: '18',
       id: '0x2c0687215aca7f5e2792d956e170325e92a02aca',
@@ -20352,15 +10971,11 @@ const x_weth = [
       symbol: 'ESS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '13627077.67864035156664580395792337',
+    volumeUSD: '13672958.46155093306533635249645005',
   },
   {
-    feeTier: '3000',
     id: '0xc4002da5ceb8c65b3dd985f6c4a9bc961d932690',
     liquidity: '122916515176998902456',
     token0: {
@@ -20370,15 +10985,11 @@ const x_weth = [
       symbol: 'POP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '13596848.59217684199977875795238237',
   },
   {
-    feeTier: '10000',
     id: '0x6630b6e5e970478c574f3ffc381f5ac62f78a4f6',
     liquidity: '0',
     token0: {
@@ -20388,15 +10999,11 @@ const x_weth = [
       symbol: 'WILD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '13531432.58214639667597488300822002',
   },
   {
-    feeTier: '10000',
     id: '0x0c8f981efc57a1477db1e606a48630789e921b42',
     liquidity: '0',
     token0: {
@@ -20406,15 +11013,11 @@ const x_weth = [
       symbol: 'HashAI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '13527320.71486411062105947604731599',
   },
   {
-    feeTier: '500',
     id: '0xbb6642dda99c7fb1ecf310baa3477fa7ba3e7c82',
     liquidity: '346731608503247828',
     token0: {
@@ -20424,15 +11027,11 @@ const x_weth = [
       symbol: 'sETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '13469266.20955694028322030409575748',
   },
   {
-    feeTier: '3000',
     id: '0x00c6a247a868dee7e84d16eba22d1ab903108a44',
     liquidity: '14710442632042879628',
     token0: {
@@ -20442,15 +11041,11 @@ const x_weth = [
       symbol: 'WAVAX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '13464967.25928929816486999069499709',
+    volumeUSD: '13465033.25915701010826411860443916',
   },
   {
-    feeTier: '10000',
     id: '0x59a49c48b90ff40099245b6598e4b8f6d5618a2c',
     liquidity: '734979449989038537',
     token0: {
@@ -20460,15 +11055,11 @@ const x_weth = [
       symbol: 'XP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '13434832.01898850620236322005009554',
   },
   {
-    feeTier: '10000',
     id: '0x6a68dc44a6d446734fe0a4e5ec7bb37f1862279f',
     liquidity: '0',
     token0: {
@@ -20478,15 +11069,11 @@ const x_weth = [
       symbol: 'BOBO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '13373155.58619760665396771500348078',
   },
   {
-    feeTier: '100',
     id: '0x90d5cbd3e840951d044a072445c9d22fbbac3311',
     liquidity: '0',
     token0: {
@@ -20496,15 +11083,11 @@ const x_weth = [
       symbol: 'HFD3',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '13356559.44834061679144994371398015',
   },
   {
-    feeTier: '10000',
     id: '0x4471b6a08e35b9b9683bd7a5cf31b6f3031419c2',
     liquidity: '203375356472461',
     token0: {
@@ -20514,15 +11097,11 @@ const x_weth = [
       symbol: 'imgnAI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '13315897.88279349034568888067326768',
+    volumeUSD: '13315898.30276849780209031390247304',
   },
   {
-    feeTier: '10000',
     id: '0xf5ce0293c24fd0990e0a5758e53f66a36ca0118f',
     liquidity: '308514082185168170',
     token0: {
@@ -20532,15 +11111,25 @@ const x_weth = [
       symbol: 'SNX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '13292522.42778429811707241046632287',
   },
   {
-    feeTier: '3000',
+    id: '0x7f63306a62c345365881e0fff85cb2c8baaa13d5',
+    liquidity: '4905693607205340739906649890',
+    token0: {
+      decimals: '18',
+      id: '0x40fd72257597aa14c7231a7b1aaa29fce868f677',
+      name: 'Sora Token',
+      symbol: 'XOR',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '13288889.43812564944794872196576775',
+  },
+  {
     id: '0x71421a3c789aed89c2dca691d67ef0f26ffa6779',
     liquidity: '0',
     token0: {
@@ -20550,15 +11139,11 @@ const x_weth = [
       symbol: 'OKB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '13246450.26017881653068501720772451',
   },
   {
-    feeTier: '10000',
     id: '0x7dd840de99387bd213df63f760b276bfbed9ef21',
     liquidity: '4477001911379265322470607',
     token0: {
@@ -20568,33 +11153,11 @@ const x_weth = [
       symbol: 'DFC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '13220457.90459325517291400245035461',
   },
   {
-    feeTier: '10000',
-    id: '0x7f63306a62c345365881e0fff85cb2c8baaa13d5',
-    liquidity: '16627593076788667243561720527',
-    token0: {
-      decimals: '18',
-      id: '0x40fd72257597aa14c7231a7b1aaa29fce868f677',
-      name: 'Sora Token',
-      symbol: 'XOR',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '13211555.90768561714585187481096378',
-  },
-  {
-    feeTier: '10000',
     id: '0xeb7abe950985709c34af514eb8cf72f62def9e75',
     liquidity: '939407525093907450291',
     token0: {
@@ -20604,15 +11167,11 @@ const x_weth = [
       symbol: 'NPC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '13176698.24218597943036464753421457',
+    volumeUSD: '13178191.91758049706901354210367423',
   },
   {
-    feeTier: '3000',
     id: '0xcfac0661d802ef85ece2f02ca691cd2079a19456',
     liquidity: '40100610990509352958263',
     token0: {
@@ -20622,15 +11181,11 @@ const x_weth = [
       symbol: 'ROUTE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '13134557.90381604249471408060436698',
+    volumeUSD: '13155227.59732719656312597620019106',
   },
   {
-    feeTier: '3000',
     id: '0x1ab172cb7ec893eb990bfee8f83b49d69aa6a6cc',
     liquidity: '0',
     token0: {
@@ -20640,15 +11195,11 @@ const x_weth = [
       symbol: 'SUDO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12922400.63981998975850106485842988',
   },
   {
-    feeTier: '10000',
     id: '0xbe58afb4e61a13cf2ea6b6052e2e05eafe562aa8',
     liquidity: '0',
     token0: {
@@ -20658,15 +11209,11 @@ const x_weth = [
       symbol: 'SRM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12913403.4050180957753622637904748',
   },
   {
-    feeTier: '3000',
     id: '0xbcc69b905530f7bbf5889a49a40e6e2e35eeb103',
     liquidity: '0',
     token0: {
@@ -20676,15 +11223,11 @@ const x_weth = [
       symbol: 'ZMT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12900314.81988667336695447323832966',
   },
   {
-    feeTier: '3000',
     id: '0xe3e281b64013bd0127596786f478806f3bcbb8b1',
     liquidity: '0',
     token0: {
@@ -20694,15 +11237,11 @@ const x_weth = [
       symbol: 'PLE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12828209.45308589482944028969574667',
   },
   {
-    feeTier: '100',
     id: '0xba0c053250785a76cd85e789436b0208c1bf7c86',
     liquidity: '2328537156923556482965',
     token0: {
@@ -20712,17 +11251,13 @@ const x_weth = [
       symbol: 'DEFI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12818278.30142507126602538984427548',
   },
   {
-    feeTier: '10000',
     id: '0x69fb9f0e05bbdcd9f2c74be70e40d0da537f2089',
-    liquidity: '3192914966407490841265',
+    liquidity: '1179733111293157300793',
     token0: {
       decimals: '18',
       id: '0x7da2641000cbb407c329310c461b2cb9c70c3046',
@@ -20730,15 +11265,11 @@ const x_weth = [
       symbol: 'AGI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '12788597.28836841698848585789159444',
+    volumeUSD: '12800685.5593120310710270165416748',
   },
   {
-    feeTier: '3000',
     id: '0xba8080b0b09181e09bca0612b22b9475d8171055',
     liquidity: '0',
     token0: {
@@ -20748,15 +11279,11 @@ const x_weth = [
       symbol: 'WBNB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12771815.00633513864873288731452895',
   },
   {
-    feeTier: '10000',
     id: '0x02d436dc483f445f63aac45b37db0ee661949842',
     liquidity: '63316663714011450689',
     token0: {
@@ -20766,15 +11293,11 @@ const x_weth = [
       symbol: 'UniFi',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12765552.11811074750145900272016168',
   },
   {
-    feeTier: '3000',
     id: '0x2df7f6afd1e7d6cb0655d9666a880d907eadd794',
     liquidity: '202492376723461',
     token0: {
@@ -20784,15 +11307,11 @@ const x_weth = [
       symbol: 'SWITCH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '12764524.59824570247107211501547398',
+    volumeUSD: '12765035.7985512300476061155382277',
   },
   {
-    feeTier: '3000',
     id: '0xe9b145aea2a1157dc8b0375f0792b2edce9de709',
     liquidity: '180613413114738186746',
     token0: {
@@ -20802,15 +11321,11 @@ const x_weth = [
       symbol: 'MGH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12718411.84989145040405819266717566',
   },
   {
-    feeTier: '10000',
     id: '0x41bd19f4378ee285f5ef31852c984ce0e471d3b1',
     liquidity: '498768861593800222851233',
     token0: {
@@ -20820,17 +11335,13 @@ const x_weth = [
       symbol: 'BAYC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12713813.19866313656627921295722568',
   },
   {
-    feeTier: '10000',
     id: '0x5c2891e67cba6b5481f89d3701a78a1cfdac117f',
-    liquidity: '2966847688940754714617',
+    liquidity: '3040258552520053307389',
     token0: {
       decimals: '18',
       id: '0x628a3b2e302c7e896acc432d2d0dd22b6cb9bc88',
@@ -20838,15 +11349,11 @@ const x_weth = [
       symbol: 'LMWR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '12687016.77110761569771173537010879',
+    volumeUSD: '12691427.89112745347347795308690488',
   },
   {
-    feeTier: '10000',
     id: '0x2418c488bc4b0c3cf1edfc7f6b572847f12ed24f',
     liquidity: '0',
     token0: {
@@ -20856,15 +11363,11 @@ const x_weth = [
       symbol: 'LYXe',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12545302.52727904742654985703302307',
   },
   {
-    feeTier: '3000',
     id: '0x615d40af2c321bd0cd6345ae0a7fc1506a659a89',
     liquidity: '33022265795299939790',
     token0: {
@@ -20874,15 +11377,11 @@ const x_weth = [
       symbol: 'BRIGHT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '12537982.15142896763610745065885452',
+    volumeUSD: '12538291.86351611376325502381702351',
   },
   {
-    feeTier: '10000',
     id: '0x6208e69d3253420d995592c32e2d5a3918f8654f',
     liquidity: '4547393988255350012673687',
     token0: {
@@ -20892,15 +11391,11 @@ const x_weth = [
       symbol: 'OSAK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '12523669.66102010284313372814857514',
+    volumeUSD: '12524890.5089528486200997439976139',
   },
   {
-    feeTier: '10000',
     id: '0xed49728e65246d81fa65f832fd5197467abbbc40',
     liquidity: '10462003943741413924',
     token0: {
@@ -20910,15 +11405,11 @@ const x_weth = [
       symbol: 'STOS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '12495133.13971461420299573825883336',
+    volumeUSD: '12495138.31050545833725951341382085',
   },
   {
-    feeTier: '3000',
     id: '0xb17015d33c97a2caca73be2a8669076a333fd43d',
     liquidity: '18190532956116915469',
     token0: {
@@ -20928,15 +11419,11 @@ const x_weth = [
       symbol: 'μAZUKI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12474606.042242700390723548772009',
   },
   {
-    feeTier: '3000',
     id: '0x2860b0dafa49adcf45d857eb5e6c353a9a4b6626',
     liquidity: '78886009548766310',
     token0: {
@@ -20946,33 +11433,11 @@ const x_weth = [
       symbol: 'APW',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12444231.00245856253726001690579582',
   },
   {
-    feeTier: '3000',
-    id: '0x275100747bbaac268ee70229687e96975aa742a6',
-    liquidity: '0',
-    token0: {
-      decimals: '18',
-      id: '0x7c9f4c87d911613fe9ca58b579f737911aad2d43',
-      name: 'Wrapped Matic (Wormhole)',
-      symbol: 'WMATIC',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '12435305.53228978065871715668679451',
-  },
-  {
-    feeTier: '10000',
     id: '0xe697b7bc261ada9cbd93525f92e1436d75b86468',
     liquidity: '22644645345699523962362',
     token0: {
@@ -20982,15 +11447,25 @@ const x_weth = [
       symbol: 'WEL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '12414901.95360933946159823293931501',
+    volumeUSD: '12435942.40194686659080528806592573',
   },
   {
-    feeTier: '3000',
+    id: '0x275100747bbaac268ee70229687e96975aa742a6',
+    liquidity: '0',
+    token0: {
+      decimals: '18',
+      id: '0x7c9f4c87d911613fe9ca58b579f737911aad2d43',
+      name: 'Wrapped Matic (Wormhole)',
+      symbol: 'WMATIC',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '12435305.53228978065871715668679451',
+  },
+  {
     id: '0xd493b1934826eeabb260f55d7f51fdefa4b0eed5',
     liquidity: '2058081621569927576',
     token0: {
@@ -21000,15 +11475,11 @@ const x_weth = [
       symbol: 'DOGE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12346170.91730942226482405564607368',
   },
   {
-    feeTier: '10000',
     id: '0xed4cb3766090ce8a6b0894ee82ba11ba5c504209',
     liquidity: '8978161381011173415020',
     token0: {
@@ -21018,15 +11489,11 @@ const x_weth = [
       symbol: 'WAS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '12337494.8409631051471751327891724',
+    volumeUSD: '12337927.75575715047890026065665978',
   },
   {
-    feeTier: '10000',
     id: '0xedc5d54b823873f3bb143a06a5ef2d003c29a933',
     liquidity: '6912763695700170086429',
     token0: {
@@ -21036,15 +11503,11 @@ const x_weth = [
       symbol: 'PSY',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '12320339.23811285496892047813607467',
+    volumeUSD: '12327169.62210395045462742834615719',
   },
   {
-    feeTier: '10000',
     id: '0x3c612ee5936e583c837aca99307a71307b218408',
     liquidity: '0',
     token0: {
@@ -21054,15 +11517,11 @@ const x_weth = [
       symbol: 'AI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12299450.69864639460123541251855191',
   },
   {
-    feeTier: '3000',
     id: '0xaeadc652657f603144a7f687c50f057720ee49b1',
     liquidity: '3488359922892831822602',
     token0: {
@@ -21072,15 +11531,11 @@ const x_weth = [
       symbol: 'STAR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '12290742.57195630555692968250520768',
+    volumeUSD: '12290762.58117600341024996683759875',
   },
   {
-    feeTier: '10000',
     id: '0x1d9a941da508d9c603128f7776e19910c4fc8d1b',
     liquidity: '0',
     token0: {
@@ -21090,15 +11545,11 @@ const x_weth = [
       symbol: 'HILO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12260756.37380244048927338041192936',
   },
   {
-    feeTier: '10000',
     id: '0xe8996910e880aa3554bcc0089a0453c67a65d1d4',
     liquidity: '366705391471226833529',
     token0: {
@@ -21108,15 +11559,11 @@ const x_weth = [
       symbol: 'LOYAL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12173468.6785754238291927453704045',
   },
   {
-    feeTier: '10000',
     id: '0xf1345142acece27172be2fd220dc5e61138b09ee',
     liquidity: '468880170084418712',
     token0: {
@@ -21126,15 +11573,11 @@ const x_weth = [
       symbol: 'OMNI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '12148278.17931729580677929629690103',
+    volumeUSD: '12148401.83068673576613055734948011',
   },
   {
-    feeTier: '10000',
     id: '0x0515ff2c19ae54731624591d7adf68777b4ea568',
     liquidity: '0',
     token0: {
@@ -21144,15 +11587,11 @@ const x_weth = [
       symbol: 'BLENDR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12142620.37479086700547667411633098',
   },
   {
-    feeTier: '10000',
     id: '0xaff587846a44aa086a6555ff69055d3380fd379a',
     liquidity: '912455058352188',
     token0: {
@@ -21162,15 +11601,11 @@ const x_weth = [
       symbol: '0xBTC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12141441.73209419691989112335181466',
   },
   {
-    feeTier: '3000',
     id: '0x7b4b3e3097eac69c5d1042983bef7022d658bd36',
     liquidity: '0',
     token0: {
@@ -21180,15 +11615,11 @@ const x_weth = [
       symbol: '$ADS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12095021.62306900156907150063689113',
   },
   {
-    feeTier: '10000',
     id: '0xeb30e8ffcbd02fd4a14a52e28cd300698d00e2f7',
     liquidity: '0',
     token0: {
@@ -21198,15 +11629,11 @@ const x_weth = [
       symbol: 'DUCK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12092706.30065780372622383839446981',
   },
   {
-    feeTier: '10000',
     id: '0x05880fec68308e6e8976fa766faefce0e5a86300',
     liquidity: '0',
     token0: {
@@ -21216,15 +11643,11 @@ const x_weth = [
       symbol: 'FUKU',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12078725.55277187459596877936001326',
   },
   {
-    feeTier: '10000',
     id: '0x2d7ba71dc3e391988bb7f356d07dacac92b03e5d',
     liquidity: '0',
     token0: {
@@ -21234,51 +11657,11 @@ const x_weth = [
       symbol: 'BPRO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '12054639.892580951348520686196978',
   },
   {
-    feeTier: '100',
-    id: '0xc5c134a1f112efa96003f8559dba6fac0ba77692',
-    liquidity: '209095498556208453616027921',
-    token0: {
-      decimals: '18',
-      id: '0x5f0e628b693018f639d10e4a4f59bd4d8b2b6b44',
-      name: 'Whiteheart Token',
-      symbol: 'WHITE',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '12034532.02809812348652967865377561',
-  },
-  {
-    feeTier: '10000',
-    id: '0x18052adacd380cb006e0344b6c1d3a6107819d93',
-    liquidity: '577946141517256896234362',
-    token0: {
-      decimals: '18',
-      id: '0x9bf1d7d63dd7a4ce167cf4866388226eeefa702e',
-      name: 'Ben',
-      symbol: 'BEN',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '12007199.18204455630246033502595841',
-  },
-  {
-    feeTier: '500',
     id: '0x2349a69875aad7beb787f6f230ea2d71a52d6283',
     liquidity: '156551492630974066019194',
     token0: {
@@ -21288,15 +11671,39 @@ const x_weth = [
       symbol: 'VSTR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '11998891.90545136808590396392164026',
+    volumeUSD: '12036522.51732460243601432945428779',
   },
   {
-    feeTier: '10000',
+    id: '0xc5c134a1f112efa96003f8559dba6fac0ba77692',
+    liquidity: '209095498556208453616027921',
+    token0: {
+      decimals: '18',
+      id: '0x5f0e628b693018f639d10e4a4f59bd4d8b2b6b44',
+      name: 'Whiteheart Token',
+      symbol: 'WHITE',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '12034544.16472341292155987258754916',
+  },
+  {
+    id: '0x18052adacd380cb006e0344b6c1d3a6107819d93',
+    liquidity: '577946141517256896234362',
+    token0: {
+      decimals: '18',
+      id: '0x9bf1d7d63dd7a4ce167cf4866388226eeefa702e',
+      name: 'Ben',
+      symbol: 'BEN',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '12007199.18204455630246033502595841',
+  },
+  {
     id: '0x4765aa201b3c457742e93a329a9719e1d129acd4',
     liquidity: '6173165325161096412490',
     token0: {
@@ -21306,15 +11713,11 @@ const x_weth = [
       symbol: 'SWELL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '11970935.03665944138516266183668537',
+    volumeUSD: '11974572.14529377406257600184372717',
   },
   {
-    feeTier: '500',
     id: '0x500dcb12218a66b4aca4cc246af1e4003d02e042',
     liquidity: '86081853130684128716',
     token0: {
@@ -21324,15 +11727,11 @@ const x_weth = [
       symbol: 'SACKS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '11929995.00093603775126991801772349',
   },
   {
-    feeTier: '10000',
     id: '0x59f1aba45567c6a8e9d864f6c63185a321f2d958',
     liquidity: '0',
     token0: {
@@ -21342,15 +11741,11 @@ const x_weth = [
       symbol: 'MND',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '11899781.24098638173887102765764069',
   },
   {
-    feeTier: '10000',
     id: '0x2f2cc5132fc556f578fdf18fa8512d2b46cb1bb6',
     liquidity: '7657855103493606515656',
     token0: {
@@ -21360,15 +11755,11 @@ const x_weth = [
       symbol: 'NAI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '11873798.28106150388565780668643415',
   },
   {
-    feeTier: '500',
     id: '0xdc7b403e2e967eaf6c97d79316d285b8a112fda7',
     liquidity: '373934331000223',
     token0: {
@@ -21378,17 +11769,13 @@ const x_weth = [
       symbol: 'FEI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '11803153.11863849761141166043233804',
   },
   {
-    feeTier: '10000',
     id: '0x56ea002b411fd5887e55329852d5777ecb170713',
-    liquidity: '69293689868172697',
+    liquidity: '69373671383641826',
     token0: {
       decimals: '9',
       id: '0x607f4c5bb672230e8672085532f7e901544a7375',
@@ -21396,51 +11783,11 @@ const x_weth = [
       symbol: 'RLC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '11794809.62615679413764430648977714',
+    volumeUSD: '11796541.6920207651406703565518661',
   },
   {
-    feeTier: '10000',
-    id: '0xcd4391c8a8a6b1bf2518a0b90e3dea212cbc2a75',
-    liquidity: '0',
-    token0: {
-      decimals: '18',
-      id: '0xa117000000f279d81a1d3cc75430faa017fa5a2e',
-      name: 'Aragon Network Token',
-      symbol: 'ANT',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '11756354.597914366017167945255797',
-  },
-  {
-    feeTier: '10000',
-    id: '0x61f8b7670d9de7a6852c09cfcc9dd597ec3087cc',
-    liquidity: '5759378512920164852',
-    token0: {
-      decimals: '18',
-      id: '0x758b4684be769e92eefea93f60dda0181ea303ec',
-      name: 'Phonon DAO',
-      symbol: 'PHONON',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '11755086.90045585611014997798396459',
-  },
-  {
-    feeTier: '3000',
     id: '0xe6a74d31f1ea6719cf9ee14e3b779f793e997f39',
     liquidity: '35870683493362346374733',
     token0: {
@@ -21450,15 +11797,39 @@ const x_weth = [
       symbol: 'ICE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '11755006.53014835035950657195418898',
+    volumeUSD: '11779712.81840607458182380873448234',
   },
   {
-    feeTier: '10000',
+    id: '0xcd4391c8a8a6b1bf2518a0b90e3dea212cbc2a75',
+    liquidity: '0',
+    token0: {
+      decimals: '18',
+      id: '0xa117000000f279d81a1d3cc75430faa017fa5a2e',
+      name: 'Aragon Network Token',
+      symbol: 'ANT',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '11756354.597914366017167945255797',
+  },
+  {
+    id: '0x61f8b7670d9de7a6852c09cfcc9dd597ec3087cc',
+    liquidity: '5759378512920164852',
+    token0: {
+      decimals: '18',
+      id: '0x758b4684be769e92eefea93f60dda0181ea303ec',
+      name: 'Phonon DAO',
+      symbol: 'PHONON',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '11755086.90045585611014997798396459',
+  },
+  {
     id: '0x52fc6e6fe29bb67e7435da8807e0858769722b6e',
     liquidity: '4350585000761052467',
     token0: {
@@ -21468,15 +11839,11 @@ const x_weth = [
       symbol: 'KRAUSE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '11640591.74017320025889676505912579',
   },
   {
-    feeTier: '10000',
     id: '0x21dfb98d17bcf93dd48eba6b33a084078b1a3a8e',
     liquidity: '0',
     token0: {
@@ -21486,15 +11853,11 @@ const x_weth = [
       symbol: 'PERCY',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '11502740.87324273504351019632703648',
   },
   {
-    feeTier: '3000',
     id: '0xa6a05c4246b155644a3bb28a72e03c8c7d85394c',
     liquidity: '51739683534640801771310',
     token0: {
@@ -21504,15 +11867,11 @@ const x_weth = [
       symbol: 'HAI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '11445555.5253924539670924902477001',
   },
   {
-    feeTier: '3000',
     id: '0x4467fab5198ac2376f3b228ecff528ccfdcde398',
     liquidity: '0',
     token0: {
@@ -21522,15 +11881,11 @@ const x_weth = [
       symbol: 'P3PE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '11425980.21666768933690799349007739',
   },
   {
-    feeTier: '10000',
     id: '0x07b9c527b85f177a2754f3f9ea3aeddfcf18bf26',
     liquidity: '0',
     token0: {
@@ -21540,15 +11895,11 @@ const x_weth = [
       symbol: 'F9',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '11331749.9658904823673139139568906',
   },
   {
-    feeTier: '3000',
     id: '0xcbfb8d042342ec7816432d12120fc4e740a2d419',
     liquidity: '17761308090620918225511',
     token0: {
@@ -21558,15 +11909,11 @@ const x_weth = [
       symbol: 'TAIKO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '11287885.36242782611564053552011094',
+    volumeUSD: '11318486.3508805114223676552061884',
   },
   {
-    feeTier: '10000',
     id: '0xbbd3cacec067f5f3a6c4c34f7931e66453438361',
     liquidity: '0',
     token0: {
@@ -21576,17 +11923,13 @@ const x_weth = [
       symbol: 'PXP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '11270760.42211159652470136416664199',
   },
   {
-    feeTier: '3000',
     id: '0xe7f6720c1f546217081667a5ab7febb688036856',
-    liquidity: '94571363870453',
+    liquidity: '1084347073865393',
     token0: {
       decimals: '6',
       id: '0x467719ad09025fcc6cf6f8311755809d45a5e5f3',
@@ -21594,15 +11937,11 @@ const x_weth = [
       symbol: 'AXL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '11234446.19175666156527410727933729',
+    volumeUSD: '11247444.0082688037344070005773036',
   },
   {
-    feeTier: '10000',
     id: '0x9ba091ca2e2886db44559784ab4dc80d69773889',
     liquidity: '0',
     token0: {
@@ -21612,15 +11951,11 @@ const x_weth = [
       symbol: 'LFT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '11203401.79509201194808784563623262',
   },
   {
-    feeTier: '3000',
     id: '0x6d66d518d78e55e5fc0f53b10c066b0d500d93ab',
     liquidity: '707100000000000000000002',
     token0: {
@@ -21630,15 +11965,11 @@ const x_weth = [
       symbol: 'Edog',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '11188015.96862636573464573411275991',
   },
   {
-    feeTier: '10000',
     id: '0x86d27c2633dc52107fa6af283fbf586158bd99ac',
     liquidity: '0',
     token0: {
@@ -21648,15 +11979,11 @@ const x_weth = [
       symbol: 'PRTC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '11180346.1609371654072854329829443',
   },
   {
-    feeTier: '10000',
     id: '0x5b3b0b8a6b05cc47cd24e7c003a60341a1304564',
     liquidity: '0',
     token0: {
@@ -21666,15 +11993,11 @@ const x_weth = [
       symbol: 'HAMS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '11124844.56794696460634953853642609',
   },
   {
-    feeTier: '10000',
     id: '0xac6ccc2365ad727a8385438b72ee9f51aac81ccb',
     liquidity: '918925405017406954052',
     token0: {
@@ -21684,15 +12007,11 @@ const x_weth = [
       symbol: 'JEJUDOGE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '11101819.34842333272011914773580877',
   },
   {
-    feeTier: '10000',
     id: '0xce962bde59c01a493f94b21560e48d7191d3bf96',
     liquidity: '0',
     token0: {
@@ -21702,15 +12021,11 @@ const x_weth = [
       symbol: 'BOND',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '11030435.72199378373084891652305504',
   },
   {
-    feeTier: '10000',
     id: '0xaef52f72583e6c4478b220da82321a6a023eee50',
     liquidity: '0',
     token0: {
@@ -21720,15 +12035,11 @@ const x_weth = [
       symbol: 'GEAR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '11023368.94065404918793551273949185',
   },
   {
-    feeTier: '10000',
     id: '0xb3a1ef17d9a6719305c09661b369eff877cfa826',
     liquidity: '17459804284333221556682',
     token0: {
@@ -21738,15 +12049,11 @@ const x_weth = [
       symbol: 'chairhead',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10977881.97949952404929062434163293',
   },
   {
-    feeTier: '10000',
     id: '0xf7f381315b218263aa1ef22895a1b20cc70e3651',
     liquidity: '25314208456420889576',
     token0: {
@@ -21756,15 +12063,11 @@ const x_weth = [
       symbol: 'DORKL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10949651.87747782235861266604169194',
   },
   {
-    feeTier: '10000',
     id: '0x7b2880235a28742258c7b08f02536b212a7faf2b',
     liquidity: '1856504555042205529684547',
     token0: {
@@ -21774,15 +12077,11 @@ const x_weth = [
       symbol: 'LGB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10937835.5729986766709128886512092',
   },
   {
-    feeTier: '100',
     id: '0x7a321a5740de408e9e95c2ae35ca3d6969bf3103',
     liquidity: '0',
     token0: {
@@ -21792,15 +12091,11 @@ const x_weth = [
       symbol: 'PPAY',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10900740.53820350659101159812035302',
   },
   {
-    feeTier: '10000',
     id: '0xe68acf3a42b74b0d7609330661732b08a28febee',
     liquidity: '583709131465006498179895',
     token0: {
@@ -21810,15 +12105,11 @@ const x_weth = [
       symbol: 'UKAN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10880471.3116062363954761559839219',
   },
   {
-    feeTier: '3000',
     id: '0x67ce0b007b2683315aec6a8ad8a69481ba47025c',
     liquidity: '7972750713582534094304',
     token0: {
@@ -21828,15 +12119,11 @@ const x_weth = [
       symbol: 'ALCA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10845399.73736920473397392149733356',
   },
   {
-    feeTier: '10000',
     id: '0xa7818f994f06546025102fa88dbc53c4c8357e7d',
     liquidity: '3235302448997067337941',
     token0: {
@@ -21846,15 +12133,11 @@ const x_weth = [
       symbol: 'TOKA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10809338.53008006403369106550621468',
   },
   {
-    feeTier: '10000',
     id: '0xb4ecce46b8d4e4abfd03c9b806276a6735c9c092',
     liquidity: '0',
     token0: {
@@ -21864,15 +12147,11 @@ const x_weth = [
       symbol: 'BUMP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10766526.03774579282003700642251902',
   },
   {
-    feeTier: '10000',
     id: '0x555ef476a89c6b4f896e5afa448d3bbea6899720',
     liquidity: '0',
     token0: {
@@ -21882,15 +12161,11 @@ const x_weth = [
       symbol: 'MAGANOMICS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10734510.8274664685389273586887744',
   },
   {
-    feeTier: '10000',
     id: '0xae76c21effc300ff3e9e1cd4979a3f4f80fedc24',
     liquidity: '0',
     token0: {
@@ -21900,15 +12175,11 @@ const x_weth = [
       symbol: 'MISHA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10729254.85659031997940656341550605',
   },
   {
-    feeTier: '10000',
     id: '0xc1049edc8bb7a76c7184c42c14957fbb47bef3a2',
     liquidity: '721464975239609260096',
     token0: {
@@ -21918,15 +12189,11 @@ const x_weth = [
       symbol: 'HOTKEY',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '10675272.20584394625918417932590034',
+    volumeUSD: '10676327.52468939876877653806229596',
   },
   {
-    feeTier: '3000',
     id: '0xe0f0e02a16b45f949b98856b61175e63ca5f6293',
     liquidity: '862909080653025302183',
     token0: {
@@ -21936,15 +12203,11 @@ const x_weth = [
       symbol: 'UNCX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '10655339.23996760678107849613290361',
+    volumeUSD: '10660832.15224767108833654871849853',
   },
   {
-    feeTier: '10000',
     id: '0xe578aedce9f768c8dc945c6803820f5b219870d3',
     liquidity: '0',
     token0: {
@@ -21954,15 +12217,11 @@ const x_weth = [
       symbol: 'SCALE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10633040.17843282188888841524168153',
   },
   {
-    feeTier: '10000',
     id: '0xe67b950f4b84c5b06ee36ded6727a17443fe7493',
     liquidity: '1656352153201146389',
     token0: {
@@ -21972,15 +12231,11 @@ const x_weth = [
       symbol: 'HFT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '10628632.37451145500603145446487728',
+    volumeUSD: '10628634.52385049663581980326277606',
   },
   {
-    feeTier: '3000',
     id: '0xc3ea1c2e309ff99ed7b17a501bd8d5998918b097',
     liquidity: '0',
     token0: {
@@ -21990,15 +12245,11 @@ const x_weth = [
       symbol: 'NU',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10546715.63541412893346338571757493',
   },
   {
-    feeTier: '10000',
     id: '0x2476e13c3da1e0daf898a0b0d204226f2b857c2b',
     liquidity: '816114780',
     token0: {
@@ -22008,15 +12259,11 @@ const x_weth = [
       symbol: 'HONOR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10533162.24001997190528243337506875',
   },
   {
-    feeTier: '10000',
     id: '0xb6873431c2c0e6502143148cae4fab419a325826',
     liquidity: '1175935331898495',
     token0: {
@@ -22026,15 +12273,11 @@ const x_weth = [
       symbol: 'renDOGE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10513748.81846247103948806310631467',
   },
   {
-    feeTier: '3000',
     id: '0x5112b866cfc9223124cc2eada116f3f396101567',
     liquidity: '133947872051808958',
     token0: {
@@ -22044,15 +12287,11 @@ const x_weth = [
       symbol: 'CERES',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10512865.83589883825068049192508649',
   },
   {
-    feeTier: '10000',
     id: '0xe71a91231d7116cd4055e109b8ac4b549f4013d2',
     liquidity: '2952584074135527463491',
     token0: {
@@ -22062,15 +12301,11 @@ const x_weth = [
       symbol: 'Del',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10505110.53381555022269822063347329',
   },
   {
-    feeTier: '10000',
     id: '0x8c2f778589b08dbd5857be26b604dc5c42861732',
     liquidity: '0',
     token0: {
@@ -22080,15 +12315,11 @@ const x_weth = [
       symbol: 'EDEN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10479327.31489997222543493193772876',
   },
   {
-    feeTier: '3000',
     id: '0x415989f78b26d801fd4cb5c958dcf122de106a55',
     liquidity: '0',
     token0: {
@@ -22098,15 +12329,11 @@ const x_weth = [
       symbol: 'KOI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10424106.72648012764682568633524371',
   },
   {
-    feeTier: '3000',
     id: '0x45a154971ba574587e837585ff6fd2520be73339',
     liquidity: '1515827919155321673092',
     token0: {
@@ -22116,15 +12343,11 @@ const x_weth = [
       symbol: 'STMX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '10400200.15263387276722358816511694',
+    volumeUSD: '10401289.96408544063203466440115651',
   },
   {
-    feeTier: '3000',
     id: '0xa9166690c35d900a57d2ec132c58291bc0678944',
     liquidity: '497074519831620',
     token0: {
@@ -22134,15 +12357,11 @@ const x_weth = [
       symbol: 'TXJP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '10358414.95358769356395546836618224',
+    volumeUSD: '10358539.20259254933695228725273603',
   },
   {
-    feeTier: '3000',
     id: '0x6dc567b75b36bbecfa895277273f5be5170ae261',
     liquidity: '5025689097625284691',
     token0: {
@@ -22152,15 +12371,11 @@ const x_weth = [
       symbol: 'wCRES',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10344244.158828133072744428249037',
   },
   {
-    feeTier: '10000',
     id: '0xf5de7dc21138e4bb9f2e3fd6e8f4cd76a7ff016b',
     liquidity: '8552186887145396401442',
     token0: {
@@ -22170,15 +12385,11 @@ const x_weth = [
       symbol: 'GNOME',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10342078.72640854088208304854515263',
   },
   {
-    feeTier: '10000',
     id: '0xe58d395ac0f917b0e9d84eb530839033dba835f3',
     liquidity: '5356060398175048909164860',
     token0: {
@@ -22188,15 +12399,11 @@ const x_weth = [
       symbol: 'REEE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10322044.58683999319377245183117636',
   },
   {
-    feeTier: '10000',
     id: '0x1861fae77ae5f4f2766b7110aac3c5a1ba13169b',
     liquidity: '0',
     token0: {
@@ -22206,15 +12413,11 @@ const x_weth = [
       symbol: 'foox',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10317791.66414126574212953218451508',
   },
   {
-    feeTier: '10000',
     id: '0x59f2044fc191f758fd3680478514244acf253d48',
     liquidity: '227563647090980',
     token0: {
@@ -22224,15 +12427,11 @@ const x_weth = [
       symbol: 'GALA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10271948.2628743363426846783063849',
   },
   {
-    feeTier: '10000',
     id: '0x1a80afe14143637c0b7609e6e276464e4f748014',
     liquidity: '18315479771179871216089',
     token0: {
@@ -22242,15 +12441,11 @@ const x_weth = [
       symbol: 'BANK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10215970.50357642522087825458662378',
   },
   {
-    feeTier: '10000',
     id: '0xe3207643b7426c89ed2907192f7b5d8dafcf48c6',
     liquidity: '0',
     token0: {
@@ -22260,15 +12455,11 @@ const x_weth = [
       symbol: 'POW',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10138606.5157142327042308503479449',
   },
   {
-    feeTier: '3000',
     id: '0xce24d930d764aabe0e1e9588d509296b91ec2363',
     liquidity: '20',
     token0: {
@@ -22278,15 +12469,11 @@ const x_weth = [
       symbol: 'STONE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10130990.94172811440178583015028547',
   },
   {
-    feeTier: '3000',
     id: '0x5d6e061c5c3c700d374b84ae17b70eb9cf531a22',
     liquidity: '4071076639699471579333',
     token0: {
@@ -22296,15 +12483,11 @@ const x_weth = [
       symbol: 'LILY',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '10065114.68007691480360746582456029',
+    volumeUSD: '10065438.87338154214321691380170976',
   },
   {
-    feeTier: '3000',
     id: '0xf81ba0c35e59cf01682b7f2a7a3d8ea6756eba46',
     liquidity: '56539097153098816',
     token0: {
@@ -22314,15 +12497,11 @@ const x_weth = [
       symbol: 'KCAL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10050099.14035595431188293882981825',
   },
   {
-    feeTier: '3000',
     id: '0x64c046339682d30b8ceb4e11ae47078b78bac3d7',
     liquidity: '279716653944624481749',
     token0: {
@@ -22332,15 +12511,11 @@ const x_weth = [
       symbol: 'BIGTIME',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10044533.01299508064514792918234226',
   },
   {
-    feeTier: '3000',
     id: '0x32ecd439b57fb881ea1f5df2f8581b6fdac0acac',
     liquidity: '54654770152067089297619',
     token0: {
@@ -22350,15 +12525,11 @@ const x_weth = [
       symbol: 'CARD',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '10038914.80945030862006707074572602',
   },
   {
-    feeTier: '3000',
     id: '0xa96c549fa361181a94c081597171e17d27459dbb',
     liquidity: '137969804980496399558',
     token0: {
@@ -22368,15 +12539,11 @@ const x_weth = [
       symbol: 'MTA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '9995343.620160778001092501049700346',
+    volumeUSD: '9995352.79411787411165290422385487',
   },
   {
-    feeTier: '10000',
     id: '0x6992771943a8b14047c6234d6ca16a3ae79f82fc',
     liquidity: '2253572452191246792',
     token0: {
@@ -22386,15 +12553,11 @@ const x_weth = [
       symbol: 'BURGER',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9927404.618933932354905137411714402',
   },
   {
-    feeTier: '10000',
     id: '0x893b0b4615d4e4325fa53d9cf55aab23d4b1311f',
     liquidity: '235068583922243265915',
     token0: {
@@ -22404,15 +12567,11 @@ const x_weth = [
       symbol: 'CAH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '9883408.159359577436441350344863697',
+    volumeUSD: '9887665.745387076234510670180085874',
   },
   {
-    feeTier: '10000',
     id: '0xc7060047bca7593e9d4de4f1c7f370b40ee69d36',
     liquidity: '210194830891719659194377',
     token0: {
@@ -22422,15 +12581,11 @@ const x_weth = [
       symbol: 'MAPO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '9816130.561409189634936190027419467',
+    volumeUSD: '9818297.347069214968192083534885503',
   },
   {
-    feeTier: '10000',
     id: '0x4b4a52e0d0601e1f639441206967fc98ff21ec79',
     liquidity: '0',
     token0: {
@@ -22440,15 +12595,11 @@ const x_weth = [
       symbol: 'MCB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9804897.387329627787109574113056146',
   },
   {
-    feeTier: '10000',
     id: '0xd70a619a21e0e899b476f1dd50d32f351459ea52',
     liquidity: '45028042856929952139062',
     token0: {
@@ -22458,15 +12609,11 @@ const x_weth = [
       symbol: 'MASK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9798331.160542290102450488880252817',
   },
   {
-    feeTier: '10000',
     id: '0x6ec9da72ed7994be62071b497205bd7fde603454',
     liquidity: '0',
     token0: {
@@ -22476,15 +12623,11 @@ const x_weth = [
       symbol: 'Spades',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9793448.987599950410465011338542584',
   },
   {
-    feeTier: '10000',
     id: '0xfab26cfa923360ffc8ffc40827faee5500988e9c',
     liquidity: '10735207646609441975422',
     token0: {
@@ -22494,15 +12637,11 @@ const x_weth = [
       symbol: 'CNG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9756534.540613804383658370312869294',
   },
   {
-    feeTier: '10000',
     id: '0x54a4b8a5f5c6e09475a8703003684a3f460a9bda',
     liquidity: '39986037404886549111',
     token0: {
@@ -22512,15 +12651,11 @@ const x_weth = [
       symbol: 'VAL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9714538.435909748685021437635151351',
   },
   {
-    feeTier: '3000',
     id: '0x3f1004641a08ecf7f962da59e60adef1e9a241f6',
     liquidity: '0',
     token0: {
@@ -22530,69 +12665,11 @@ const x_weth = [
       symbol: 'μMAYC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9709223.68165485510533231368794352',
   },
   {
-    feeTier: '10000',
-    id: '0xabbf19cb9913531985e8cbe1bacf51748a8b5e2f',
-    liquidity: '0',
-    token0: {
-      decimals: '18',
-      id: '0x1353575d76444a11730d2f286e6303990eb1e357',
-      name: 'Kek',
-      symbol: 'KEK',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '9677176.519084639919366203810436907',
-  },
-  {
-    feeTier: '3000',
-    id: '0xb60b34d830f26c5a11c47ddb1e0a1f31d90a78b1',
-    liquidity: '2752759423665197570543',
-    token0: {
-      decimals: '18',
-      id: '0x84ca8bc7997272c7cfb4d0cd3d55cd942b3c9419',
-      name: 'DIAToken',
-      symbol: 'DIA',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '9653970.193778873627016157287858652',
-  },
-  {
-    feeTier: '10000',
-    id: '0x2bfdb97bbb057f0e304c12614938df58121cedfd',
-    liquidity: '2805989584952887217261697',
-    token0: {
-      decimals: '18',
-      id: '0x23d17de53aae4a767499a9d8b8c33b5b1c3ebdb0',
-      name: 'Blur',
-      symbol: 'BLUR',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '9651296.674175632561503269052338891',
-  },
-  {
-    feeTier: '10000',
     id: '0xf2c3bd0328bdb6106d34a3bd0df0ef744551cc82',
     liquidity: '1466116683509628278907',
     token0: {
@@ -22602,15 +12679,53 @@ const x_weth = [
       symbol: 'HEGIC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '9639701.635859940503221048876361364',
+    volumeUSD: '9691714.23079263993296134450844667',
   },
   {
-    feeTier: '3000',
+    id: '0xabbf19cb9913531985e8cbe1bacf51748a8b5e2f',
+    liquidity: '0',
+    token0: {
+      decimals: '18',
+      id: '0x1353575d76444a11730d2f286e6303990eb1e357',
+      name: 'Kek',
+      symbol: 'KEK',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '9677176.519084639919366203810436907',
+  },
+  {
+    id: '0xb60b34d830f26c5a11c47ddb1e0a1f31d90a78b1',
+    liquidity: '2752759423665197570543',
+    token0: {
+      decimals: '18',
+      id: '0x84ca8bc7997272c7cfb4d0cd3d55cd942b3c9419',
+      name: 'DIAToken',
+      symbol: 'DIA',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '9668347.961836163130224002218204759',
+  },
+  {
+    id: '0x2bfdb97bbb057f0e304c12614938df58121cedfd',
+    liquidity: '2805989584952887217261697',
+    token0: {
+      decimals: '18',
+      id: '0x23d17de53aae4a767499a9d8b8c33b5b1c3ebdb0',
+      name: 'Blur',
+      symbol: 'BLUR',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '9651296.674175632561503269052338891',
+  },
+  {
     id: '0x098e0b9de8ed064006d9dda99b4e3d1604801cea',
     liquidity: '33915864624892806439803',
     token0: {
@@ -22620,17 +12735,13 @@ const x_weth = [
       symbol: 'UTU',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '9623964.470511338739748150960395177',
+    volumeUSD: '9624025.846087862082691238762651268',
   },
   {
-    feeTier: '10000',
     id: '0xb29148f6ea9f2d78ba9b2d6b30af37afdcc31a9e',
-    liquidity: '22508517561758838',
+    liquidity: '24136102260879143',
     token0: {
       decimals: '8',
       id: '0xb64ef51c888972c908cfacf59b47c1afbc0ab8ac',
@@ -22638,15 +12749,11 @@ const x_weth = [
       symbol: 'STORJ',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '9600240.785229197295507527871927812',
+    volumeUSD: '9601851.765289019763826435297169451',
   },
   {
-    feeTier: '10000',
     id: '0x704e0df4c18aeb5af00905fba1b5d87f7d9871c9',
     liquidity: '0',
     token0: {
@@ -22656,15 +12763,11 @@ const x_weth = [
       symbol: 'MZERO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9599380.527587594313430936133115271',
   },
   {
-    feeTier: '10000',
     id: '0xbf9cfc4387b9909756012c03d39ad95dd87f699a',
     liquidity: '1435865212427595430321',
     token0: {
@@ -22674,15 +12777,11 @@ const x_weth = [
       symbol: 'WPLS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9585683.452925868739114914560150426',
   },
   {
-    feeTier: '10000',
     id: '0xbc844c2ecd719b8a9df3ede6a28c6bb06322b176',
     liquidity: '13332782433256155348140',
     token0: {
@@ -22692,15 +12791,11 @@ const x_weth = [
       symbol: 'MYST',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '9566099.543344668447915105887743321',
+    volumeUSD: '9568756.493921232669298062788231353',
   },
   {
-    feeTier: '500',
     id: '0x336c11af5062410c676de2cdbc8cc3abf3db687a',
     liquidity: '4473025786110043064818',
     token0: {
@@ -22710,17 +12805,13 @@ const x_weth = [
       symbol: 'TUX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9557508.213522312023184972536011201',
   },
   {
-    feeTier: '10000',
     id: '0xbd35130bd84a3f016d1b6af257e0e0544887a42a',
-    liquidity: '42010176088501548158898',
+    liquidity: '42204090274318332574150',
     token0: {
       decimals: '18',
       id: '0x32c6f1c1731ff8f98ee2ede8954f696446307846',
@@ -22728,15 +12819,11 @@ const x_weth = [
       symbol: 'BEARDY',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '9550238.621466674200050387170110217',
+    volumeUSD: '9552233.096310984110369631863121688',
   },
   {
-    feeTier: '3000',
     id: '0x1512639d5da6968a041a5ba0e333241e431c3413',
     liquidity: '0',
     token0: {
@@ -22746,15 +12833,11 @@ const x_weth = [
       symbol: 'MEMAG',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9528404.303486040012127131195340472',
   },
   {
-    feeTier: '10000',
     id: '0xfe5425f4cab7281b46b763be2d176a69f2fad031',
     liquidity: '2',
     token0: {
@@ -22764,15 +12847,11 @@ const x_weth = [
       symbol: 'DN404',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9519274.94544855983996132379106466',
   },
   {
-    feeTier: '3000',
     id: '0x253e380caefbb3445aa73e07c02ac40519ff8c99',
     liquidity: '0',
     token0: {
@@ -22782,15 +12861,11 @@ const x_weth = [
       symbol: 'SPEED',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9495849.95703375995457094880559899',
   },
   {
-    feeTier: '500',
     id: '0x0d0db217afb6436915e3140b2b6547ce9622e8d7',
     liquidity: '0',
     token0: {
@@ -22800,15 +12875,11 @@ const x_weth = [
       symbol: 'PAX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9493063.630693571493854698999053251',
   },
   {
-    feeTier: '3000',
     id: '0xbe6c89250da6918c7e2162f38cfff52571b755c5',
     liquidity: '2733475503936171207',
     token0: {
@@ -22818,15 +12889,11 @@ const x_weth = [
       symbol: 'GOLDZ',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9483312.548374720970272043777156824',
   },
   {
-    feeTier: '3000',
     id: '0x3afec5673a547861877f4d722a594171595e561b',
     liquidity: '4080849987361611',
     token0: {
@@ -22836,15 +12903,11 @@ const x_weth = [
       symbol: 'WAR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '9478509.787167449223783519785059183',
+    volumeUSD: '9478640.762274157141362418307487618',
   },
   {
-    feeTier: '10000',
     id: '0x51c2841333fbbab53b7c2c442cc265bf16430d6d',
     liquidity: '83566184065001648362',
     token0: {
@@ -22854,15 +12917,11 @@ const x_weth = [
       symbol: 'ANGLE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '9474993.694591821546316582874159224',
+    volumeUSD: '9475256.247942167273262337569558905',
   },
   {
-    feeTier: '10000',
     id: '0x052cea5c8bc91e204bf1e686bb91f25f66d831b1',
     liquidity: '406670804319332250249236',
     token0: {
@@ -22872,15 +12931,11 @@ const x_weth = [
       symbol: 'SHI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '9456984.566669558322937432214262731',
+    volumeUSD: '9457172.008114050058051832136791318',
   },
   {
-    feeTier: '3000',
     id: '0x882784c5807d5e2e4950ae2327ca5d9b56a1015a',
     liquidity: '1327905157184385039744',
     token0: {
@@ -22890,15 +12945,11 @@ const x_weth = [
       symbol: 'μELEM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9444830.962321450808375656918874149',
   },
   {
-    feeTier: '10000',
     id: '0x80ba2de1ced9de57366514d9a797f3e10884ead5',
     liquidity: '0',
     token0: {
@@ -22908,15 +12959,11 @@ const x_weth = [
       symbol: 'MEGA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9427393.820862716168966503984422327',
   },
   {
-    feeTier: '500',
     id: '0x0dc9877f6024ccf16a470a74176c9260beb83ab6',
     liquidity: '613752463890750493510',
     token0: {
@@ -22926,15 +12973,11 @@ const x_weth = [
       symbol: 'RAI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '9417036.361940337825535611010744973',
+    volumeUSD: '9422110.686856614050942117204950464',
   },
   {
-    feeTier: '3000',
     id: '0x652efdb155b945df8a440199231fb30b45446562',
     liquidity: '0',
     token0: {
@@ -22944,15 +12987,11 @@ const x_weth = [
       symbol: 'MYNFT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9356259.754581918483940788138550807',
   },
   {
-    feeTier: '3000',
     id: '0x3ddf8f1aa0595bd7e78513fd998a8321cee70832',
     liquidity: '21637418462771834649844',
     token0: {
@@ -22962,15 +13001,11 @@ const x_weth = [
       symbol: 'JAM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '9339780.19434719217072400797833206',
+    volumeUSD: '9343900.173902897473014511647033173',
   },
   {
-    feeTier: '10000',
     id: '0x34da451e8f5b02dc177247c2ba45bc9d3b5c9394',
     liquidity: '49117079574509001395403',
     token0: {
@@ -22980,15 +13015,11 @@ const x_weth = [
       symbol: 'CYDX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9336414.027025182598901536450561115',
   },
   {
-    feeTier: '10000',
     id: '0x8d9fa72ca6e2add4ffc2f3695fb2d4ea4ba105eb',
     liquidity: '0',
     token0: {
@@ -22998,15 +13029,11 @@ const x_weth = [
       symbol: 'SBECOM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9324296.125860460035740184404796677',
   },
   {
-    feeTier: '3000',
     id: '0x4478c3af95269e48aaa2fa4fbd2231df4aeab43f',
     liquidity: '385650272769250136136',
     token0: {
@@ -23016,15 +13043,11 @@ const x_weth = [
       symbol: 'BLOCKS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9290588.492581607354680917718965292',
   },
   {
-    feeTier: '10000',
     id: '0x1c97c31778c1cf34aab202252e19c8bce9e13404',
     liquidity: '6154442512733763857',
     token0: {
@@ -23034,15 +13057,11 @@ const x_weth = [
       symbol: 'RCH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9226612.130163549292488509283143863',
   },
   {
-    feeTier: '10000',
     id: '0x61f6cfa82ae17259fdee34a69ac34702b51b9c00',
     liquidity: '0',
     token0: {
@@ -23052,15 +13071,11 @@ const x_weth = [
       symbol: 'CREAM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9193598.958620467650815598769512857',
   },
   {
-    feeTier: '3000',
     id: '0xc51fb7fafa1b966a9d2eed2ea74f66171d2a861b',
     liquidity: '0',
     token0: {
@@ -23070,15 +13085,11 @@ const x_weth = [
       symbol: 'HEGIC',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9150125.194256622150441987676167028',
   },
   {
-    feeTier: '10000',
     id: '0x44ad0dc86c402cfb289f8e3d4e74bc7fed370d5a',
     liquidity: '454878126857318275',
     token0: {
@@ -23088,15 +13099,11 @@ const x_weth = [
       symbol: 'MMA',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '9146610.346601108067515586374764343',
+    volumeUSD: '9149752.558372958363541004406931824',
   },
   {
-    feeTier: '10000',
     id: '0xa4bd201c839755948e4eaec754214f2b8a6e5955',
     liquidity: '331333440694591381683',
     token0: {
@@ -23106,15 +13113,11 @@ const x_weth = [
       symbol: 'PAINT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9140200.048457446608423722365380036',
   },
   {
-    feeTier: '3000',
     id: '0xfa52876a9355ad2095002f47f699e9b9d4fe034d',
     liquidity: '0',
     token0: {
@@ -23124,15 +13127,11 @@ const x_weth = [
       symbol: 'icETH',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9095140.680301811326115791201953151',
   },
   {
-    feeTier: '10000',
     id: '0xb10e0bc1a65703f1c61f5e456f2d0e16ccb1fa22',
     liquidity: '0',
     token0: {
@@ -23142,15 +13141,11 @@ const x_weth = [
       symbol: 'REDEMIT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9057023.605100365138492481630639877',
   },
   {
-    feeTier: '10000',
     id: '0x4ae72283be36a30c70ff75c94d45a175d0e695f1',
     liquidity: '0',
     token0: {
@@ -23160,15 +13155,11 @@ const x_weth = [
       symbol: 'KABOSU',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '9008368.1138536065339580783135078',
   },
   {
-    feeTier: '3000',
     id: '0x2ab3af4e9e69c29efc5b89be55e43077a07525e9',
     liquidity: '944409201277718303077',
     token0: {
@@ -23178,15 +13169,11 @@ const x_weth = [
       symbol: 'PNDX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8945228.29203696015322314816285004',
   },
   {
-    feeTier: '10000',
     id: '0x1dcaf5b2e4b950dc0831ed5bcf57f67bf6b3f983',
     liquidity: '26125304949752776511603',
     token0: {
@@ -23196,15 +13183,11 @@ const x_weth = [
       symbol: 'ZEN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8933644.533840545951745075626825493',
   },
   {
-    feeTier: '10000',
     id: '0x0df7d88e55a3840a72e2b8bf77b27b119fbb200a',
     liquidity: '79323778228080920000001',
     token0: {
@@ -23214,15 +13197,11 @@ const x_weth = [
       symbol: 'Jingle',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8896243.380150004423871436406235338',
   },
   {
-    feeTier: '3000',
     id: '0x634af6dbe36fd92d799d5442bac62873a8d96aa9',
     liquidity: '0',
     token0: {
@@ -23232,17 +13211,13 @@ const x_weth = [
       symbol: 'FARM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8831372.219345449869901680120824014',
   },
   {
-    feeTier: '3000',
     id: '0x4bcca6c02c20b1a58d1437c8cb656d2f80b3c9bc',
-    liquidity: '0',
+    liquidity: '2436831705751311610595',
     token0: {
       decimals: '18',
       id: '0x549020a9cb845220d66d3e9c6d9f9ef61c981102',
@@ -23250,15 +13225,11 @@ const x_weth = [
       symbol: 'SIDUS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '8793051.662995501587399362894780708',
+    volumeUSD: '8797549.811462413875449501510683079',
   },
   {
-    feeTier: '3000',
     id: '0xf459ae3199362764cec11f1a1dfb07ad1c93a58b',
     liquidity: '358293240838711923715',
     token0: {
@@ -23268,15 +13239,11 @@ const x_weth = [
       symbol: 'wOMI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8788850.512797828270151595664461888',
   },
   {
-    feeTier: '10000',
     id: '0x3c30d38ec285bbb5d7e805e140b5ca75509ce213',
     liquidity: '34308302035386039715684',
     token0: {
@@ -23286,15 +13253,11 @@ const x_weth = [
       symbol: 'DOP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '8758575.672234414232517099493084543',
+    volumeUSD: '8786557.82846709395018150782002999',
   },
   {
-    feeTier: '3000',
     id: '0x9674d8bd21bc5da47687a81d1360f14ec75d0d80',
     liquidity: '0',
     token0: {
@@ -23304,15 +13267,11 @@ const x_weth = [
       symbol: 'DVI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8748985.754648339096560361185067855',
   },
   {
-    feeTier: '10000',
     id: '0xc0b338fd9ad61a808a9fcea24eeddcc89f96068b',
     liquidity: '0',
     token0: {
@@ -23322,15 +13281,11 @@ const x_weth = [
       symbol: 'STACK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8725542.367872004079325369090137585',
   },
   {
-    feeTier: '3000',
     id: '0x5e8e2ab939ba8dd40f9895594aa81d2039623190',
     liquidity: '0',
     token0: {
@@ -23340,15 +13295,11 @@ const x_weth = [
       symbol: 'RAZE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8717088.801111358138245725178352431',
   },
   {
-    feeTier: '3000',
     id: '0x5447b274859457f11d7cc7131b378363bbee4e3a',
     liquidity: '0',
     token0: {
@@ -23358,15 +13309,11 @@ const x_weth = [
       symbol: 'NDX',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8681117.595223560011044837099899567',
   },
   {
-    feeTier: '10000',
     id: '0x3494bce3af42f4b396df03fec687ec2e4bb66a57',
     liquidity: '72699095583236316',
     token0: {
@@ -23376,15 +13323,11 @@ const x_weth = [
       symbol: 'DOGECAST',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8665050.196510258868777739732043295',
   },
   {
-    feeTier: '10000',
     id: '0x3ccfd9640182b576e26119cda149416a5de280f2',
     liquidity: '0',
     token0: {
@@ -23394,15 +13337,11 @@ const x_weth = [
       symbol: 'C20',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8663184.843869603819626975533921035',
   },
   {
-    feeTier: '10000',
     id: '0x30f40dc09e0217ec98805ff5b263a47e87534774',
     liquidity: '1834764615516860777173080',
     token0: {
@@ -23412,15 +13351,11 @@ const x_weth = [
       symbol: 'WOOF',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8638205.368441537041979318398898033',
   },
   {
-    feeTier: '10000',
     id: '0x4ec068a15a67187227f91457b4e1ec887bd361e7',
     liquidity: '516799859263813294530',
     token0: {
@@ -23430,15 +13365,11 @@ const x_weth = [
       symbol: 'MULLET',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8618946.889918422381950651475425886',
   },
   {
-    feeTier: '3000',
     id: '0x42670595766c9b44a2a4936b1c0e62f0e8167ace',
     liquidity: '0',
     token0: {
@@ -23448,33 +13379,11 @@ const x_weth = [
       symbol: 'VEE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8591588.014480612209118721416711156',
   },
   {
-    feeTier: '3000',
-    id: '0xc763b6b3d0f75167db95daa6a0a0d75dd467c4e1',
-    liquidity: '6634995818311792061661',
-    token0: {
-      decimals: '18',
-      id: '0x900db999074d9277c5da2a43f252d74366230da0',
-      name: 'Giveth',
-      symbol: 'GIV',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '8564912.2217289177460329706326759',
-  },
-  {
-    feeTier: '3000',
     id: '0xdceb026bdbeabef09b823de8cb76aacb899cf576',
     liquidity: '54812473171252574880039',
     token0: {
@@ -23484,15 +13393,25 @@ const x_weth = [
       symbol: 'EL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '8560535.291273672289750344755997233',
+    volumeUSD: '8580103.825685617760350760000999534',
   },
   {
-    feeTier: '3000',
+    id: '0xc763b6b3d0f75167db95daa6a0a0d75dd467c4e1',
+    liquidity: '6634995818311792061661',
+    token0: {
+      decimals: '18',
+      id: '0x900db999074d9277c5da2a43f252d74366230da0',
+      name: 'Giveth',
+      symbol: 'GIV',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '8566018.018284387886989720645166328',
+  },
+  {
     id: '0x24017386cc0af0555a6e5b0fe0443e145648612b',
     liquidity: '0',
     token0: {
@@ -23502,51 +13421,11 @@ const x_weth = [
       symbol: 'DOV',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8508821.815728573627605582091793979',
   },
   {
-    feeTier: '10000',
-    id: '0x93b012ee7363f60a0ac19044eda8c94e41970c56',
-    liquidity: '8010956776228285316320',
-    token0: {
-      decimals: '18',
-      id: '0x59a529070fbb61e6d6c91f952ccb7f35c34cf8aa',
-      name: 'Asymmetry Finance Token',
-      symbol: 'ASF',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '8487626.487908898370944580860889789',
-  },
-  {
-    feeTier: '3000',
-    id: '0x70e61de63eb3229f2ad8668a8cbd87b7a87b5f8b',
-    liquidity: '23319054403688974',
-    token0: {
-      decimals: '18',
-      id: '0xade00c28244d5ce17d72e40330b1c318cd12b7c3',
-      name: 'AdEx Network',
-      symbol: 'ADX',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '8486022.661497959692588705409808779',
-  },
-  {
-    feeTier: '3000',
     id: '0x85218527945d48167a682e277867f1539ad00068',
     liquidity: '65765704628224358514215',
     token0: {
@@ -23556,15 +13435,39 @@ const x_weth = [
       symbol: 'FLOCK',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '8475349.111217905063755244299907254',
+    volumeUSD: '8500649.077857846151568499920871449',
   },
   {
-    feeTier: '3000',
+    id: '0x93b012ee7363f60a0ac19044eda8c94e41970c56',
+    liquidity: '14412009335325221289',
+    token0: {
+      decimals: '18',
+      id: '0x59a529070fbb61e6d6c91f952ccb7f35c34cf8aa',
+      name: 'Asymmetry Finance Token',
+      symbol: 'ASF',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '8490088.512137167009096640741880808',
+  },
+  {
+    id: '0x70e61de63eb3229f2ad8668a8cbd87b7a87b5f8b',
+    liquidity: '23319054403688974',
+    token0: {
+      decimals: '18',
+      id: '0xade00c28244d5ce17d72e40330b1c318cd12b7c3',
+      name: 'AdEx Network',
+      symbol: 'ADX',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '8486022.661497959692588705409808779',
+  },
+  {
     id: '0x12b791bb27b3a4ee958b5a435fea7d49ec076e9c',
     liquidity: '96919412340314663832939',
     token0: {
@@ -23574,15 +13477,11 @@ const x_weth = [
       symbol: 'DAVE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8475033.044380780361012332146426864',
   },
   {
-    feeTier: '10000',
     id: '0x1ccedc52df911af989a790dc8049554744642056',
     liquidity: '0',
     token0: {
@@ -23592,15 +13491,11 @@ const x_weth = [
       symbol: 'SOON',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8455014.224085538927248852186675173',
   },
   {
-    feeTier: '3000',
     id: '0xad260212fe1264f42e478981d937e5c1be9c1c74',
     liquidity: '0',
     token0: {
@@ -23610,51 +13505,11 @@ const x_weth = [
       symbol: 'XI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8452956.581597065600203120156297847',
   },
   {
-    feeTier: '3000',
-    id: '0x9c0071d76dfb694f6965a378e16e1709f2cf3187',
-    liquidity: '0',
-    token0: {
-      decimals: '9',
-      id: '0x64b52138dd67b035b8f9dcb84fbabd3017495853',
-      name: 'Gravitas',
-      symbol: 'Gravitas',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '8375035.39226814001079635324499896',
-  },
-  {
-    feeTier: '10000',
-    id: '0xfd9715a9f03678975b2e224c938fae8d481b09b2',
-    liquidity: '0',
-    token0: {
-      decimals: '18',
-      id: '0xaaaaaa20d9e0e2461697782ef11675f668207961',
-      name: 'Aurora',
-      symbol: 'AURORA',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '8367343.688474247234840762820218018',
-  },
-  {
-    feeTier: '3000',
     id: '0x23e182724f1b00a3c5a2c76502096625b5fe87cd',
     liquidity: '2801832299573060497066',
     token0: {
@@ -23664,15 +13519,39 @@ const x_weth = [
       symbol: '$WELF',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '8359172.704731506635266723132972096',
+    volumeUSD: '8398485.192233030598728296340626969',
   },
   {
-    feeTier: '10000',
+    id: '0x9c0071d76dfb694f6965a378e16e1709f2cf3187',
+    liquidity: '0',
+    token0: {
+      decimals: '9',
+      id: '0x64b52138dd67b035b8f9dcb84fbabd3017495853',
+      name: 'Gravitas',
+      symbol: 'Gravitas',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '8375035.39226814001079635324499896',
+  },
+  {
+    id: '0xfd9715a9f03678975b2e224c938fae8d481b09b2',
+    liquidity: '0',
+    token0: {
+      decimals: '18',
+      id: '0xaaaaaa20d9e0e2461697782ef11675f668207961',
+      name: 'Aurora',
+      symbol: 'AURORA',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '8367343.688474247234840762820218018',
+  },
+  {
     id: '0xfb6919736f9213f9f4ec296a69ab16604b937f8a',
     liquidity: '72308894999810008396',
     token0: {
@@ -23682,15 +13561,11 @@ const x_weth = [
       symbol: 'WTF',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '8353638.565113577899035800144096893',
+    volumeUSD: '8353664.016745171098022364113438692',
   },
   {
-    feeTier: '3000',
     id: '0xff2bdf3044c601679dede16f5d4a460b35cebfee',
     liquidity: '2747578094197962965',
     token0: {
@@ -23700,15 +13575,11 @@ const x_weth = [
       symbol: 'POOL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '8340176.855361675325677983221146675',
+    volumeUSD: '8341068.31116999944824243267731855',
   },
   {
-    feeTier: '3000',
     id: '0x1fc293bfaa394ce7cf28cd0c26a09a80da1a797c',
     liquidity: '0',
     token0: {
@@ -23718,15 +13589,11 @@ const x_weth = [
       symbol: 'HARAMBE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8289103.79285997722157027219704181',
   },
   {
-    feeTier: '10000',
     id: '0x24161e9f716a2d29101664696942d36962c0987f',
     liquidity: '39157574661530187',
     token0: {
@@ -23736,15 +13603,11 @@ const x_weth = [
       symbol: 'SU',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '8278391.62080488462791636141032736',
+    volumeUSD: '8278450.69213684507635238275200703',
   },
   {
-    feeTier: '10000',
     id: '0xfb181650a0e7a22c4c9ef59f92a66473c1119f38',
     liquidity: '0',
     token0: {
@@ -23754,15 +13617,11 @@ const x_weth = [
       symbol: 'BOTS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8271245.092176497152096554106687808',
   },
   {
-    feeTier: '10000',
     id: '0x37dfe3f7c42bd62509d6d31a53aed18805a34369',
     liquidity: '875635247774763442222',
     token0: {
@@ -23772,15 +13631,11 @@ const x_weth = [
       symbol: 'FUR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8258865.327072851013024205102148112',
   },
   {
-    feeTier: '10000',
     id: '0x6ba211aa1348682c393173369cd2daab50032ede',
     liquidity: '0',
     token0: {
@@ -23790,15 +13645,11 @@ const x_weth = [
       symbol: 'GUM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8247770.198561812383990685278175332',
   },
   {
-    feeTier: '10000',
     id: '0x84062bbc1d7199fd049c4b011d193d4edd8a2d4b',
     liquidity: '0',
     token0: {
@@ -23808,17 +13659,13 @@ const x_weth = [
       symbol: 'raz',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8228855.844710516697099608846357319',
   },
   {
-    feeTier: '10000',
     id: '0x38f44ebeca8cfbec93ae86aa6f00ccb55c2a4d22',
-    liquidity: '10259612579719887785530',
+    liquidity: '10485175871378459508564',
     token0: {
       decimals: '18',
       id: '0x6e5970dbd6fc7eb1f29c6d2edf2bc4c36124c0c1',
@@ -23826,15 +13673,11 @@ const x_weth = [
       symbol: 'TRADE',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '8218432.869788323445977935794861459',
+    volumeUSD: '8227464.440958833324979552213812454',
   },
   {
-    feeTier: '3000',
     id: '0xc66af8bb2be8722c6151f2215a94f19580b15090',
     liquidity: '0',
     token0: {
@@ -23844,15 +13687,11 @@ const x_weth = [
       symbol: 'EVAI',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8151508.74707751925237693919558244',
   },
   {
-    feeTier: '10000',
     id: '0x95b70b320819b1566c9a00626f57fde85b402ea4',
     liquidity: '183090651127475458',
     token0: {
@@ -23862,15 +13701,11 @@ const x_weth = [
       symbol: 'EWTB',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8145180.044674188082488914785114543',
   },
   {
-    feeTier: '10000',
     id: '0xce1f0626083a00eaef1d85dd2979abb5b1c3657c',
     liquidity: '0',
     token0: {
@@ -23880,15 +13715,11 @@ const x_weth = [
       symbol: 'XLON',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8139003.532284033106420218921032597',
   },
   {
-    feeTier: '10000',
     id: '0x8dc00841ab66a7e3c12b9ada8d49ea86186d712a',
     liquidity: '0',
     token0: {
@@ -23898,15 +13729,11 @@ const x_weth = [
       symbol: 'sifu',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8125966.896576785659866728723885441',
   },
   {
-    feeTier: '3000',
     id: '0xd353ceeed25ccfa6d46c229857448f15423a1bfa',
     liquidity: '0',
     token0: {
@@ -23916,15 +13743,11 @@ const x_weth = [
       symbol: 'MIDAS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8091072.705033420575947913706626777',
   },
   {
-    feeTier: '3000',
     id: '0xb79376c03e654fede2f6530f0ceb81d2408482db',
     liquidity: '0',
     token0: {
@@ -23934,15 +13757,11 @@ const x_weth = [
       symbol: 'INXT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8084358.399041355646548986818095051',
   },
   {
-    feeTier: '10000',
     id: '0x8a6b88553144c5b0f9243ea92ced31799142c807',
     liquidity: '2792921378912226076257',
     token0: {
@@ -23952,15 +13771,11 @@ const x_weth = [
       symbol: 'BMP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '8077336.500987371774587460828088419',
+    volumeUSD: '8083505.497159352125250789085655981',
   },
   {
-    feeTier: '10000',
     id: '0x53bbdf4ea397d17a6f904dc882b3fb78a6875a66',
     liquidity: '94519829921740735780486',
     token0: {
@@ -23970,15 +13785,11 @@ const x_weth = [
       symbol: 'WALLET',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '8023668.738716709584566719992443161',
+    volumeUSD: '8025398.796372463540965268990960653',
   },
   {
-    feeTier: '10000',
     id: '0x5a2a219c4704644f528b97fdda17f5c03016f014',
     liquidity: '0',
     token0: {
@@ -23988,15 +13799,11 @@ const x_weth = [
       symbol: 'PLT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '8011989.80213407049350111509410653',
   },
   {
-    feeTier: '10000',
     id: '0xf5b7cac5d47f4421dd287b2880667774d3c91df7',
     liquidity: '0',
     token0: {
@@ -24006,15 +13813,11 @@ const x_weth = [
       symbol: 'BURN',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '7942103.656106313665765151255500866',
   },
   {
-    feeTier: '10000',
     id: '0x646946f0518c6ba27f1b2c6b4387ec6035bc42e3',
     liquidity: '2457303106832608353134',
     token0: {
@@ -24024,15 +13827,11 @@ const x_weth = [
       symbol: 'PFPAsia',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '7938920.630249739379128588811059507',
+    volumeUSD: '7938965.158503111610975159993849886',
   },
   {
-    feeTier: '10000',
     id: '0x93c63cab70225568de9f56559c63a0d2de30bc1b',
     liquidity: '13311857516162594',
     token0: {
@@ -24042,15 +13841,11 @@ const x_weth = [
       symbol: 'GOO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '7936757.258463481116209182851178632',
   },
   {
-    feeTier: '10000',
     id: '0x933fbbb7dc0f683e523190ea150131a61f62c4da',
     liquidity: '0',
     token0: {
@@ -24060,15 +13855,11 @@ const x_weth = [
       symbol: 'SAFEREUM',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '7916206.9574115884678385070256913',
   },
   {
-    feeTier: '3000',
     id: '0xa704450357c156386726215ea521bec3f34b9651',
     liquidity: '0',
     token0: {
@@ -24078,15 +13869,11 @@ const x_weth = [
       symbol: 'GLQ',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '7900070.195517161695251533573792787',
   },
   {
-    feeTier: '10000',
     id: '0xa9405016f8158d87f5659b63df170c03b8396450',
     liquidity: '228664716233824637',
     token0: {
@@ -24096,15 +13883,11 @@ const x_weth = [
       symbol: 'EBULL',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '7891238.199835169277257134360395278',
+    volumeUSD: '7895255.222755044377587267337203075',
   },
   {
-    feeTier: '3000',
     id: '0xbafb93a325e089408bd9d2e5b87aa5d0849f4e29',
     liquidity: '1431916775866',
     token0: {
@@ -24114,15 +13897,11 @@ const x_weth = [
       symbol: 'ALMO',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '7887910.449942406851452848251805394',
+    volumeUSD: '7890879.849534781149222202413436862',
   },
   {
-    feeTier: '10000',
     id: '0x4ff1cfce8fb91dd0b00dfeafd4b46587353267b4',
     liquidity: '0',
     token0: {
@@ -24132,15 +13911,11 @@ const x_weth = [
       symbol: 'RIGHT',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '7883001.687098702419938654732084706',
   },
   {
-    feeTier: '10000',
     id: '0x386016d2321cd53bae906f08d59a47479ebae0b5',
     liquidity: '0',
     token0: {
@@ -24150,51 +13925,11 @@ const x_weth = [
       symbol: 'HGP',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '7882838.764343575746993473558521478',
   },
   {
-    feeTier: '3000',
-    id: '0x49a48e6684b73904f8c7394edac5296e5e12a463',
-    liquidity: '3993565160678575030',
-    token0: {
-      decimals: '18',
-      id: '0x4c11249814f11b9346808179cf06e71ac328c1b5',
-      name: 'Oraichain Token',
-      symbol: 'ORAI',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '7858627.40163420885214140342481684',
-  },
-  {
-    feeTier: '10000',
-    id: '0x7261bb346ccc02911e4b07f933ccd69dc51ee3e1',
-    liquidity: '7216598524284342098024',
-    token0: {
-      decimals: '18',
-      id: '0xb6ee9668771a79be7967ee29a63d4184f8097143',
-      name: 'CargoX Token',
-      symbol: 'CXO',
-    },
-    token1: {
-      decimals: '18',
-      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
-    },
-    volumeUSD: '7832382.029033285159665445754316689',
-  },
-  {
-    feeTier: '10000',
     id: '0xc3abd8c07f0d669906f4be495389f2dcc598020f',
     liquidity: '59890015239514427232970',
     token0: {
@@ -24204,15 +13939,39 @@ const x_weth = [
       symbol: 'ATOS',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '7828257.519362403662142298390198557',
+    volumeUSD: '7874564.276766675510921215411286033',
   },
   {
-    feeTier: '10000',
+    id: '0x49a48e6684b73904f8c7394edac5296e5e12a463',
+    liquidity: '3993565160678575030',
+    token0: {
+      decimals: '18',
+      id: '0x4c11249814f11b9346808179cf06e71ac328c1b5',
+      name: 'Oraichain Token',
+      symbol: 'ORAI',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '7860139.354079849822618645833622461',
+  },
+  {
+    id: '0x7261bb346ccc02911e4b07f933ccd69dc51ee3e1',
+    liquidity: '1374954807516904459260',
+    token0: {
+      decimals: '18',
+      id: '0xb6ee9668771a79be7967ee29a63d4184f8097143',
+      name: 'CargoX Token',
+      symbol: 'CXO',
+    },
+    token1: {
+      id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+    },
+    volumeUSD: '7833211.932821119431336611336234896',
+  },
+  {
     id: '0x94dd312f6cb52c870aacfeeb8bf5e4e28f6952ff',
     liquidity: '1384633865114670327857',
     token0: {
@@ -24222,15 +13981,11 @@ const x_weth = [
       symbol: 'HAIR',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
-    volumeUSD: '7813914.440632960683016915197703508',
+    volumeUSD: '7818952.16604709325828567244336593',
   },
   {
-    feeTier: '10000',
     id: '0x1d1ad068ae81b3d41b9d5696f599a6cda0cca079',
     liquidity: '0',
     token0: {
@@ -24240,13 +13995,10 @@ const x_weth = [
       symbol: 'GRID',
     },
     token1: {
-      decimals: '18',
       id: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-      name: 'Wrapped Ether',
-      symbol: 'WETH',
     },
     volumeUSD: '7726837.334754365018271978624488208',
   },
 ];
 
-export { usdt_x, x_weth };
+export { x_weth };
