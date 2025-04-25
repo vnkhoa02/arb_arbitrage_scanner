@@ -20,7 +20,7 @@ export class DexService {
    */
   async getGasPrice() {
     const feeData = await provider.getFeeData();
-    return ethers.formatUnits(feeData.gasPrice, 'gwei');
+    return ethers.utils.formatUnits(feeData.gasPrice, 'gwei');
   }
 
   /**
@@ -37,7 +37,7 @@ export class DexService {
         'function symbol() view returns (string)',
         'function decimals() view returns (uint8)',
       ];
-      if (!ethers.isAddress(tokenAddress))
+      if (!ethers.utils.isAddress(tokenAddress))
         throw new BadRequestException('Invalid token address');
       const contract = new ethers.Contract(
         tokenAddress,
@@ -104,7 +104,7 @@ export class DexService {
         this.getTokenDecimals(tokenIn),
         this.getTokenDecimals(tokenOut),
       ]);
-      const amountInUnits = ethers.parseUnits(amountIn, decIn);
+      const amountInUnits = ethers.utils.parseUnits(amountIn, decIn);
 
       const quotedAmount = await quoter.quoteExactInputSingle(
         tokenIn,
@@ -113,7 +113,7 @@ export class DexService {
         amountInUnits,
         0,
       );
-      return ethers.formatUnits(quotedAmount, decOut);
+      return ethers.utils.formatUnits(quotedAmount, decOut);
     } catch (error) {
       this.logger.error('Error getting quote:', error);
       throw new BadRequestException(`Error getting quote: ${error.message}`);

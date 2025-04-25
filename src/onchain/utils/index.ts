@@ -1,5 +1,5 @@
 import { Route } from 'src/dex/types/quote';
-import { getBytes, getAddress, zeroPadValue, toBeHex, concat } from 'ethers';
+import { utils, BigNumber } from 'ethers'; // v5 import
 
 export function pickBestRoute(routes: Route[][]): {
   route: Route[];
@@ -16,26 +16,27 @@ export function pickBestRoute(routes: Route[][]): {
 }
 
 function encodeRouteToPath(route: Route[]): string {
-  const pathBytes: Uint8Array<ArrayBufferLike>[] = [];
+  const pathBytes: string[] = [];
 
   for (let i = 0; i < route.length; i++) {
     const hop = route[i];
 
-    // TokenIn: address -> 20 bytes
-    const tokenInBytes = getBytes(getAddress(hop.tokenIn.address));
-    pathBytes.push(getBytes(zeroPadValue(tokenInBytes, 20)));
+    // TokenIn address (20 bytes)
+    const tokenIn = utils.getAddress(hop.tokenIn.address);
+    pathBytes.push(tokenIn.toLowerCase());
 
-    // Fee: number/string -> BigInt -> 3 bytes
-    const feeHex = toBeHex(BigInt(hop.fee), 3); // Converts to 3-byte hex (e.g., 0x01f4 for 500)
-    const feeBytes = getBytes(feeHex); // Convert hex string to bytes
-    pathBytes.push(feeBytes);
+    // Fee: convert to 3-byte hex (padded left)
+    const feeHex = utils.hexZeroPad(BigNumber.from(hop.fee).toHexString(), 3);
+    pathBytes.push(feeHex);
 
-    // TokenOut: only on last hop
+    // TokenOut only at the end
     if (i === route.length - 1) {
-      const tokenOutBytes = getBytes(getAddress(hop.tokenOut.address));
-      pathBytes.push(getBytes(zeroPadValue(tokenOutBytes, 20)));
+      const tokenOut = utils.getAddress(hop.tokenOut.address);
+      pathBytes.push(tokenOut.toLowerCase());
     }
   }
 
-  return concat(pathBytes); // Returns hex string (e.g., '0x...')
+  const concatenated =
+    '0x' + pathBytes.map((b) => b.replace(/^0x/, '')).join('');
+  return concatenated;
 }

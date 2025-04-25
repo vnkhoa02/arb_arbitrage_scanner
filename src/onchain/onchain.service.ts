@@ -5,7 +5,7 @@ import {
   OnModuleInit,
 } from '@nestjs/common';
 import 'dotenv/config';
-import { ethers, parseUnits } from 'ethers';
+import { ethers } from 'ethers';
 import chunk from 'lodash/chunk';
 import { provider } from 'src/dex/config/provider';
 import { TOKENS } from 'src/dex/config/token';
@@ -80,10 +80,16 @@ export class OnchainService implements OnModuleInit {
 
     // 3) Destructure the two encoded routes (bytes)
     const forwardRoute = pickBestRoute(path.forward.route);
-    const forwardOutMin = parseUnits(path.forward.amountOut.toString(), 18);
+    const forwardOutMin = ethers.utils
+      .parseUnits(path.forward.amountOut.toString(), 18)
+      .toBigInt();
     const backwardRoute = pickBestRoute(path.backward.route);
-    const backwardOutMin = parseUnits(path.backward.amountOut.toString(), 18);
-    const borrowAmount = parseUnits(params.tokenIn.toString(), 18); // returns BigInt
+    const backwardOutMin = ethers.utils
+      .parseUnits(path.backward.amountOut.toString(), 18)
+      .toBigInt();
+    const borrowAmount = ethers.utils
+      .parseUnits(params.tokenIn.toString(), 18)
+      .toBigInt();
 
     const simulateParams: ISimpleArbitrageParams = {
       tokenIn,
