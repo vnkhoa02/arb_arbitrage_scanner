@@ -1,5 +1,5 @@
+import { BigNumber, utils } from 'ethers'; // v5 import
 import { Route } from 'src/dex/types/quote';
-import { utils, BigNumber } from 'ethers'; // v5 import
 
 export function pickBestRoute(routes: Route[][]): {
   route: Route[];
@@ -39,4 +39,12 @@ function encodeRouteToPath(route: Route[]): string {
   const concatenated =
     '0x' + pathBytes.map((b) => b.replace(/^0x/, '')).join('');
   return concatenated;
+}
+
+export function getUniqueToken0Ids(pools: any[]): string[] {
+  const uniqueIds = new Set<string>();
+  for (const pool of pools) {
+    uniqueIds.add(pool.token0.id);
+  }
+  return Array.from(uniqueIds);
 }

@@ -1,9 +1,4 @@
-import {
-  Injectable,
-  Logger,
-  NotFoundException,
-  OnModuleInit,
-} from '@nestjs/common';
+import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import 'dotenv/config';
 import { ethers } from 'ethers';
 import chunk from 'lodash/chunk';
@@ -14,9 +9,9 @@ import { ScannerService } from 'src/scanner/scanner.service';
 import * as arbitrageAbi from './abis/Arbitrage.abi.json';
 import { ARBITRAGE_V1 } from './constants';
 import { ISimpleArbitrageParams, ISimpleArbitrageTrade } from './types';
-import { pickBestRoute } from './utils';
+import { getUniqueToken0Ids, pickBestRoute } from './utils';
 
-const walletPrivateKey = process.env.TESTER_PROD_PRIVATE_KEY;
+const walletPrivateKey = process.env.PRIVATE_KEY;
 
 @Injectable()
 export class OnchainService implements OnModuleInit {
@@ -47,19 +42,19 @@ export class OnchainService implements OnModuleInit {
     params: ISimpleArbitrageParams,
   ): Promise<string> {
     try {
-      const tx = await this.contract.simpleArbitrage.staticCall(
+      const tx = await this.contract.callStatic.simpleArbitrage(
         params.tokenIn,
         params.tokenOut,
         params.forwardPath,
-        params.forwardOutMin,
+        0,
         params.backwardPath,
-        params.backwardOutMin,
+        0,
         params.borrowAmount,
       );
       return tx;
     } catch (error) {
-      console.error('Simulation failed:', error);
-      throw error;
+      console.error('Simulation failed:', error?.message);
+      return null;
     }
   }
 
@@ -72,11 +67,11 @@ export class OnchainService implements OnModuleInit {
     );
 
     // 2) skip if not profitable
-    if (!path.roundTrip.isProfitable) {
-      const message = 'No arbitrage opportunity found.';
-      this.logger.log(message, params);
-      throw new NotFoundException(message);
-    }
+    // if (!path.roundTrip.isProfitable) {
+    //   const message = 'No arbitrage opportunity found.';
+    //   this.logger.log(message, params);
+    //   throw new NotFoundException(message);
+    // }
 
     // 3) Destructure the two encoded routes (bytes)
     const forwardRoute = pickBestRoute(path.forward.route);
@@ -88,7 +83,7 @@ export class OnchainService implements OnModuleInit {
       .parseUnits(path.backward.amountOut.toString(), 18)
       .toBigInt();
     const borrowAmount = ethers.utils
-      .parseUnits(params.tokenIn.toString(), 18)
+      .parseUnits(params.amountIn.toString(), 18)
       .toBigInt();
 
     const simulateParams: ISimpleArbitrageParams = {
@@ -105,28 +100,27 @@ export class OnchainService implements OnModuleInit {
     return tx;
   }
 
-  async searchSimpleArbitrage(tokenIn = TOKENS.WETH) {
+  async searchSimpleArbitrage(tokenIn = TOKENS.WETH, amountIn = 1) {
     this.logger.log('Searching for arbitrage trade...');
 
     const profitableRoutes = [];
-    const chunkedPools = chunk(x_weth.slice(0, 500), 10); // Adjust size to control concurrency
+    const tokens = getUniqueToken0Ids(x_weth);
+    const chunkedTokens = chunk(tokens, 10); // Adjust size to control concurrency
 
-    for (const group of chunkedPools) {
+    for (const group of chunkedTokens) {
       const results = await Promise.all(
-        group.map(async (pool) => {
+        group.map(async (tokenOut) => {
           try {
-            this.logger.log(`Checking WETH with `, pool.token0.id);
-            const result = await this.scannerService.arbitrage(
-              tokenIn,
-              pool.token0.id,
-              1,
-            );
-            if (result.roundTrip.isProfitable) {
-              return { poolId: pool.id, result };
+            this.logger.log(`Checking WETH with `, tokenOut);
+            const params = { tokenIn, tokenOut, amountIn };
+            const tx = await this.simpleArbitrageTrade(params);
+            if (tx) {
+              this.logger.log(`✅ Profitable arbitrage in ${tokenOut} `, tx);
+              return { tokenOut, tx };
             }
           } catch (err) {
             this.logger.warn(
-              `⚠️ Error in ${pool.token0.symbol} [${pool.id}]: ${err.message}`,
+              `⚠️ Error in tokenOut ${tokenOut}: ${err.message}`,
             );
           }
           return null;

@@ -30,7 +30,7 @@ export class OnchainController {
   }
 
   @Get('arbitrage/search')
-  async searchArbitrage(@Query() query: any) {
+  async searchSimpleArbitrage() {
     return await this.onchainService.searchSimpleArbitrage();
   }
 }
