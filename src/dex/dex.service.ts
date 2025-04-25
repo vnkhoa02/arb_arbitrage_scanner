@@ -2,6 +2,7 @@ import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import axios from 'axios';
 import 'dotenv/config';
 import { ethers } from 'ethers';
+import { BestRouteFinder } from './bestRouteFinder';
 import { defaultProvider, provider } from './config/provider';
 import { DEX } from './config/token';
 import { MORALIS_PIRCE_API, UNISWAP_QUOTE_API } from './constants';
@@ -14,6 +15,9 @@ import { getQuoteHeader, getQuotePayload } from './utils/getQuote';
 @Injectable()
 export class DexService {
   private readonly logger = new Logger(DexService.name);
+
+  constructor(private readonly bestRouteFinder: BestRouteFinder) {}
+
   /**
    * Get the current gas price in Gwei.
    * @returns The current gas price in Gwei.
@@ -171,6 +175,19 @@ export class DexService {
     }
   }
 
+  async getQuoteSlow(tokenIn: string, tokenOut: string, amountIn: string) {
+    const [decIn, decOut] = await Promise.all([
+      this.getTokenDecimals(tokenIn),
+      this.getTokenDecimals(tokenOut),
+    ]);
+    return await this.bestRouteFinder.findBestRoute(
+      tokenIn,
+      decIn,
+      tokenOut,
+      decOut,
+      ethers.utils.parseUnits(amountIn, decIn).toBigInt(),
+    );
+  }
   /**
    * Get price in usd per token
    * @param token_address

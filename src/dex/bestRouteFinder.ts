@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common';
 import { ChainId } from '@uniswap/sdk';
 import { CurrencyAmount, Percent, Token, TradeType } from '@uniswap/sdk-core';
 import { AlphaRouter } from '@uniswap/smart-order-router';
@@ -11,6 +12,7 @@ enum UniversalRouterVersion {
   V2_0 = '2.0',
 }
 
+@Injectable()
 export class BestRouteFinder {
   private router: AlphaRouter;
   private chainId = ChainId.MAINNET.valueOf();

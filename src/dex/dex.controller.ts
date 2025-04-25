@@ -1,16 +1,11 @@
 import { Controller, Get, Param, Query, UseInterceptors } from '@nestjs/common';
-import { DexService } from './dex.service';
-import { BestRouteFinder } from './bestRouteFinder';
-import { ethers } from 'ethers';
 import { BigIntSerializerInterceptor } from 'src/interceptor/BigIntSerializerInterceptor';
+import { DexService } from './dex.service';
 
 @Controller('dex')
 @UseInterceptors(BigIntSerializerInterceptor)
 export class DexController {
-  constructor(
-    private readonly dexService: DexService,
-    private readonly bestRouteFinder: BestRouteFinder,
-  ) {}
+  constructor(private readonly dexService: DexService) {}
 
   @Get('token-info/:tokenAddress')
   async getTokenBasicInfo(@Param('tokenAddress') tokenAddress: string) {
@@ -28,20 +23,10 @@ export class DexController {
 
   @Get('quote/slow')
   async getBestRoute(@Query() query: any) {
-    const tokenIn = query?.tokenIn;
-    const tokenOut = query?.tokenOut;
-    const amountIn = query?.amountIn;
-
-    const [decIn, decOut] = await Promise.all([
-      this.dexService.getTokenDecimals(tokenIn),
-      this.dexService.getTokenDecimals(tokenOut),
-    ]);
-    return await this.bestRouteFinder.findBestRoute(
-      tokenIn,
-      decIn,
-      tokenOut,
-      decOut,
-      ethers.utils.parseUnits(amountIn, decIn).toBigInt(),
+    return await this.dexService.getQuoteSlow(
+      query.tokenIn,
+      query.tokenOut,
+      query.amountIn,
     );
   }
 }
