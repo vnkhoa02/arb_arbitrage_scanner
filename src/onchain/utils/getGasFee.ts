@@ -20,7 +20,7 @@ export async function getGasFee(gasEstimate: BigNumber = BigNumber.from(0)) {
       highConfidencePrice.maxFeePerGas.toString(),
       'gwei',
     );
-    const maxPriorityFee = ethers.utils.parseUnits(
+    const maxPriorityFeePerGas = ethers.utils.parseUnits(
       highConfidencePrice.maxPriorityFeePerGas.toString(),
       'gwei',
     );
@@ -33,7 +33,7 @@ export async function getGasFee(gasEstimate: BigNumber = BigNumber.from(0)) {
 
     return {
       maxFeePerGas,
-      maxPriorityFee,
+      maxPriorityFeePerGas,
       estimatedFeeEth,
     };
   } catch (error: any) {

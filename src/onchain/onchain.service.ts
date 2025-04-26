@@ -1,16 +1,22 @@
-import 'dotenv/config';
-import { FlashbotsBundleProvider } from '@flashbots/ethers-provider-bundle';
+import {
+  FlashbotsBundleProvider,
+  FlashbotsTransactionResolution,
+} from '@flashbots/ethers-provider-bundle';
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
+import 'dotenv/config';
 import { BigNumber, ethers, Wallet } from 'ethers';
 import { provider } from 'src/dex/config/provider';
 import { STABLE_COIN, TOKENS } from 'src/dex/config/token';
 import { ScannerService } from 'src/scanner/scanner.service';
 import arbitrageAbi from './abis/Arbitrage.abi.json';
-import { ARBITRAGE_V1 } from './constants';
 import { authSigner } from './config/flashbot';
+import { ARBITRAGE_V1 } from './constants';
 import { ISimpleArbitrageParams, ISimpleArbitrageTrade } from './types';
 import { pickBestRoute } from './utils';
+import { sendNotify } from './utils/notify';
+import { Cron, CronExpression } from '@nestjs/schedule';
 import { getGasFee } from './utils/getGasFee';
+import { ChainId } from '@uniswap/sdk';
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 @Injectable()
@@ -100,20 +106,96 @@ export class OnchainService implements OnModuleInit {
     return { simParams, simulation };
   }
 
-  // @Cron(CronExpression.EVERY_5_SECONDS)
+  private async submitArbitrage(params: ISimpleArbitrageParams) {
+    const gasLimit = BigNumber.from(40000); // 40,000 units
+    const { maxFeePerGas, maxPriorityFeePerGas } = await getGasFee();
+    const txRequest: ethers.providers.TransactionRequest = {
+      to: this.arbContract.address,
+      data: this.arbContract.interface.encodeFunctionData('simpleArbitrage', [
+        params.tokenIn,
+        params.tokenOut,
+        params.forwardPath,
+        0,
+        params.backwardPath,
+        0,
+        params.borrowAmount,
+      ]),
+      chainId: ChainId.MAINNET,
+      type: 2,
+      gasLimit,
+      maxFeePerGas,
+      maxPriorityFeePerGas,
+    };
+
+    console.log(new Date());
+    console.log('Starting to run the private transaction...');
+
+    const blockNum = await provider.getBlockNumber();
+    const transaction = await this.flashbotsProvider.sendPrivateTransaction(
+      {
+        transaction: txRequest,
+        signer: this.signer,
+      },
+      { maxBlockNumber: blockNum + 5 },
+    );
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const result = await transaction.wait();
+    console.log('result ->>', result);
+    if (result === FlashbotsTransactionResolution.TransactionIncluded) {
+      console.log('Transaction included!');
+    } else if (result === FlashbotsTransactionResolution.TransactionDropped) {
+      console.warn('Transaction dropped.');
+    } else {
+      console.warn('Transaction not included.');
+    }
+    console.log(new Date());
+    console.log('Private transaction submitted.');
+  }
+
+  private isSent = false;
+
+  @Cron(CronExpression.EVERY_5_SECONDS)
   private async scanTrade() {
-    for (const tokenOut of [
-      STABLE_COIN.USDT,
-      STABLE_COIN.USDC,
-      STABLE_COIN.DAI,
-    ]) {
-      const { simParams, simulation } = await this.simpleArbitrageTrade({
-        tokenIn: TOKENS.WETH,
-        tokenOut,
-        amountIn: 1,
-      });
-      if (simulation) {
+    if (this.isSent) {
+      console.log('Trade already sent!', this.isSent);
+      return;
+    }
+    const stableCoins = [STABLE_COIN.USDT, STABLE_COIN.USDC, STABLE_COIN.DAI];
+    const promises = stableCoins.map(async (tokenOut) => {
+      try {
+        const { simParams, simulation } = await this.simpleArbitrageTrade({
+          tokenIn: TOKENS.WETH,
+          tokenOut,
+          amountIn: 5,
+        });
+
+        if (simulation) {
+          return { simParams, success: true };
+        }
+      } catch (error) {
+        console.error(`Error during simulation for ${tokenOut}`, error);
+      }
+      return { success: false };
+    });
+
+    const results = await Promise.allSettled(promises);
+
+    for (const result of results) {
+      if (result.status === 'fulfilled' && result.value.success) {
+        try {
+          const { simParams } = result.value;
+          this.isSent = true;
+          sendNotify(simParams);
+          await this.submitArbitrage(simParams);
+          console.log('Successfully submitted arbitrage!');
+          return; // Only send the first successful one
+        } catch (error) {
+          console.error('Error in submitArbitrage', error);
+        }
       }
     }
+
+    console.log('No successful arbitrage found.');
   }
 }

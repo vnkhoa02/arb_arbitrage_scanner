@@ -4,15 +4,8 @@ import { ISimpleArbitrageParams } from '../types';
 
 const webhook = process.env.DISCORD_ETH_ARBITRAGE_WEBHOOK;
 
-type NotifyData = {
-  estimatedFeeEth: number;
-} & ISimpleArbitrageParams;
-
-export async function sendNotify(tx: string, data: NotifyData) {
-  if (!tx) {
-    console.warn('No transaction hash provided.');
-    return;
-  }
+export async function sendNotify(data: ISimpleArbitrageParams) {
+  if (!data) return;
 
   if (!webhook) {
     console.error(
@@ -29,7 +22,7 @@ export async function sendNotify(tx: string, data: NotifyData) {
       `🪙 **Token Out:** \`${data.tokenOut}\``,
       `💰 **Borrow Amount:** \`${data.borrowAmount.toString()}\``,
       `💰**Profit (TokenIN):** \`${data.profit.toString()}\``,
-      `⬅️ **Trade Data:** \`${JSON.stringify(tx)}\``,
+      `⬅️ **Trade Data:** \`${JSON.stringify(data)}\``,
     ].join('\n');
 
     await axios.post(webhook, { content });
