@@ -8,8 +8,7 @@ import axios from 'axios';
 import 'dotenv/config';
 import { ethers } from 'ethers';
 import { BestRouteFinder } from './bestRouteFinder';
-import { defaultProvider, provider } from './config/provider';
-import { DEX } from './config/token';
+import { defaultProvider } from './config/provider';
 import { MORALIS_PIRCE_API, UNISWAP_QUOTE_API } from './constants';
 import { ArbPathResult, ITokenInfo } from './types';
 import { IMoralisPrice } from './types/price';
@@ -22,15 +21,6 @@ export class DexService {
   private readonly logger = new Logger(DexService.name);
 
   constructor(private readonly bestRouteFinder: BestRouteFinder) {}
-
-  /**
-   * Get the current gas price in Gwei.
-   * @returns The current gas price in Gwei.
-   */
-  async getGasPrice() {
-    const feeData = await provider.getFeeData();
-    return ethers.utils.formatUnits(feeData.gasPrice, 'gwei');
-  }
 
   /**
    * Get basic information about a token using its address.

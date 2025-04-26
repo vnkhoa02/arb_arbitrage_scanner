@@ -30,6 +30,27 @@ export class OnchainService implements OnModuleInit {
     );
   }
 
+  /**
+   * Get the current gas price and optionally estimate total fee.
+   * @param gasAmount Number of gas units you want to estimate total fee for.
+   * @returns Object with current gas price in Gwei, and estimated total fee in ETH (if gasAmount provided).
+   */
+  async getEstGasPrice(gasAmount: ethers.BigNumber) {
+    const feeData = await provider.getFeeData();
+    const gasPriceWei = feeData.gasPrice; // BigNumber
+    const gasPriceGwei = Number(ethers.utils.formatUnits(gasPriceWei, 'gwei'));
+    const gasUnits = BigInt(gasAmount.toString());
+    const estimatedFeeWei = gasPriceWei.mul(gasUnits);
+    const estimatedFeeEth = Number(
+      ethers.utils.formatUnits(estimatedFeeWei, 'ether'),
+    );
+
+    return {
+      gasPriceGwei,
+      estimatedFeeEth,
+    };
+  }
+
   async getOwner(): Promise<string> {
     return this.contract.owner();
   }
@@ -38,9 +59,7 @@ export class OnchainService implements OnModuleInit {
     return this.contract.swapRouter();
   }
 
-  private async simulateSimpleArbitrage(
-    params: ISimpleArbitrageParams,
-  ): Promise<{ tx: string; gasEstimate: string }> {
+  private async simulateSimpleArbitrage(params: ISimpleArbitrageParams) {
     try {
       const promise1 = this.contract.callStatic.simpleArbitrage(
         params.tokenIn,
@@ -63,8 +82,13 @@ export class OnchainService implements OnModuleInit {
       );
 
       const [tx, gasEstimate] = await Promise.all([promise1, promise2]);
+      const estGasInEth = await this.getEstGasPrice(gasEstimate);
 
-      return { tx, gasEstimate: gasEstimate.toString() };
+      return {
+        tx,
+        gasEstimate,
+        ...estGasInEth,
+      };
     } catch (error) {
       console.error('Simulation failed:', error?.message);
       return null;
@@ -109,7 +133,7 @@ export class OnchainService implements OnModuleInit {
     };
   }
 
-  @Cron(CronExpression.EVERY_5_SECONDS)
+  // @Cron(CronExpression.EVERY_5_SECONDS)
   private scanTrade() {
     this.simpleArbitrageTrade({
       tokenIn: TOKENS.WETH,
