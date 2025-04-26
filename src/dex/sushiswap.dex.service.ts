@@ -1,11 +1,8 @@
 import { BadRequestException, Injectable, Logger } from '@nestjs/common';
-import 'dotenv/config';
 import { DexService } from './dex.service';
 import { ArbPathResult } from './types';
 
 import { ethers } from 'ethers';
-import { provider } from './config/provider';
-import { DEX } from './config/token';
 import axios from 'axios';
 import { SUSHI_SWAP_QUOTE_API } from './constants';
 import { ISushiQuote } from './types/sushi/quote';

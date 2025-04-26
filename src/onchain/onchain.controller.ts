@@ -28,9 +28,4 @@ export class OnchainController {
       amountIn,
     });
   }
-
-  @Get('arbitrage/search')
-  async searchSimpleArbitrage() {
-    return await this.onchainService.searchSimpleArbitrage();
-  }
 }

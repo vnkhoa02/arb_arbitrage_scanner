@@ -1,22 +1,18 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ArbPath, ArbPathResult } from 'src/dex/types';
 import { DexService } from '../dex/dex.service';
-import { SushiSwapService } from 'src/dex/sushiswap.dex.service';
 
 @Injectable()
 export class ScannerService {
   private readonly logger = new Logger(ScannerService.name);
 
-  constructor(
-    private readonly dexService: DexService,
-    private readonly sushiSwapDex: SushiSwapService,
-  ) {}
+  constructor(private readonly dexService: DexService) {}
 
   private async scanBackwards(forward: ArbPathResult): Promise<ArbPathResult> {
     const tokenIn = forward.tokenIn;
     const tokenOut = forward.tokenOut;
     const amountOut = forward.amountOut;
-    const backward: ArbPathResult = await this.sushiSwapDex.evaluateArbitrage(
+    const backward: ArbPathResult = await this.dexService.evaluateArbitrage(
       tokenOut,
       tokenIn,
       amountOut,

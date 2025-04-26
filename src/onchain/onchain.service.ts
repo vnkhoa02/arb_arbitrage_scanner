@@ -1,15 +1,15 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
+import { Cron, CronExpression } from '@nestjs/schedule';
 import 'dotenv/config';
 import { ethers } from 'ethers';
-import chunk from 'lodash/chunk';
 import { provider } from 'src/dex/config/provider';
-import { TOKENS } from 'src/dex/config/token';
-import { x_weth } from 'src/dex/constants/simplePool';
+import { STABLE_COIN, TOKENS } from 'src/dex/config/token';
 import { ScannerService } from 'src/scanner/scanner.service';
 import * as arbitrageAbi from './abis/Arbitrage.abi.json';
 import { ARBITRAGE_V1 } from './constants';
 import { ISimpleArbitrageParams, ISimpleArbitrageTrade } from './types';
-import { getUniqueToken0Ids, pickBestRoute } from './utils';
+import { pickBestRoute } from './utils';
+import { sendNotify } from './utils/notify';
 
 const walletPrivateKey = process.env.PRIVATE_KEY;
 
@@ -54,11 +54,12 @@ export class OnchainService implements OnModuleInit {
       return tx;
     } catch (error) {
       console.error('Simulation failed:', error?.message);
-      return null;
     }
+    return null;
   }
 
   async simpleArbitrageTrade(params: ISimpleArbitrageTrade): Promise<string> {
+    console.log('simpleArbitrageTrade ->', params);
     const { tokenIn, tokenOut, amountIn } = params;
     const path = await this.scannerService.arbitrage(
       tokenIn,
@@ -66,14 +67,7 @@ export class OnchainService implements OnModuleInit {
       amountIn,
     );
 
-    // 2) skip if not profitable
-    // if (!path.roundTrip.isProfitable) {
-    //   const message = 'No arbitrage opportunity found.';
-    //   this.logger.log(message, params);
-    //   throw new NotFoundException(message);
-    // }
-
-    // 3) Destructure the two encoded routes (bytes)
+    // Destructure the two encoded routes (bytes)
     const forwardRoute = pickBestRoute(path.forward.route);
     const forwardOutMin = ethers.utils
       .parseUnits(path.forward.amountOut.toString(), 18)
@@ -100,36 +94,22 @@ export class OnchainService implements OnModuleInit {
     return tx;
   }
 
-  async searchSimpleArbitrage(tokenIn = TOKENS.WETH, amountIn = 1) {
-    this.logger.log('Searching for arbitrage trade...');
-
-    const profitableRoutes = [];
-    const tokens = getUniqueToken0Ids(x_weth);
-    const chunkedTokens = chunk(tokens, 10); // Adjust size to control concurrency
-
-    for (const group of chunkedTokens) {
-      const results = await Promise.all(
-        group.map(async (tokenOut) => {
-          try {
-            this.logger.log(`Checking WETH with `, tokenOut);
-            const params = { tokenIn, tokenOut, amountIn };
-            const tx = await this.simpleArbitrageTrade(params);
-            if (tx) {
-              this.logger.log(`✅ Profitable arbitrage in ${tokenOut} `, tx);
-              return { tokenOut, tx };
-            }
-          } catch (err) {
-            this.logger.warn(
-              `⚠️ Error in tokenOut ${tokenOut}: ${err.message}`,
-            );
-          }
-          return null;
-        }),
-      );
-
-      profitableRoutes.push(...results.filter(Boolean));
-    }
-
-    return profitableRoutes;
+  @Cron(CronExpression.EVERY_5_SECONDS)
+  private scanTrade() {
+    this.simpleArbitrageTrade({
+      tokenIn: TOKENS.WETH,
+      amountIn: 1,
+      tokenOut: STABLE_COIN.USDT,
+    }).then((tx) => sendNotify(tx));
+    this.simpleArbitrageTrade({
+      tokenIn: TOKENS.WETH,
+      amountIn: 1,
+      tokenOut: STABLE_COIN.USDC,
+    }).then((tx) => sendNotify(tx));
+    this.simpleArbitrageTrade({
+      tokenIn: TOKENS.WETH,
+      amountIn: 1,
+      tokenOut: STABLE_COIN.DAI,
+    }).then((tx) => sendNotify(tx));
   }
 }
