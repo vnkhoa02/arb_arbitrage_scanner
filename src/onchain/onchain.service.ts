@@ -1,29 +1,36 @@
-import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
-import { Cron, CronExpression } from '@nestjs/schedule';
 import 'dotenv/config';
-import { ethers } from 'ethers';
+import { FlashbotsBundleProvider } from '@flashbots/ethers-provider-bundle';
+import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
+import { BigNumber, ethers, Wallet } from 'ethers';
 import { provider } from 'src/dex/config/provider';
 import { STABLE_COIN, TOKENS } from 'src/dex/config/token';
 import { ScannerService } from 'src/scanner/scanner.service';
-import * as arbitrageAbi from './abis/Arbitrage.abi.json';
+import arbitrageAbi from './abis/Arbitrage.abi.json';
 import { ARBITRAGE_V1 } from './constants';
+import { authSigner } from './config/flashbot';
 import { ISimpleArbitrageParams, ISimpleArbitrageTrade } from './types';
 import { pickBestRoute } from './utils';
-import { sendNotify } from './utils/notify';
+import { getGasFee } from './utils/getGasFee';
 
-const walletPrivateKey = process.env.PRIVATE_KEY;
-
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
 @Injectable()
 export class OnchainService implements OnModuleInit {
   private readonly logger = new Logger(OnchainService.name);
+  private signer: Wallet;
+  private flashbotsProvider: FlashbotsBundleProvider;
+  private arbContract: ethers.Contract;
 
-  private contract: ethers.Contract;
-  private signer = new ethers.Wallet(walletPrivateKey, provider);
+  constructor(private readonly scannerService: ScannerService) {
+    this.signer = new Wallet(PRIVATE_KEY, provider);
+  }
 
-  constructor(private readonly scannerService: ScannerService) {}
-
-  onModuleInit() {
-    this.contract = new ethers.Contract(
+  async onModuleInit() {
+    this.flashbotsProvider = await FlashbotsBundleProvider.create(
+      provider,
+      authSigner,
+      'https://relay.flashbots.net',
+    );
+    this.arbContract = new ethers.Contract(
       ARBITRAGE_V1,
       arbitrageAbi.abi,
       this.signer,
@@ -31,124 +38,82 @@ export class OnchainService implements OnModuleInit {
   }
 
   /**
-   * Get the current gas price and optionally estimate total fee.
-   * @param gasAmount Number of gas units you want to estimate total fee for.
-   * @returns Object with current gas price in Gwei, and estimated total fee in ETH (if gasAmount provided).
+   * Simulate and estimate gas & fee
    */
-  async getEstGasPrice(gasAmount: ethers.BigNumber) {
-    const feeData = await provider.getFeeData();
-    const gasPriceWei = feeData.gasPrice; // BigNumber
-    const gasPriceGwei = Number(ethers.utils.formatUnits(gasPriceWei, 'gwei'));
-    const gasUnits = BigInt(gasAmount.toString());
-    const estimatedFeeWei = gasPriceWei.mul(gasUnits);
-    const estimatedFeeEth = Number(
-      ethers.utils.formatUnits(estimatedFeeWei, 'ether'),
-    );
-
-    return {
-      gasPriceGwei,
-      estimatedFeeEth,
-    };
-  }
-
-  async getOwner(): Promise<string> {
-    return this.contract.owner();
-  }
-
-  async getSwapRouterAddress(): Promise<string> {
-    return this.contract.swapRouter();
-  }
-
-  private async simulateSimpleArbitrage(params: ISimpleArbitrageParams) {
+  private async simulateSimpleArbitrage(
+    params: ISimpleArbitrageParams,
+  ): Promise<{
+    simulatedReturn: string;
+  } | null> {
     try {
-      const promise1 = this.contract.callStatic.simpleArbitrage(
-        params.tokenIn,
-        params.tokenOut,
-        params.forwardPath,
-        0,
-        params.backwardPath,
-        0,
-        params.borrowAmount,
-      );
+      const [simulatedReturn] = await Promise.all([
+        this.arbContract.callStatic.simpleArbitrage(
+          params.tokenIn,
+          params.tokenOut,
+          params.forwardPath,
+          0,
+          params.backwardPath,
+          0,
+          params.borrowAmount,
+        ),
+      ]);
 
-      const promise2 = this.contract.estimateGas.simpleArbitrage(
-        params.tokenIn,
-        params.tokenOut,
-        params.forwardPath,
-        0,
-        params.backwardPath,
-        0,
-        params.borrowAmount,
-      );
-
-      const [tx, gasEstimate] = await Promise.all([promise1, promise2]);
-      const estGasInEth = await this.getEstGasPrice(gasEstimate);
-
-      return {
-        tx,
-        gasEstimate,
-        ...estGasInEth,
-      };
-    } catch (error) {
-      console.error('Simulation failed:', error?.message);
+      return { simulatedReturn };
+    } catch (err) {
+      this.logger.error('simulateSimpleArbitrage failed', err as any);
       return null;
     }
   }
 
+  /**
+   * Prepare params & run simulation
+   */
   async simpleArbitrageTrade(params: ISimpleArbitrageTrade) {
-    const { tokenIn, tokenOut, amountIn } = params;
     const path = await this.scannerService.arbitrage(
-      tokenIn,
-      tokenOut,
-      amountIn,
+      params.tokenIn,
+      params.tokenOut,
+      params.amountIn,
     );
-
-    // Destructure the two encoded routes (bytes)
-    const forwardRoute = pickBestRoute(path.forward.route);
-    const forwardOutMin = ethers.utils
-      .parseUnits(path.forward.amountOut.toString(), 18)
-      .toBigInt();
-    const backwardRoute = pickBestRoute(path.backward.route);
-    const backwardOutMin = ethers.utils
-      .parseUnits(path.backward.amountOut.toString(), 18)
-      .toBigInt();
-    const borrowAmount = ethers.utils
-      .parseUnits(params.amountIn.toString(), 18)
-      .toBigInt();
-
-    const simulateParams: ISimpleArbitrageParams = {
-      tokenIn,
-      tokenOut,
-      forwardPath: forwardRoute.encoded,
-      forwardOutMin,
-      backwardPath: backwardRoute.encoded,
-      backwardOutMin,
-      borrowAmount,
+    const forward = pickBestRoute(path.forward.route);
+    const backward = pickBestRoute(path.backward.route);
+    const simParams: ISimpleArbitrageParams = {
+      tokenIn: params.tokenIn,
+      tokenOut: params.tokenOut,
+      forwardPath: forward.encoded,
+      forwardOutMin: BigInt(
+        ethers.utils
+          .parseUnits(path.forward.amountOut.toString(), 18)
+          .toString(),
+      ),
+      backwardPath: backward.encoded,
+      backwardOutMin: BigInt(
+        ethers.utils
+          .parseUnits(path.backward.amountOut.toString(), 18)
+          .toString(),
+      ),
+      borrowAmount: BigInt(
+        ethers.utils.parseUnits(params.amountIn.toString(), 18).toString(),
+      ),
       profit: path.roundTrip.profit,
     };
-    const trade = await this.simulateSimpleArbitrage(simulateParams);
-    return {
-      trade,
-      simulateParams,
-    };
+    const simulation = await this.simulateSimpleArbitrage(simParams);
+    return { simParams, simulation };
   }
 
   // @Cron(CronExpression.EVERY_5_SECONDS)
-  private scanTrade() {
-    this.simpleArbitrageTrade({
-      tokenIn: TOKENS.WETH,
-      amountIn: 1,
-      tokenOut: STABLE_COIN.USDT,
-    }).then(({ trade, simulateParams }) => sendNotify(trade, simulateParams));
-    this.simpleArbitrageTrade({
-      tokenIn: TOKENS.WETH,
-      amountIn: 1,
-      tokenOut: STABLE_COIN.USDC,
-    }).then(({ trade, simulateParams }) => sendNotify(trade, simulateParams));
-    this.simpleArbitrageTrade({
-      tokenIn: TOKENS.WETH,
-      amountIn: 1,
-      tokenOut: STABLE_COIN.DAI,
-    }).then(({ trade, simulateParams }) => sendNotify(trade, simulateParams));
+  private async scanTrade() {
+    for (const tokenOut of [
+      STABLE_COIN.USDT,
+      STABLE_COIN.USDC,
+      STABLE_COIN.DAI,
+    ]) {
+      const { simParams, simulation } = await this.simpleArbitrageTrade({
+        tokenIn: TOKENS.WETH,
+        tokenOut,
+        amountIn: 1,
+      });
+      if (simulation) {
+      }
+    }
   }
 }

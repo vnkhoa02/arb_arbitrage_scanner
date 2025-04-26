@@ -1,20 +1,12 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query, UseInterceptors } from '@nestjs/common';
 import { STABLE_COIN, TOKENS } from 'src/dex/config/token';
+import { BigIntSerializerInterceptor } from 'src/interceptor/BigIntSerializerInterceptor';
 import { OnchainService } from './onchain.service';
 
 @Controller('onchain')
+@UseInterceptors(BigIntSerializerInterceptor)
 export class OnchainController {
   constructor(private readonly onchainService: OnchainService) {}
-
-  @Get('owner')
-  async getOwner(): Promise<string> {
-    return this.onchainService.getOwner();
-  }
-
-  @Get('swap-router')
-  async getSwapRouter(): Promise<string> {
-    return this.onchainService.getSwapRouterAddress();
-  }
 
   @Get('arbitrage/simple')
   async simpleArbitrage(@Query() query: any) {

@@ -1,19 +1,15 @@
 import 'dotenv/config';
 import axios from 'axios';
 import { ISimpleArbitrageParams } from '../types';
-import { ethers } from 'ethers';
 
 const webhook = process.env.DISCORD_ETH_ARBITRAGE_WEBHOOK;
 
-type Trade = {
-  gasPriceGwei: number;
+type NotifyData = {
   estimatedFeeEth: number;
-  tx: any;
-  gasEstimate: ethers.BigNumber;
-};
+} & ISimpleArbitrageParams;
 
-export async function sendNotify(trade: Trade, data: ISimpleArbitrageParams) {
-  if (!trade) {
+export async function sendNotify(tx: string, data: NotifyData) {
+  if (!tx) {
     console.warn('No transaction hash provided.');
     return;
   }
@@ -33,7 +29,7 @@ export async function sendNotify(trade: Trade, data: ISimpleArbitrageParams) {
       `🪙 **Token Out:** \`${data.tokenOut}\``,
       `💰 **Borrow Amount:** \`${data.borrowAmount.toString()}\``,
       `💰**Profit (TokenIN):** \`${data.profit.toString()}\``,
-      `⬅️ **Trade Data:** \`${JSON.stringify(trade)}\``,
+      `⬅️ **Trade Data:** \`${JSON.stringify(tx)}\``,
     ].join('\n');
 
     await axios.post(webhook, { content });
