@@ -40,9 +40,9 @@ export class OnchainService implements OnModuleInit {
 
   private async simulateSimpleArbitrage(
     params: ISimpleArbitrageParams,
-  ): Promise<string> {
+  ): Promise<{ tx: string; gasEstimate: string }> {
     try {
-      const tx = await this.contract.callStatic.simpleArbitrage(
+      const promise1 = this.contract.callStatic.simpleArbitrage(
         params.tokenIn,
         params.tokenOut,
         params.forwardPath,
@@ -51,15 +51,27 @@ export class OnchainService implements OnModuleInit {
         0,
         params.borrowAmount,
       );
-      return tx;
+
+      const promise2 = this.contract.estimateGas.simpleArbitrage(
+        params.tokenIn,
+        params.tokenOut,
+        params.forwardPath,
+        0,
+        params.backwardPath,
+        0,
+        params.borrowAmount,
+      );
+
+      const [tx, gasEstimate] = await Promise.all([promise1, promise2]);
+
+      return { tx, gasEstimate: gasEstimate.toString() };
     } catch (error) {
       console.error('Simulation failed:', error?.message);
+      return null;
     }
-    return null;
   }
 
-  async simpleArbitrageTrade(params: ISimpleArbitrageTrade): Promise<string> {
-    console.log('simpleArbitrageTrade ->', params);
+  async simpleArbitrageTrade(params: ISimpleArbitrageTrade) {
     const { tokenIn, tokenOut, amountIn } = params;
     const path = await this.scannerService.arbitrage(
       tokenIn,
@@ -89,9 +101,11 @@ export class OnchainService implements OnModuleInit {
       backwardOutMin,
       borrowAmount,
     };
-    const tx = await this.simulateSimpleArbitrage(simulateParams);
-    console.log('tx --->', tx);
-    return tx;
+    const trade = await this.simulateSimpleArbitrage(simulateParams);
+    return {
+      trade,
+      simulateParams,
+    };
   }
 
   @Cron(CronExpression.EVERY_5_SECONDS)
@@ -100,16 +114,16 @@ export class OnchainService implements OnModuleInit {
       tokenIn: TOKENS.WETH,
       amountIn: 1,
       tokenOut: STABLE_COIN.USDT,
-    }).then((tx) => sendNotify(tx));
+    }).then(({ trade, simulateParams }) => sendNotify(trade, simulateParams));
     this.simpleArbitrageTrade({
       tokenIn: TOKENS.WETH,
       amountIn: 1,
       tokenOut: STABLE_COIN.USDC,
-    }).then((tx) => sendNotify(tx));
+    }).then(({ trade, simulateParams }) => sendNotify(trade, simulateParams));
     this.simpleArbitrageTrade({
       tokenIn: TOKENS.WETH,
       amountIn: 1,
       tokenOut: STABLE_COIN.DAI,
-    }).then((tx) => sendNotify(tx));
+    }).then(({ trade, simulateParams }) => sendNotify(trade, simulateParams));
   }
 }
