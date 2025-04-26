@@ -28,10 +28,9 @@ export async function sendNotify(
       `➡️ **Forward Path:** \`${data.forwardPath}\``,
       `⬅️ **Backward Path:** \`${data.backwardPath}\``,
       `💰 **Borrow Amount:** \`${data.borrowAmount.toString()}\``,
+      `💰💰 **Profit (TokenIN):** \`${data.profit.toString()}\``,
       `⬅️ **Trade Data:** \`${JSON.stringify(trade)}\``,
     ].join('\n');
-
-    console.log('sendNotify ->', content);
 
     await axios.post(webhook, { content });
 

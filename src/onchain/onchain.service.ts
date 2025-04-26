@@ -100,6 +100,7 @@ export class OnchainService implements OnModuleInit {
       backwardPath: backwardRoute.encoded,
       backwardOutMin,
       borrowAmount,
+      profit: path.roundTrip.profit,
     };
     const trade = await this.simulateSimpleArbitrage(simulateParams);
     return {

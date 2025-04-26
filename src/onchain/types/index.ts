@@ -6,6 +6,7 @@ export interface ISimpleArbitrageParams {
   backwardPath: string;
   backwardOutMin: bigint;
   borrowAmount: bigint;
+  profit: number | string;
 }
 
 export interface ISimpleArbitrageTrade {
