@@ -3,26 +3,32 @@ import { Cron, CronExpression } from '@nestjs/schedule';
 import axios from 'axios';
 import 'dotenv/config';
 import { ethers, Wallet } from 'ethers';
-import { provider } from 'src/dex/config/provider';
+import { mevProvider, provider } from 'src/dex/config/provider';
 import { STABLE_COIN, TOKENS } from 'src/dex/config/token';
 import { ScannerService } from 'src/scanner/scanner.service';
 import arbitrageAbi from './abis/Arbitrage.abi.json';
-import { BEAVER_BUILD_RPC, TITAN_RPC } from './config/flashbot';
-import { ARBITRAGE_V1, PUBLIC_ADDRESS } from './constants';
-import { ISimpleArbitrageParams, ISimpleArbitrageTrade } from './types';
+import { FLASH_BOT_RPC, flashBotSigner } from './config/flashbot';
+import { ARBITRAGE_V1 } from './constants';
+import {
+  IFeeData,
+  ISimpleArbitrageParams,
+  ISimpleArbitrageTrade,
+} from './types';
 import { pickBestRoute } from './utils';
+import { getFeeData } from './utils/getGasFee';
 import { sendNotify } from './utils/notify';
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 @Injectable()
 export class OnchainService implements OnModuleInit {
   private readonly logger = new Logger(OnchainService.name);
+  private feeData: IFeeData;
   private signer: Wallet;
   private arbContract: ethers.Contract;
   private totalTrade = 0;
 
   constructor(private readonly scannerService: ScannerService) {
-    this.signer = new Wallet(PRIVATE_KEY, provider);
+    this.signer = new Wallet(PRIVATE_KEY, mevProvider);
   }
 
   async onModuleInit() {
@@ -31,6 +37,20 @@ export class OnchainService implements OnModuleInit {
       arbitrageAbi.abi,
       this.signer,
     );
+    await this.syncFeeData();
+  }
+
+  @Cron(CronExpression.EVERY_HOUR)
+  async syncFeeData() {
+    try {
+      this.logger.log('Syncing Fee Data');
+      this.feeData = await getFeeData();
+      this.logger.log('FeeData Sycned');
+      return this.feeData;
+    } catch (error) {
+      this.logger.error('Error in syncFeeData', error);
+      throw error;
+    }
   }
 
   async simulateSimpleArbitrage(trade: ISimpleArbitrageTrade): Promise<{
@@ -107,24 +127,22 @@ export class OnchainService implements OnModuleInit {
 
       txRequest.chainId = 1;
       txRequest.type = 2;
+      txRequest.maxPriorityFeePerGas = ethers.utils.parseUnits(
+        this.feeData.maxPriorityFeePerGas.toString(),
+        'gwei',
+      ); // tip to miners
+      txRequest.maxFeePerGas = ethers.utils.parseUnits(
+        this.feeData.maxFeePerGas.toString(),
+        'gwei',
+      ); // total max per gas unit
 
       // 2. Estimate gas with 20% buffer
-      // let gasEstimate = BigNumber.from(40000);
       let gasEstimate = await provider.estimateGas(txRequest);
       this.logger.debug(`Gas estimate: ${gasEstimate.toString()}`);
       gasEstimate = gasEstimate.mul(120).div(100);
       this.logger.debug(`Gas estimate (buffered): ${gasEstimate.toString()}`);
 
-      // const { maxFeePerGas, maxPriorityFeePerGas, estimatedFeeEth } =
-      //   (await getGasFee(gasEstimate)) as {
-      //     maxFeePerGas: BigNumber;
-      //     maxPriorityFeePerGas: BigNumber;
-      //     estimatedFeeEth: string;
-      //   };
-
       txRequest.gasLimit = gasEstimate;
-      // txRequest.maxFeePerGas = maxFeePerGas;
-      // txRequest.maxPriorityFeePerGas = maxPriorityFeePerGas;
 
       // 3. Sign transaction and prepare bundle
       const [signedTx, latestBlock] = await Promise.all([
@@ -143,29 +161,30 @@ export class OnchainService implements OnModuleInit {
           {
             txs: [signedTx],
             blockNumber: ethers.utils.hexValue(targetBlock),
-            // refundPercent: 90,
+            minTimestamp: 0,
+            maxTimestamp: 0,
           },
         ],
       };
+
       this.logger.debug('payload ->', payload);
 
-      // 4. Sign payload
-      const payloadStr = JSON.stringify(payload);
-      const payloadHash = ethers.utils.keccak256(
-        ethers.utils.toUtf8Bytes(payloadStr),
+      const requestBody = JSON.stringify(payload);
+      const signature = await flashBotSigner.signMessage(
+        ethers.utils.keccak256(ethers.utils.toUtf8Bytes(requestBody)),
       );
-      const signature = await this.signer.signMessage(
-        ethers.utils.arrayify(payloadHash),
-      );
-      // 5. Send bundle
+
+      // 4. Send bundle
       this.logger.log(`Sending bundle to RPC for block ${targetBlock}...`);
 
-      const response = await axios.post(TITAN_RPC, payload, {
+      const response = await axios.post(FLASH_BOT_RPC, payload, {
         headers: {
           'Content-Type': 'application/json',
-          'X-Flashbots-Signature': `${PUBLIC_ADDRESS}:${signature}`,
+          'X-Flashbots-Signature': `${await flashBotSigner.getAddress()}:${signature}`,
         },
       });
+
+      console.log('Flashbots response:', response.data);
 
       if (response.data.error) {
         this.logger.error('RPC Error', response.data.error);
@@ -193,42 +212,35 @@ export class OnchainService implements OnModuleInit {
           0,
           params.borrowAmount,
         );
-
-      txRequest.chainId = 1; // Mainnet (1)
-      txRequest.type = 2; // EIP-1559 transaction (with max fee & priority fee)
+      txRequest.nonce = await this.signer.getTransactionCount('latest');
+      txRequest.chainId = 1;
+      txRequest.type = 2;
+      txRequest.maxPriorityFeePerGas = ethers.utils.parseUnits(
+        this.feeData.maxPriorityFeePerGas.toString(),
+        'gwei',
+      ); // tip to miners
+      txRequest.maxFeePerGas = ethers.utils.parseUnits(
+        this.feeData.maxFeePerGas.toString(),
+        'gwei',
+      ); // total max per gas unit
 
       // 2. Estimate gas with 20% buffer
-      let gasEstimate = await provider.estimateGas(txRequest);
+      let gasEstimate = await mevProvider.estimateGas(txRequest);
       this.logger.debug(`Gas estimate: ${gasEstimate.toString()}`);
       gasEstimate = gasEstimate.mul(120).div(100); // 20% buffer
       this.logger.debug(`Gas estimate (buffered): ${gasEstimate.toString()}`);
 
-      // Uncomment if you want to handle gas fees explicitly
-      // const { maxFeePerGas, maxPriorityFeePerGas, estimatedFeeEth } =
-      //   (await getGasFee(gasEstimate)) as {
-      //     maxFeePerGas: BigNumber;
-      //     maxPriorityFeePerGas: BigNumber;
-      //     estimatedFeeEth: string;
-      //   };
-
       txRequest.gasLimit = gasEstimate;
-      // txRequest.maxFeePerGas = maxFeePerGas;
-      // txRequest.maxPriorityFeePerGas = maxPriorityFeePerGas;
 
       // 3. Sign transaction
       const signedTx = await this.signer.signTransaction(txRequest);
       this.logger.debug(`Signed transaction: ${signedTx}`);
 
       // 4. Send the transaction
-      const txResponse = await provider.sendTransaction(signedTx);
+      const txResponse = await mevProvider.sendTransaction(signedTx);
       this.logger.log(`Transaction sent: ${txResponse.hash}`);
 
-      // 5. Wait for transaction confirmation
-      const receipt = await txResponse.wait();
-      console.log('receipt -->', receipt);
-      this.logger.log(`Transaction confirmed in block ${receipt.blockNumber}`);
-
-      return receipt.blockHash;
+      return txResponse.hash;
     } catch (error) {
       this.logger.error('Error during self submitArbitrage', error);
     }
@@ -242,15 +254,19 @@ export class OnchainService implements OnModuleInit {
         amountIn: 1,
       });
 
-      const minProfit = 0.00035; // ~0.64$ today
+      // const minProfit = 0.00035; // ~0.63$ today
+      // if (Number(simParams.profit) <= minProfit) return;
+
+      const minProfit = 0.0001; // ~0.18$ today
       if (Number(simParams.profit) <= minProfit) return;
+
       this.logger.log(
         `Profitable arbitrage via ${tokenOut}: Profit ${simParams.profit}`,
       );
       const txHash = await this.selfSubmitArbitrage(simParams);
       if (txHash) {
         this.totalTrade++;
-        sendNotify({ ...simParams, bundleHash: txHash });
+        sendNotify({ ...simParams, tx: txHash });
         this.logger.log('Arbitrage submitted successfully!');
       }
     } catch (error) {
@@ -258,7 +274,7 @@ export class OnchainService implements OnModuleInit {
     }
   }
 
-  @Cron(CronExpression.EVERY_5_SECONDS)
+  @Cron('*/3 * * * * *')
   private scanTrade() {
     if (this.totalTrade > 0) {
       this.logger.warn('Max trade reached', this.totalTrade);

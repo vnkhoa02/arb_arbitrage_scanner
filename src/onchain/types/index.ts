@@ -1,3 +1,5 @@
+import { BigNumber } from 'ethers';
+
 export interface ISimpleArbitrageParams {
   tokenIn: string;
   tokenOut: string;
@@ -13,4 +15,9 @@ export interface ISimpleArbitrageTrade {
   tokenIn: string;
   amountIn: number;
   tokenOut: string;
+}
+
+export interface IFeeData {
+  maxFeePerGas: BigNumber;
+  maxPriorityFeePerGas: BigNumber;
 }

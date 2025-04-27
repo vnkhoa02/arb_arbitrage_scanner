@@ -6,7 +6,7 @@ import { ISimpleArbitrageParams } from '../types';
 const webhook = process.env.DISCORD_ETH_ARBITRAGE_WEBHOOK;
 
 type NotifyData = {
-  bundleHash?: string;
+  tx?: string;
 } & ISimpleArbitrageParams;
 export async function sendNotify(data: NotifyData) {
   if (!data) return;
@@ -21,7 +21,7 @@ export async function sendNotify(data: NotifyData) {
   try {
     const content = [
       `🚀 **New ETH Arbitrage Transaction Detected!**`,
-      `🔗 **Bundle Hash**: ${data?.bundleHash}`,
+      `🔗 [Etherscan]: (https://etherscan.io/tx/${data.tx})`,
       `🪙 **Token In:** \`${data.tokenIn}\``,
       `🪙 **Token Out:** \`${data.tokenOut}\``,
       `💰 **Borrow Amount:** \`${data.borrowAmount.toString()}\``,
