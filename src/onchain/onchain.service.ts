@@ -7,7 +7,7 @@ import { provider } from 'src/dex/config/provider';
 import { STABLE_COIN, TOKENS } from 'src/dex/config/token';
 import { ScannerService } from 'src/scanner/scanner.service';
 import arbitrageAbi from './abis/Arbitrage.abi.json';
-import { BEAVER_BUILD_RPC } from './config/flashbot';
+import { BEAVER_BUILD_RPC, TITAN_RPC } from './config/flashbot';
 import { ARBITRAGE_V1, PUBLIC_ADDRESS } from './constants';
 import { ISimpleArbitrageParams, ISimpleArbitrageTrade } from './types';
 import { pickBestRoute } from './utils';
@@ -122,14 +122,6 @@ export class OnchainService implements OnModuleInit {
       //     estimatedFeeEth: string;
       //   };
 
-      const minProfit = 0.00035; // ~0.64$ today
-      if (Number(params.profit) <= minProfit) {
-        this.logger.warn(
-          `Profit ${params.profit} ≤ Min Profit ${minProfit}, skipping arbitrage.`,
-        );
-        return;
-      }
-
       txRequest.gasLimit = gasEstimate;
       // txRequest.maxFeePerGas = maxFeePerGas;
       // txRequest.maxPriorityFeePerGas = maxPriorityFeePerGas;
@@ -158,20 +150,20 @@ export class OnchainService implements OnModuleInit {
       this.logger.debug('payload ->', payload);
 
       // 4. Sign payload
-      // const payloadStr = JSON.stringify(payload);
-      // const payloadHash = ethers.utils.keccak256(
-      //   ethers.utils.toUtf8Bytes(payloadStr),
-      // );
-      // const signature = await this.signer.signMessage(
-      //   ethers.utils.arrayify(payloadHash),
-      // );
+      const payloadStr = JSON.stringify(payload);
+      const payloadHash = ethers.utils.keccak256(
+        ethers.utils.toUtf8Bytes(payloadStr),
+      );
+      const signature = await this.signer.signMessage(
+        ethers.utils.arrayify(payloadHash),
+      );
       // 5. Send bundle
       this.logger.log(`Sending bundle to RPC for block ${targetBlock}...`);
 
-      const response = await axios.post(BEAVER_BUILD_RPC, payload, {
+      const response = await axios.post(TITAN_RPC, payload, {
         headers: {
           'Content-Type': 'application/json',
-          // 'X-Flashbots-Signature': `${PUBLIC_ADDRESS}:${signature}`,
+          'X-Flashbots-Signature': `${PUBLIC_ADDRESS}:${signature}`,
         },
       });
 
@@ -196,16 +188,16 @@ export class OnchainService implements OnModuleInit {
         amountIn: 1,
       });
 
-      if (simParams && Number(simParams.profit) > 0) {
-        this.logger.log(
-          `Profitable arbitrage via ${tokenOut}: Profit ${simParams.profit}`,
-        );
-        const bundleHash = await this.submitArbitrage(simParams);
-        if (bundleHash) {
-          this.totalTrade++;
-          sendNotify({ ...simParams, bundleHash });
-          this.logger.log('Arbitrage submitted successfully!');
-        }
+      const minProfit = 0.00035; // ~0.64$ today
+      if (Number(simParams.profit) <= minProfit) return;
+      this.logger.log(
+        `Profitable arbitrage via ${tokenOut}: Profit ${simParams.profit}`,
+      );
+      const bundleHash = await this.submitArbitrage(simParams);
+      if (bundleHash) {
+        this.totalTrade++;
+        sendNotify({ ...simParams, bundleHash });
+        this.logger.log('Arbitrage submitted successfully!');
       }
     } catch (error) {
       console.error(`Simulation error for ${tokenOut}`, error);
