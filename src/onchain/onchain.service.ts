@@ -1,9 +1,10 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
+import retry from 'async-await-retry';
 import axios from 'axios';
 import 'dotenv/config';
 import { ethers, Wallet } from 'ethers';
-import { mevProvider, provider } from 'src/dex/config/provider';
+import { mevProvider } from 'src/dex/config/provider';
 import { STABLE_COIN, TOKENS } from 'src/dex/config/token';
 import { ScannerService } from 'src/scanner/scanner.service';
 import arbitrageAbi from './abis/Arbitrage.abi.json';
@@ -17,7 +18,6 @@ import {
 import { pickBestRoute } from './utils';
 import { getFeeData } from './utils/getGasFee';
 import { sendNotify } from './utils/notify';
-import retry from 'async-await-retry';
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 @Injectable()
@@ -155,7 +155,7 @@ export class OnchainService implements OnModuleInit {
       // 2. Sign transaction and prepare bundle
       const [signedTx, latestBlock] = await Promise.all([
         this.signer.signTransaction(txRequest),
-        provider.getBlockNumber(),
+        mevProvider.getBlockNumber(),
       ]);
 
       const targetBlock = latestBlock + 1;
@@ -262,8 +262,14 @@ export class OnchainService implements OnModuleInit {
       this.logger.warn('Max trade reached', this.totalTrade);
       return;
     }
-    const stableCoins = [STABLE_COIN.USDT, STABLE_COIN.USDC];
-    for (const tokenOut of stableCoins) {
+    const tokens = [
+      STABLE_COIN.USDT,
+      STABLE_COIN.USDC,
+      STABLE_COIN.DAI,
+      TOKENS.SHIB,
+      TOKENS.WSTETH,
+    ];
+    for (const tokenOut of tokens) {
       this.handleSimulation(tokenOut);
     }
   }

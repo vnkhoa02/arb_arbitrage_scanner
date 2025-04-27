@@ -1,13 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { Protocol } from '@uniswap/router-sdk';
 import { ChainId } from '@uniswap/sdk';
 import { CurrencyAmount, Percent, Token, TradeType } from '@uniswap/sdk-core';
 import { AlphaRouter } from '@uniswap/smart-order-router';
-import { provider } from './config/provider';
-import { ethers } from 'ethers';
+import { defaultProvider } from './config/provider';
 import { RouteOptions, RouteResult } from './types/route';
 import { extractRoutes } from './utils/extractRoutes';
-import { PUBLIC_ADDRESS } from 'src/onchain/constants';
-import { Protocol } from '@uniswap/router-sdk';
 
 enum UniversalRouterVersion {
   V1_2 = '1.2',
@@ -22,7 +20,7 @@ export class BestRouteFinder {
   constructor() {
     this.router = new AlphaRouter({
       chainId: this.chainId,
-      provider,
+      provider: defaultProvider,
     });
   }
 
@@ -57,7 +55,6 @@ export class BestRouteFinder {
 
     // Default slippage 0.2%
     const slippage = options.slippageTolerance ?? new Percent(20, 10_000);
-
     // Query route
     const route = await this.router.route(
       amountIn,
