@@ -5,7 +5,9 @@ import { AlphaRouter } from '@uniswap/smart-order-router';
 import { provider } from './config/provider';
 import { ethers } from 'ethers';
 import { RouteOptions, RouteResult } from './types/route';
-import { extractRoutes } from './utils/extractRouts';
+import { extractRoutes } from './utils/extractRoutes';
+import { PUBLIC_ADDRESS } from 'src/onchain/constants';
+import { Protocol } from '@uniswap/router-sdk';
 
 enum UniversalRouterVersion {
   V1_2 = '1.2',
@@ -53,26 +55,28 @@ export class BestRouteFinder {
     // Set trade type Exact Input (0)
     const tradeType = TradeType.EXACT_INPUT;
 
-    // Default slippage 0.5% and 10m deadline
-    const slippage = options.slippageTolerance ?? new Percent(50, 10_000);
-    const deadline = Math.floor(
-      Date.now() / 1000 + (options?.deadlineSeconds ?? 600),
-    );
-    const recipient = options?.recipient ?? ethers.constants.AddressZero;
+    // Default slippage 0.2%
+    const slippage = options.slippageTolerance ?? new Percent(20, 10_000);
 
     // Query route
-    const route = await this.router.route(amountIn, tokenOut, tradeType, {
-      slippageTolerance: slippage,
-      deadlineOrPreviousBlockhash: deadline,
-      recipient,
-      type: 0,
-      version: UniversalRouterVersion.V2_0,
-    });
+    const route = await this.router.route(
+      amountIn,
+      tokenOut,
+      tradeType,
+      {
+        slippageTolerance: slippage,
+        type: 0,
+        version: UniversalRouterVersion.V2_0,
+      },
+      {
+        protocols: [Protocol.V3],
+      },
+    );
 
     if (!route) {
       return null;
     }
-    const routes = extractRoutes(route.route);
+    const routes = [extractRoutes(route.route)];
     return {
       quote: route.quoteGasAdjusted.toFixed(tokenOut.decimals),
       amountOut: route.quote.toFixed(),

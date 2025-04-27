@@ -27,13 +27,12 @@ export class ScannerService {
     tokenOut: string,
     amountIn: number,
   ): Promise<ArbPath> {
-    const [forward, backward] = await Promise.all([
-      this.dexService.evaluateArbitrage(tokenIn, tokenOut, amountIn),
-      this.dexService
-        .evaluateArbitrage(tokenIn, tokenOut, amountIn)
-        .then((f) => this.scanBackwards(f)),
-    ]);
-
+    const forward = await this.dexService.evaluateArbitrage(
+      tokenIn,
+      tokenOut,
+      amountIn,
+    );
+    const backward = await this.scanBackwards(forward);
     const profit = Number(backward.amountOut) - Number(forward.amountIn);
 
     return {

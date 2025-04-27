@@ -56,30 +56,20 @@ export class OnchainService implements OnModuleInit {
 
   async simulateSimpleArbitrage(trade: ISimpleArbitrageTrade) {
     try {
-      const params = await this.getArbitrageTradeParams(trade);
-
       // Use retry for the logic
       const result = await retry(
         async () => {
-          const promise1 = this.arbContract.callStatic.simpleArbitrage(
-            params.tokenIn,
-            params.tokenOut,
-            params.forwardPath,
-            0,
-            params.backwardPath,
-            0,
-            params.borrowAmount,
-          );
-          const promise2 = this.arbContract.populateTransaction.simpleArbitrage(
-            params.tokenIn,
-            params.tokenOut,
-            params.forwardPath,
-            0,
-            params.backwardPath,
-            0,
-            params.borrowAmount,
-          );
-          const [simulate, txRequest] = await Promise.all([promise1, promise2]);
+          const params = await this.getArbitrageTradeParams(trade);
+          const txRequest =
+            await this.arbContract.populateTransaction.simpleArbitrage(
+              params.tokenIn,
+              params.tokenOut,
+              params.forwardPath,
+              0,
+              params.backwardPath,
+              0,
+              params.borrowAmount,
+            );
 
           txRequest.chainId = 1;
           txRequest.type = 2;
@@ -92,7 +82,6 @@ export class OnchainService implements OnModuleInit {
             'gwei',
           ); // total max per gas unit
           txRequest.nonce = await this.signer.getTransactionCount('latest');
-
           let gasEstimate = await mevProvider.estimateGas(txRequest);
           this.logger.debug(`Gas estimate: ${gasEstimate.toString()}`);
           gasEstimate = gasEstimate.mul(110).div(100); // 10% buffer
@@ -103,13 +92,12 @@ export class OnchainService implements OnModuleInit {
           txRequest.gasLimit = gasEstimate;
 
           return {
-            simulate,
             txRequest,
             gasEstimate,
           };
         },
         null,
-        { retriesMax: 3, interval: 0, exponential: false },
+        { retriesMax: 3, interval: 50, exponential: false },
       );
 
       return result;
@@ -268,9 +256,9 @@ export class OnchainService implements OnModuleInit {
     }
   }
 
-  @Cron(CronExpression.EVERY_5_SECONDS)
-  private scanTrade() {
-    if (this.totalTrade > 0) {
+  // @Cron(CronExpression.EVERY_5_SECONDS)
+  private async scanTrade() {
+    if (this.totalTrade > 5) {
       this.logger.warn('Max trade reached', this.totalTrade);
       return;
     }
