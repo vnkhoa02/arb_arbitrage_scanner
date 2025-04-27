@@ -8,7 +8,7 @@ import axios from 'axios';
 import 'dotenv/config';
 import { ethers } from 'ethers';
 import { BestRouteFinder } from './bestRouteFinder';
-import { defaultProvider } from './config/provider';
+import { provider } from './config/provider';
 import { UNISWAP_QUOTE_API } from './constants';
 import { ArbPathResult, ITokenInfo } from './types';
 import { IUniQuoteResponse } from './types/quote';
@@ -37,11 +37,7 @@ export class DexService {
       ];
       if (!ethers.utils.isAddress(tokenAddress))
         throw new BadRequestException('Invalid token address');
-      const contract = new ethers.Contract(
-        tokenAddress,
-        ERC20_ABI,
-        defaultProvider,
-      );
+      const contract = new ethers.Contract(tokenAddress, ERC20_ABI, provider);
 
       const [name, symbol, decimals] = await Promise.all([
         contract.name(),

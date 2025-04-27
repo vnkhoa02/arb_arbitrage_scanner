@@ -3,7 +3,7 @@ import { Protocol } from '@uniswap/router-sdk';
 import { ChainId } from '@uniswap/sdk';
 import { CurrencyAmount, Percent, Token, TradeType } from '@uniswap/sdk-core';
 import { AlphaRouter } from '@uniswap/smart-order-router';
-import { defaultProvider } from './config/provider';
+import { provider } from './config/provider';
 import { RouteOptions, RouteResult } from './types/route';
 import { extractRoutes } from './utils/extractRoutes';
 
@@ -20,7 +20,7 @@ export class BestRouteFinder {
   constructor() {
     this.router = new AlphaRouter({
       chainId: this.chainId,
-      provider: defaultProvider,
+      provider,
     });
   }
 

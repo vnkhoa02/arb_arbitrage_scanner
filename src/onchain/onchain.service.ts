@@ -3,7 +3,7 @@ import { Cron, CronExpression } from '@nestjs/schedule';
 import retry from 'async-await-retry';
 import axios from 'axios';
 import 'dotenv/config';
-import { ethers, Wallet } from 'ethers';
+import { BigNumber, ethers, Wallet } from 'ethers';
 import { mevProvider } from 'src/dex/config/provider';
 import { STABLE_COIN, TOKENS } from 'src/dex/config/token';
 import { ScannerService } from 'src/scanner/scanner.service';
@@ -60,7 +60,16 @@ export class OnchainService implements OnModuleInit {
       const result = await retry(
         async () => {
           const params = await this.getArbitrageTradeParams(trade);
-          const txRequest =
+          const promise1 = this.arbContract.callStatic.simpleArbitrage(
+            params.tokenIn,
+            params.tokenOut,
+            params.forwardPath,
+            0,
+            params.backwardPath,
+            0,
+            params.borrowAmount,
+          );
+          const promise2 =
             await this.arbContract.populateTransaction.simpleArbitrage(
               params.tokenIn,
               params.tokenOut,
@@ -70,6 +79,9 @@ export class OnchainService implements OnModuleInit {
               0,
               params.borrowAmount,
             );
+
+          const [sim, txRequest] = await Promise.all([promise1, promise2]);
+          this.logger.log('sim -->', sim);
 
           txRequest.chainId = 1;
           txRequest.type = 2;
@@ -82,9 +94,10 @@ export class OnchainService implements OnModuleInit {
             'gwei',
           ); // total max per gas unit
           txRequest.nonce = await this.signer.getTransactionCount('latest');
-          let gasEstimate = await mevProvider.estimateGas(txRequest);
+          // let gasEstimate = await mevProvider.estimateGas(txRequest);
+          let gasEstimate = BigNumber.from(50000);
           this.logger.debug(`Gas estimate: ${gasEstimate.toString()}`);
-          gasEstimate = gasEstimate.mul(110).div(100); // 10% buffer
+          gasEstimate = gasEstimate.mul(120).div(100); // 20% buffer
           this.logger.debug(
             `Gas estimate (buffered): ${gasEstimate.toString()}`,
           );
@@ -252,11 +265,11 @@ export class OnchainService implements OnModuleInit {
         this.logger.log('Arbitrage submitted successfully!');
       }
     } catch (error) {
-      console.error(`Simulation error for ${tokenOut}`, error);
+      this.logger.error(`Simulation error for ${tokenOut}`, error);
     }
   }
 
-  // @Cron(CronExpression.EVERY_5_SECONDS)
+  @Cron(CronExpression.EVERY_5_SECONDS)
   private async scanTrade() {
     if (this.totalTrade > 5) {
       this.logger.warn('Max trade reached', this.totalTrade);
