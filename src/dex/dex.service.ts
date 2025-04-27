@@ -9,9 +9,8 @@ import 'dotenv/config';
 import { ethers } from 'ethers';
 import { BestRouteFinder } from './bestRouteFinder';
 import { defaultProvider } from './config/provider';
-import { MORALIS_PIRCE_API, UNISWAP_QUOTE_API } from './constants';
+import { UNISWAP_QUOTE_API } from './constants';
 import { ArbPathResult, ITokenInfo } from './types';
-import { IMoralisPrice } from './types/price';
 import { IUniQuoteResponse } from './types/quote';
 import { generateDirectRoutes, getTokenLocalInfo } from './utils';
 import { getQuoteHeader, getQuotePayload } from './utils/getQuote';
@@ -147,21 +146,6 @@ export class DexService {
       this.logger.error(`Error while getQuoteSlow`, error);
       throw new InternalServerErrorException('Error while getQuoteSlow');
     }
-  }
-
-  /**
-   * Get price in usd per token
-   * @param token_address
-   * @returns price in usd / 1 token
-   */
-  async getTokenPriceInUsd(token_address: string): Promise<number> {
-    const url = MORALIS_PIRCE_API.replace('token_address', token_address);
-    const { data } = await axios.get<IMoralisPrice>(url, {
-      headers: {
-        'X-API-Key': process.env.MORALIS_API_KEY,
-      },
-    });
-    return data.usdPrice;
   }
 
   /** Evaluate a single-direction arbitrage leg and return fee & price. */

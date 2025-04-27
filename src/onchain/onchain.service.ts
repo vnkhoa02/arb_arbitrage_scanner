@@ -1,29 +1,24 @@
-import {
-  FlashbotsBundleProvider,
-  FlashbotsTransactionResolution,
-} from '@flashbots/ethers-provider-bundle';
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
+import { Cron, CronExpression } from '@nestjs/schedule';
+import axios from 'axios';
 import 'dotenv/config';
 import { BigNumber, ethers, Wallet } from 'ethers';
 import { provider } from 'src/dex/config/provider';
 import { STABLE_COIN, TOKENS } from 'src/dex/config/token';
 import { ScannerService } from 'src/scanner/scanner.service';
 import arbitrageAbi from './abis/Arbitrage.abi.json';
-import { authSigner } from './config/flashbot';
+import { REPLAY_URL } from './config/flashbot';
 import { ARBITRAGE_V1 } from './constants';
 import { ISimpleArbitrageParams, ISimpleArbitrageTrade } from './types';
 import { pickBestRoute } from './utils';
-import { sendNotify } from './utils/notify';
-import { Cron, CronExpression } from '@nestjs/schedule';
 import { getGasFee } from './utils/getGasFee';
-import { ChainId } from '@uniswap/sdk';
+import { sendNotify } from './utils/notify';
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 @Injectable()
 export class OnchainService implements OnModuleInit {
   private readonly logger = new Logger(OnchainService.name);
   private signer: Wallet;
-  private flashbotsProvider: FlashbotsBundleProvider;
   private arbContract: ethers.Contract;
 
   constructor(private readonly scannerService: ScannerService) {
@@ -31,11 +26,6 @@ export class OnchainService implements OnModuleInit {
   }
 
   async onModuleInit() {
-    this.flashbotsProvider = await FlashbotsBundleProvider.create(
-      provider,
-      authSigner,
-      'https://relay.flashbots.net',
-    );
     this.arbContract = new ethers.Contract(
       ARBITRAGE_V1,
       arbitrageAbi.abi,
@@ -107,8 +97,22 @@ export class OnchainService implements OnModuleInit {
   }
 
   private async submitArbitrage(params: ISimpleArbitrageParams) {
-    const gasLimit = BigNumber.from(40000); // 40,000 units
-    const { maxFeePerGas, maxPriorityFeePerGas } = await getGasFee();
+    const gasEstimate = BigNumber.from(40000);
+    const { maxFeePerGas, maxPriorityFeePerGas, estimatedFeeEth } =
+      (await getGasFee(gasEstimate)) as {
+        maxFeePerGas: BigNumber;
+        maxPriorityFeePerGas: BigNumber;
+        estimatedFeeEth: string;
+      };
+
+    if (Number(params.profit) <= Number(estimatedFeeEth)) {
+      this.logger.warn(
+        `Profit ${params.profit} ≤ fee ${estimatedFeeEth}, skipping`,
+      );
+      return;
+    }
+
+    // Build transaction request
     const txRequest: ethers.providers.TransactionRequest = {
       to: this.arbContract.address,
       data: this.arbContract.interface.encodeFunctionData('simpleArbitrage', [
@@ -120,37 +124,61 @@ export class OnchainService implements OnModuleInit {
         0,
         params.borrowAmount,
       ]),
-      chainId: ChainId.MAINNET,
+      chainId: 1,
       type: 2,
-      gasLimit,
+      gasLimit: gasEstimate,
       maxFeePerGas,
       maxPriorityFeePerGas,
     };
 
-    console.log(new Date());
-    console.log('Starting to run the private transaction...');
-
+    // Sign the transaction
+    const signedTx = await this.signer.signTransaction(txRequest);
     const blockNum = await provider.getBlockNumber();
-    const transaction = await this.flashbotsProvider.sendPrivateTransaction(
-      {
-        transaction: txRequest,
-        signer: this.signer,
-      },
-      { maxBlockNumber: blockNum + 5 },
-    );
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const result = await transaction.wait();
-    console.log('result ->>', result);
-    if (result === FlashbotsTransactionResolution.TransactionIncluded) {
-      console.log('Transaction included!');
-    } else if (result === FlashbotsTransactionResolution.TransactionDropped) {
-      console.warn('Transaction dropped.');
-    } else {
-      console.warn('Transaction not included.');
+    const targetBlock = blockNum + 1;
+
+    // Build Titan RPC call
+    const payload = {
+      jsonrpc: '2.0',
+      id: 1,
+      method: 'eth_sendBundle',
+      params: [
+        {
+          txs: [signedTx],
+          blockNumber: ethers.utils.hexValue(targetBlock),
+          refundPercent: 90,
+        },
+      ],
+    };
+
+    this.logger.log(`Sending bundle to Titan for block ${targetBlock}`);
+    try {
+      const payloadStr = JSON.stringify(payload);
+      const payloadHash = ethers.utils.keccak256(
+        ethers.utils.toUtf8Bytes(payloadStr),
+      );
+      const signature = await this.signer.signMessage(
+        ethers.utils.arrayify(payloadHash),
+      );
+      const publicAddress = await this.signer.getAddress();
+
+      const response = await axios.post(REPLAY_URL, payload, {
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Flashbots-Signature': `${publicAddress}:${signature}`,
+        },
+      });
+
+      if (response.data.error) {
+        this.logger.error('Titan error', response.data.error);
+      } else {
+        const { bundleHash } = response.data.result;
+        this.logger.log('Bundle submitted, hash:', bundleHash);
+        sendNotify({ ...params, bundleHash });
+        this.isSent = true;
+      }
+    } catch (err) {
+      this.logger.error('Failed to send bundle to Titan', err as any);
     }
-    console.log(new Date());
-    console.log('Private transaction submitted.');
   }
 
   private isSent = false;
@@ -167,7 +195,7 @@ export class OnchainService implements OnModuleInit {
         const { simParams, simulation } = await this.simpleArbitrageTrade({
           tokenIn: TOKENS.WETH,
           tokenOut,
-          amountIn: 5,
+          amountIn: 1,
         });
 
         if (simulation) {
@@ -185,8 +213,8 @@ export class OnchainService implements OnModuleInit {
       if (result.status === 'fulfilled' && result.value.success) {
         try {
           const { simParams } = result.value;
+          if (Number(simParams.profit) <= 0) continue;
           this.isSent = true;
-          sendNotify(simParams);
           await this.submitArbitrage(simParams);
           console.log('Successfully submitted arbitrage!');
           return; // Only send the first successful one
