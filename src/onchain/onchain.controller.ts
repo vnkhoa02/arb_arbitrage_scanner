@@ -14,7 +14,7 @@ export class OnchainController {
     const tokenIn = query?.tokenIn ?? TOKENS.WETH;
     const tokenOut = query?.tokenOut ?? STABLE_COIN.USDT;
 
-    return await this.onchainService.simpleArbitrageTrade({
+    return await this.onchainService.simulateSimpleArbitrage({
       tokenIn,
       tokenOut,
       amountIn,

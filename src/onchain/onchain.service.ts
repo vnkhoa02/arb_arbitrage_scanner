@@ -20,6 +20,7 @@ export class OnchainService implements OnModuleInit {
   private readonly logger = new Logger(OnchainService.name);
   private signer: Wallet;
   private arbContract: ethers.Contract;
+  private isSent = false;
 
   constructor(private readonly scannerService: ScannerService) {
     this.signer = new Wallet(PRIVATE_KEY, provider);
@@ -33,48 +34,65 @@ export class OnchainService implements OnModuleInit {
     );
   }
 
-  /**
-   * Simulate and estimate gas & fee
-   */
-  private async simulateSimpleArbitrage(
-    params: ISimpleArbitrageParams,
-  ): Promise<{
+  async simulateSimpleArbitrage(trade: ISimpleArbitrageTrade): Promise<{
     simulatedReturn: string;
-  } | null> {
+  }> {
     try {
-      const [simulatedReturn] = await Promise.all([
-        this.arbContract.callStatic.simpleArbitrage(
-          params.tokenIn,
-          params.tokenOut,
-          params.forwardPath,
-          0,
-          params.backwardPath,
-          0,
-          params.borrowAmount,
-        ),
-      ]);
-
-      return { simulatedReturn };
+      const params = await this.getArbitrageTradeParams(trade);
+      const simulatedReturn = await this.arbContract.callStatic.simpleArbitrage(
+        params.tokenIn,
+        params.tokenOut,
+        params.forwardPath,
+        0,
+        params.backwardPath,
+        0,
+        params.borrowAmount,
+      );
+      return simulatedReturn;
     } catch (err) {
       this.logger.error('simulateSimpleArbitrage failed', err as any);
       return null;
     }
   }
 
+  private async getEstArbitrageGas(
+    params: ISimpleArbitrageParams,
+  ): Promise<BigNumber> {
+    try {
+      const estimateGas = await this.arbContract.estimateGas.simpleArbitrage(
+        params.tokenIn,
+        params.tokenOut,
+        params.forwardPath,
+        0,
+        params.backwardPath,
+        0,
+        params.borrowAmount,
+      );
+
+      return estimateGas;
+    } catch (err) {
+      this.logger.error('getEstArbitrageGas failed', err as any);
+      return null;
+    }
+  }
+
   /**
-   * Prepare params & run simulation
+   * Prepare ISimpleArbitrageParams params
+   * @returns ISimpleArbitrageParams
    */
-  async simpleArbitrageTrade(params: ISimpleArbitrageTrade) {
+  async getArbitrageTradeParams(
+    trade: ISimpleArbitrageTrade,
+  ): Promise<ISimpleArbitrageParams> {
     const path = await this.scannerService.arbitrage(
-      params.tokenIn,
-      params.tokenOut,
-      params.amountIn,
+      trade.tokenIn,
+      trade.tokenOut,
+      trade.amountIn,
     );
     const forward = pickBestRoute(path.forward.route);
     const backward = pickBestRoute(path.backward.route);
     const simParams: ISimpleArbitrageParams = {
-      tokenIn: params.tokenIn,
-      tokenOut: params.tokenOut,
+      tokenIn: trade.tokenIn,
+      tokenOut: trade.tokenOut,
       forwardPath: forward.encoded,
       forwardOutMin: BigInt(
         ethers.utils
@@ -88,16 +106,24 @@ export class OnchainService implements OnModuleInit {
           .toString(),
       ),
       borrowAmount: BigInt(
-        ethers.utils.parseUnits(params.amountIn.toString(), 18).toString(),
+        ethers.utils.parseUnits(trade.amountIn.toString(), 18).toString(),
       ),
       profit: path.roundTrip.profit,
     };
-    const simulation = await this.simulateSimpleArbitrage(simParams);
-    return { simParams, simulation };
+    return simParams;
   }
 
   private async submitArbitrage(params: ISimpleArbitrageParams) {
-    const gasEstimate = BigNumber.from(40000);
+    let gasEstimate = await this.getEstArbitrageGas(params);
+    if (!gasEstimate) {
+      this.logger.error(`Couldn't get gasEstimate`, gasEstimate);
+      return;
+    }
+    console.log('gasEstimate -->', gasEstimate);
+    // Add 20% buffer just in case
+    gasEstimate = gasEstimate.mul(120).div(100);
+    console.log('gasEstimate after buff -->', gasEstimate);
+
     const { maxFeePerGas, maxPriorityFeePerGas, estimatedFeeEth } =
       (await getGasFee(gasEstimate)) as {
         maxFeePerGas: BigNumber;
@@ -111,11 +137,10 @@ export class OnchainService implements OnModuleInit {
       );
       return;
     }
+    this.isSent = true;
 
-    // Build transaction request
-    const txRequest: ethers.providers.TransactionRequest = {
-      to: this.arbContract.address,
-      data: this.arbContract.interface.encodeFunctionData('simpleArbitrage', [
+    const txRequest =
+      await this.arbContract.populateTransaction.simpleArbitrage(
         params.tokenIn,
         params.tokenOut,
         params.forwardPath,
@@ -123,18 +148,24 @@ export class OnchainService implements OnModuleInit {
         params.backwardPath,
         0,
         params.borrowAmount,
-      ]),
-      chainId: 1,
-      type: 2,
-      gasLimit: gasEstimate,
-      maxFeePerGas,
-      maxPriorityFeePerGas,
-    };
+      );
+    txRequest.chainId = 1;
+    txRequest.type = 2;
+    txRequest.gasLimit = gasEstimate;
+    txRequest.maxFeePerGas = maxFeePerGas;
+    txRequest.maxPriorityFeePerGas = maxPriorityFeePerGas;
 
     // Sign the transaction
     const signedTx = await this.signer.signTransaction(txRequest);
     const blockNum = await provider.getBlockNumber();
     const targetBlock = blockNum + 1;
+
+    this.logger.log('Prepared transaction', {
+      blockNum,
+      targetBlock,
+      estimatedFeeEth,
+      txRequest,
+    });
 
     // Build Titan RPC call
     const payload = {
@@ -145,11 +176,12 @@ export class OnchainService implements OnModuleInit {
         {
           txs: [signedTx],
           blockNumber: ethers.utils.hexValue(targetBlock),
-          refundPercent: 90,
+          // refundPercent: 95,
         },
       ],
     };
 
+    console.log(new Date());
     this.logger.log(`Sending bundle to Titan for block ${targetBlock}`);
     try {
       const payloadStr = JSON.stringify(payload);
@@ -160,13 +192,13 @@ export class OnchainService implements OnModuleInit {
         ethers.utils.arrayify(payloadHash),
       );
       const publicAddress = await this.signer.getAddress();
-
       const response = await axios.post(REPLAY_URL, payload, {
         headers: {
           'Content-Type': 'application/json',
           'X-Flashbots-Signature': `${publicAddress}:${signature}`,
         },
       });
+      console.log('response data ->', response?.data);
 
       if (response.data.error) {
         this.logger.error('Titan error', response.data.error);
@@ -174,14 +206,12 @@ export class OnchainService implements OnModuleInit {
         const { bundleHash } = response.data.result;
         this.logger.log('Bundle submitted, hash:', bundleHash);
         sendNotify({ ...params, bundleHash });
-        this.isSent = true;
       }
     } catch (err) {
       this.logger.error('Failed to send bundle to Titan', err as any);
     }
+    console.log(new Date());
   }
-
-  private isSent = false;
 
   @Cron(CronExpression.EVERY_5_SECONDS)
   private async scanTrade() {
@@ -192,13 +222,13 @@ export class OnchainService implements OnModuleInit {
     const stableCoins = [STABLE_COIN.USDT, STABLE_COIN.USDC, STABLE_COIN.DAI];
     const promises = stableCoins.map(async (tokenOut) => {
       try {
-        const { simParams, simulation } = await this.simpleArbitrageTrade({
+        const simParams = await this.getArbitrageTradeParams({
           tokenIn: TOKENS.WETH,
           tokenOut,
           amountIn: 1,
         });
 
-        if (simulation) {
+        if (simParams) {
           return { simParams, success: true };
         }
       } catch (error) {
@@ -214,7 +244,6 @@ export class OnchainService implements OnModuleInit {
         try {
           const { simParams } = result.value;
           if (Number(simParams.profit) <= 0) continue;
-          this.isSent = true;
           await this.submitArbitrage(simParams);
           console.log('Successfully submitted arbitrage!');
           return; // Only send the first successful one
