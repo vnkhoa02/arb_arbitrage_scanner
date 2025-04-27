@@ -114,103 +114,105 @@ export class OnchainService implements OnModuleInit {
   }
 
   private async submitArbitrage(params: ISimpleArbitrageParams) {
-    let gasEstimate = await this.getEstArbitrageGas(params);
-    if (!gasEstimate) {
-      this.logger.error(`Couldn't get gasEstimate`, gasEstimate);
-      return;
-    }
-    console.log('gasEstimate -->', gasEstimate);
-    // Add 20% buffer just in case
-    gasEstimate = gasEstimate.mul(120).div(100);
-    console.log('gasEstimate after buff -->', gasEstimate);
+    try {
+      // 1. Prepare transaction
+      const noncePromise = provider.getTransactionCount(
+        this.signer.address,
+        'latest',
+      );
+      const txRequest =
+        await this.arbContract.populateTransaction.simpleArbitrage(
+          params.tokenIn,
+          params.tokenOut,
+          params.forwardPath,
+          0,
+          params.backwardPath,
+          0,
+          params.borrowAmount,
+        );
 
-    const { maxFeePerGas, maxPriorityFeePerGas, estimatedFeeEth } =
-      (await getGasFee(gasEstimate)) as {
-        maxFeePerGas: BigNumber;
-        maxPriorityFeePerGas: BigNumber;
-        estimatedFeeEth: string;
+      txRequest.chainId = 1;
+      txRequest.type = 2;
+      txRequest.nonce = await noncePromise;
+
+      // 2. Estimate gas with 20% buffer
+      let gasEstimate = await provider.estimateGas(txRequest);
+      gasEstimate = gasEstimate.mul(120).div(100);
+      this.logger.debug('Gas estimate (buffered):', gasEstimate.toString());
+
+      const { maxFeePerGas, maxPriorityFeePerGas, estimatedFeeEth } =
+        (await getGasFee(gasEstimate)) as {
+          maxFeePerGas: BigNumber;
+          maxPriorityFeePerGas: BigNumber;
+          estimatedFeeEth: string;
+        };
+
+      if (Number(params.profit) <= Number(estimatedFeeEth)) {
+        this.logger.warn(
+          `Profit ${params.profit} ≤ Fee ${estimatedFeeEth}, skipping arbitrage.`,
+        );
+        return;
+      }
+
+      this.isSent = true;
+
+      txRequest.gasLimit = gasEstimate;
+      txRequest.maxFeePerGas = maxFeePerGas;
+      txRequest.maxPriorityFeePerGas = maxPriorityFeePerGas;
+
+      // 3. Sign transaction and prepare bundle
+      const [signedTx, latestBlock] = await Promise.all([
+        this.signer.signTransaction(txRequest),
+        provider.getBlockNumber(),
+      ]);
+
+      const targetBlock = latestBlock + 1;
+      this.logger.log(`Prepared bundle for block ${targetBlock}`);
+
+      const payload = {
+        jsonrpc: '2.0',
+        id: 1,
+        method: 'eth_sendBundle',
+        params: [
+          {
+            txs: [signedTx],
+            blockNumber: ethers.utils.hexValue(targetBlock),
+            refundPercent: 95,
+          },
+        ],
       };
 
-    if (Number(params.profit) <= Number(estimatedFeeEth)) {
-      this.logger.warn(
-        `Profit ${params.profit} ≤ fee ${estimatedFeeEth}, skipping`,
-      );
-      return;
-    }
-    this.isSent = true;
-
-    const txRequest =
-      await this.arbContract.populateTransaction.simpleArbitrage(
-        params.tokenIn,
-        params.tokenOut,
-        params.forwardPath,
-        0,
-        params.backwardPath,
-        0,
-        params.borrowAmount,
-      );
-    txRequest.chainId = 1;
-    txRequest.type = 2;
-    txRequest.gasLimit = gasEstimate;
-    txRequest.maxFeePerGas = maxFeePerGas;
-    txRequest.maxPriorityFeePerGas = maxPriorityFeePerGas;
-
-    // Sign the transaction
-    const signedTx = await this.signer.signTransaction(txRequest);
-    const blockNum = await provider.getBlockNumber();
-    const targetBlock = blockNum + 1;
-
-    this.logger.log('Prepared transaction', {
-      blockNum,
-      targetBlock,
-      estimatedFeeEth,
-      txRequest,
-    });
-
-    // Build Titan RPC call
-    const payload = {
-      jsonrpc: '2.0',
-      id: 1,
-      method: 'eth_sendBundle',
-      params: [
-        {
-          txs: [signedTx],
-          blockNumber: ethers.utils.hexValue(targetBlock),
-          // refundPercent: 95,
-        },
-      ],
-    };
-
-    console.log(new Date());
-    this.logger.log(`Sending bundle to Titan for block ${targetBlock}`);
-    try {
+      // 4. Sign payload
       const payloadStr = JSON.stringify(payload);
       const payloadHash = ethers.utils.keccak256(
         ethers.utils.toUtf8Bytes(payloadStr),
       );
-      const signature = await this.signer.signMessage(
-        ethers.utils.arrayify(payloadHash),
-      );
-      const publicAddress = await this.signer.getAddress();
+      const [signature, publicAddress] = await Promise.all([
+        this.signer.signMessage(ethers.utils.arrayify(payloadHash)),
+        this.signer.getAddress(),
+      ]);
+
+      // 5. Send bundle
+      this.logger.log(`Sending bundle to Titan for block ${targetBlock}...`);
+
       const response = await axios.post(REPLAY_URL, payload, {
         headers: {
           'Content-Type': 'application/json',
           'X-Flashbots-Signature': `${publicAddress}:${signature}`,
         },
       });
-      console.log('response data ->', response?.data);
 
       if (response.data.error) {
-        this.logger.error('Titan error', response.data.error);
-      } else {
-        const { bundleHash } = response.data.result;
-        this.logger.log('Bundle submitted, hash:', bundleHash);
-        sendNotify({ ...params, bundleHash });
+        this.logger.error('Titan RPC Error', response.data.error);
+        return;
       }
-    } catch (err) {
-      this.logger.error('Failed to send bundle to Titan', err as any);
+
+      const { bundleHash } = response.data.result;
+      this.logger.log('Bundle submitted successfully, hash:', bundleHash);
+      sendNotify({ ...params, bundleHash });
+    } catch (error) {
+      this.logger.error('Error during submitArbitrage', error);
     }
-    console.log(new Date());
   }
 
   @Cron(CronExpression.EVERY_5_SECONDS)
@@ -252,7 +254,5 @@ export class OnchainService implements OnModuleInit {
         }
       }
     }
-
-    console.log('No successful arbitrage found.');
   }
 }
