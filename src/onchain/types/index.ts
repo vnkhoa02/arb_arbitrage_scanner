@@ -1,15 +1,13 @@
 import { BigNumber } from 'ethers';
 
-export interface ISimpleArbitrageParams {
-  tokenIn: string;
-  tokenOut: string;
+export type ISimpleArbitrageParams = {
   forwardPath: string;
   forwardOutMin: bigint;
   backwardPath: string;
   backwardOutMin: bigint;
   borrowAmount: bigint;
   profit: number | string;
-}
+} & ISimpleArbitrageTrade;
 
 export interface ISimpleArbitrageTrade {
   tokenIn: string;
