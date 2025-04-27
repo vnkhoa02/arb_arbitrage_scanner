@@ -1,5 +1,5 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
-import { Cron } from '@nestjs/schedule';
+import { Cron, CronExpression } from '@nestjs/schedule';
 import axios from 'axios';
 import 'dotenv/config';
 import { ethers, Wallet } from 'ethers';
@@ -180,6 +180,60 @@ export class OnchainService implements OnModuleInit {
     }
   }
 
+  private async selfSubmitArbitrage(params: ISimpleArbitrageParams) {
+    try {
+      // 1. Prepare transaction
+      const txRequest =
+        await this.arbContract.populateTransaction.simpleArbitrage(
+          params.tokenIn,
+          params.tokenOut,
+          params.forwardPath,
+          0,
+          params.backwardPath,
+          0,
+          params.borrowAmount,
+        );
+
+      txRequest.chainId = 1; // Mainnet (1)
+      txRequest.type = 2; // EIP-1559 transaction (with max fee & priority fee)
+
+      // 2. Estimate gas with 20% buffer
+      let gasEstimate = await provider.estimateGas(txRequest);
+      this.logger.debug(`Gas estimate: ${gasEstimate.toString()}`);
+      gasEstimate = gasEstimate.mul(120).div(100); // 20% buffer
+      this.logger.debug(`Gas estimate (buffered): ${gasEstimate.toString()}`);
+
+      // Uncomment if you want to handle gas fees explicitly
+      // const { maxFeePerGas, maxPriorityFeePerGas, estimatedFeeEth } =
+      //   (await getGasFee(gasEstimate)) as {
+      //     maxFeePerGas: BigNumber;
+      //     maxPriorityFeePerGas: BigNumber;
+      //     estimatedFeeEth: string;
+      //   };
+
+      txRequest.gasLimit = gasEstimate;
+      // txRequest.maxFeePerGas = maxFeePerGas;
+      // txRequest.maxPriorityFeePerGas = maxPriorityFeePerGas;
+
+      // 3. Sign transaction
+      const signedTx = await this.signer.signTransaction(txRequest);
+      this.logger.debug(`Signed transaction: ${signedTx}`);
+
+      // 4. Send the transaction
+      const txResponse = await provider.sendTransaction(signedTx);
+      this.logger.log(`Transaction sent: ${txResponse.hash}`);
+
+      // 5. Wait for transaction confirmation
+      const receipt = await txResponse.wait();
+      console.log('receipt -->', receipt);
+      this.logger.log(`Transaction confirmed in block ${receipt.blockNumber}`);
+
+      return receipt.blockHash;
+    } catch (error) {
+      this.logger.error('Error during self submitArbitrage', error);
+    }
+  }
+
   private async handleSimulation(tokenOut: string) {
     try {
       const simParams = await this.getArbitrageTradeParams({
@@ -193,10 +247,10 @@ export class OnchainService implements OnModuleInit {
       this.logger.log(
         `Profitable arbitrage via ${tokenOut}: Profit ${simParams.profit}`,
       );
-      const bundleHash = await this.submitArbitrage(simParams);
-      if (bundleHash) {
+      const txHash = await this.selfSubmitArbitrage(simParams);
+      if (txHash) {
         this.totalTrade++;
-        sendNotify({ ...simParams, bundleHash });
+        sendNotify({ ...simParams, bundleHash: txHash });
         this.logger.log('Arbitrage submitted successfully!');
       }
     } catch (error) {
@@ -204,9 +258,9 @@ export class OnchainService implements OnModuleInit {
     }
   }
 
-  @Cron('*/3 * * * * *') // every 3 seconds
+  @Cron(CronExpression.EVERY_5_SECONDS)
   private scanTrade() {
-    if (this.totalTrade > 3) {
+    if (this.totalTrade > 0) {
       this.logger.warn('Max trade reached', this.totalTrade);
       return;
     }
