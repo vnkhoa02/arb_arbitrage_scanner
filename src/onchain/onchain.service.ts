@@ -1,8 +1,10 @@
+import { TransactionRequest } from '@ethersproject/abstract-provider';
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
+import retry from 'async-await-retry';
 import 'dotenv/config';
 import { BigNumber, ethers } from 'ethers';
-import { provider } from 'src/dex/config/provider';
+import { defaultProvider, provider } from 'src/dex/config/provider';
 import { STABLE_COIN, TOKENS } from 'src/dex/config/token';
 import { ScannerService } from 'src/scanner/scanner.service';
 import arbitrageAbi from './abis/Arbitrage.abi.json';
@@ -56,6 +58,23 @@ export class OnchainService implements OnModuleInit {
     return Number(result);
   }
 
+  private async getEsitmateGas(txRequest: TransactionRequest) {
+    return await retry(
+      async () => {
+        let gasEstimate = await defaultProvider.estimateGas(txRequest);
+        this.logger.debug(`Gas estimate: ${gasEstimate.toString()}`);
+        gasEstimate = gasEstimate.mul(115).div(100); // 15% buffer
+        this.logger.debug(`Gas estimate (buffered): ${gasEstimate.toString()}`);
+        return gasEstimate;
+      },
+      null,
+      {
+        retriesMax: 5,
+        interval: 50,
+      },
+    );
+  }
+
   async simulateSimpleArbitrage(trade: ISimpleArbitrageTrade) {
     try {
       const params = await this.getArbitrageTradeParams(trade);
@@ -79,15 +98,10 @@ export class OnchainService implements OnModuleInit {
       txRequest.maxFeePerGas = autoParseGasFee(this.feeData.maxFeePerGas);
       txRequest.value = BigNumber.from(0); // don't send ETH accidentally
       txRequest.nonce = await signer.getTransactionCount('latest');
-      // let gasEstimate = await defaultProvider.estimateGas(txRequest);
-      let gasEstimate = BigNumber.from(50000);
-      this.logger.debug(`Gas estimate: ${gasEstimate.toString()}`);
-      gasEstimate = gasEstimate.mul(115).div(100); // 15% buffer
-      this.logger.debug(`Gas estimate (buffered): ${gasEstimate.toString()}`);
-      txRequest.gasLimit = gasEstimate;
+
+      txRequest.gasLimit = await this.getEsitmateGas(txRequest);
       return {
         txRequest,
-        gasEstimate,
       };
     } catch (err) {
       this.logger.error('simulateSimpleArbitrage failed', err as any);

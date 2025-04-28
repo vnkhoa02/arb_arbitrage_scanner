@@ -6,7 +6,6 @@ import { defaultProvider, mevProvider } from 'src/dex/config/provider';
 import { BEAVER_BUILD_RPC, flashBotSigner, signer, TITAN_RPC } from './config';
 import { ISimpleArbitrageParams } from './types';
 import { sendNotify } from './utils/notify';
-import retry from 'async-await-retry';
 
 @Injectable()
 export class MevService {
@@ -147,26 +146,14 @@ export class MevService {
   async selfSubmit(txRequest: TransactionRequest): Promise<string> {
     if (!txRequest) return;
     try {
-      return await retry(
-        async () => {
-          const gasLimit = await defaultProvider.estimateGas(txRequest);
-          txRequest.gasLimit = gasLimit;
-          // 1. Sign transaction
-          const signedTx = await signer.signTransaction(txRequest);
-          this.logger.debug(`Signed transaction: ${signedTx}`);
-          // 2. Send the transaction
-          const txResponse = await defaultProvider.sendTransaction(signedTx);
-          this.logger.log(`Transaction sent: ${txResponse.hash}`);
-          sendNotify({ ...this.params, tx: txResponse.hash });
-          return txResponse.hash;
-        },
-        null,
-        {
-          retriesMax: 5,
-          interval: 20,
-          exponential: false,
-        },
-      );
+      // 1. Sign transaction
+      const signedTx = await signer.signTransaction(txRequest);
+      this.logger.debug(`Signed transaction: ${signedTx}`);
+      // 2. Send the transaction
+      const txResponse = await defaultProvider.sendTransaction(signedTx);
+      this.logger.log(`Transaction sent: ${txResponse.hash}`);
+      sendNotify({ ...this.params, tx: txResponse.hash });
+      return txResponse.hash;
     } catch (e) {
       this.logger.error('Error in selfSubmit', e);
     }
