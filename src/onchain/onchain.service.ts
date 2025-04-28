@@ -1,15 +1,14 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import retry from 'async-await-retry';
-import axios from 'axios';
 import 'dotenv/config';
-import { BigNumber, ethers, Wallet } from 'ethers';
-import { mevProvider } from 'src/dex/config/provider';
+import { BigNumber, ethers } from 'ethers';
 import { STABLE_COIN, TOKENS } from 'src/dex/config/token';
 import { ScannerService } from 'src/scanner/scanner.service';
 import arbitrageAbi from './abis/Arbitrage.abi.json';
-import { FLASH_BOT_RPC, flashBotSigner, signer } from './config/flashbot';
+import { signer } from './config';
 import { ARBITRAGE_V1 } from './constants';
+import { MevService } from './mev.service';
 import {
   IFeeData,
   ISimpleArbitrageParams,
@@ -18,7 +17,6 @@ import {
 import { pickBestRoute } from './utils';
 import { getFeeData } from './utils/getGasFee';
 import { sendNotify } from './utils/notify';
-import { MevService } from './mev.service';
 
 @Injectable()
 export class OnchainService implements OnModuleInit {

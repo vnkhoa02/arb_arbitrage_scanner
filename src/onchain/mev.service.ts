@@ -10,7 +10,7 @@ import {
   mevSigner,
   signer,
   TITAN_RPC,
-} from './config/flashbot';
+} from './config';
 
 @Injectable()
 export class MevService {
