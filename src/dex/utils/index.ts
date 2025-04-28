@@ -1,4 +1,4 @@
-import { ChainId } from '@uniswap/sdk';
+import { CHAIN_ID } from '../config';
 import { tokens } from '../data/tokens';
 import { Route } from '../types/quote';
 
@@ -22,12 +22,12 @@ export function generateDirectRoutes(
       type: 'v3-pool',
       address: tokenIn,
       tokenIn: {
-        chainId: ChainId.MAINNET,
+        chainId: CHAIN_ID,
         decimals: decIn.toString(),
         address: tokenOut,
       },
       tokenOut: {
-        chainId: ChainId.MAINNET,
+        chainId: CHAIN_ID,
         decimals: decOut.toString(),
         address: tokenOut,
       },

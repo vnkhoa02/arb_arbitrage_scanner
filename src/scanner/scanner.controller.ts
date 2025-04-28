@@ -1,6 +1,6 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { ScannerService } from './scanner.service';
-import { TOKENS, STABLE_COIN } from 'src/dex/config/token';
+import { TOKENS, STABLE_COIN } from 'src/dex/constants/tokens';
 
 @Controller('scanner')
 export class ScannerController {

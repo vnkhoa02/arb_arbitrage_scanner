@@ -1,7 +1,7 @@
 import { Controller, Get, Query, UseInterceptors } from '@nestjs/common';
-import { STABLE_COIN, TOKENS } from 'src/dex/config/token';
 import { BigIntSerializerInterceptor } from 'src/interceptor/BigIntSerializerInterceptor';
 import { OnchainService } from './onchain.service';
+import { TOKENS, STABLE_COIN } from 'src/dex/constants/tokens';
 
 @Controller('onchain')
 @UseInterceptors(BigIntSerializerInterceptor)

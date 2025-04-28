@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { Protocol } from '@uniswap/router-sdk';
-import { ChainId } from '@uniswap/sdk';
 import { CurrencyAmount, Percent, Token, TradeType } from '@uniswap/sdk-core';
 import { AlphaRouter } from '@uniswap/smart-order-router';
+import { CHAIN_ID } from './config';
 import { provider } from './config/provider';
 import { RouteOptions, RouteResult } from './types/route';
 import { extractRoutes } from './utils/extractRoutes';
@@ -15,11 +15,10 @@ enum UniversalRouterVersion {
 @Injectable()
 export class BestRouteFinder {
   private router: AlphaRouter;
-  private chainId = ChainId.MAINNET.valueOf();
 
   constructor() {
     this.router = new AlphaRouter({
-      chainId: this.chainId,
+      chainId: CHAIN_ID,
       provider,
     });
   }
@@ -42,8 +41,8 @@ export class BestRouteFinder {
     options: RouteOptions = {},
   ): Promise<RouteResult> {
     // Wrap tokens for SDK
-    const tokenIn = new Token(this.chainId, tokenInAddress, tokenInDecimals);
-    const tokenOut = new Token(this.chainId, tokenOutAddress, tokenOutDecimals);
+    const tokenIn = new Token(CHAIN_ID, tokenInAddress, tokenInDecimals);
+    const tokenOut = new Token(CHAIN_ID, tokenOutAddress, tokenOutDecimals);
 
     // Build CurrencyAmount
     const raw =

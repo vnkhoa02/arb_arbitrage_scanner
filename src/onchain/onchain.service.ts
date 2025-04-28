@@ -4,8 +4,9 @@ import { Cron, CronExpression } from '@nestjs/schedule';
 import retry from 'async-await-retry';
 import 'dotenv/config';
 import { BigNumber, ethers } from 'ethers';
+import { CHAIN_ID } from 'src/dex/config';
 import { defaultProvider, provider } from 'src/dex/config/provider';
-import { STABLE_COIN, TOKENS } from 'src/dex/config/token';
+import { STABLE_COIN, TOKENS } from 'src/dex/constants/tokens';
 import { ScannerService } from 'src/scanner/scanner.service';
 import arbitrageAbi from './abis/Arbitrage.abi.json';
 import { signer } from './config';
@@ -95,7 +96,7 @@ export class OnchainService implements OnModuleInit {
           params.borrowAmount,
         );
 
-      txRequest.chainId = 1;
+      txRequest.chainId = CHAIN_ID;
       txRequest.type = 2;
       txRequest.maxPriorityFeePerGas = autoParseGasFee(
         this.feeData.maxPriorityFeePerGas,
@@ -204,12 +205,7 @@ export class OnchainService implements OnModuleInit {
     } else {
       this.logger.log(`Current Balance ${balance} ETH`);
     }
-    const tokens = [
-      STABLE_COIN.USDT,
-      STABLE_COIN.USDC,
-      STABLE_COIN.DAI,
-      TOKENS.WSTETH,
-    ];
+    const tokens = [STABLE_COIN.USDT, STABLE_COIN.USDC, STABLE_COIN.DAI];
     for (const tokenOut of tokens) {
       this.handleSimulation(tokenOut);
     }

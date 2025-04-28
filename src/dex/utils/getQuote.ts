@@ -1,3 +1,5 @@
+import { CHAIN_ID } from '../config';
+
 const swapper = '0x0CF9Dcf86Ec3A20BF54E852E99823f2978552ED1'; // My Wallet
 
 export function getQuotePayload(
@@ -22,9 +24,9 @@ export function getQuotePayload(
     ],
     swapper,
     tokenIn,
-    tokenInChainId: 1,
+    tokenInChainId: CHAIN_ID,
     tokenOut,
-    tokenOutChainId: 1,
+    tokenOutChainId: CHAIN_ID,
     type: 'EXACT_INPUT',
     urgency: 'normal',
     protocols: ['V3'],
