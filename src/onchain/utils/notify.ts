@@ -53,7 +53,5 @@ export async function sendNotify(data: NotifyData) {
         exponential: false, // Enable exponential backoff
       },
     );
-  } catch (error) {
-    console.error('❌ Error sending notification to Discord:', error);
-  }
+  } catch (_) {}
 }

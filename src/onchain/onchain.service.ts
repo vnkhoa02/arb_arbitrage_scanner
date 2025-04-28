@@ -3,11 +3,12 @@ import { Cron, CronExpression } from '@nestjs/schedule';
 import retry from 'async-await-retry';
 import 'dotenv/config';
 import { BigNumber, ethers } from 'ethers';
+import { provider } from 'src/dex/config/provider';
 import { STABLE_COIN, TOKENS } from 'src/dex/config/token';
 import { ScannerService } from 'src/scanner/scanner.service';
 import arbitrageAbi from './abis/Arbitrage.abi.json';
 import { signer } from './config';
-import { ARBITRAGE_V1 } from './constants';
+import { ARBITRAGE_V1, PUBLIC_ADDRESS } from './constants';
 import { MevService } from './mev.service';
 import {
   IFeeData,
@@ -49,6 +50,12 @@ export class OnchainService implements OnModuleInit {
       this.logger.error('Error in syncFeeData', error);
       throw error;
     }
+  }
+
+  async getBalance(): Promise<number> {
+    const balanceInWei = await provider.getBalance(PUBLIC_ADDRESS);
+    const result = ethers.utils.formatEther(balanceInWei); // Converts Wei to Ether
+    return Number(result);
   }
 
   async simulateSimpleArbitrage(trade: ISimpleArbitrageTrade) {
@@ -168,7 +175,6 @@ export class OnchainService implements OnModuleInit {
       );
       const txHash = await this.submitArbitrage(simParams);
       if (txHash) {
-        this.totalTrade++;
         this.logger.log('Arbitrage submitted successfully!');
       }
     } catch (error) {
@@ -178,9 +184,14 @@ export class OnchainService implements OnModuleInit {
 
   @Cron(CronExpression.EVERY_5_SECONDS)
   private async scanTrade() {
-    if (this.totalTrade > 5) {
-      this.logger.warn('Max trade reached', this.totalTrade);
-      return;
+    const balance = await this.getBalance();
+    if (balance <= 0.0072) {
+      this.logger.warn(
+        `Balance too low: ${balance} ETH. Stopping further trades.`,
+      );
+      return; // Stop further trade execution
+    } else {
+      this.logger.log(`Current Balance ${balance} ETH`);
     }
     const tokens = [
       STABLE_COIN.USDT,
