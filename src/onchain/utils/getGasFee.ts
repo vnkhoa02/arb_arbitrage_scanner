@@ -9,11 +9,11 @@ export async function getFeeData(): Promise<IFeeData> {
 
     const blockPrice = data.blockPrices[0];
     const highConfidencePrice = blockPrice.estimatedPrices.find(
-      (p: { confidence: number }) => p.confidence === 99,
+      (p: { confidence: number }) => p.confidence === 70,
     );
 
     if (!highConfidencePrice) {
-      throw new Error('No 99% confidence gas price found.');
+      throw new Error('No 70% confidence gas price found.');
     }
 
     // Convert to BigNumber
