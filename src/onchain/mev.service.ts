@@ -2,7 +2,7 @@ import { TransactionRequest } from '@ethersproject/abstract-provider';
 import { Injectable, Logger } from '@nestjs/common';
 import axios from 'axios';
 import { ethers } from 'ethers';
-import { defaultProvider, mevProvider } from 'src/dex/config/provider';
+import { mevProvider } from 'src/dex/config/provider';
 import { BEAVER_BUILD_RPC, flashBotSigner, signer, TITAN_RPC } from './config';
 import { ISimpleArbitrageParams } from './types';
 import { sendNotify } from './utils/notify';
@@ -146,12 +146,12 @@ export class MevService {
   async selfSubmit(txRequest: TransactionRequest): Promise<string> {
     if (!txRequest) return;
     try {
-      // 1. Sign transaction
+      // Sign & Send transaction
       const signedTx = await signer.signTransaction(txRequest);
       this.logger.debug(`Signed transaction: ${signedTx}`);
-      // 2. Send the transaction
-      const txResponse = await defaultProvider.sendTransaction(signedTx);
+      const txResponse = await signer.sendTransaction(txRequest);
       this.logger.log(`Transaction sent: ${txResponse.hash}`);
+
       sendNotify({ ...this.params, tx: txResponse.hash });
       return txResponse.hash;
     } catch (e) {

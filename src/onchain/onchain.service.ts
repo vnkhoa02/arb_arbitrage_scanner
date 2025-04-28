@@ -58,21 +58,25 @@ export class OnchainService implements OnModuleInit {
     return Number(result);
   }
 
-  private async getEsitmateGas(txRequest: TransactionRequest) {
-    return await retry(
-      async () => {
-        let gasEstimate = await defaultProvider.estimateGas(txRequest);
-        this.logger.debug(`Gas estimate: ${gasEstimate.toString()}`);
-        gasEstimate = gasEstimate.mul(115).div(100); // 15% buffer
-        this.logger.debug(`Gas estimate (buffered): ${gasEstimate.toString()}`);
-        return gasEstimate;
-      },
-      null,
-      {
-        retriesMax: 5,
-        interval: 50,
-      },
-    );
+  private async getEsitmateGas(
+    txRequest: TransactionRequest,
+  ): Promise<BigNumber> {
+    try {
+      return await retry(
+        async () => {
+          const gasEstimate = await defaultProvider.estimateGas(txRequest);
+          this.logger.debug(`Gas estimate: ${gasEstimate.toString()}`);
+          return Math.min(gasEstimate.toNumber(), 60000);
+        },
+        null,
+        {
+          retriesMax: 5,
+          interval: 50,
+        },
+      );
+    } catch (error) {
+      this.logger.error('Error while getEsitmateGas', error);
+    }
   }
 
   async simulateSimpleArbitrage(trade: ISimpleArbitrageTrade) {
