@@ -1,8 +1,12 @@
 import 'dotenv/config';
 import { Wallet } from 'ethers';
-import { mevProvider } from 'src/dex/config/provider';
+import { defaultProvider, mevProvider } from 'src/dex/config/provider';
 
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
 export const authSignerPrivateKey = process.env.AUTH_SIGNER_PRIVATE_KEY;
+
+export const signer = new Wallet(PRIVATE_KEY, defaultProvider);
+export const mevSigner = new Wallet(PRIVATE_KEY, mevProvider);
 export const flashBotSigner = new Wallet(authSignerPrivateKey, mevProvider);
 
 export const TITAN_RPC = 'https://rpc.titanbuilder.xyz';

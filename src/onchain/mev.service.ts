@@ -1,0 +1,263 @@
+import { TransactionRequest } from '@ethersproject/abstract-provider';
+import { Injectable, Logger } from '@nestjs/common';
+import axios from 'axios';
+import { ethers } from 'ethers';
+import { defaultProvider, mevProvider } from 'src/dex/config/provider';
+import {
+  FLASH_BOT_RPC,
+  flashBotSigner,
+  mevSigner,
+  signer,
+  TITAN_RPC,
+} from './config/flashbot';
+
+@Injectable()
+export class MevService {
+  private readonly logger = new Logger(MevService.name);
+  private latestBlock = 0;
+
+  async submitArbitrage(txRequest: TransactionRequest): Promise<string> {
+    try {
+      this.latestBlock = await mevProvider.getBlockNumber();
+      const [beaver, flashbot, titan, self, selfMev] = await Promise.allSettled(
+        [
+          this.submitBeaver(txRequest),
+          this.submitFlashbot(txRequest),
+          this.submitTitan(txRequest),
+          this.selfSubmit(txRequest),
+          this.selfSubmitMev(txRequest),
+        ],
+      );
+
+      const results = { beaver, flashbot, titan, self, selfMev };
+      this.logger.log('submitArbitrage results ->', results);
+
+      // Prioritize returning `self` if it succeeded
+      if (self.status === 'fulfilled') {
+        return self.value;
+      }
+
+      // Otherwise, return the first fulfilled result among the rest
+      for (const key of ['selfMev', 'beaver', 'flashbot', 'titan']) {
+        const result = results[key as keyof typeof results];
+        if (result.status === 'fulfilled') {
+          return result.value;
+        }
+      }
+
+      // If none fulfilled
+      this.logger.warn('submitArbitrage: No submissions succeeded.');
+      return undefined;
+    } catch (error) {
+      this.logger.error('Error in submitArbitrage', error);
+      return undefined;
+    } finally {
+      this.latestBlock = 0;
+    }
+  }
+
+  async submitBeaver(txRequest: TransactionRequest): Promise<string> {
+    try {
+      // 1. Prepare transaction
+      if (!txRequest) return;
+
+      // 2. Sign transaction and prepare bundle
+      const signedTx = await signer.signTransaction(txRequest);
+      const targetBlock = this.latestBlock + 1;
+      this.logger.log(`Prepared bundle for block ${targetBlock}`);
+
+      const payload = {
+        jsonrpc: '2.0',
+        id: 1,
+        method: 'eth_sendBundle',
+        params: [
+          {
+            txs: [signedTx],
+            blockNumber: ethers.utils.hexValue(targetBlock),
+            minTimestamp: 0,
+            maxTimestamp: 0,
+          },
+        ],
+      };
+
+      const requestBody = JSON.stringify(payload);
+      const signature = await flashBotSigner.signMessage(
+        ethers.utils.keccak256(ethers.utils.toUtf8Bytes(requestBody)),
+      );
+
+      // 3. Send bundle
+      this.logger.log(`Sending bundle to RPC for block ${targetBlock}...`);
+
+      const response = await axios.post(FLASH_BOT_RPC, payload, {
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Flashbots-Signature': `${await flashBotSigner.getAddress()}:${signature}`,
+        },
+      });
+
+      console.log('Flashbots response:', response.data);
+
+      if (response.data.error) {
+        this.logger.error('RPC Error', response.data.error);
+        return;
+      }
+
+      const { bundleHash } = response.data.result;
+      this.logger.log('Bundle submitted successfully, hash:', bundleHash);
+      return bundleHash;
+    } catch (error) {
+      this.logger.error('Error during submitArbitrage', error);
+    }
+  }
+
+  async submitFlashbot(txRequest: TransactionRequest): Promise<string> {
+    try {
+      // 1. Prepare transaction
+      if (!txRequest) return;
+
+      // 2. Sign transaction and prepare bundle
+      const signedTx = await mevSigner.signTransaction(txRequest);
+      const targetBlock = this.latestBlock + 1;
+      this.logger.log(`Prepared Flashbot bundle for block ${targetBlock}`);
+
+      const payload = {
+        jsonrpc: '2.0',
+        id: 1,
+        method: 'eth_sendBundle',
+        params: [
+          {
+            txs: [signedTx],
+            blockNumber: ethers.utils.hexValue(targetBlock),
+            minTimestamp: 0,
+            maxTimestamp: 0,
+          },
+        ],
+      };
+
+      const requestBody = JSON.stringify(payload);
+      const signature = await flashBotSigner.signMessage(
+        ethers.utils.keccak256(ethers.utils.toUtf8Bytes(requestBody)),
+      );
+
+      // 3. Send bundle
+      this.logger.log(
+        `Sending bundle to Flashbot RPC for block ${targetBlock}...`,
+      );
+
+      const response = await axios.post(FLASH_BOT_RPC, payload, {
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Flashbots-Signature': `${await flashBotSigner.getAddress()}:${signature}`,
+        },
+      });
+
+      console.log('Flashbots response:', response.data);
+
+      if (response.data.error) {
+        this.logger.error('Flashbots RPC Error', response.data.error);
+        return;
+      }
+
+      const { bundleHash } = response.data.result;
+      this.logger.log(
+        'Flashbot Bundle submitted successfully, hash:',
+        bundleHash,
+      );
+      return bundleHash;
+    } catch (error) {
+      this.logger.error('Error during submitArbitrage', error);
+    }
+  }
+
+  async submitTitan(txRequest: TransactionRequest): Promise<string> {
+    try {
+      // 1. Prepare transaction
+      if (!txRequest) return;
+
+      // 2. Sign transaction and prepare bundle
+      const signedTx = await signer.signTransaction(txRequest);
+      const targetBlock = this.latestBlock + 1;
+      this.logger.log(`Prepared Titan bundle for block ${targetBlock}`);
+
+      const payload = {
+        jsonrpc: '2.0',
+        id: 1,
+        method: 'eth_sendBundle',
+        params: [
+          {
+            txs: [signedTx],
+            blockNumber: ethers.utils.hexValue(targetBlock),
+            minTimestamp: 0,
+            maxTimestamp: 0,
+          },
+        ],
+      };
+
+      const requestBody = JSON.stringify(payload);
+      const signature = await flashBotSigner.signMessage(
+        ethers.utils.keccak256(ethers.utils.toUtf8Bytes(requestBody)),
+      );
+
+      // 3. Send bundle
+      this.logger.log(`Sending bundle to RPC for block ${targetBlock}...`);
+
+      const response = await axios.post(TITAN_RPC, payload, {
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Flashbots-Signature': `${await flashBotSigner.getAddress()}:${signature}`,
+        },
+      });
+
+      console.log('Titan response:', response.data);
+
+      if (response.data.error) {
+        this.logger.error('Titan RPC Error', response.data.error);
+        return;
+      }
+
+      const { bundleHash } = response.data.result;
+      this.logger.log('Titan Bundle submitted successfully, hash:', bundleHash);
+      return bundleHash;
+    } catch (error) {
+      this.logger.error('Error during submitTitan', error);
+    }
+  }
+
+  async selfSubmitMev(txRequest: TransactionRequest): Promise<string> {
+    try {
+      // 1. Prepare transaction
+      if (!txRequest) return;
+
+      // 2. Sign transaction
+      const signedTx = await mevSigner.signTransaction(txRequest);
+      this.logger.debug(`Signed transaction: ${signedTx}`);
+
+      // 3. Send the transaction
+      const txResponse = await mevProvider.sendTransaction(signedTx);
+      this.logger.log(`Transaction sent: ${txResponse.hash}`);
+
+      return txResponse.hash;
+    } catch (error) {
+      this.logger.error('Error during self selfSubmitMev', error);
+    }
+  }
+
+  async selfSubmit(txRequest: TransactionRequest): Promise<string> {
+    try {
+      // 1. Prepare transaction
+      if (!txRequest) return;
+
+      // 2. Sign transaction
+      const signedTx = await signer.signTransaction(txRequest);
+      this.logger.debug(`Signed transaction: ${signedTx}`);
+
+      // 3. Send the transaction
+      const txResponse = await defaultProvider.sendTransaction(signedTx);
+      this.logger.log(`Transaction sent: ${txResponse.hash}`);
+
+      return txResponse.hash;
+    } catch (error) {
+      this.logger.error('Error during selfSubmit', error);
+    }
+  }
+}
