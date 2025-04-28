@@ -36,7 +36,7 @@ export async function getFeeData(): Promise<IFeeData> {
   }
 }
 
-export function parseGwei(value: BigNumber | string): BigNumber {
+export function autoParseGasFee(value: BigNumber | string): BigNumber {
   if (BigNumber.isBigNumber(value)) {
     return value; // already BigNumber in wei
   }
