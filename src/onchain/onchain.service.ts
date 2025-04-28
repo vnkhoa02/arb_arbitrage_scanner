@@ -193,7 +193,7 @@ export class OnchainService implements OnModuleInit {
     }
   }
 
-  @Cron(CronExpression.EVERY_5_SECONDS)
+  // @Cron(CronExpression.EVERY_5_SECONDS)
   private async scanTrade() {
     const balance = await this.getBalance();
     if (balance <= 0.005) {
@@ -208,7 +208,6 @@ export class OnchainService implements OnModuleInit {
       STABLE_COIN.USDT,
       STABLE_COIN.USDC,
       STABLE_COIN.DAI,
-      TOKENS.SHIB,
       TOKENS.WSTETH,
     ];
     for (const tokenOut of tokens) {
