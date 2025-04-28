@@ -8,9 +8,9 @@ import { CHAIN_ID } from 'src/dex/config';
 import { defaultProvider, provider } from 'src/dex/config/provider';
 import { STABLE_COIN, TOKENS } from 'src/dex/constants/tokens';
 import { ScannerService } from 'src/scanner/scanner.service';
-import arbitrageAbi from './abis/Arbitrage.abi.json';
+import simpleArbitrageAbi from './abis/SimpleArbitrage.abi.json';
 import { signer } from './config';
-import { ARBITRAGE_V1, PUBLIC_ADDRESS } from './constants';
+import { SIMPLE_ARBITRAGE, PUBLIC_ADDRESS } from './constants';
 import { MevService } from './mev.service';
 import {
   IFeeData,
@@ -24,7 +24,7 @@ import { autoParseGasFee, getFeeData } from './utils/getGasFee';
 export class OnchainService implements OnModuleInit {
   private readonly logger = new Logger(OnchainService.name);
   private feeData: IFeeData;
-  private arbContract: ethers.Contract;
+  private simpleArbContract: ethers.Contract;
 
   constructor(
     private readonly scannerService: ScannerService,
@@ -32,9 +32,9 @@ export class OnchainService implements OnModuleInit {
   ) {}
 
   async onModuleInit() {
-    this.arbContract = new ethers.Contract(
-      ARBITRAGE_V1,
-      arbitrageAbi.abi,
+    this.simpleArbContract = new ethers.Contract(
+      SIMPLE_ARBITRAGE,
+      simpleArbitrageAbi.abi,
       signer,
     );
     await this.syncFeeData();
@@ -86,7 +86,7 @@ export class OnchainService implements OnModuleInit {
       const params = await this.getArbitrageTradeParams(trade);
 
       const txRequest =
-        await this.arbContract.populateTransaction.simpleArbitrage(
+        await this.simpleArbContract.populateTransaction.simpleArbitrage(
           params.tokenIn,
           params.tokenOut,
           params.forwardPath,
@@ -156,18 +156,11 @@ export class OnchainService implements OnModuleInit {
   private async submitArbitrage(
     params: ISimpleArbitrageParams,
   ): Promise<string> {
-    const [latestBlock, simulate] = await Promise.all([
-      provider.getBlockNumber(),
-      this.simulateSimpleArbitrage(params),
-    ]);
+    const simulate = await this.simulateSimpleArbitrage(params);
     const txRequest = simulate?.txRequest;
     console.log('txRequest -->', txRequest);
     if (!txRequest) return;
-    return await this.mevService.submitArbitrage(
-      latestBlock,
-      txRequest,
-      params,
-    );
+    return await this.mevService.submitArbitrage(txRequest, params);
   }
 
   private async handleSimulation(tokenOut: string) {

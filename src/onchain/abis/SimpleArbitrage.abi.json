@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-artifact-1",
-  "contractName": "Arbitrage",
-  "sourceName": "contracts/Arbitrage.sol",
+  "contractName": "SimpleArbitrage",
+  "sourceName": "contracts/arbitrum/SimpleArbitrage.sol",
   "abi": [
     {
       "inputs": [],
@@ -88,24 +88,21 @@
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "swapRouter",
-      "outputs": [
+      "inputs": [
         {
-          "internalType": "contract ISwapRouter",
-          "name": "",
+          "internalType": "address",
+          "name": "token",
           "type": "address"
         }
       ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "withdraw",
+      "name": "withdrawToken",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive"
     }
   ],
   "linkReferences": {},
