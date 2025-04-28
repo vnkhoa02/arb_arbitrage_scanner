@@ -2,17 +2,11 @@ import { TransactionRequest } from '@ethersproject/abstract-provider';
 import { Injectable, Logger } from '@nestjs/common';
 import axios from 'axios';
 import { ethers } from 'ethers';
-import { mevProvider, provider } from 'src/dex/config/provider';
-import {
-  BEAVER_BUILD_RPC,
-  FLASH_BOT_RPC,
-  flashBotSigner,
-  mevSigner,
-  signer,
-  TITAN_RPC,
-} from './config';
-import { sendNotify } from './utils/notify';
+import { defaultProvider, mevProvider } from 'src/dex/config/provider';
+import { BEAVER_BUILD_RPC, flashBotSigner, signer, TITAN_RPC } from './config';
 import { ISimpleArbitrageParams } from './types';
+import { sendNotify } from './utils/notify';
+import retry from 'async-await-retry';
 
 @Injectable()
 export class MevService {
@@ -27,17 +21,12 @@ export class MevService {
     try {
       this.params = params;
       this.latestBlock = await mevProvider.getBlockNumber();
-      const [beaver, titan, selfMev, selfMevV2] = await Promise.allSettled([
-        this.submitBeaver(txRequest),
-        this.submitTitan(txRequest),
-        this.selfSubmitMev(txRequest),
-        this.selfSubmitMevV2(txRequest),
-      ]);
+      const [self] = await Promise.allSettled([this.selfSubmit(txRequest)]);
 
-      const results = { beaver, titan, selfMev, selfMevV2 };
+      const results = { self };
 
       // Otherwise, return the first fulfilled result among the rest
-      for (const key of ['beaver', 'titan', 'selfMev', 'selfMevV2']) {
+      for (const key of ['self']) {
         const result = results[key as keyof typeof results];
         if (result.status === 'fulfilled') return result.value;
       }
@@ -155,41 +144,31 @@ export class MevService {
     }
   }
 
-  async selfSubmitMev(txRequest: TransactionRequest): Promise<string> {
+  async selfSubmit(txRequest: TransactionRequest): Promise<string> {
+    if (!txRequest) return;
     try {
-      // 1. Prepare transaction
-      if (!txRequest) return;
-
-      // 2. Sign transaction
-      const signedTx = await mevSigner.signTransaction(txRequest);
-      this.logger.debug(`Signed transaction: ${signedTx}`);
-
-      // 3. Send the transaction
-      const txResponse = await mevProvider.sendTransaction(signedTx);
-      this.logger.log(`Transaction sent: ${txResponse.hash}`);
-      sendNotify({ ...this.params, tx: txResponse.hash });
-      return txResponse.hash;
-    } catch (error) {
-      this.logger.error('Error during self selfSubmitMev', error);
-    }
-  }
-
-  async selfSubmitMevV2(txRequest: TransactionRequest): Promise<string> {
-    try {
-      // 1. Prepare transaction
-      if (!txRequest) return;
-
-      // 2. Sign transaction
-      const signedTx = await signer.signTransaction(txRequest);
-      this.logger.debug(`Signed transaction: ${signedTx}`);
-
-      // 3. Send the transaction
-      const txResponse = await provider.sendTransaction(signedTx);
-      this.logger.log(`V2 Transaction sent: ${txResponse.hash}`);
-      sendNotify({ ...this.params, tx: txResponse.hash });
-      return txResponse.hash;
-    } catch (error) {
-      this.logger.error('Error during self selfSubmitMevV2', error);
+      return await retry(
+        async () => {
+          const gasLimit = await defaultProvider.estimateGas(txRequest);
+          txRequest.gasLimit = gasLimit;
+          // 1. Sign transaction
+          const signedTx = await signer.signTransaction(txRequest);
+          this.logger.debug(`Signed transaction: ${signedTx}`);
+          // 2. Send the transaction
+          const txResponse = await defaultProvider.sendTransaction(signedTx);
+          this.logger.log(`Transaction sent: ${txResponse.hash}`);
+          sendNotify({ ...this.params, tx: txResponse.hash });
+          return txResponse.hash;
+        },
+        null,
+        {
+          retriesMax: 5,
+          interval: 20,
+          exponential: false,
+        },
+      );
+    } catch (e) {
+      this.logger.error('Error in selfSubmit', e);
     }
   }
 }

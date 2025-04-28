@@ -1,6 +1,5 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
-import retry from 'async-await-retry';
 import 'dotenv/config';
 import { BigNumber, ethers } from 'ethers';
 import { provider } from 'src/dex/config/provider';
@@ -23,7 +22,6 @@ export class OnchainService implements OnModuleInit {
   private readonly logger = new Logger(OnchainService.name);
   private feeData: IFeeData;
   private arbContract: ethers.Contract;
-  private totalTrade = 0;
 
   constructor(
     private readonly scannerService: ScannerService,
@@ -60,48 +58,37 @@ export class OnchainService implements OnModuleInit {
 
   async simulateSimpleArbitrage(trade: ISimpleArbitrageTrade) {
     try {
-      // Use retry for the logic
-      const result = await retry(
-        async () => {
-          const params = await this.getArbitrageTradeParams(trade);
+      const params = await this.getArbitrageTradeParams(trade);
 
-          const txRequest =
-            await this.arbContract.populateTransaction.simpleArbitrage(
-              params.tokenIn,
-              params.tokenOut,
-              params.forwardPath,
-              0,
-              params.backwardPath,
-              0,
-              params.borrowAmount,
-            );
+      const txRequest =
+        await this.arbContract.populateTransaction.simpleArbitrage(
+          params.tokenIn,
+          params.tokenOut,
+          params.forwardPath,
+          0,
+          params.backwardPath,
+          0,
+          params.borrowAmount,
+        );
 
-          txRequest.chainId = 1;
-          txRequest.type = 2;
-          txRequest.maxPriorityFeePerGas = autoParseGasFee(
-            this.feeData.maxPriorityFeePerGas,
-          );
-          txRequest.maxFeePerGas = autoParseGasFee(this.feeData.maxFeePerGas);
-          txRequest.value = BigNumber.from(0); // don't send ETH accidentally
-          txRequest.nonce = await signer.getTransactionCount('latest');
-          // let gasEstimate = await defaultProvider.estimateGas(txRequest);
-          let gasEstimate = BigNumber.from(55000);
-          this.logger.debug(`Gas estimate: ${gasEstimate.toString()}`);
-          gasEstimate = gasEstimate.mul(115).div(100); // 15% buffer
-          this.logger.debug(
-            `Gas estimate (buffered): ${gasEstimate.toString()}`,
-          );
-          txRequest.gasLimit = gasEstimate;
-          return {
-            txRequest,
-            gasEstimate,
-          };
-        },
-        null,
-        { retriesMax: 3, interval: 50, exponential: false },
+      txRequest.chainId = 1;
+      txRequest.type = 2;
+      txRequest.maxPriorityFeePerGas = autoParseGasFee(
+        this.feeData.maxPriorityFeePerGas,
       );
-
-      return result;
+      txRequest.maxFeePerGas = autoParseGasFee(this.feeData.maxFeePerGas);
+      txRequest.value = BigNumber.from(0); // don't send ETH accidentally
+      txRequest.nonce = await signer.getTransactionCount('latest');
+      // let gasEstimate = await defaultProvider.estimateGas(txRequest);
+      let gasEstimate = BigNumber.from(50000);
+      this.logger.debug(`Gas estimate: ${gasEstimate.toString()}`);
+      gasEstimate = gasEstimate.mul(115).div(100); // 15% buffer
+      this.logger.debug(`Gas estimate (buffered): ${gasEstimate.toString()}`);
+      txRequest.gasLimit = gasEstimate;
+      return {
+        txRequest,
+        gasEstimate,
+      };
     } catch (err) {
       this.logger.error('simulateSimpleArbitrage failed', err as any);
       return null;
@@ -185,7 +172,7 @@ export class OnchainService implements OnModuleInit {
   @Cron(CronExpression.EVERY_5_SECONDS)
   private async scanTrade() {
     const balance = await this.getBalance();
-    if (balance <= 0.0072) {
+    if (balance <= 0.007) {
       this.logger.warn(
         `Balance too low: ${balance} ETH. Stopping further trades.`,
       );
