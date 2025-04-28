@@ -1,30 +1,37 @@
 import axios from 'axios';
 import { BigNumber, ethers } from 'ethers';
+import { CHAIN_ID } from 'src/dex/config';
 import { IFeeData } from '../types';
+import { IBlockNativeGasData } from '../types/gasData';
 
 export async function getFeeData(): Promise<IFeeData> {
   try {
-    const url = 'https://api.blocknative.com/gasprices/blockprices?chainid=1';
-    const { data } = await axios.get(url);
+    const url = `https://api.blocknative.com/gasprices/blockprices?chainid=${CHAIN_ID}`;
+    const { data } = await axios.get<IBlockNativeGasData>(url);
 
     const blockPrice = data.blockPrices[0];
     const highConfidencePrice = blockPrice.estimatedPrices.find(
-      (p: { confidence: number }) => p.confidence === 70,
+      (p: { confidence: number }) => p.confidence === 99,
     );
 
     if (!highConfidencePrice) {
-      throw new Error('No 70% confidence gas price found.');
+      throw new Error('No 99% confidence gas price found.');
     }
 
-    // Convert to BigNumber
     const maxFeePerGas = ethers.utils.parseUnits(
       highConfidencePrice.maxFeePerGas.toString(),
       'gwei',
     );
-    const maxPriorityFeePerGas = ethers.utils.parseUnits(
-      highConfidencePrice.maxPriorityFeePerGas.toString(),
-      'gwei',
-    );
+
+    let maxPriorityFeePerGas: BigNumber;
+    if (highConfidencePrice.maxPriorityFeePerGas < 1e-6) {
+      maxPriorityFeePerGas = BigNumber.from(0);
+    } else {
+      maxPriorityFeePerGas = ethers.utils.parseUnits(
+        highConfidencePrice.maxPriorityFeePerGas.toString(),
+        'gwei',
+      );
+    }
 
     return {
       maxFeePerGas,
