@@ -15,8 +15,7 @@ import {
   ISimpleArbitrageTrade,
 } from './types';
 import { pickBestRoute } from './utils';
-import { getFeeData } from './utils/getGasFee';
-import { sendNotify } from './utils/notify';
+import { getFeeData, parseGwei } from './utils/getGasFee';
 
 @Injectable()
 export class OnchainService implements OnModuleInit {
@@ -58,7 +57,7 @@ export class OnchainService implements OnModuleInit {
       const result = await retry(
         async () => {
           const params = await this.getArbitrageTradeParams(trade);
-          const promise1 = this.arbContract.callStatic.simpleArbitrage(
+          const promise1 = this.arbContract.estimateGas.simpleArbitrage(
             params.tokenIn,
             params.tokenOut,
             params.forwardPath,
@@ -77,30 +76,28 @@ export class OnchainService implements OnModuleInit {
             params.borrowAmount,
           );
 
-          const [sim, txRequest] = await Promise.all([promise1, promise2]);
-          this.logger.log('sim -->', sim);
+          // eslint-disable-next-line prefer-const
+          let [gasEstimate, txRequest] = await Promise.all([
+            promise1,
+            promise2,
+          ]);
 
           txRequest.chainId = 1;
           txRequest.type = 2;
-          txRequest.maxPriorityFeePerGas = ethers.utils.parseUnits(
-            this.feeData.maxPriorityFeePerGas.toString(),
-            'gwei',
-          ); // tip to miners
-          txRequest.maxFeePerGas = ethers.utils.parseUnits(
-            this.feeData.maxFeePerGas.toString(),
-            'gwei',
-          ); // total max per gas unit
+          txRequest.maxPriorityFeePerGas = parseGwei(
+            this.feeData.maxPriorityFeePerGas,
+          );
+          txRequest.maxFeePerGas = parseGwei(this.feeData.maxFeePerGas);
+          txRequest.value = BigNumber.from(0); // don't send ETH accidentally
           txRequest.nonce = await signer.getTransactionCount('latest');
           // let gasEstimate = await mevProvider.estimateGas(txRequest);
-          let gasEstimate = BigNumber.from(50000);
+          // let gasEstimate = BigNumber.from(50000);
           this.logger.debug(`Gas estimate: ${gasEstimate.toString()}`);
-          gasEstimate = gasEstimate.mul(120).div(100); // 20% buffer
+          gasEstimate = gasEstimate.mul(115).div(100); // 15% buffer
           this.logger.debug(
             `Gas estimate (buffered): ${gasEstimate.toString()}`,
           );
-
           txRequest.gasLimit = gasEstimate;
-
           return {
             txRequest,
             gasEstimate,
@@ -160,7 +157,12 @@ export class OnchainService implements OnModuleInit {
   ): Promise<string> {
     const simulate = await this.simulateSimpleArbitrage(params);
     const txRequest = simulate?.txRequest;
-    return await this.mevService.submitArbitrage(txRequest);
+    this.logger.debug(
+      `maxPriorityFeePerGas: ${txRequest.maxPriorityFeePerGas.toString()} wei`,
+    );
+    this.logger.debug(`maxFeePerGas: ${txRequest.maxFeePerGas.toString()} wei`);
+    console.log('txRequest -->', txRequest);
+    return await this.mevService.submitArbitrage(txRequest, params);
   }
 
   private async handleSimulation(tokenOut: string) {
@@ -183,7 +185,6 @@ export class OnchainService implements OnModuleInit {
       const txHash = await this.submitArbitrage(simParams);
       if (txHash) {
         this.totalTrade++;
-        sendNotify({ ...simParams, tx: txHash });
         this.logger.log('Arbitrage submitted successfully!');
       }
     } catch (error) {

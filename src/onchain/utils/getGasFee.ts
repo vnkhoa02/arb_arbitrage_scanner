@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ethers } from 'ethers';
+import { BigNumber, ethers } from 'ethers';
 import { IFeeData } from '../types';
 
 export async function getFeeData(): Promise<IFeeData> {
@@ -33,5 +33,19 @@ export async function getFeeData(): Promise<IFeeData> {
   } catch (error: any) {
     console.error('Failed to fetch gas fee:', error.message);
     throw error;
+  }
+}
+
+export function parseGwei(value: BigNumber | string): BigNumber {
+  if (BigNumber.isBigNumber(value)) {
+    return value; // already BigNumber in wei
+  }
+  const num = typeof value === 'string' ? parseFloat(value) : value;
+  if (num < 1000) {
+    // Assume it’s gwei → parse to wei
+    return ethers.utils.parseUnits(num.toString(), 'gwei');
+  } else {
+    // Assume it’s already wei → convert to BigNumber
+    return BigNumber.from(Math.floor(num));
   }
 }
