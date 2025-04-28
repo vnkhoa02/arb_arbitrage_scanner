@@ -20,7 +20,11 @@ export class MevService {
     try {
       this.params = params;
       this.latestBlock = await mevProvider.getBlockNumber();
-      const [self] = await Promise.allSettled([this.selfSubmit(txRequest)]);
+      const [self] = await Promise.allSettled([
+        this.submitTitan(txRequest),
+        this.submitBeaver(txRequest),
+        this.selfSubmit(txRequest),
+      ]);
 
       const results = { self };
 

@@ -66,7 +66,7 @@ export class OnchainService implements OnModuleInit {
         async () => {
           const gasEstimate = await defaultProvider.estimateGas(txRequest);
           this.logger.debug(`Gas estimate: ${gasEstimate.toString()}`);
-          return Math.min(gasEstimate.toNumber(), 60000);
+          return Math.min(gasEstimate.toNumber(), 65000);
         },
         null,
         {
@@ -76,6 +76,7 @@ export class OnchainService implements OnModuleInit {
       );
     } catch (error) {
       this.logger.error('Error while getEsitmateGas', error);
+      throw error;
     }
   }
 
@@ -166,13 +167,11 @@ export class OnchainService implements OnModuleInit {
       const simParams = await this.getArbitrageTradeParams({
         tokenIn: TOKENS.WETH,
         tokenOut,
-        amountIn: 1,
+        amountIn: 5,
       });
 
-      // const minProfit = 0.00035; // ~0.63$ today
-      // if (Number(simParams.profit) <= minProfit) return;
-
-      const minProfit = 0.0001; // ~0.18$ today
+      const minProfit = 0.0003; // ~0.63$ today
+      // const minProfit = 0.0001; // ~0.18$ today
       if (Number(simParams.profit) <= minProfit) return;
 
       this.logger.log(
@@ -190,7 +189,7 @@ export class OnchainService implements OnModuleInit {
   @Cron(CronExpression.EVERY_5_SECONDS)
   private async scanTrade() {
     const balance = await this.getBalance();
-    if (balance <= 0.007) {
+    if (balance <= 0.005) {
       this.logger.warn(
         `Balance too low: ${balance} ETH. Stopping further trades.`,
       );
