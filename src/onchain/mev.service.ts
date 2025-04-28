@@ -4,6 +4,7 @@ import axios from 'axios';
 import { ethers } from 'ethers';
 import { defaultProvider, mevProvider } from 'src/dex/config/provider';
 import {
+  BEAVER_BUILD_RPC,
   FLASH_BOT_RPC,
   flashBotSigner,
   mevSigner,
@@ -80,25 +81,21 @@ export class MevService {
         ],
       };
 
-      const requestBody = JSON.stringify(payload);
-      const signature = await flashBotSigner.signMessage(
-        ethers.utils.keccak256(ethers.utils.toUtf8Bytes(requestBody)),
+      // 3. Send bundle
+      this.logger.log(
+        `Sending bundle to Beaver RPC for block ${targetBlock}...`,
       );
 
-      // 3. Send bundle
-      this.logger.log(`Sending bundle to RPC for block ${targetBlock}...`);
-
-      const response = await axios.post(FLASH_BOT_RPC, payload, {
+      const response = await axios.post(BEAVER_BUILD_RPC, payload, {
         headers: {
           'Content-Type': 'application/json',
-          'X-Flashbots-Signature': `${await flashBotSigner.getAddress()}:${signature}`,
         },
       });
 
-      console.log('Flashbots response:', response.data);
+      console.log('Beaver response:', response.data);
 
       if (response.data.error) {
-        this.logger.error('RPC Error', response.data.error);
+        this.logger.error('Beaver RPC Error', response.data.error);
         return;
       }
 
