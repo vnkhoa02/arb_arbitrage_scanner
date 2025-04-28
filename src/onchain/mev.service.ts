@@ -27,20 +27,17 @@ export class MevService {
     try {
       this.params = params;
       this.latestBlock = await mevProvider.getBlockNumber();
-      const [beaver, flashbot, titan, self, selfMev] = await Promise.allSettled(
-        [
-          this.submitBeaver(txRequest),
-          this.submitFlashbot(txRequest),
-          this.submitTitan(txRequest),
-          this.selfSubmit(txRequest),
-          this.selfSubmitMev(txRequest),
-        ],
-      );
+      const [beaver, flashbot, titan, selfMev] = await Promise.allSettled([
+        this.submitBeaver(txRequest),
+        this.submitFlashbot(txRequest),
+        this.submitTitan(txRequest),
+        this.selfSubmitMev(txRequest),
+      ]);
 
-      const results = { beaver, flashbot, titan, self, selfMev };
+      const results = { beaver, flashbot, titan, selfMev };
 
       // Otherwise, return the first fulfilled result among the rest
-      for (const key of ['beaver', 'flashbot', 'titan', 'self', 'selfMev']) {
+      for (const key of ['beaver', 'flashbot', 'titan', 'selfMev']) {
         const result = results[key as keyof typeof results];
         if (result.status === 'fulfilled') return result.value;
       }
@@ -236,25 +233,6 @@ export class MevService {
       return txResponse.hash;
     } catch (error) {
       this.logger.error('Error during self selfSubmitMev', error);
-    }
-  }
-
-  async selfSubmit(txRequest: TransactionRequest): Promise<string> {
-    try {
-      // 1. Prepare transaction
-      if (!txRequest) return;
-
-      // 2. Sign transaction
-      const signedTx = await signer.signTransaction(txRequest);
-      this.logger.debug(`Signed transaction: ${signedTx}`);
-
-      // 3. Send the transaction
-      const txResponse = await defaultProvider.sendTransaction(signedTx);
-      this.logger.log(`Transaction sent: ${txResponse.hash}`);
-      sendNotify({ ...this.params, tx: txResponse.hash });
-      return txResponse.hash;
-    } catch (error) {
-      this.logger.error('Error during selfSubmit', error);
     }
   }
 }

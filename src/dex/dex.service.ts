@@ -139,7 +139,10 @@ export class DexService {
         amountOut: result.amountOut,
       };
     } catch (error) {
-      this.logger.error(`Error while getQuoteSlow`, error);
+      this.logger.error(`Error while getQuoteSlow`, {
+        message: error?.message,
+        serverError: error?.serverError,
+      });
       throw new InternalServerErrorException('Error while getQuoteSlow');
     }
   }

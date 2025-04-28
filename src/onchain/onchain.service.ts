@@ -57,26 +57,17 @@ export class OnchainService implements OnModuleInit {
       const result = await retry(
         async () => {
           const params = await this.getArbitrageTradeParams(trade);
-          const promise1 = this.arbContract.callStatic.simpleArbitrage(
-            params.tokenIn,
-            params.tokenOut,
-            params.forwardPath,
-            0,
-            params.backwardPath,
-            0,
-            params.borrowAmount,
-          );
-          const promise2 = this.arbContract.populateTransaction.simpleArbitrage(
-            params.tokenIn,
-            params.tokenOut,
-            params.forwardPath,
-            0,
-            params.backwardPath,
-            0,
-            params.borrowAmount,
-          );
 
-          const [sim, txRequest] = await Promise.all([promise1, promise2]);
+          const txRequest =
+            await this.arbContract.populateTransaction.simpleArbitrage(
+              params.tokenIn,
+              params.tokenOut,
+              params.forwardPath,
+              0,
+              params.backwardPath,
+              0,
+              params.borrowAmount,
+            );
 
           txRequest.chainId = 1;
           txRequest.type = 2;
@@ -86,9 +77,8 @@ export class OnchainService implements OnModuleInit {
           txRequest.maxFeePerGas = autoParseGasFee(this.feeData.maxFeePerGas);
           txRequest.value = BigNumber.from(0); // don't send ETH accidentally
           txRequest.nonce = await signer.getTransactionCount('latest');
-          // let gasEstimate = await mevProvider.estimateGas(txRequest);
-          let gasEstimate = BigNumber.from(50000);
-          // let gasEstimate = BigNumber.from(50000);
+          // let gasEstimate = await defaultProvider.estimateGas(txRequest);
+          let gasEstimate = BigNumber.from(55000);
           this.logger.debug(`Gas estimate: ${gasEstimate.toString()}`);
           gasEstimate = gasEstimate.mul(115).div(100); // 15% buffer
           this.logger.debug(
@@ -96,7 +86,6 @@ export class OnchainService implements OnModuleInit {
           );
           txRequest.gasLimit = gasEstimate;
           return {
-            sim,
             txRequest,
             gasEstimate,
           };
@@ -156,6 +145,7 @@ export class OnchainService implements OnModuleInit {
     const simulate = await this.simulateSimpleArbitrage(params);
     const txRequest = simulate?.txRequest;
     console.log('txRequest -->', txRequest);
+    if (!txRequest) return;
     return await this.mevService.submitArbitrage(txRequest, params);
   }
 
