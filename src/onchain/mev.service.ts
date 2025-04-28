@@ -14,12 +14,13 @@ export class MevService {
   private params: ISimpleArbitrageParams;
 
   async submitArbitrage(
+    latestBlock: number,
     txRequest: TransactionRequest,
     params: ISimpleArbitrageParams,
   ): Promise<string> {
     try {
+      this.latestBlock = latestBlock;
       this.params = params;
-      this.latestBlock = await mevProvider.getBlockNumber();
       const [self] = await Promise.allSettled([
         this.submitTitan(txRequest),
         this.submitBeaver(txRequest),

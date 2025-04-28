@@ -155,11 +155,18 @@ export class OnchainService implements OnModuleInit {
   private async submitArbitrage(
     params: ISimpleArbitrageParams,
   ): Promise<string> {
-    const simulate = await this.simulateSimpleArbitrage(params);
+    const [latestBlock, simulate] = await Promise.all([
+      provider.getBlockNumber(),
+      this.simulateSimpleArbitrage(params),
+    ]);
     const txRequest = simulate?.txRequest;
     console.log('txRequest -->', txRequest);
     if (!txRequest) return;
-    return await this.mevService.submitArbitrage(txRequest, params);
+    return await this.mevService.submitArbitrage(
+      latestBlock,
+      txRequest,
+      params,
+    );
   }
 
   private async handleSimulation(tokenOut: string) {
