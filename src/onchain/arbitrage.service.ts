@@ -10,7 +10,7 @@ import { STABLE_COIN, TOKENS } from 'src/dex/constants/tokens';
 import { ScannerService } from 'src/scanner/scanner.service';
 import simpleArbitrageAbi from './abis/SimpleArbitrage.abi.json';
 import { signer } from './config';
-import { SIMPLE_ARBITRAGE, PUBLIC_ADDRESS } from './constants';
+import { PUBLIC_ADDRESS, SIMPLE_ARBITRAGE } from './constants';
 import { MevService } from './mev.service';
 import {
   IFeeData,
@@ -148,7 +148,6 @@ export class ArbitrageService implements OnModuleInit {
       borrowAmount: BigInt(
         ethers.utils.parseUnits(trade.amountIn.toString(), 18).toString(),
       ),
-      profit: path.roundTrip.profit,
     };
     return simParams;
   }
@@ -168,16 +167,9 @@ export class ArbitrageService implements OnModuleInit {
       const simParams = await this.getArbitrageTradeParams({
         tokenIn: TOKENS.WETH,
         tokenOut,
-        amountIn: 5,
+        amountIn: 1,
       });
 
-      const minProfit = 0.0003; // ~0.63$ today
-      // const minProfit = 0.0001; // ~0.18$ today
-      if (Number(simParams.profit) <= minProfit) return;
-
-      this.logger.log(
-        `Profitable arbitrage via ${tokenOut}: Profit ${simParams.profit}`,
-      );
       const txHash = await this.submitArbitrage(simParams);
       if (txHash) {
         this.logger.log('Arbitrage submitted successfully!');

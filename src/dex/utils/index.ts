@@ -38,3 +38,7 @@ export function generateDirectRoutes(
   ];
   return [defaultRoute];
 }
+
+export function generateCacheKey(tokenIn: string, tokenOut: string): string {
+  return `${tokenIn}-${tokenOut}`;
+}

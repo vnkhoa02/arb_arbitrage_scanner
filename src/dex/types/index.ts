@@ -35,3 +35,8 @@ export interface ITokenInfo {
   symbol: string;
   decimals: string;
 }
+
+export interface CacheEntry {
+  result: ArbPathResult;
+  expiresAt: number; // Unix timestamp (ms)
+}

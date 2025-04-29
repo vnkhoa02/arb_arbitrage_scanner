@@ -8,16 +8,22 @@ import axios from 'axios';
 import 'dotenv/config';
 import { ethers } from 'ethers';
 import { BestRouteFinder } from './bestRouteFinder';
+import { CACHE_TTL_MS } from './config';
 import { provider } from './config/provider';
 import { UNISWAP_QUOTE_API } from './constants';
-import { ArbPathResult, ITokenInfo } from './types';
+import { ArbPathResult, CacheEntry, ITokenInfo } from './types';
 import { IUniQuoteResponse } from './types/quote';
-import { generateDirectRoutes, getTokenLocalInfo } from './utils';
+import {
+  generateCacheKey,
+  generateDirectRoutes,
+  getTokenLocalInfo,
+} from './utils';
 import { getQuoteHeader, getQuotePayload } from './utils/getQuote';
 
 @Injectable()
 export class DexService {
   private readonly logger = new Logger(DexService.name);
+  private readonly quoteCache = new Map<string, CacheEntry>();
 
   constructor(private readonly bestRouteFinder: BestRouteFinder) {}
 
@@ -173,17 +179,29 @@ export class DexService {
     tokenOut: string,
     amountIn: number | string,
   ): Promise<ArbPathResult> {
+    const cacheKey = generateCacheKey(tokenIn, tokenOut);
+    const now = Date.now();
+    const cached = this.quoteCache.get(cacheKey);
+    if (cached && cached.expiresAt > now) {
+      this.logger.debug(`Using cached quote for ${cacheKey}`);
+      return cached.result;
+    }
     const { amountOut, route } = await this.getQuoteV2(
       tokenIn,
       tokenOut,
       Number(amountIn),
     );
-    return {
+    const result: ArbPathResult = {
       route,
       amountOut: amountOut.toString(),
       amountIn,
       tokenIn,
       tokenOut,
     };
+    this.quoteCache.set(cacheKey, {
+      result,
+      expiresAt: now + CACHE_TTL_MS,
+    });
+    return result;
   }
 }

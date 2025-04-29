@@ -27,13 +27,12 @@ export async function sendNotify(data: NotifyData) {
     `🪙 **Token In:** \`${data.tokenIn}\``,
     `🪙 **Token Out:** \`${data.tokenOut}\``,
     `💰 **Borrow Amount:** \`${data.borrowAmount.toString()}\``,
-    `💰 **Profit (TokenIN):** \`${data.profit.toString()}\``,
     `⬅️ **Trade Data:** \`${safeStringtify(data)}\``,
   ];
 
   if (data.tx) {
-    const etherscan = `🔗 [Etherscan](https://etherscan.io/tx/${data.tx})`;
-    content.push(etherscan);
+    const arbiscan = `🔗 [Arbiscan](https://arbiscan.io/tx/${data.tx})`;
+    content.push(arbiscan);
   }
   if (data.bundleHash && data.builder) {
     const builder = `🔗 **${data.builder}**: ${data.bundleHash}`;
