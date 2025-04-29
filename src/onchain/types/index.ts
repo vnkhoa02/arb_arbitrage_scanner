@@ -2,9 +2,9 @@ import { BigNumber } from 'ethers';
 
 export type ISimpleArbitrageParams = {
   forwardPath: string;
-  forwardOutMin: bigint;
+  forwardOutMin?: bigint;
   backwardPath: string;
-  backwardOutMin: bigint;
+  backwardOutMin?: bigint;
   borrowAmount: bigint;
 } & ISimpleArbitrageTrade;
 

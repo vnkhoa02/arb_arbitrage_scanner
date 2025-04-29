@@ -119,7 +119,7 @@ export class ArbitrageService implements OnModuleInit {
    * Prepare ISimpleArbitrageParams params
    * @returns ISimpleArbitrageParams
    */
-  async getArbitrageTradeParams(
+  private async getArbitrageTradeParams(
     trade: ISimpleArbitrageTrade,
   ): Promise<ISimpleArbitrageParams> {
     const path = await this.scannerService.scan(
@@ -129,6 +129,9 @@ export class ArbitrageService implements OnModuleInit {
     );
     const forward = pickBestRoute(path.forward.route);
     const backward = pickBestRoute(path.backward.route);
+    const tokenInDec = forward.route[0].tokenIn.decimals;
+    const tokenOutDec =
+      backward.route[backward.route.length - 1].tokenOut.decimals;
     const simParams: ISimpleArbitrageParams = {
       tokenIn: trade.tokenIn,
       tokenOut: trade.tokenOut,
@@ -136,17 +139,19 @@ export class ArbitrageService implements OnModuleInit {
       forwardPath: forward.encoded,
       forwardOutMin: BigInt(
         ethers.utils
-          .parseUnits(path.forward.amountOut.toString(), 18)
+          .parseUnits(path.forward.amountOut.toString(), tokenInDec)
           .toString(),
       ),
       backwardPath: backward.encoded,
       backwardOutMin: BigInt(
         ethers.utils
-          .parseUnits(path.backward.amountOut.toString(), 18)
+          .parseUnits(path.backward.amountOut.toString(), tokenOutDec)
           .toString(),
       ),
       borrowAmount: BigInt(
-        ethers.utils.parseUnits(trade.amountIn.toString(), 18).toString(),
+        ethers.utils
+          .parseUnits(trade.amountIn.toString(), tokenInDec)
+          .toString(),
       ),
     };
     return simParams;
@@ -179,10 +184,10 @@ export class ArbitrageService implements OnModuleInit {
     }
   }
 
-  // @Cron(CronExpression.EVERY_5_SECONDS)
+  @Cron(CronExpression.EVERY_5_SECONDS)
   private async scanTrade() {
     const balance = await this.getBalance();
-    if (balance <= 0.005) {
+    if (balance <= 0.001) {
       this.logger.warn(
         `Balance too low: ${balance} ETH. Stopping further trades.`,
       );

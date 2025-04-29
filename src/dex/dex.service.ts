@@ -183,7 +183,7 @@ export class DexService {
     const now = Date.now();
     const cached = this.quoteCache.get(cacheKey);
     if (cached && cached.expiresAt > now) {
-      this.logger.debug(`Using cached quote for ${cacheKey}`);
+      // this.logger.debug(`Using cached quote for ${cacheKey}`);
       return cached.result;
     }
     const { amountOut, route } = await this.getQuoteV2(
