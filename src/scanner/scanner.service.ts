@@ -12,7 +12,7 @@ export class ScannerService {
     const tokenIn = forward.tokenIn;
     const tokenOut = forward.tokenOut;
     const amountOut = forward.amountOut;
-    const backward: ArbPathResult = await this.dexService.evaluateArbitrage(
+    const backward: ArbPathResult = await this.dexService.evaluateArbitrageV3(
       tokenOut,
       tokenIn,
       amountOut,
@@ -22,12 +22,12 @@ export class ScannerService {
   }
 
   /** Perform both forward and backward legs and return full ArbPath */
-  async arbitrage(
+  async scan(
     tokenIn: string,
     tokenOut: string,
     amountIn: number,
   ): Promise<ArbPath> {
-    const forward = await this.dexService.evaluateArbitrage(
+    const forward = await this.dexService.evaluateArbitrageV3(
       tokenIn,
       tokenOut,
       amountIn,

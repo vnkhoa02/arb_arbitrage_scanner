@@ -21,8 +21,8 @@ import { pickBestRoute } from './utils';
 import { autoParseGasFee, getFeeData } from './utils/getGasFee';
 
 @Injectable()
-export class OnchainService implements OnModuleInit {
-  private readonly logger = new Logger(OnchainService.name);
+export class ArbitrageService implements OnModuleInit {
+  private readonly logger = new Logger(ArbitrageService.name);
   private feeData: IFeeData;
   private simpleArbContract: ethers.Contract;
 
@@ -122,7 +122,7 @@ export class OnchainService implements OnModuleInit {
   async getArbitrageTradeParams(
     trade: ISimpleArbitrageTrade,
   ): Promise<ISimpleArbitrageParams> {
-    const path = await this.scannerService.arbitrage(
+    const path = await this.scannerService.scan(
       trade.tokenIn,
       trade.tokenOut,
       trade.amountIn,

@@ -1,12 +1,12 @@
 import { Controller, Get, Query, UseInterceptors } from '@nestjs/common';
 import { BigIntSerializerInterceptor } from 'src/interceptor/BigIntSerializerInterceptor';
-import { OnchainService } from './onchain.service';
+import { ArbitrageService } from './arbitrage.service';
 import { TOKENS, STABLE_COIN } from 'src/dex/constants/tokens';
 
 @Controller('onchain')
 @UseInterceptors(BigIntSerializerInterceptor)
-export class OnchainController {
-  constructor(private readonly onchainService: OnchainService) {}
+export class ArbitrageController {
+  constructor(private readonly onchainService: ArbitrageService) {}
 
   @Get('arbitrage/simple')
   async simpleArbitrage(@Query() query: any) {
