@@ -1,10 +1,8 @@
 import { BigNumber } from 'ethers';
 
 export type ISimpleArbitrageParams = {
-  forwardPath: string;
-  forwardOutMin?: bigint;
-  backwardPath: string;
-  backwardOutMin?: bigint;
+  forwardPaths: string[];
+  backwardPaths: string[];
   borrowAmount: bigint;
 } & ISimpleArbitrageTrade;
 

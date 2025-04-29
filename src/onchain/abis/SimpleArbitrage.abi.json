@@ -57,24 +57,14 @@
           "type": "address"
         },
         {
-          "internalType": "bytes",
-          "name": "forwardPath",
-          "type": "bytes"
+          "internalType": "bytes[]",
+          "name": "forwardPaths",
+          "type": "bytes[]"
         },
         {
-          "internalType": "uint256",
-          "name": "forwardOutMin",
-          "type": "uint256"
-        },
-        {
-          "internalType": "bytes",
-          "name": "backwardPath",
-          "type": "bytes"
-        },
-        {
-          "internalType": "uint256",
-          "name": "backwardOutMin",
-          "type": "uint256"
+          "internalType": "bytes[]",
+          "name": "backwardPaths",
+          "type": "bytes[]"
         },
         {
           "internalType": "uint256",

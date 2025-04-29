@@ -17,7 +17,7 @@ import {
   ISimpleArbitrageParams,
   ISimpleArbitrageTrade,
 } from './types';
-import { pickBestRoute } from './utils';
+import { processRoute } from './utils';
 import { autoParseGasFee, getFeeData } from './utils/getGasFee';
 
 @Injectable()
@@ -82,17 +82,24 @@ export class ArbitrageService implements OnModuleInit {
   async simulateSimpleArbitrage(trade: ISimpleArbitrageTrade) {
     try {
       const params = await this.getArbitrageTradeParams(trade);
-
-      const txRequest =
-        await this.simpleArbContract.populateTransaction.simpleArbitrage(
+      const promise1 = this.simpleArbContract.callStatic.simpleArbitrage(
+        params.tokenIn,
+        params.tokenOut,
+        params.forwardPaths,
+        params.backwardPaths,
+        params.borrowAmount,
+      );
+      const promise2 =
+        this.simpleArbContract.populateTransaction.simpleArbitrage(
           params.tokenIn,
           params.tokenOut,
-          params.forwardPath,
-          0,
-          params.backwardPath,
-          0,
+          params.forwardPaths,
+          params.backwardPaths,
           params.borrowAmount,
         );
+
+      const [sim, txRequest] = await Promise.all([promise1, promise2]);
+      this.logger.debug('sim-->', sim);
 
       txRequest.chainId = CHAIN_ID;
       txRequest.type = 2;
@@ -102,8 +109,7 @@ export class ArbitrageService implements OnModuleInit {
       txRequest.maxFeePerGas = autoParseGasFee(this.feeData.maxFeePerGas);
       txRequest.value = BigNumber.from(0); // don't send ETH accidentally
       txRequest.nonce = await signer.getTransactionCount('latest');
-
-      txRequest.gasLimit = await this.getEsitmateGas(txRequest);
+      txRequest.gasLimit = BigNumber.from(6000000);
       return {
         txRequest,
       };
@@ -125,32 +131,19 @@ export class ArbitrageService implements OnModuleInit {
       trade.tokenOut,
       trade.amountIn,
     );
-    const forward = pickBestRoute(path.forward.route);
-    const backward = pickBestRoute(path.backward.route);
-    const tokenInDec = forward.route[0].tokenIn.decimals;
-    const tokenOutDec =
-      backward.route[backward.route.length - 1].tokenOut.decimals;
+    const forwardPaths = processRoute(path.forward.route);
+    const backwardPaths = processRoute(path.backward.route);
+    const tokenInDec = path.forward.route[0][0].tokenIn.decimals;
+
     const simParams: ISimpleArbitrageParams = {
       tokenIn: trade.tokenIn,
       tokenOut: trade.tokenOut,
       amountIn: trade.amountIn,
-      forwardPath: forward.encoded,
-      forwardOutMin: BigInt(
-        ethers.utils
-          .parseUnits(path.forward.amountOut.toString(), tokenInDec)
-          .toString(),
-      ),
-      backwardPath: backward.encoded,
-      backwardOutMin: BigInt(
-        ethers.utils
-          .parseUnits(path.backward.amountOut.toString(), tokenOutDec)
-          .toString(),
-      ),
-      borrowAmount: BigInt(
-        ethers.utils
-          .parseUnits(trade.amountIn.toString(), tokenInDec)
-          .toString(),
-      ),
+      forwardPaths,
+      backwardPaths,
+      borrowAmount: ethers.utils
+        .parseUnits(trade.amountIn.toString(), tokenInDec)
+        .toBigInt(),
     };
     return simParams;
   }
@@ -167,13 +160,13 @@ export class ArbitrageService implements OnModuleInit {
 
   private async handleSimulation(tokenOut: string) {
     try {
-      const simParams = await this.getArbitrageTradeParams({
+      const tradeParams = await this.getArbitrageTradeParams({
         tokenIn: TOKENS.WETH,
         tokenOut,
         amountIn: 1,
       });
-
-      const txHash = await this.submitArbitrage(simParams);
+      console.log('tradeParams -> ', tradeParams);
+      const txHash = await this.submitArbitrage(tradeParams);
       if (txHash) {
         this.logger.log('Arbitrage submitted successfully!');
       }
@@ -182,7 +175,7 @@ export class ArbitrageService implements OnModuleInit {
     }
   }
 
-  @Cron('*/3 * * * * *') // 3s
+  @Cron(CronExpression.EVERY_5_SECONDS) // 3s
   private async scanTrade() {
     const balance = await this.getBalance();
     if (balance <= 0.001) {
@@ -193,13 +186,7 @@ export class ArbitrageService implements OnModuleInit {
     } else {
       this.logger.log(`Current Balance ${balance} ETH`);
     }
-    const tokens = [
-      STABLE_COIN.USDT,
-      STABLE_COIN.USDC,
-      STABLE_COIN.DAI,
-      TOKENS.LINK,
-      TOKENS.WSETH,
-    ];
+    const tokens = [STABLE_COIN.USDT, STABLE_COIN.USDC, TOKENS.WSETH];
     for (const tokenOut of tokens) {
       this.handleSimulation(tokenOut);
     }

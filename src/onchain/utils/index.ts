@@ -1,18 +1,22 @@
-import { BigNumber, utils } from 'ethers'; // v5 import
+import { BigNumber, ethers, utils } from 'ethers'; // v5 import
 import { Route } from 'src/dex/types/quote';
 
-export function pickBestRoute(routes: Route[][]): {
-  route: Route[];
-  encoded: string;
-} {
-  const best = routes.reduce((best, current) => {
-    const currentOut = Number(current.at(-1)?.amountOut ?? 0);
-    const bestOut = Number(best.at(-1)?.amountOut ?? 0);
-    return currentOut > bestOut ? current : best;
-  }, routes[0]);
-
-  const encoded = encodeRouteToPath(best);
-  return { route: best, encoded };
+export function processRoute(routes: Route[][]) {
+  const processedRoutes = routes.map((route) => {
+    const encoded = encodeRouteToPath(route);
+    const amountIn = BigNumber.from(route[0].amountIn); // real amountIn
+    return {
+      amountIn,
+      encoded,
+    };
+  });
+  const paths = processedRoutes.map((p) =>
+    ethers.utils.defaultAbiCoder.encode(
+      ['uint256', 'bytes'],
+      [p.amountIn, p.encoded],
+    ),
+  );
+  return encodePathsAsBytes(paths);
 }
 
 function encodeRouteToPath(route: Route[]): string {
@@ -41,10 +45,8 @@ function encodeRouteToPath(route: Route[]): string {
   return concatenated;
 }
 
-export function getUniqueToken0Ids(pools: any[]): string[] {
-  const uniqueIds = new Set<string>();
-  for (const pool of pools) {
-    uniqueIds.add(pool.token0.id);
-  }
-  return Array.from(uniqueIds);
+export function encodePathsAsBytes(paths: string[]): string[] {
+  return paths.map((path) =>
+    ethers.utils.hexlify(ethers.utils.toUtf8Bytes(path)),
+  );
 }
