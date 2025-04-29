@@ -5,7 +5,7 @@ import retry from 'async-await-retry';
 import 'dotenv/config';
 import { BigNumber, ethers } from 'ethers';
 import { CHAIN_ID } from 'src/dex/config';
-import { defaultProvider, provider } from 'src/dex/config/provider';
+import { provider } from 'src/dex/config/provider';
 import { STABLE_COIN, TOKENS } from 'src/dex/constants/tokens';
 import { ScannerService } from 'src/scanner/scanner.service';
 import simpleArbitrageAbi from './abis/SimpleArbitrage.abi.json';
@@ -45,7 +45,6 @@ export class ArbitrageService implements OnModuleInit {
     try {
       this.logger.log('Syncing Fee Data');
       this.feeData = await getFeeData();
-      this.logger.log('FeeData Sycned');
       return this.feeData;
     } catch (error) {
       this.logger.error('Error in syncFeeData', error);
@@ -53,8 +52,8 @@ export class ArbitrageService implements OnModuleInit {
     }
   }
 
-  async getBalance(): Promise<number> {
-    const balanceInWei = await provider.getBalance(PUBLIC_ADDRESS);
+  async getBalance(address = PUBLIC_ADDRESS): Promise<number> {
+    const balanceInWei = await provider.getBalance(address);
     const result = ethers.utils.formatEther(balanceInWei); // Converts Wei to Ether
     return Number(result);
   }
@@ -65,9 +64,9 @@ export class ArbitrageService implements OnModuleInit {
     try {
       return await retry(
         async () => {
-          const gasEstimate = await defaultProvider.estimateGas(txRequest);
+          const gasEstimate = await provider.estimateGas(txRequest);
           this.logger.debug(`Gas estimate: ${gasEstimate.toString()}`);
-          return Math.min(gasEstimate.toNumber(), 65000);
+          return gasEstimate;
         },
         null,
         {
@@ -162,8 +161,8 @@ export class ArbitrageService implements OnModuleInit {
   ): Promise<string> {
     const simulate = await this.simulateSimpleArbitrage(params);
     const txRequest = simulate?.txRequest;
-    console.log('txRequest -->', txRequest);
     if (!txRequest) return;
+    this.logger.log('txRequest -->', txRequest);
     return await this.mevService.submitArbitrage(txRequest, params);
   }
 
