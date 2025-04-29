@@ -75,7 +75,6 @@ export class ArbitrageService implements OnModuleInit {
         },
       );
     } catch (error) {
-      this.logger.error('Error while getEsitmateGas', error);
       throw error;
     }
   }
@@ -183,7 +182,7 @@ export class ArbitrageService implements OnModuleInit {
     }
   }
 
-  @Cron(CronExpression.EVERY_5_SECONDS)
+  @Cron('*/3 * * * * *') // 3s
   private async scanTrade() {
     const balance = await this.getBalance();
     if (balance <= 0.001) {
@@ -194,7 +193,13 @@ export class ArbitrageService implements OnModuleInit {
     } else {
       this.logger.log(`Current Balance ${balance} ETH`);
     }
-    const tokens = [STABLE_COIN.USDT, STABLE_COIN.USDC, STABLE_COIN.DAI];
+    const tokens = [
+      STABLE_COIN.USDT,
+      STABLE_COIN.USDC,
+      STABLE_COIN.DAI,
+      TOKENS.LINK,
+      TOKENS.WSETH,
+    ];
     for (const tokenOut of tokens) {
       this.handleSimulation(tokenOut);
     }

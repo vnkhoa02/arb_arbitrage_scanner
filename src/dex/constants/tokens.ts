@@ -1,5 +1,7 @@
 export const TOKENS = {
   WETH: '0x82af49447d8a07e3bd95bd0d56f35241523fbab1',
+  WSETH: '0x5979d7b546e38e414f7e9822514be443a4800529',
+  LINK: '0xf97f4df75117a78c1a5a0dbb814af92458539fb4',
 };
 
 export const STABLE_COIN = {
