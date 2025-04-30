@@ -1,22 +1,19 @@
 import { BigNumber, ethers, utils } from 'ethers'; // v5 import
 import { Route } from 'src/dex/types/quote';
 
-export function processRoute(routes: Route[][]) {
+export function processRoute(routes: Route[][]): string[] {
   const processedRoutes = routes.map((route) => {
     const encoded = encodeRouteToPath(route);
-    const amountIn = BigNumber.from(route[0].amountIn); // real amountIn
-    return {
-      amountIn,
-      encoded,
-    };
+    const amountIn = BigNumber.from(route[0].amountIn);
+    const amountOutMinimum = 0;
+
+    return ethers.utils.defaultAbiCoder.encode(
+      ['uint256', 'uint256', 'bytes'],
+      [amountIn, amountOutMinimum, encoded],
+    );
   });
-  const paths = processedRoutes.map((p) =>
-    ethers.utils.defaultAbiCoder.encode(
-      ['uint256', 'bytes'],
-      [p.amountIn, p.encoded],
-    ),
-  );
-  return encodePathsAsBytes(paths);
+
+  return processedRoutes;
 }
 
 function encodeRouteToPath(route: Route[]): string {
@@ -43,10 +40,4 @@ function encodeRouteToPath(route: Route[]): string {
   const concatenated =
     '0x' + pathBytes.map((b) => b.replace(/^0x/, '')).join('');
   return concatenated;
-}
-
-export function encodePathsAsBytes(paths: string[]): string[] {
-  return paths.map((path) =>
-    ethers.utils.hexlify(ethers.utils.toUtf8Bytes(path)),
-  );
 }

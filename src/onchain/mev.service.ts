@@ -1,5 +1,6 @@
 import { TransactionRequest } from '@ethersproject/abstract-provider';
 import { Injectable, Logger } from '@nestjs/common';
+import { provider } from 'src/dex/config/provider';
 import { signer } from './config';
 import { ISimpleArbitrageParams } from './types';
 import { sendNotify } from './utils/notify';
@@ -40,7 +41,7 @@ export class MevService {
       // Sign & Send transaction
       const signedTx = await signer.signTransaction(txRequest);
       this.logger.debug(`Signed transaction: ${signedTx}`);
-      const txResponse = await signer.sendTransaction(txRequest);
+      const txResponse = await provider.sendTransaction(signedTx);
       this.logger.log(`Transaction sent: ${txResponse.hash}`);
 
       sendNotify({ ...this.params, tx: txResponse.hash });
