@@ -1,7 +1,5 @@
-import { TransactionRequest } from '@ethersproject/abstract-provider';
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
-import retry from 'async-await-retry';
 import 'dotenv/config';
 import { BigNumber, ethers } from 'ethers';
 import { CHAIN_ID } from 'src/dex/config';
@@ -58,27 +56,6 @@ export class ArbitrageService implements OnModuleInit {
     return Number(result);
   }
 
-  private async getEsitmateGas(
-    txRequest: TransactionRequest,
-  ): Promise<BigNumber> {
-    try {
-      return await retry(
-        async () => {
-          const gasEstimate = await provider.estimateGas(txRequest);
-          this.logger.debug(`Gas estimate: ${gasEstimate.toString()}`);
-          return gasEstimate;
-        },
-        null,
-        {
-          retriesMax: 5,
-          interval: 50,
-        },
-      );
-    } catch (error) {
-      throw error;
-    }
-  }
-
   async simulateSimpleArbitrage(trade: ISimpleArbitrageTrade) {
     try {
       const params = await this.getArbitrageTradeParams(trade);
@@ -109,7 +86,7 @@ export class ArbitrageService implements OnModuleInit {
       txRequest.maxFeePerGas = autoParseGasFee(this.feeData.maxFeePerGas);
       txRequest.value = BigNumber.from(0); // don't send ETH accidentally
       txRequest.nonce = await signer.getTransactionCount('latest');
-      txRequest.gasLimit = BigNumber.from(6000000);
+      txRequest.gasLimit = BigNumber.from(1200000);
       return {
         txRequest,
       };
@@ -165,7 +142,7 @@ export class ArbitrageService implements OnModuleInit {
         tokenOut,
         amountIn: 1,
       });
-      console.log('tradeParams -> ', tradeParams);
+      console.log('tradeParams', tradeParams);
       const txHash = await this.submitArbitrage(tradeParams);
       if (txHash) {
         this.logger.log('Arbitrage submitted successfully!');
@@ -178,15 +155,18 @@ export class ArbitrageService implements OnModuleInit {
   @Cron(CronExpression.EVERY_5_SECONDS) // 3s
   private async scanTrade() {
     const balance = await this.getBalance();
-    if (balance <= 0.001) {
+    if (balance <= 0.0009) {
       this.logger.warn(
         `Balance too low: ${balance} ETH. Stopping further trades.`,
       );
       return; // Stop further trade execution
-    } else {
-      this.logger.log(`Current Balance ${balance} ETH`);
     }
-    const tokens = [STABLE_COIN.USDT, STABLE_COIN.USDC, TOKENS.WSETH];
+    const tokens = [
+      STABLE_COIN.USDT,
+      STABLE_COIN.USDC,
+      TOKENS.WSETH,
+      TOKENS.LINK,
+    ];
     for (const tokenOut of tokens) {
       this.handleSimulation(tokenOut);
     }
