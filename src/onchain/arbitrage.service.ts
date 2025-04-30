@@ -105,19 +105,17 @@ export class ArbitrageService implements OnModuleInit {
 
   async simulateArbitrage(trade: ISimpleArbitrageTrade) {
     try {
-      console.log('trade', trade);
       const params = await this.getArbitrageTradeParams(trade);
-      console.log('params ->', params);
       const promise1 = this.arbContract.callStatic.arbitrageDexes(
+        params.forwardPaths,
         params.tokenIn,
         params.tokenOut,
-        params.forwardPaths,
         params.borrowAmount,
       );
       const promise2 = this.arbContract.populateTransaction.arbitrageDexes(
+        params.forwardPaths,
         params.tokenIn,
         params.tokenOut,
-        params.forwardPaths,
         params.borrowAmount,
       );
 
@@ -198,7 +196,6 @@ export class ArbitrageService implements OnModuleInit {
         tokenOut,
         amountIn: 1,
       });
-      console.log('tradeParams', tradeParams);
       const promise1 = this.submitArbitrage(tradeParams);
       const promise2 = this.submitSimpleArbitrage(tradeParams);
       await Promise.allSettled([promise1, promise2]);
