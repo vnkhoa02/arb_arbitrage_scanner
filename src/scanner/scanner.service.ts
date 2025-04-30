@@ -15,7 +15,7 @@ export class ScannerService {
     const backward: ArbPathResult = await this.dexService.evaluateArbitrageV3(
       tokenOut,
       tokenIn,
-      amountOut,
+      amountOut.toString(),
     );
 
     return backward;
@@ -30,7 +30,7 @@ export class ScannerService {
     const forward = await this.dexService.evaluateArbitrageV3(
       tokenIn,
       tokenOut,
-      amountIn,
+      amountIn.toString(),
     );
     const backward = await this.scanBackwards(forward);
     const profit = Number(backward.amountOut) - Number(forward.amountIn);

@@ -76,38 +76,34 @@ export class DexService {
     return Number(tokenInfo.decimals);
   }
 
-  async getQuoteV2(tokenIn: string, tokenOut: string, amountIn: number) {
+  async getQuoteV2(tokenIn: string, tokenOut: string, amountIn: string) {
     try {
-      // Fetch decimals in parallel
+      // Fetch token decimals in parallel
       const [decIn, decOut] = await Promise.all([
         this.getTokenDecimals(tokenIn),
         this.getTokenDecimals(tokenOut),
       ]);
-
-      // Convert input amount to correct units using BigInt
-      const amountInUnits = (
-        BigInt(Math.floor(amountIn * 1e6)) *
-        BigInt(10) ** BigInt(decIn - 6)
-      ).toString();
-
+      const amountInUnits = ethers.utils.parseUnits(amountIn, decIn).toString();
       const payload = getQuotePayload(tokenIn, tokenOut, amountInUnits);
-
       const { data } = await axios.post<IUniQuoteResponse>(
         UNISWAP_QUOTE_API,
         payload,
         { headers: getQuoteHeader() },
       );
-      const quoteData = data.quote;
-      const bestOutput = quoteData.aggregatedOutputs
-        .filter(
-          (output) => output.token.toLowerCase() === tokenOut.toLowerCase(),
-        )
-        .reduce((max, curr) =>
-          BigInt(curr.amount) > BigInt(max.amount) ? curr : max,
-        );
 
-      // Convert back to human-readable float
-      const amountOut = (Number(bestOutput.amount) / 10 ** decOut).toString();
+      const quoteData = data.quote;
+
+      const outputs = quoteData.aggregatedOutputs.filter(
+        (output) => output.token.toLowerCase() === tokenOut.toLowerCase(),
+      );
+
+      // Find the best output by comparing amounts
+      const bestOutput = outputs.reduce((max, curr) =>
+        BigInt(curr.amount) > BigInt(max.amount) ? curr : max,
+      );
+
+      const amountOut = ethers.utils.formatUnits(bestOutput.amount, decOut);
+
       const route =
         quoteData?.route ??
         generateDirectRoutes(
@@ -118,12 +114,12 @@ export class DexService {
           decOut,
           amountOut,
         );
+
       return { route, amountOut };
     } catch (error) {
-      const message =
-        error?.response?.data ?? error?.message ?? JSON.stringify(error);
-      this.logger.error('Error getting quoteV2:', message);
-      throw new BadRequestException(`Error getting quoteV2`);
+      this.logger.error('Error getting quoteV2:', error);
+      // Fallback to getQuote
+      return this.getQuote(tokenIn, tokenOut, amountIn);
     }
   }
 
@@ -145,10 +141,7 @@ export class DexService {
         amountOut: result.amountOut,
       };
     } catch (error) {
-      this.logger.error(`Error while getQuoteSlow`, {
-        message: error?.message,
-        serverError: error?.serverError,
-      });
+      this.logger.error(`Error while getQuoteSlow`, error);
       throw new InternalServerErrorException('Error while getQuoteSlow');
     }
   }
@@ -157,12 +150,12 @@ export class DexService {
   async evaluateArbitrage(
     tokenIn: string,
     tokenOut: string,
-    amountIn: number | string,
+    amountIn: string,
   ): Promise<ArbPathResult> {
     const { amountOut, route } = await this.getQuote(
       tokenIn,
       tokenOut,
-      amountIn.toString(),
+      amountIn,
     );
     return {
       route,
@@ -177,7 +170,7 @@ export class DexService {
   async evaluateArbitrageV3(
     tokenIn: string,
     tokenOut: string,
-    amountIn: number | string,
+    amountIn: string,
   ): Promise<ArbPathResult> {
     const cacheKey = generateCacheKey(tokenIn, tokenOut);
     const now = Date.now();
@@ -189,7 +182,7 @@ export class DexService {
     const { amountOut, route } = await this.getQuoteV2(
       tokenIn,
       tokenOut,
-      Number(amountIn),
+      amountIn,
     );
     const result: ArbPathResult = {
       route,

@@ -6,9 +6,10 @@ import { CHAIN_ID } from 'src/dex/config';
 import { provider } from 'src/dex/config/provider';
 import { STABLE_COIN, TOKENS } from 'src/dex/constants/tokens';
 import { ScannerService } from 'src/scanner/scanner.service';
-import simpleArbitrageAbi from './abis/SimpleArbitrage.abi.json';
+import arbitrageV2Abi from './abis/ArbitrageV2.json';
+import simpleArbitrageAbi from './abis/SimpleArbitrage.json';
 import { signer } from './config';
-import { PUBLIC_ADDRESS, SIMPLE_ARBITRAGE } from './constants';
+import { ARBITRAGE_V2, PUBLIC_ADDRESS, SIMPLE_ARBITRAGE } from './constants';
 import { MevService } from './mev.service';
 import {
   IFeeData,
@@ -23,6 +24,7 @@ export class ArbitrageService implements OnModuleInit {
   private readonly logger = new Logger(ArbitrageService.name);
   private feeData: IFeeData;
   private simpleArbContract: ethers.Contract;
+  private arbContract: ethers.Contract;
 
   constructor(
     private readonly scannerService: ScannerService,
@@ -33,6 +35,11 @@ export class ArbitrageService implements OnModuleInit {
     this.simpleArbContract = new ethers.Contract(
       SIMPLE_ARBITRAGE,
       simpleArbitrageAbi.abi,
+      signer,
+    );
+    this.arbContract = new ethers.Contract(
+      ARBITRAGE_V2,
+      arbitrageV2Abi.abi,
       signer,
     );
     await this.syncFeeData();
@@ -96,6 +103,45 @@ export class ArbitrageService implements OnModuleInit {
     }
   }
 
+  async simulateArbitrage(trade: ISimpleArbitrageTrade) {
+    try {
+      console.log('trade', trade);
+      const params = await this.getArbitrageTradeParams(trade);
+      console.log('params ->', params);
+      const promise1 = this.arbContract.callStatic.arbitrageDexes(
+        params.tokenIn,
+        params.tokenOut,
+        params.forwardPaths,
+        params.borrowAmount,
+      );
+      const promise2 = this.arbContract.populateTransaction.arbitrageDexes(
+        params.tokenIn,
+        params.tokenOut,
+        params.forwardPaths,
+        params.borrowAmount,
+      );
+
+      const [sim, txRequest] = await Promise.all([promise1, promise2]);
+      this.logger.debug('arb sim -->', sim);
+
+      txRequest.chainId = CHAIN_ID;
+      txRequest.type = 2;
+      txRequest.maxPriorityFeePerGas = autoParseGasFee(
+        this.feeData.maxPriorityFeePerGas,
+      );
+      txRequest.maxFeePerGas = autoParseGasFee(this.feeData.maxFeePerGas);
+      txRequest.value = BigNumber.from(0); // don't send ETH accidentally
+      txRequest.nonce = await signer.getTransactionCount('latest');
+      txRequest.gasLimit = BigNumber.from(1200000);
+      return {
+        txRequest,
+      };
+    } catch (err) {
+      this.logger.error('simulateArbitrage failed', err as any);
+      return null;
+    }
+  }
+
   /**
    * Prepare ISimpleArbitrageParams params
    * @returns ISimpleArbitrageParams
@@ -125,13 +171,23 @@ export class ArbitrageService implements OnModuleInit {
     return simParams;
   }
 
-  private async submitArbitrage(
+  private async submitSimpleArbitrage(
     params: ISimpleArbitrageParams,
   ): Promise<string> {
     const simulate = await this.simulateSimpleArbitrage(params);
     const txRequest = simulate?.txRequest;
     if (!txRequest) return;
-    this.logger.log('txRequest -->', txRequest);
+    this.logger.log('submitSimpleArbitrage txRequest -->', txRequest);
+    return await this.mevService.submitArbitrage(txRequest, params);
+  }
+
+  private async submitArbitrage(
+    params: ISimpleArbitrageParams,
+  ): Promise<string> {
+    const simulate = await this.simulateArbitrage(params);
+    const txRequest = simulate?.txRequest;
+    if (!txRequest) return;
+    this.logger.log('submitArbitrage txRequest -->', txRequest);
     return await this.mevService.submitArbitrage(txRequest, params);
   }
 
@@ -143,10 +199,9 @@ export class ArbitrageService implements OnModuleInit {
         amountIn: 1,
       });
       console.log('tradeParams', tradeParams);
-      const txHash = await this.submitArbitrage(tradeParams);
-      if (txHash) {
-        this.logger.log('Arbitrage submitted successfully!');
-      }
+      const promise1 = this.submitArbitrage(tradeParams);
+      const promise2 = this.submitSimpleArbitrage(tradeParams);
+      await Promise.allSettled([promise1, promise2]);
     } catch (error) {
       this.logger.error(`Simulation error for ${tokenOut}`, error);
     }
@@ -164,8 +219,8 @@ export class ArbitrageService implements OnModuleInit {
     const tokens = [
       STABLE_COIN.USDT,
       STABLE_COIN.USDC,
+      STABLE_COIN.DAI,
       TOKENS.WSETH,
-      TOKENS.LINK,
     ];
     for (const tokenOut of tokens) {
       this.handleSimulation(tokenOut);

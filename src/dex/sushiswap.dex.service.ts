@@ -45,12 +45,12 @@ export class SushiSwapService extends DexService {
   override async evaluateArbitrage(
     tokenIn: string,
     tokenOut: string,
-    amountIn: number | string,
+    amountIn: string,
   ): Promise<ArbPathResult> {
     const { amountOut, route } = await this.getQuote(
       tokenIn,
       tokenOut,
-      amountIn.toString(),
+      amountIn,
     );
     return {
       route,

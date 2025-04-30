@@ -21,7 +21,6 @@ function encodeRouteToPath(route: Route[]): string {
 
   for (let i = 0; i < route.length; i++) {
     const hop = route[i];
-
     // TokenIn address (20 bytes)
     const tokenIn = utils.getAddress(hop.tokenIn.address);
     pathBytes.push(tokenIn.toLowerCase());

@@ -4,7 +4,7 @@ import { CurrencyAmount, Percent, Token, TradeType } from '@uniswap/sdk-core';
 import { AlphaRouter } from '@uniswap/smart-order-router';
 import { CHAIN_ID } from './config';
 import { provider } from './config/provider';
-import { RouteOptions, RouteResult } from './types/route';
+import { RouteOptions } from './types/route';
 import { extractRoutes } from './utils/extractRoutes';
 
 enum UniversalRouterVersion {
@@ -37,17 +37,17 @@ export class BestRouteFinder {
     tokenInDecimals: number,
     tokenOutAddress: string,
     tokenOutDecimals: number,
-    amountInRaw: string | bigint,
+    amountInRaw: bigint,
     options: RouteOptions = {},
-  ): Promise<RouteResult> {
+  ): Promise<any> {
     // Wrap tokens for SDK
     const tokenIn = new Token(CHAIN_ID, tokenInAddress, tokenInDecimals);
     const tokenOut = new Token(CHAIN_ID, tokenOutAddress, tokenOutDecimals);
 
-    // Build CurrencyAmount
-    const raw =
-      typeof amountInRaw === 'bigint' ? amountInRaw : BigInt(amountInRaw);
-    const amountIn = CurrencyAmount.fromRawAmount(tokenIn, raw.toString());
+    const amountIn = CurrencyAmount.fromRawAmount(
+      tokenIn,
+      amountInRaw.toString(),
+    );
 
     // Set trade type Exact Input (0)
     const tradeType = TradeType.EXACT_INPUT;
@@ -72,7 +72,7 @@ export class BestRouteFinder {
     if (!route) {
       return null;
     }
-    const routes = [extractRoutes(route.route)];
+    const routes = extractRoutes(route.route, amountInRaw);
     return {
       quote: route.quoteGasAdjusted.toFixed(tokenOut.decimals),
       amountOut: route.quote.toFixed(),
