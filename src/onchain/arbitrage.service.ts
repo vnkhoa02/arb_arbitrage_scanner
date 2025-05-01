@@ -216,8 +216,8 @@ export class ArbitrageService implements OnModuleInit {
     const tokens = [
       STABLE_COIN.USDT,
       STABLE_COIN.USDC,
-      STABLE_COIN.DAI,
-      TOKENS.WSETH,
+      // STABLE_COIN.DAI,
+      // TOKENS.WSETH,
     ];
     for (const tokenOut of tokens) {
       this.handleSimulation(tokenOut);
