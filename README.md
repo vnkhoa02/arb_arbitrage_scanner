@@ -1,73 +1,55 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 🤖 arb_arbitrage_scanner
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+`arb_arbitrage_scanner` is a high-performance, off-chain arbitrage engine designed to continuously scan Uniswap V3 liquidity pools on **Ethereum Mainnet** and **Arbitrum**. It evaluates forward and backward swap routes to detect real arbitrage opportunities. When a profitable trade is found, the scanner:
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+- 📣 Sends a real-time alert to **Discord**
+- 🧠 Verifies profitability including **slippage and gas**
+- ⚡ Triggers an **on-chain execution** by calling a smart contract
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## ✨ Features
 
-## Installation
+- 🔄 **Forward and Backward Path Simulation**
+  - Forward: Token A → Token B
+  - Backward: Token B → Token A
+  - Confirms that `output_back > input_forward` after gas/slippage
+- 🔍 **Uniswap V3 Path Optimization**
+  - Selects optimal fee tiers (e.g., 500, 3000, 10000)
+  - Calculates exact input/output via Uniswap Quoter V3
+- 🔧 **Customizable Token Pairs and Thresholds**
+  - Add/remove token pairs from config
+  - Set minimum USD profit or token delta
+- 🧱 **Smart Contract Execution**
+  - Calls your deployed `Arbitrage.sol` or similar contract with trade params
+- 🌐 **Multi-Chain Support**
+  - Works on Ethereum Mainnet and Arbitrum
+- 🛡️ **DRPC Integration**
+  - Uses [DRPC](https://drpc.org/) to avoid rate-limits and RPC instability
+- 📡 **Discord Webhook Alerts**
+  - Instant notifications for every viable trade found
 
-```bash
-$ npm install
-```
+---
 
-## Running the app
+## 🔧 Tech Stack
 
-```bash
-# development
-$ npm run start
+| Tool                | Purpose                         |
+| ------------------- | ------------------------------- |
+| **NestJS/TS**       | Core logic and scripting        |
+| **Uniswap V3 ABI**  | Route discovery and simulation  |
+| **Ethers.js**       | Blockchain interaction          |
+| **DRPC**            | High-throughput RPC calls       |
+| **Discord Webhook** | Real-time alerting              |
 
-# watch mode
-$ npm run start:dev
 
-# production mode
-$ npm run start:prod
-```
-
-## Test
+## ⚙️ Installation
 
 ```bash
-# unit tests
-$ npm run test
+git clone https://github.com/vnkhoa02/arb_arbitrage.git
+cd arb_arbitrage
+npm install
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+git clone https://github.com/vnkhoa02/arb_arbitrage_scanner.git
+cd arb_arbitrage_scanner
+npm install
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
