@@ -32,16 +32,18 @@ export class ArbitrageService implements OnModuleInit {
   ) {}
 
   async onModuleInit() {
-    this.simpleArbContract = new ethers.Contract(
-      SIMPLE_ARBITRAGE,
-      simpleArbitrageAbi.abi,
-      signer,
-    );
-    this.arbContract = new ethers.Contract(
-      ARBITRAGE,
-      arbitrageV2Abi.abi,
-      signer,
-    );
+    if (SIMPLE_ARBITRAGE)
+      this.simpleArbContract = new ethers.Contract(
+        SIMPLE_ARBITRAGE,
+        simpleArbitrageAbi.abi,
+        signer,
+      );
+    if (ARBITRAGE)
+      this.arbContract = new ethers.Contract(
+        ARBITRAGE,
+        arbitrageV2Abi.abi,
+        signer,
+      );
     await this.syncFeeData();
   }
 
@@ -206,21 +208,16 @@ export class ArbitrageService implements OnModuleInit {
     }
   }
 
-  @Cron(CronExpression.EVERY_5_SECONDS) // 3s
+  @Cron(CronExpression.EVERY_5_SECONDS)
   private async scanTrade() {
     const balance = await this.getBalance();
-    if (balance <= 0.0009) {
+    if (balance <= 0.005) {
       this.logger.warn(
         `Balance too low: ${balance} ETH. Stopping further trades.`,
       );
       return; // Stop further trade execution
     }
-    const tokens = [
-      STABLE_COIN.USDT,
-      STABLE_COIN.USDC,
-      // STABLE_COIN.DAI,
-      // TOKENS.WSETH,
-    ];
+    const tokens = [STABLE_COIN.USDT, STABLE_COIN.USDC, STABLE_COIN.DAI];
     for (const tokenOut of tokens) {
       this.handleSimulation(tokenOut);
     }
