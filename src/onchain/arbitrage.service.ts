@@ -9,7 +9,7 @@ import { ScannerService } from 'src/scanner/scanner.service';
 import arbitrageV2Abi from './abis/ArbitrageV2.json';
 import simpleArbitrageAbi from './abis/SimpleArbitrage.json';
 import { signer } from './config';
-import { ARBITRAGE_V2, PUBLIC_ADDRESS, SIMPLE_ARBITRAGE } from './constants';
+import { ARBITRAGE, PUBLIC_ADDRESS, SIMPLE_ARBITRAGE } from './constants';
 import { MevService } from './mev.service';
 import {
   IFeeData,
@@ -38,7 +38,7 @@ export class ArbitrageService implements OnModuleInit {
       signer,
     );
     this.arbContract = new ethers.Contract(
-      ARBITRAGE_V2,
+      ARBITRAGE,
       arbitrageV2Abi.abi,
       signer,
     );
@@ -172,6 +172,7 @@ export class ArbitrageService implements OnModuleInit {
   private async submitSimpleArbitrage(
     params: ISimpleArbitrageParams,
   ): Promise<string> {
+    if (!SIMPLE_ARBITRAGE) return null;
     const simulate = await this.simulateSimpleArbitrage(params);
     const txRequest = simulate?.txRequest;
     if (!txRequest) return;
@@ -182,6 +183,7 @@ export class ArbitrageService implements OnModuleInit {
   private async submitArbitrage(
     params: ISimpleArbitrageParams,
   ): Promise<string> {
+    if (!ARBITRAGE) return null;
     const simulate = await this.simulateArbitrage(params);
     const txRequest = simulate?.txRequest;
     if (!txRequest) return;

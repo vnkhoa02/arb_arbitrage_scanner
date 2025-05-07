@@ -1,3 +1,5 @@
-export const ARBITRAGE_V2 = '0x5f875e923C66196Cc385032b4041F046b5D62414';
-export const SIMPLE_ARBITRAGE = '0x8116AD92c2F58c13389e4a6e0ACaD3eD04c28C59';
-export const PUBLIC_ADDRESS = '0x0CF9Dcf86Ec3A20BF54E852E99823f2978552ED1';
+import 'dotenv/config';
+
+export const ARBITRAGE = process.env.ARBITRAGE as string;
+export const SIMPLE_ARBITRAGE = process.env.SIMPLE_ARBITRAGE as string;
+export const PUBLIC_ADDRESS = process.env.PUBLIC_ADDRESS as string;

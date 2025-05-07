@@ -1,6 +1,5 @@
+import { PUBLIC_ADDRESS } from 'src/onchain/constants';
 import { CHAIN_ID } from '../config';
-
-const swapper = '0x0CF9Dcf86Ec3A20BF54E852E99823f2978552ED1'; // My Wallet
 
 export function getQuotePayload(
   tokenIn: string,
@@ -22,7 +21,7 @@ export function getQuotePayload(
         maxPriorityFeeGwei: 9,
       },
     ],
-    swapper,
+    swapper: PUBLIC_ADDRESS,
     tokenIn,
     tokenInChainId: CHAIN_ID,
     tokenOut,
