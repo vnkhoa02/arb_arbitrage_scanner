@@ -1,6 +1,6 @@
 import { RouteWithValidQuote, V3Route } from '@uniswap/smart-order-router';
 import { Route, TokenIn, TokenOut } from '../types/quote';
-import { BigNumber, ethers } from 'ethers';
+import { BigNumber } from 'ethers';
 
 export function extractRoutes(
   vaildRoutes: RouteWithValidQuote[],
