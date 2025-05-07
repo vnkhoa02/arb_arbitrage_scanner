@@ -198,7 +198,7 @@ export class ArbitrageService implements OnModuleInit {
       const tradeParams = await this.getArbitrageTradeParams({
         tokenIn: TOKENS.WETH,
         tokenOut,
-        amountIn: 1,
+        amountIn: 2,
       });
       const promise1 = this.submitArbitrage(tradeParams);
       const promise2 = this.submitSimpleArbitrage(tradeParams);

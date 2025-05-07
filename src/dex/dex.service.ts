@@ -7,6 +7,7 @@ import {
 import axios from 'axios';
 import 'dotenv/config';
 import { ethers } from 'ethers';
+import { proxyAgent } from 'src/proxy';
 import { BestRouteFinder } from './bestRouteFinder';
 import { CACHE_TTL_MS } from './config';
 import { provider } from './config/provider';
@@ -88,7 +89,10 @@ export class DexService {
       const { data } = await axios.post<IUniQuoteResponse>(
         UNISWAP_QUOTE_API,
         payload,
-        { headers: getQuoteHeader() },
+        {
+          headers: getQuoteHeader(),
+          httpsAgent: proxyAgent,
+        },
       );
 
       const quoteData = data.quote;
